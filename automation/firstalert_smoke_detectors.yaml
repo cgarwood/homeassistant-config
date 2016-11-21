@@ -1,0 +1,28 @@
+alias: Smoke/CO Alarm
+trigger:
+  - platform: numeric_state
+    entity_id: sensor.hallway_detector_alarm_type_6_0
+    below: 12
+condition:
+  - condition: numeric_state
+    entity_id: sensor.hallway_detector_alarm_type_6_0
+    above: 1
+action:
+  - service: homeassistant.turn_on
+    entity_id: 
+      - light.hallway
+      - light.living_room
+      - light.front_porch
+      - light.back_porch
+      - light.guest_bathroom_fan_light_level_9_0
+    data:
+      brightness: 255
+  - service: homeassistant.turn_off
+    entity_id:
+      - switch.guest_bathroom_fan_switch_8_0
+  - service: notify.notify
+    data:
+      title: "Hallway Smoke/CO Detector"
+      message: |
+        Hallway Smoke Detector Activated
+        Type: {%if is_state('sensor.hallway_detector_alarm_type_6_0', '1') %}Smoke{% elif is_state('sensor.hallway_detector_alarm_type_6_0', '2') %}Carbon Monoxide{% elif is_state('sensor.hallway_detector_alarm_type_6_0', '12') %}Test{% else %}Unknown ({{ states('sensor.hallway_detector_alarm_type_6_0') }}){% endif %}

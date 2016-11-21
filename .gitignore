@@ -2,6 +2,7 @@
 *
 !.gitignore
 !*.yaml
+!/automation/
 !/scripts/
 
 # Ignore the following YAML files as well
