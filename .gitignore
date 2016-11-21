@@ -1,0 +1,9 @@
+# Ignore everything but YAML files and .gitignore
+*
+!.gitignore
+!*.yaml
+!/scripts/
+
+# Ignore the following YAML files as well
+known_devices.yaml
+secrets.yaml

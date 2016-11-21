@@ -1,0 +1,14 @@
+#condition: sun
+#after: sunset
+
+sequence:
+  - alias: Turn on Porch Light
+    service: homeassistant.turn_on
+    data:
+      entity_id: light.front_porch
+  - delay:
+      minutes: 3
+  - alias: Turn off Porch Light
+    service: homeassistant.turn_off
+    data:
+      entity_id: light.front_porch
