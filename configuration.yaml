@@ -10,7 +10,6 @@ homeassistant:
   latitude: !secret latitude
   longitude: !secret longitude
 
-
   customize: !include customize.yaml
 
 # Allows you to issue voice commands from the frontend
@@ -54,16 +53,16 @@ sun:
 # View all events in a logbook
 logbook:
 
+# Set up HTTP frontend
 http:
   api_password: !secret http_password
   trusted_networks:
     - 192.168.1.0/24
   cors_allowed_origins:
-    - 'null'
-    - '*'
     - 'http://192.168.1.220'
     - !secret cors_address
- 
+
+# Set up primary components    
 nest:
   username: !secret nest_username
   password: !secret nest_password
@@ -71,6 +70,26 @@ nest:
 zwave:
   usb_path: /dev/zwave
   config_path: /srv/hass/src/open-zwave-control-panel/config
+
+climate:
+  platform: nest
+
+wink:
+  access_token: !secret wink_token
+
+device_tracker:
+  platform: unifi
+  username: !secret unifi_username
+  password: !secret unifi_password
+  track_new_devices: false
+  
+  
+binary_sensor:
+  - platform: nest
+    monitored_conditions:
+      - 'fan'
+      - 'hvac_ac_state'
+      - 'hvac_heater_state'
 
 sensor:
   - platform: systemmonitor
@@ -105,19 +124,6 @@ sensor:
       nest_indoor_humidity:
         value_template: '{{ states.climate.hallway.attributes.humidity }}'
 
-
-climate:
-  platform: nest
-
-wink:
-  access_token: !secret wink_token
-
-device_tracker:
-  platform: unifi
-  username: !secret unifi_username
-  password: !secret unifi_password
-  track_new_devices: false
-
 media_player:
   - platform: firetv
   - platform: cast
@@ -148,6 +154,7 @@ group:
       - sensor.ram_use
       - sensor.cpu_use
       - sensor.last_boot
+  hvac: climate.hallway, binary_sensor.hallway_fan, binary_sensor.hallway_hvac_ac_state, binary_sensor.hallway_hvac_heater_state
   doors: binary_sensor.front_door_sensor_3_0, binary_sensor.back_door_sensor_4_0
   weather: sensor.hallway_temperature, sensor.hallway_humidity, sensor.hallway_condition, sensor.hallway_direction, sensor.hallway_kph
   family: device_tracker.charlessiphone, device_tracker.tinasiphone
@@ -163,7 +170,7 @@ group:
       - group.weather
       - group.all_lights
       - group.multisensor
-      - climate.hallway
+      - group.hvac
       - media_player.living_room
       - media_player.amazon_fire_tv
       - sun.sun
@@ -180,101 +187,5 @@ group:
       - group.system_monitor
       - group.all_automations
 
-automation 1:
-  alias: Smoke/CO Alarm
-  trigger:
-    - platform: numeric_state
-      entity_id: sensor.hallway_detector_alarm_type_6_0
-      below: 12
-  condition:
-    - condition: numeric_state
-      entity_id: sensor.hallway_detector_alarm_type_6_0
-      above: 1
-  action:
-    - service: homeassistant.turn_on
-      entity_id: 
-        - light.hallway
-        - light.living_room
-        - light.front_porch
-        - light.back_porch
-        - light.guest_bathroom_fan_light_level_9_0
-      data:
-        brightness: 255
-    - service: homeassistant.turn_off
-      entity_id:
-        - switch.guest_bathroom_fan_switch_8_0
-    - service: notify.notify
-      data:
-        title: "Hallway Smoke/CO Detector"
-        message: |
-          Hallway Smoke Detector Activated
-          Type: {%if is_state('sensor.hallway_detector_alarm_type_6_0', '1') %}Smoke{% elif is_state('sensor.hallway_detector_alarm_type_6_0', '2') %}Carbon Monoxide{% elif is_state('sensor.hallway_detector_alarm_type_6_0', '12') %}Test{% else %}Unknown ({{ states('sensor.hallway_detector_alarm_type_6_0') }}){% endif %}
-
-automation 2:
-  alias: Porch Light Arrival
-  trigger:
-    platform: state
-    entity_id: group.family
-    from: 'not_home'
-    to: 'home'
-  condition:
-    condition: and
-    conditions:
-      - condition: sun
-        after: sunset
-  action:
-    service: homeassistant.turn_on
-    entity_id: light.front_porch
-
-automation 3:
-  alias: Guest Bathroom Auto Lights (Day)
-  initial_state: false
-  trigger:
-    platform: state
-    entity_id: binary_sensor.aeotec_multisensor_6_sensor_10_0
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-      - condition: time
-        before: '23:00:00'
-        after: '5:00:00'
-      - condition: state
-        entity_id: light.guest_bathroom_vanity_light_level_7_0
-        state: 'off'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.guest_bathroom_fan_light_level_9_0
-    - service: script.turn_off
-      entity_id: script.guest_bathroom_light_day
-    - service: homeassistant.turn_on
-      entity_id: script.guest_bathroom_light_day
-
-automation 4:
-  alias: Guest Bathroom Auto Lights (Night)
-  initial_state: false
-  trigger:
-    platform: state
-    entity_id: binary_sensor.aeotec_multisensor_6_sensor_10_0
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-      - condition: time
-        after: '23:00:00'
-        before: '5:00:00'
-      - condition: state
-        entity_id: light.guest_bathroom_fan_light_level_9_0
-        state: 'off'
-      - condition: state
-        entity_id: light.guest_bathroom_vanity_light_level_7_0
-        state: 'off'
-  action:
-    - service: homeassistant.turn_on
-      entity_id: light.guest_bathroom_vanity_light_level_7_0
-    - service: script.turn_off
-      entity_id: script.guest_bathroom_light_night
-    - service: homeassistant.turn_on
-      entity_id: script.guest_bathroom_light_night
-
+automation: !include_dir_merge_list automation
 script: !include_dir_named scripts

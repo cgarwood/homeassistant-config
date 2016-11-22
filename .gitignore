@@ -1,6 +1,7 @@
-# Ignore everything but YAML files and .gitignore
+# Ignore everything but YAML files and necessary git files
 *
 !.gitignore
+!README.md
 !*.yaml
 !/automation/
 !/scripts/
