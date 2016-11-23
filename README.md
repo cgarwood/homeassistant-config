@@ -4,10 +4,8 @@ Configuration files from my Home-Assistant installation, running on a Raspberry 
 
 Equipment includes:
 - Lutron Caseta Light Switches (via Wink hub)
-- Zwave Light Switches
+- GE Zwave Light Switches
 - Nest Thermostat
-- Zwave Smoke/CO Detector
+- First Alert Zwave Smoke/CO Detector
 - Ubiquiti Unifi Wifi (device_tracker)
 - Amazon FireTV & Google Chromecast
-
-

@@ -1,11 +1,39 @@
+# Binary Sensors
 binary_sensor.front_door_sensor_3_0:
   friendly_name: Front Door Open
 binary_sensor.back_door_sensor_4_0:
   friendly_name: Back Door Open
+binary_sensor.hallway_fan:
+  friendly_name: Fan
+binary_sensor.hallway_hvac_ac_state:
+  friendly_name: Air Conditioning
+binary_sensor.hallway_hvac_ac_state:
+  friendly_name: Heat
+
+# Device Trackers
+device_tracker.charlessiphone:
+  friendly_name: Charles's iPhone
+device_tracker.tinasiphone:
+  friendly_name: Tina's iPhone
+  
+# Groups  
 group.all_lights:
   hidden: false
 group.all_automations:
   hidden: false
+
+# Lights
+light.guest_bathroom_vanity_light_level_7_0:
+  friendly_name: Guest Bathroom Vanity Light
+light.guest_bathroom_fan_light_level_9_0:
+  friendly_name: Guest Bathroom Fan Light
+
+# Scripts
+script.goodbyelights:
+  friendly_name: Goodbye
+  
+# Sensors
+## Door Sensors
 sensor.front_door_alarm_level_3_1:
   hidden: true
 sensor.back_door_alarm_level_4_1:
@@ -22,14 +50,12 @@ sensor.front_door_sourcenodeid_3_2:
   hidden: true
 sensor.back_door_sourcenodeid_4_2:
   hidden: true
+## Smoke Detector
 sensor.hallway_detector_alarm_level_6_1:
   hidden: true
 sensor.hallway_detector_alarm_type_6_0:
   friendly_name: Smoke Detector Status
-device_tracker.charlessiphone:
-  friendly_name: Charles's iPhone
-device_tracker.tinasiphone:
-  friendly_name: Tina's iPhone
+## Nest Weather Sensors
 sensor.hallway_temperature:
   friendly_name: Outdoor Temperature
 sensor.hallway_humidity:
@@ -40,17 +66,14 @@ sensor.hallway_direction:
   friendly_name: Wind Direction
 sensor.hallway_kph:
   friendly_name: Wind Speed
+## Battery Levels
 sensor.front_door_battery:
   friendly_name: Front Door Battery
 sensor.back_door_battery:
   friendly_name: Back Door Battery
 sensor.hallway_smoke_battery:
   friendly_name: Hallway Smoke Detector Battery
-light.guest_bathroom_vanity_light_level_7_0:
-  friendly_name: Guest Bathroom Vanity Light
-light.guest_bathroom_fan_light_level_9_0:
-  friendly_name: Guest Bathroom Fan Light
+
+# Switches
 switch.guest_bathroom_fan_switch_8_0:
   friendly_name: Guest Bathroom Exhaust Fan
-script.goodbyelights:
-  friendly_name: Goodbye
