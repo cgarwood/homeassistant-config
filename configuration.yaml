@@ -24,6 +24,7 @@ history:
     domains:
       - automation
       - updater
+      - group
     entities:
       - sensor.aeotec_multisensor_6_ultraviolet_10_27
       - sensor.aeotec_multisensor_6_sourcenodeid_10_2
@@ -78,7 +79,8 @@ device_tracker:
   username: !secret unifi_username
   password: !secret unifi_password
   track_new_devices: false
-  
+
+apcupsd:
   
 binary_sensor:
   - platform: nest
@@ -88,6 +90,14 @@ binary_sensor:
       - 'hvac_heater_state'
 
 sensor:
+  - platform: apcupsd
+    resources:
+      - linev
+      - loadpct
+      - status
+      - timeleft
+      - bcharge
+
   - platform: systemmonitor
     resources:
       - type: memory_use_percent
@@ -150,6 +160,14 @@ group:
       - sensor.ram_use
       - sensor.cpu_use
       - sensor.last_boot
+  ups:
+    name: Power/UPS Status
+    entities:
+      - sensor.ups_status
+      - sensor.ups_input_voltage
+      - sensor.ups_load
+      - sensor.ups_battery
+      - sensor.ups_time_left
   hvac: climate.hallway, binary_sensor.hallway_fan, binary_sensor.hallway_hvac_ac_state, binary_sensor.hallway_hvac_heater_state
   doors: binary_sensor.front_door_sensor_3_0, binary_sensor.back_door_sensor_4_0
   weather: sensor.hallway_temperature, sensor.hallway_humidity, sensor.hallway_condition, sensor.hallway_direction, sensor.hallway_kph
@@ -181,6 +199,7 @@ group:
       - group.door_sensor_batteries
       - group.smoke_detector_batteries
       - group.system_monitor
+      - group.ups
       - group.all_automations
 
 automation: !include_dir_merge_list automation
