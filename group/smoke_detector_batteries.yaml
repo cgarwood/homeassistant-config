@@ -1,0 +1,4 @@
+smoke_detector_batteries: 
+  name: Smoke Detector Batteries
+  entities:
+    - sensor.hallway_smoke_battery

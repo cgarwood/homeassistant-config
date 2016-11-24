@@ -1,0 +1,8 @@
+ups:
+  name: Power/UPS Status
+  entities:
+    - sensor.ups_status
+    - sensor.ups_input_voltage
+    - sensor.ups_load
+    - sensor.ups_battery
+    - sensor.ups_time_left

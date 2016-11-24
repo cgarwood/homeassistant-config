@@ -1,0 +1,11 @@
+doors:
+  name: Doors
+  entities:
+    - binary_sensor.front_door_sensor_3_0
+    - binary_sensor.back_door_sensor_4_0
+    
+door_sensor_batteries:
+  name: Door Sensor Batteries
+  entities:
+    - sensor.front_door_battery
+    - sensor.back_door_battery

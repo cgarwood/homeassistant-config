@@ -1,0 +1,15 @@
+hvac:
+  name: Climate
+  entities:
+    - climate.hallway
+    - binary_sensor.hallway_fan
+    - binary_sensor.hallway_hvac_ac_state
+    - binary_sensor.hallway_hvac_heater_state
+    
+weather:
+  entities:
+    - sensor.hallway_temperature
+    - sensor.hallway_humidity
+    - sensor.hallway_condition
+    - sensor.hallway_direction
+    - sensor.hallway_kph

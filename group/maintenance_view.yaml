@@ -1,0 +1,9 @@
+maintenance:
+  name: Maintenance
+  view: yes
+  entities:
+    - group.door_sensor_batteries
+    - group.smoke_detector_batteries
+    - group.system_monitor
+    - group.ups
+    - group.all_automations

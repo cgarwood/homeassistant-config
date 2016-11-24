@@ -1,0 +1,12 @@
+indoor_lights:
+  entities:
+    - light.entryway
+    - light.hallway
+    - light.living_room
+    - light.guest_bathroom_fan_light_level_9_0
+    - light.guest_bathroom_vanity_light_level_7_0
+
+outdoor_lights:
+  entities:
+    - light.back_porch
+    - light.front_porch

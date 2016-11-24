@@ -1,0 +1,4 @@
+family:
+  entities:
+    - device_tracker.charlessiphone
+    - device_tracker.tinasiphone

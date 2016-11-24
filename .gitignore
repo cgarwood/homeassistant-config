@@ -4,6 +4,7 @@
 !README.md
 !*.yaml
 !/automation/
+!/group/
 !/scripts/
 
 # Ignore the following YAML files as well
