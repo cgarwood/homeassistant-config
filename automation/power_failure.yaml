@@ -1,0 +1,24 @@
+- alias: Power Failure Notification
+  trigger:
+    platform: state
+    entity_id: sensor.ups_status
+    to: 'ONBATT'
+  action:
+    service: notify.pb
+    data:
+        title: 'Power Failure'
+        message: 'Power Failure at {{now().strftime("%Y-%m-%d %l:%M:%S")}}'
+
+
+- alias: Power Restored Notification
+  trigger:
+    platform: state
+    entity_id: sensor.ups_status
+    to: 'ONLINE'
+    for:
+      minutes: 2
+  action:
+    service: notify.pb
+    data:
+        title: 'Power Restored'
+        message: 'Power Restored at {{now().strftime("%Y-%m-%d %l:%M:%S")}}'

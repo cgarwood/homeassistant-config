@@ -136,6 +136,7 @@ media_player:
   
 notify:
   - platform: pushbullet
+    name: pb
     api_key: !secret pb_api_key
     channel_name: !secret pb_channel
   

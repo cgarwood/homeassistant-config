@@ -20,7 +20,7 @@
     - service: homeassistant.turn_off
       entity_id:
         - switch.guest_bathroom_fan_switch_8_0
-    - service: notify.notify
+    - service: notify.pb
       data:
         title: "Hallway Smoke/CO Detector"
         message: |

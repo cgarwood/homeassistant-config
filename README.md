@@ -5,6 +5,7 @@ Configuration files from my Home-Assistant installation, running on a Raspberry 
 Equipment includes:
 - Lutron Caseta Light Switches (via Wink hub)
 - GE Zwave Light Switches
+- Ecolink Zwave Door Sensors
 - Nest Thermostat
 - First Alert Zwave Smoke/CO Detector
 - Ubiquiti Unifi Wifi (device_tracker)
@@ -15,7 +16,6 @@ Equipment includes:
 ## TODO List
 - Clean-up/Organize and split configuration.yaml into multiple files
 - UPS Automations
-  - Push notifications when power goes out and comes back
   - Remote hibernate main PC when battery starts getting low (https://blogs.msdn.microsoft.com/powershell/2014/09/29/simple-http-api-for-executing-powershell-scripts/)
 - Smoke/CO Detector should shut off HVAC when activated
 - Push notification if doors are open and nobody is home
