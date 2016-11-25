@@ -3,14 +3,14 @@
 Configuration files from my Home-Assistant installation, running on a Raspberry Pi 3.
 
 Equipment includes:
-- Lutron Caseta Light Switches (via Wink hub)
-- GE Zwave Light Switches
-- Ecolink Zwave Door Sensors
-- Nest Thermostat
-- First Alert Zwave Smoke/CO Detector
+- [Lutron Caseta Light Switches](http://a.co/1aAj4CQ) (via Wink hub)
+- [GE Zwave Light Switches](http://a.co/6YXJ35K)
+- [Ecolink Zwave Door Sensors](http://a.co/2AAUB46)
+- [Nest Thermostat](http://a.co/3otHcz4)
+- [First Alert Zwave Smoke/CO Detector](http://a.co/gplapvR)
 - Ubiquiti Unifi Wifi (device_tracker)
 - Amazon FireTV & Google Chromecast
-- CyberPower UPS
+- [CyberPower UPS](http://a.co/h8onaJA)
 
 
 ## TODO List
