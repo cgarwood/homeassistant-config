@@ -72,7 +72,11 @@ climate:
   platform: nest
 
 wink:
-  access_token: !secret wink_token
+  #access_token: !secret wink_token
+  email: !secret wink_email
+  password: !secret wink_password
+  client_id: !secret wink_clientid
+  client_secret: !secret wink_clientsecret
 
 device_tracker:
   platform: unifi
