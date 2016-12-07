@@ -61,9 +61,9 @@ http:
 
 # Set up primary components    
 nest:
-  username: !secret nest_username
-  password: !secret nest_password
-
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+  
 zwave:
   usb_path: /dev/zwave
   config_path: /srv/hass/src/open-zwave-control-panel/config
@@ -72,7 +72,6 @@ climate:
   platform: nest
 
 wink:
-  #access_token: !secret wink_token
   email: !secret wink_email
   password: !secret wink_password
   client_id: !secret wink_clientid
@@ -86,13 +85,6 @@ device_tracker:
 
 apcupsd:
   
-binary_sensor:
-  - platform: nest
-    monitored_conditions:
-      - 'fan'
-      - 'hvac_ac_state'
-      - 'hvac_heater_state'
-
 sensor:
   - platform: apcupsd
     resources:
@@ -108,12 +100,6 @@ sensor:
       - type: processor_use
       - type: last_boot
 
-  - platform: nest
-    monitored_conditions:
-      - 'weather_temperature'
-      - 'weather_humidity'
-      - 'weather_condition'
-
   - platform: template
     sensors:
       front_door_battery:
@@ -127,12 +113,6 @@ sensor:
       hallway_smoke_battery:
         value_template: '{{ states.sensor.hallway_detector_alarm_type_6_0.attributes.battery_level }}'
         unit_of_measurement: '%'
-
-
-      nest_indoor_temperature:
-        value_template: '{{ states.climate.hallway.attributes.current_temperature }}'
-      nest_indoor_humidity:
-        value_template: '{{ states.climate.hallway.attributes.humidity }}'
 
 media_player:
   - platform: firetv
