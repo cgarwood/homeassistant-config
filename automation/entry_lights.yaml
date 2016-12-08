@@ -1,0 +1,43 @@
+# You can't use conditions to check if a state has been set for less than a certain amount of time
+# I'm using an input_boolean to work around this limitation
+- alias: Recently Arrived Home
+  trigger:
+    platform: state
+    entity_id: group.family
+    from: 'not_home'
+    to: 'home'
+  action:
+    - service: input_boolean.turn_on
+      data:
+        entity_id: input_boolean.recently_home
+    - delay: 00:05
+    - service: input_boolean.turn_off
+      data:
+        entity_id: input_boolean.recently_home
+
+# Turn the lights on if the front door opens after dark and we are either not home, or arrived home within the last 5 minutes
+- alias: Auto Entry Lights
+  trigger:
+    platform: state
+    entity_id: binary_sensor.front_door_sensor_3_0
+    to: 'on'
+  condition:
+    condition: and
+    conditions:
+      - condition: sun
+        after: sunset
+      - condition: state
+        entity_id: light.living_room
+        state: 'off'
+      - condition: or
+        conditions:
+          - condition: state
+            entity_id: group.family
+            state: 'not_home'
+          - condition: state
+            entity_id: input_boolean.recently_home
+            state: 'on'
+  action:
+    service: homeassistant.turn_on
+    data:
+      entity_id: light.living_room 

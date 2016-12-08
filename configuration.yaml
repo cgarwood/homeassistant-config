@@ -128,6 +128,10 @@ notify:
     name: firetv
     host: 192.168.1.231
 
+input_boolean:
+  recently_home:
+    name: Recently Arrived Home
+    initial: off
 
 automation: !include_dir_merge_list automation
 group: !include_dir_merge_named group

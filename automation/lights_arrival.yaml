@@ -9,6 +9,7 @@
     conditions:
       - condition: sun
         after: sunset
+        after_offset: "30:00"
   action:
     service: homeassistant.turn_on
     entity_id: light.front_porch
