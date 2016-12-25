@@ -53,6 +53,8 @@ logbook:
 # Set up HTTP frontend
 http:
   api_password: !secret http_password
+  ssl_certificate: /home/hass/ssl_cert.crt
+  ssl_key: /home/hass/ssl_cert.key
   trusted_networks:
     - 192.168.1.0/24
   cors_allowed_origins:
