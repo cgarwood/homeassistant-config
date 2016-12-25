@@ -10,4 +10,3 @@ action:
         - light.living_room
         - light.cabinet_lights
       brightness: 120
-    

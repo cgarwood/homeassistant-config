@@ -75,6 +75,13 @@ device_tracker:
   username: !secret unifi_username
   password: !secret unifi_password
   track_new_devices: false
+
+emulated_hue:
+  type: alexa
+  exposed_domains:
+    - light
+    - switch
+    - media_player
   
 media_player:
   - platform: firetv

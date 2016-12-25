@@ -19,6 +19,7 @@ device_tracker.tinasiphone:
 # Groups  
 group.all_lights:
   hidden: false
+  emulated_hue: true
 group.all_automations:
   hidden: false
 

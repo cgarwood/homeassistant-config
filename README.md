@@ -2,7 +2,8 @@
 
 Configuration files from my Home-Assistant installation, running on a Raspberry Pi 3.
 
-Equipment includes:
+Devices include:
+- [Amazon Echo Dot] (http://a.co/1qqqE3R)
 - [Lutron Caseta Light Switches](http://a.co/1aAj4CQ) (via Wink hub)
 - [GE Zwave Light Switches](http://a.co/6YXJ35K)
 - [Ecolink Zwave Door Sensors](http://a.co/2AAUB46)
