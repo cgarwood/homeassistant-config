@@ -1,0 +1,13 @@
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - light.entryway
+        - light.hallway
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - light.living_room
+        - light.cabinet_lights
+      brightness: 120
+    

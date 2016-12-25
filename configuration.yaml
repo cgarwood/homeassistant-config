@@ -62,6 +62,9 @@ http:
     - !secret cors_address
 
 # Set up primary components    
+alexa:
+  intents: !include_dir_named alexa
+  
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
