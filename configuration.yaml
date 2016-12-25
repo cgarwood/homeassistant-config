@@ -64,32 +64,37 @@ http:
 # Set up primary components    
 alexa:
   intents: !include_dir_named alexa
-  
-nest:
-  client_id: !secret nest_client_id
-  client_secret: !secret nest_client_secret
-  
-zwave:
-  usb_path: /dev/zwave
-  config_path: /srv/hass/src/open-zwave-control-panel/config
 
+apcupsd:
+  
 climate:
   platform: nest
-
-wink:
-  email: !secret wink_email
-  password: !secret wink_password
-  client_id: !secret wink_clientid
-  client_secret: !secret wink_clientsecret
 
 device_tracker:
   platform: unifi
   username: !secret unifi_username
   password: !secret unifi_password
   track_new_devices: false
-
-apcupsd:
   
+media_player:
+  - platform: firetv
+  - platform: cast
+  
+nest:
+  client_id: !secret nest_client_id
+  client_secret: !secret nest_client_secret
+  
+wink:
+  email: !secret wink_email
+  password: !secret wink_password
+  client_id: !secret wink_clientid
+  client_secret: !secret wink_clientsecret
+  
+zwave:
+  usb_path: /dev/zwave
+  config_path: /srv/hass/src/open-zwave-control-panel/config
+
+
 sensor:
   - platform: apcupsd
     resources:
@@ -119,10 +124,6 @@ sensor:
         value_template: '{{ states.sensor.hallway_detector_alarm_type_6_0.attributes.battery_level }}'
         unit_of_measurement: '%'
 
-media_player:
-  - platform: firetv
-  - platform: cast
-  
 notify:
   - platform: pushbullet
     name: pb
