@@ -10,3 +10,6 @@ action:
         - light.living_room
         - light.cabinet_lights
       brightness: 120
+speech:
+  type: plaintext
+  text: OK
