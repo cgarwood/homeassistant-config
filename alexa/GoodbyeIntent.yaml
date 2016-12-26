@@ -1,0 +1,20 @@
+action:
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - group.indoor_lights
+  - condition: sun
+    after: sunset
+  - service: homeassistant.turn_on
+    data:
+      entity_id:
+        - light.front_porch
+  - delay:
+      minutes: 2
+  - service: homeassistant.turn_off
+    data:
+      entity_id:
+        - light.front_porch
+speech:
+  type: plaintext
+  text: "See you when you get back"
