@@ -1,5 +1,6 @@
 indoor_lights:
   entities:
+    - light.cabinet_lights
     - light.entryway
     - light.hallway
     - light.living_room
