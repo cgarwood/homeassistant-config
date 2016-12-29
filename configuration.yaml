@@ -23,6 +23,11 @@ influxdb:
   password: !secret influxdb_password
   whitelist:
     - climate.hallway
+    - sensor.pws_temp_f
+    - sensor.pws_relative_humidity
+    - sensor.pws_weather
+    - sensor.pws_wind_dir
+    - sensor.pws_wind_mph
 
 # Enables support for tracking state changes over time.
 history:
@@ -140,7 +145,15 @@ sensor:
       - status
       - timeleft
       - bcharge
-
+  - platform: wunderground
+    api_key: 39dc309927fef719
+    monitored_conditions:
+      - alerts
+      - temp_f
+      - relative_humidity
+      - weather
+      - wind_dir
+      - wind_mph
   - platform: systemmonitor
     resources:
       - type: memory_use_percent

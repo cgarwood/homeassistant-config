@@ -3,10 +3,10 @@ hvac:
   entities:
     - climate.hallway
     
-#weather:
-#  entities:
-#    - sensor.hallway_temperature
-#    - sensor.hallway_humidity
-#    - sensor.hallway_condition
-#    - sensor.hallway_direction
-#    - sensor.hallway_kph
+weather:
+  entities:
+    - sensor.pws_temp_f
+    - sensor.pws_relative_humidity
+    - sensor.pws_weather
+    - sensor.pws_wind_dir
+    - sensor.pws_wind_mph

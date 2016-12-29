@@ -57,15 +57,15 @@ sensor.hallway_detector_alarm_level_6_1:
 sensor.hallway_detector_alarm_type_6_0:
   friendly_name: Smoke Detector Status
 ## Nest Weather Sensors
-sensor.hallway_temperature:
-  friendly_name: Outdoor Temperature
-sensor.hallway_humidity:
-  friendly_name: Outdoor Humidity
-sensor.hallway_condition:
-  friendly_name: Weather Condition
-sensor.hallway_direction:
+sensor.pws_temp_f:
+  friendly_name: Current Temperature
+sensor.pws_relative_humidity:
+  friendly_name: Humidity
+sensor.pws_weather:
+  friendly_name: Current Conditions
+sensor.pws_wind_dir:
   friendly_name: Wind Direction
-sensor.hallway_kph:
+sensor.pws_wind_mph:
   friendly_name: Wind Speed
 ## Battery Levels
 sensor.front_door_battery:
