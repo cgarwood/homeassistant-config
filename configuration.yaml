@@ -18,16 +18,16 @@ updater:
 recorder:
   db_url: !secret mysql_server
 
-influxdb:
-  username: !secret influxdb_user
-  password: !secret influxdb_password
-  whitelist:
-    - climate.hallway
-    - sensor.pws_temp_f
-    - sensor.pws_relative_humidity
-    - sensor.pws_weather
-    - sensor.pws_wind_dir
-    - sensor.pws_wind_mph
+#influxdb:
+#  username: !secret influxdb_user
+#  password: !secret influxdb_password
+#  whitelist:
+#    - climate.hallway
+#    - sensor.pws_temp_f
+#    - sensor.pws_relative_humidity
+#    - sensor.pws_weather
+#    - sensor.pws_wind_dir
+#    - sensor.pws_wind_mph
 
 # Enables support for tracking state changes over time.
 history:

@@ -18,7 +18,30 @@
       from: 'off'
       to: 'on'
   action:
-    service: notify.pb
-    data_template:
-      title: "{% if trigger.entity_id == 'binary_sensor.front_door_sensor_3_0' %}Front Door{% elif trigger.entity_id == 'binary_sensor.back_door_sensor_4_0' %}Back Door{% endif %} {% if trigger.to_state.state == 'on' %}Opened{% elif trigger.to_state.state == 'off' %}Closed{% endif %}"
-      message: "{% if trigger.entity_id == 'binary_sensor.front_door_sensor_3_0' %}Front Door{% elif trigger.entity_id == 'binary_sensor.back_door_sensor_4_0' %}Back Door{% endif %} {% if trigger.to_state.state == 'on' %}Opened{% elif trigger.to_state.state == 'off' %}Closed{% endif %} at {{now()}}"
+    - service: notify.pb
+      data_template:
+        title: >-
+          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor_3_0' -%}
+            Front Door 
+          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor_4_0' -%}
+            Back Door 
+          {%- endif -%}
+          {{ ' ' }}
+          {%- if trigger.to_state.state == 'on' -%}
+            Opened
+          {%- elif trigger.to_state.state == 'off' -%}
+            Closed
+          {%- endif -%}
+        message: >-
+          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor_3_0' -%}
+            Front Door 
+          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor_4_0' -%}
+            Back Door 
+          {%- endif -%}
+          {{ ' ' }}
+          {%- if trigger.to_state.state == 'on' -%}
+            Opened
+          {%- elif trigger.to_state.state == 'off' -%}
+            Closed
+          {% endif %}
+          at {{ as_timestamp(now()) | timestamp_custom('%I:%M:%S%p - %b %d', True) }}
