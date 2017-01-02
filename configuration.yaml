@@ -116,7 +116,6 @@ emulated_hue:
   exposed_domains:
     - light
     - switch
-    - media_player
   
 media_player:
   - platform: firetv
@@ -135,6 +134,16 @@ wink:
 zwave:
   usb_path: /dev/zwave
   config_path: /srv/hass/src/open-zwave-control-panel/config
+  polling_interval: 60000
+  customize:
+    light.guest_bathroom_vanity_light_level_7_0:
+      refresh_value: true
+      delay: 3
+      polling_intensity: 1
+    light.guest_bathroom_fan_light_level_9_0:
+      refresh_value: true
+      delay: 3
+      polling_intensity: 1
 
 # Additional Sensors
 sensor:
