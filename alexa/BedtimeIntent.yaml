@@ -1,15 +1,6 @@
 action:
-  - service: homeassistant.turn_off
-    data:
-      entity_id:
-        - light.entryway
-        - light.hallway
-  - service: homeassistant.turn_on
-    data:
-      entity_id:
-        - light.living_room
-        - light.cabinet_lights
-      brightness: 120
+  - service: scene.turn_on
+    entity_id: scene.baby_bedtime
 speech:
   type: plaintext
   text: OK

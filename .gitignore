@@ -6,6 +6,7 @@
 !/alexa/
 !/automation/
 !/group/
+!/scenes/
 !/scripts/
 
 # Ignore the following YAML files as well

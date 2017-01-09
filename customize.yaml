@@ -1,8 +1,10 @@
 # Binary Sensors
 binary_sensor.front_door_sensor_3_0:
   friendly_name: Front Door Open
+  sensor_class: opening
 binary_sensor.back_door_sensor_4_0:
   friendly_name: Back Door Open
+  sensor_class: opening
 binary_sensor.hallway_fan:
   friendly_name: Fan
 binary_sensor.hallway_hvac_ac_state:

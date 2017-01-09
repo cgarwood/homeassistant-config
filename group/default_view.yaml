@@ -12,3 +12,4 @@ default_view:
     - device_tracker.charlessiphone
     - device_tracker.tinasiphone
     - script.goodbyelights
+    - scene.baby_bedtime
