@@ -158,7 +158,7 @@ sensor:
       - timeleft
       - bcharge
   - platform: wunderground
-    api_key: 39dc309927fef719
+    api_key: !secret wunderground_api_key
     monitored_conditions:
       - alerts
       - temp_f
