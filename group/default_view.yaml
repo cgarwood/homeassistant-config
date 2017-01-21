@@ -12,5 +12,6 @@ default_view:
     - sun.sun
     - device_tracker.charlessiphone
     - device_tracker.tinasiphone
+    - binary_sensor.bi_driveway
     - script.goodbyelights
     - scene.baby_bedtime
