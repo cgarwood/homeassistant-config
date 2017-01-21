@@ -12,7 +12,7 @@ Devices include:
 - Ubiquiti Unifi Wifi (device_tracker)
 - Amazon FireTV & Google Chromecast
 - [CyberPower UPS](http://a.co/h8onaJA)
-
+- Ubiquiti UVG-G3 IP Cameras & BlueIris DVR
 
 ## TODO List
 - Clean-up/Organize and split configuration.yaml into multiple files
@@ -21,7 +21,6 @@ Devices include:
 - Smoke/CO Detector should shut off HVAC when activated
 - Fix Guest Bathroom Auto Light automations
 - Set thermostat to away when group.family is away, set to home when group.family is home
-- Set up BlueIris motion sensors (https://www.reddit.com/r/homeassistant/comments/4y7me6/blue_iris_integration_or_any_way_to_use_security/)
 
 
 ## TODO List (requires new devices/$$)
