@@ -78,10 +78,7 @@ logbook:
     domains:
       - automation
     entities:
-      - sensor.last_boot
-      - sensor.back_door_battery
-      - sensor.front_door_battery
-      - sensor.hallway_smoke_battery
+      - sensor.pws_wind_dir
 
 # Set up HTTP frontend
 http:
