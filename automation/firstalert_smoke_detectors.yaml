@@ -1,5 +1,6 @@
 - alias: Smoke/CO Alarm
   trigger:
+    # 1 = smoke, 2 = CO, 12 = test, 13 = idle
     - platform: numeric_state
       entity_id: sensor.hallway_detector_alarm_type_6_0
       below: 12
@@ -8,6 +9,7 @@
       entity_id: sensor.hallway_detector_alarm_type_6_0
       above: 1
   action:
+    # Turn on lights so we can see to get out
     - service: homeassistant.turn_on
       entity_id: 
         - light.hallway
@@ -17,9 +19,19 @@
         - light.guest_bathroom_fan_light_level_9_0
       data:
         brightness: 255
+        
+    # Turn off exhaust fans
     - service: homeassistant.turn_off
       entity_id:
         - switch.guest_bathroom_fan_switch_8_0
+        
+    # Turn off HVAC
+    - service: climate.set_operation_mode
+      entity_id: climate.hallway
+      data:
+        operation_mode: 'off'
+        
+    # Send notification
     - service: notify.pb
       data:
         title: "Hallway Smoke/CO Detector"

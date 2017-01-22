@@ -18,7 +18,6 @@ Devices include:
 - Clean-up/Organize and split configuration.yaml into multiple files
 - UPS Automations
 - Remote hibernate main PC when battery starts getting low (https://blogs.msdn.microsoft.com/powershell/2014/09/29/simple-http-api-for-executing-powershell-scripts/)
-- Smoke/CO Detector should shut off HVAC when activated
 - Fix Guest Bathroom Auto Light automations
 - Set thermostat to away when group.family is away, set to home when group.family is home
 
