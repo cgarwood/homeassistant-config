@@ -1,0 +1,9 @@
+- alias: Sunrise Actions
+  trigger:
+    - platform: sun
+      event: sunrise
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - light.front_porch
+      - light.back_porch
