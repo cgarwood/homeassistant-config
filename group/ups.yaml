@@ -1,6 +1,9 @@
 ups:
   name: Power/UPS Status
   entities:
+    - sensor.aeotec_home_energy_meter_power_11_4
+    - sensor.aeotec_home_energy_meter_power_11_4_2
+    - sensor.aeotec_home_energy_meter_power_11_4_3
     - sensor.ups_status
     - sensor.ups_input_voltage
     - sensor.ups_load
