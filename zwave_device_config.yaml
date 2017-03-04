@@ -1,0 +1,44 @@
+light.guest_bathroom_vanity_light_level_7_0:
+  refresh_value: true
+  delay: 3
+  polling_intensity: 1
+light.guest_bathroom_fan_light_level_9_0:
+  refresh_value: true
+  delay: 3
+  polling_intensity: 1
+sensor.aeotec_home_energy_meter_exporting_11_32:
+  ignored: true
+sensor.aeotec_home_energy_meter_exporting_11_32_2:
+  ignored: true
+sensor.aeotec_home_energy_meter_exporting_11_32_3:
+  ignored: true
+sensor.aeotec_home_energy_meter_previous_reading_11_1:
+  ignored: true
+sensor.aeotec_home_energy_meter_previous_reading_11_1_2:
+  ignored: true
+sensor.aeotec_home_energy_meter_previous_reading_11_1_3:
+  ignored: true
+sensor.aeotec_home_energy_meter_unknown_11_0_4:
+  ignored: true
+sensor.aeotec_home_energy_meter_unknown_11_0_5:
+  ignored: true
+sensor.aeotec_home_energy_meter_unknown_11_0_6:
+  ignored: true
+sensor.aeotec_home_energy_meter_unknown_11_0_7:
+  ignored: true
+sensor.aeotec_home_energy_meter_unknown_11_0_8:
+  ignored: true
+sensor.aeotec_home_energy_meter_unknown_11_0_9:
+  ignored: true
+sensor.aeotec_home_energy_meter_power_11_8:
+  ignored: true
+sensor.aeotec_home_energy_meter_power_11_8_2:
+  ignored: true
+sensor.aeotec_home_energy_meter_power_11_8_3:
+  ignored: true
+sensor.aeotec_home_energy_meter_interval_11_2:
+  ignored: true
+sensor.aeotec_home_energy_meter_interval_11_2_2:
+  ignored: true
+sensor.aeotec_home_energy_meter_interval_11_2_3:
+  ignored: true

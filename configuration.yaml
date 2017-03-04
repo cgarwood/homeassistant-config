@@ -31,12 +31,6 @@ recorder:
       - sensor.aeotec_multisensor_6_burglar_10_10
       - sensor.aeotec_multisensor_6_alarm_type_10_0
       - sensor.aeotec_multisensor_6_alarm_level_10_1
-      - sensor.aeotec_home_energy_meter_power_11_8
-      - sensor.aeotec_home_energy_meter_power_11_8_2
-      - sensor.aeotec_home_energy_meter_power_11_8_3
-      - sensor.aeotec_home_energy_meter_interval_11_2
-      - sensor.aeotec_home_energy_meter_interval_11_2_2
-      - sensor.aeotec_home_energy_meter_interval_11_2_3
 
 influxdb:
   username: !secret influxdb_user
@@ -87,6 +81,9 @@ logbook:
       - automation
     entities:
       - sensor.pws_wind_dir
+
+# Config Panel
+config:
 
 # Set up HTTP frontend
 http:
@@ -142,39 +139,7 @@ zwave:
   usb_path: /dev/zwave
   config_path: /srv/hass/src/open-zwave-control-panel/config
   polling_interval: 60000
-  device_config:
-    light.guest_bathroom_vanity_light_level_7_0:
-      refresh_value: true
-      delay: 3
-      polling_intensity: 1
-    light.guest_bathroom_fan_light_level_9_0:
-      refresh_value: true
-      delay: 3
-      polling_intensity: 1
-    sensor.aeotec_home_energy_meter_exporting_11_32:
-      ignored: true
-    sensor.aeotec_home_energy_meter_exporting_11_32_2:
-      ignored: true
-    sensor.aeotec_home_energy_meter_exporting_11_32_3:
-      ignored: true
-    sensor.aeotec_home_energy_meter_previous_reading_11_1:
-      ignored: true
-    sensor.aeotec_home_energy_meter_previous_reading_11_1_2:
-      ignored: true
-    sensor.aeotec_home_energy_meter_previous_reading_11_1_3:
-      ignored: true
-    sensor.aeotec_home_energy_meter_unknown_11_0_4:
-      ignored: true
-    sensor.aeotec_home_energy_meter_unknown_11_0_5:
-      ignored: true
-    sensor.aeotec_home_energy_meter_unknown_11_0_6:
-      ignored: true
-    sensor.aeotec_home_energy_meter_unknown_11_0_7:
-      ignored: true
-    sensor.aeotec_home_energy_meter_unknown_11_0_8:
-      ignored: true
-    sensor.aeotec_home_energy_meter_unknown_11_0_9:
-      ignored: true
+  device_config: !include zwave_device_config.yaml
       
 # Additional Sensors
 sensor:
