@@ -37,12 +37,6 @@ recorder:
       - sensor.aeotec_home_energy_meter_interval_11_2
       - sensor.aeotec_home_energy_meter_interval_11_2_2
       - sensor.aeotec_home_energy_meter_interval_11_2_3
-      - sensor.aeotec_home_energy_meter_exporting_11_32
-      - sensor.aeotec_home_energy_meter_exporting_11_32_2
-      - sensor.aeotec_home_energy_meter_exporting_11_32_3
-      - sensor.aeotec_home_energy_meter_previous_reading_11_1
-      - sensor.aeotec_home_energy_meter_previous_reading_11_1_2
-      - sensor.aeotec_home_energy_meter_previous_reading_11_1_3
 
 influxdb:
   username: !secret influxdb_user
@@ -148,7 +142,7 @@ zwave:
   usb_path: /dev/zwave
   config_path: /srv/hass/src/open-zwave-control-panel/config
   polling_interval: 60000
-  customize:
+  device_config:
     light.guest_bathroom_vanity_light_level_7_0:
       refresh_value: true
       delay: 3
@@ -157,7 +151,31 @@ zwave:
       refresh_value: true
       delay: 3
       polling_intensity: 1
-
+    sensor.aeotec_home_energy_meter_exporting_11_32:
+      ignored: true
+    sensor.aeotec_home_energy_meter_exporting_11_32_2:
+      ignored: true
+    sensor.aeotec_home_energy_meter_exporting_11_32_3:
+      ignored: true
+    sensor.aeotec_home_energy_meter_previous_reading_11_1:
+      ignored: true
+    sensor.aeotec_home_energy_meter_previous_reading_11_1_2:
+      ignored: true
+    sensor.aeotec_home_energy_meter_previous_reading_11_1_3:
+      ignored: true
+    sensor.aeotec_home_energy_meter_unknown_11_0_4:
+      ignored: true
+    sensor.aeotec_home_energy_meter_unknown_11_0_5:
+      ignored: true
+    sensor.aeotec_home_energy_meter_unknown_11_0_6:
+      ignored: true
+    sensor.aeotec_home_energy_meter_unknown_11_0_7:
+      ignored: true
+    sensor.aeotec_home_energy_meter_unknown_11_0_8:
+      ignored: true
+    sensor.aeotec_home_energy_meter_unknown_11_0_9:
+      ignored: true
+      
 # Additional Sensors
 sensor:
   - platform: apcupsd
