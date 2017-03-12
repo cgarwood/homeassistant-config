@@ -100,6 +100,12 @@ http:
 alexa:
   intents: !include_dir_named alexa
 
+android_ip_webcam:
+  - host: 192.168.1.211
+    name: Living Room Tablet
+    username: !secret ipw_username
+    password: !secret ipw_password
+
 apcupsd:
 
 camera:
@@ -111,10 +117,12 @@ climate:
   platform: nest
 
 device_tracker:
-  platform: unifi
-  username: !secret unifi_username
-  password: !secret unifi_password
-  track_new_devices: false
+  - platform: unifi
+    username: !secret unifi_username
+    password: !secret unifi_password
+    track_new_devices: false
+  - platform: owntracks
+
 
 emulated_hue:
   exposed_domains:
@@ -124,6 +132,9 @@ emulated_hue:
 media_player:
   - platform: firetv
   - platform: cast
+
+mqtt:
+  broker: 127.0.0.1
   
 nest:
   client_id: !secret nest_client_id
