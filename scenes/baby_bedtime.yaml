@@ -1,6 +1,8 @@
 - name: Baby Bedtime
   entities:
-    light.cabinet_lights: on
+    light.cabinet_lights:
+      state: on
+      brightness: 50
     light.entryway: off
     light.hallway: off
     light.living_room:
