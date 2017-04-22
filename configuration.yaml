@@ -100,11 +100,11 @@ http:
 alexa:
   intents: !include_dir_named alexa
 
-android_ip_webcam:
-  - host: 192.168.1.211
-    name: Living Room Tablet
-    username: !secret ipw_username
-    password: !secret ipw_password
+#android_ip_webcam:
+#  - host: 192.168.1.211
+#    name: Living Room Tablet
+#    username: !secret ipw_username
+#    password: !secret ipw_password
 
 apcupsd:
 
@@ -122,14 +122,14 @@ device_tracker:
     password: !secret unifi_password
     verify_ssl: false
     track_new_devices: false
-  - platform: owntracks
-
 
 emulated_hue:
   exposed_domains:
     - light
     - switch
-  
+
+ios:
+
 media_player:
   - platform: firetv
   - platform: cast

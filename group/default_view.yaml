@@ -4,6 +4,7 @@ default_view:
     - group.doors
     - group.weather
     - group.all_lights
+    - group.all_switches
     - group.multisensor
     - group.hvac
     - camera.driveway_cam

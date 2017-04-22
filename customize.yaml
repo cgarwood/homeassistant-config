@@ -24,6 +24,8 @@ group.all_lights:
   emulated_hue: true
 group.all_automations:
   hidden: false
+group.all_switches:
+  hidden: false
 
 # Lights
 light.guest_bathroom_vanity_light_level_7_0:
@@ -87,3 +89,5 @@ sensor.aeotec_home_energy_meter_power_11_4_3:
 # Switches
 switch.guest_bathroom_fan_switch_8_0:
   friendly_name: Guest Bathroom Exhaust Fan
+switch.ge_unknown_type5052_id3031_switch_12_0:
+  friendly_name: Wax Melt
