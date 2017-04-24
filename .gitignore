@@ -12,3 +12,4 @@
 # Ignore the following YAML files as well
 known_devices.yaml
 secrets.yaml
+zone.yaml
