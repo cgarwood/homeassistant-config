@@ -83,6 +83,7 @@ logbook:
       - zwave
     entities:
       - sensor.pws_wind_dir
+      - sensor.hallway_detector_alarm_type_6_0
 
 # Config Panel
 config:
