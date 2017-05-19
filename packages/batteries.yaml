@@ -1,0 +1,59 @@
+sensor:
+  - platform: template
+    sensors:
+      front_door_battery:
+        value_template: "{{ states.zwave.front_door_3.attributes.battery_level|default(-1)|int if states.zwave.front_door_3 is not none }}"
+        unit_of_measurement: '%'
+        entity_id: zwave.front_door_3
+        icon_template: >-
+          {% set battery_level = states('sensor.front_door_battery')|int('unknown') %}
+          {% if battery_level == 'unknown' %}
+            mdi:battery-unknown
+          {% else %}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if battery_round >= 100 %}
+              mdi:battery
+            {% elif battery_round > 0 %}
+              mdi:battery-{{ battery_round }}
+            {% else %}
+              mdi:battery-alert
+            {% endif %}
+          {% endif %}
+          
+      back_door_battery:
+        value_template: "{{ states.zwave.back_door_4.attributes.battery_level|default(-1)|int if states.zwave.back_door_4 is not none }}"
+        unit_of_measurement: '%'
+        entity_id: zwave.back_door_4
+        icon_template: >-
+          {% set battery_level = states('sensor.back_door_battery')|int('unknown') %}
+          {% if battery_level == 'unknown' %}
+            mdi:battery-unknown
+          {% else %}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if battery_round >= 100 %}
+              mdi:battery
+            {% elif battery_round > 0 %}
+              mdi:battery-{{ battery_round }}
+            {% else %}
+              mdi:battery-alert
+            {% endif %}
+          {% endif %}
+          
+      hallway_smoke_battery:
+        value_template: "{{ states.zwave.hallway_detector_6.attributes.battery_level|default(-1)|int if states.zwave.hallway_detector_6 is not none }}"
+        unit_of_measurement: '%'
+        entity_id: zwave.hallway_detector_6
+        icon_template: >-
+          {% set battery_level = states('sensor.hallway_smoke_battery')|int('unknown') %}
+          {% if battery_level == 'unknown' %}
+            mdi:battery-unknown
+          {% else %}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if battery_round >= 100 %}
+              mdi:battery
+            {% elif battery_round > 0 %}
+              mdi:battery-{{ battery_round }}
+            {% else %}
+              mdi:battery-alert
+            {% endif %}
+          {% endif %}

@@ -171,20 +171,6 @@ sensor:
       - type: processor_use
       - type: last_boot
 
-  - platform: template
-    sensors:
-      front_door_battery:
-        value_template: '{{ states.binary_sensor.front_door_sensor_3_0.attributes.battery_level }}'
-        unit_of_measurement: '%'
-        entity_id: binary_sensor.front_door_sensor_3_0
-      back_door_battery:
-        value_template: '{{ states.binary_sensor.back_door_sensor_4_0.attributes.battery_level }}'
-        unit_of_measurement: '%'
-        entity_id: binary_sensor.back_door_sensor_4_0
-      hallway_smoke_battery:
-        value_template: '{{ states.sensor.hallway_detector_alarm_type_6_0.attributes.battery_level }}'
-        unit_of_measurement: '%'
-
 # Notify Platforms
 notify:
   - platform: pushbullet
