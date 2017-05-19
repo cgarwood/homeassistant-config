@@ -5,8 +5,9 @@ homeassistant:
   elevation: 196
   latitude: !secret latitude
   longitude: !secret longitude
-
+  
   customize: !include customize.yaml
+  packages: !include_dir_named packages
 
 # Allows you to issue voice commands from the frontend
 conversation:
@@ -108,8 +109,6 @@ alexa:
 #    username: !secret ipw_username
 #    password: !secret ipw_password
 
-apcupsd:
-
 camera:
   - platform: ffmpeg
     name: Driveway Cam
@@ -157,13 +156,6 @@ zwave:
       
 # Additional Sensors
 sensor:
-  - platform: apcupsd
-    resources:
-      - linev
-      - loadpct
-      - status
-      - timeleft
-      - bcharge
   - platform: wunderground
     api_key: !secret wunderground_api_key
     monitored_conditions:

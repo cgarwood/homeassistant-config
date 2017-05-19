@@ -78,13 +78,6 @@ sensor.back_door_battery:
   friendly_name: Back Door Battery
 sensor.hallway_smoke_battery:
   friendly_name: Hallway Smoke Detector Battery
-## Power Sensors
-sensor.aeotec_home_energy_meter_power_11_4:
-  friendly_name: Power Usage (all)
-sensor.aeotec_home_energy_meter_power_11_4_2:
-  friendly_name: Power Usage (Phase 1)
-sensor.aeotec_home_energy_meter_power_11_4_3:
-  friendly_name: Power Usage (Phase 2)
 
 # Switches
 switch.guest_bathroom_fan_switch_8_0:

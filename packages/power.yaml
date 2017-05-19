@@ -1,0 +1,68 @@
+################################################################
+## Power and UPS
+################################################################
+
+homeassistant:
+  customize:
+    sensor.aeotec_home_energy_meter_power_11_4:
+      friendly_name: Power Usage (all)
+    sensor.aeotec_home_energy_meter_power_11_4_2:
+      friendly_name: Power Usage (Phase 1)
+    sensor.aeotec_home_energy_meter_power_11_4_3:
+      friendly_name: Power Usage (Phase 2)
+
+
+# Default settings for apcupsd
+apcupsd:
+
+# Set up apcupsd sensors
+sensor:
+- platform: apcupsd
+  resources:
+    - linev
+    - loadpct
+    - status
+    - timeleft
+    - bcharge
+    
+# Groups
+group:
+  ups:
+    name: Power/UPS Status
+    entities:
+      - sensor.aeotec_home_energy_meter_power_11_4
+      - sensor.ups_status
+      - sensor.ups_input_voltage
+      - sensor.ups_load
+      - sensor.ups_battery
+      - sensor.ups_time_left
+ 
+# Automations
+automation:
+- alias: Power Failure Notification
+  trigger:
+    - platform: state
+      entity_id: sensor.ups_status
+      to: 'ONBATT'
+    - platform: state
+      entity_id: sensor.ups_status
+      to: 'ONLINE'
+#      for:
+#        minutes: 2
+  action:
+    service: notify.pb
+    data_template:
+        title: >-
+          {%- if trigger.to_state.state == 'ONBATT' -%}
+          Power Failure
+          {%- elif trigger.to_state.state == 'ONLINE' -%}
+          Power Restored
+          {%- endif -%}
+        message: >-
+          {%- if trigger.to_state.state == 'ONBATT' -%}
+          Power Failure
+          {%- elif trigger.to_state.state == 'ONLINE' -%}
+          Power Restored
+          {%- endif -%}
+          {{ ' ' }}
+          at {{now().strftime("%Y-%m-%d %l:%M:%S")}}
