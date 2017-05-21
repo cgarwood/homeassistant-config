@@ -37,16 +37,17 @@ recorder:
 influxdb:
   username: !secret influxdb_user
   password: !secret influxdb_password
-  whitelist:
-    - climate.hallway
-    - sensor.hallway_thermostat_humidity
-    - sensor.hallway_thermostat_hvac_state
-    - sensor.pws_temp_f
-    - sensor.pws_relative_humidity
-    - sensor.pws_wind_mph
-    - sensor.aeotec_multisensor_6_temperature_10_1
-    - sensor.aeotec_multisensor_6_relative_humidity_10_5
-    - sensor.aeotec_home_energy_meter_power_11_4
+  include:
+    entities:
+      - climate.hallway
+      - sensor.hallway_thermostat_humidity
+      - sensor.hallway_thermostat_hvac_state
+      - sensor.pws_temp_f
+      - sensor.pws_relative_humidity
+      - sensor.pws_wind_mph
+      - sensor.aeotec_multisensor_6_temperature_10_1
+      - sensor.aeotec_multisensor_6_relative_humidity_10_5
+      - sensor.aeotec_home_energy_meter_power_11_4
 
 # Enables support for tracking state changes over time.
 history:
@@ -118,11 +119,11 @@ climate:
   platform: nest
 
 device_tracker:
-  - platform: unifi
-    username: !secret unifi_username
-    password: !secret unifi_password
-    verify_ssl: false
-    track_new_devices: false
+#  - platform: unifi
+#    username: !secret unifi_username
+#    password: !secret unifi_password
+#    verify_ssl: false
+#    track_new_devices: false
 
 emulated_hue:
   exposed_domains:
