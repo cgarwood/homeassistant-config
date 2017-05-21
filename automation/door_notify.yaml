@@ -18,7 +18,7 @@
       from: 'off'
       to: 'on'
   action:
-    - service: notify.pb
+    - service: notify.ios
       data_template:
         title: >-
           {%- if trigger.entity_id == 'binary_sensor.front_door_sensor_3_0' -%}

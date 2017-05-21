@@ -173,17 +173,28 @@ sensor:
 
 # Notify Platforms
 notify:
-  - platform: pushbullet
-    name: pb
+  - name: ios
+    platform: group
+    services:
+      - service: ios_charless_iphone 
+  
+  - name: emergency
+    platform: group
+    services:
+      - service: ios_charless_iphone
+      - service: pb
+      
+  - name: pb
+    platform: pushbullet
     api_key: !secret pb_api_key
     channel_name: !secret pb_channel
   
-  - platform: nfandroidtv
-    name: firetv
+  - name: firetv
+    platform: nfandroidtv
     host: 192.168.1.231
     
-  - platform: html5
-    name: html5
+  - name: html5
+    platform: html5
     gcm_api_key: !secret gcm_api_key
     gcm_sender_id: !secret gcm_sender_id
 
