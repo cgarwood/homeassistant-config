@@ -33,6 +33,8 @@ recorder:
       - sensor.aeotec_multisensor_6_burglar_10_10
       - sensor.aeotec_multisensor_6_alarm_type_10_0
       - sensor.aeotec_multisensor_6_alarm_level_10_1
+      - sensor.aeotec_home_energy_meter_power_11_4_3
+      - sensor.aeotec_home_energy_meter_interval_11_10_2
 
 influxdb:
   username: !secret influxdb_user
@@ -44,7 +46,6 @@ influxdb:
       - sensor.hallway_thermostat_hvac_state
       - sensor.pws_temp_f
       - sensor.pws_relative_humidity
-      - sensor.pws_wind_mph
       - sensor.aeotec_multisensor_6_temperature_10_1
       - sensor.aeotec_multisensor_6_relative_humidity_10_5
       - sensor.aeotec_home_energy_meter_power_11_4
