@@ -147,8 +147,8 @@ nest:
 wink:
   email: !secret wink_email
   password: !secret wink_password
-  client_id: !secret wink_clientid
-  client_secret: !secret wink_clientsecret
+  #client_id: !secret wink_clientid
+  #client_secret: !secret wink_clientsecret
   
 zwave:
   usb_path: /dev/zwave
