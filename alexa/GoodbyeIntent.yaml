@@ -3,6 +3,7 @@ action:
     data:
       entity_id:
         - group.indoor_lights
+        - fan.living_room_fan
   - condition: sun
     after: sunset
   - service: homeassistant.turn_on

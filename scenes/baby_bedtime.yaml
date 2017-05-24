@@ -8,3 +8,4 @@
     light.living_room:
       state: on
       brightness: 125
+    light.living_room_fan_light: off

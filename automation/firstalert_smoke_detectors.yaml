@@ -14,6 +14,7 @@
       entity_id: 
         - light.hallway
         - light.living_room
+        - light.living_room_fan_light
         - light.front_porch
         - light.back_porch
         - light.guest_bathroom_fan_light_level_9_0
@@ -24,6 +25,7 @@
     - service: homeassistant.turn_off
       entity_id:
         - switch.guest_bathroom_fan_switch_8_0
+        - fan.living_room_fan
         
     # Turn off HVAC
     - service: climate.set_operation_mode

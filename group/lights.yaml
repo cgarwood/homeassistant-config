@@ -4,6 +4,7 @@ indoor_lights:
     - light.entryway
     - light.hallway
     - light.living_room
+    - light.living_room_fan_light
     - light.guest_bathroom_fan_light_level_9_0
     - light.guest_bathroom_vanity_light_level_7_0
 
