@@ -29,6 +29,9 @@
       - condition: state
         entity_id: light.living_room
         state: 'off'
+      - condition: state
+        entity_id: light.living_room_fan_light
+        state: 'off'
       - condition: or
         conditions:
           - condition: state
@@ -40,4 +43,4 @@
   action:
     service: homeassistant.turn_on
     data:
-      entity_id: light.living_room 
+      entity_id: light.living_room_fan_light
