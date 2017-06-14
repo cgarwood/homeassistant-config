@@ -28,13 +28,12 @@ recorder:
       - sun.sun
       - sensor.cpu_use
       - sensor.ram_use
-      - sensor.aeotec_multisensor_6_ultraviolet_10_27
-      - sensor.aeotec_multisensor_6_sourcenodeid_10_2
-      - sensor.aeotec_multisensor_6_burglar_10_10
-      - sensor.aeotec_multisensor_6_alarm_type_10_0
-      - sensor.aeotec_multisensor_6_alarm_level_10_1
-      - sensor.aeotec_home_energy_meter_power_11_4_3
-      - sensor.aeotec_home_energy_meter_interval_11_10_2
+      - sensor.garage_multisensor_ultraviolet_10_27
+      - sensor.garage_multisensor_sourcenodeid_10_2
+      - sensor.garage_multisensor_burglar_10_10
+      - sensor.garage_multisensor_alarm_type_10_0
+      - sensor.garage_multisensor_alarm_level_10_1
+      - sensor.energy_meter_power_9_4_3
 
 influxdb:
   username: !secret influxdb_user
@@ -46,9 +45,9 @@ influxdb:
       - sensor.hallway_thermostat_hvac_state
       - sensor.pws_temp_f
       - sensor.pws_relative_humidity
-      - sensor.aeotec_multisensor_6_temperature_10_1
-      - sensor.aeotec_multisensor_6_relative_humidity_10_5
-      - sensor.aeotec_home_energy_meter_power_11_4
+      - sensor.garage_multisensor_temperature_8_1
+      - sensor.garage_multisensor_relative_humidity_8_5
+      - sensor.home_energy_meter_power_9_4
 
 # Enables support for tracking state changes over time.
 history:
@@ -85,7 +84,7 @@ logbook:
       - zwave
     entities:
       - sensor.pws_wind_dir
-      - sensor.hallway_detector_alarm_type_6_0
+      - sensor.hallway_smoke_detector_alarm_type_4_0
 
 # Config Panel
 config:
