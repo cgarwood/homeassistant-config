@@ -7,3 +7,4 @@
     entity_id:
       - light.front_porch
       - light.back_porch
+      - light.cabinet_lights

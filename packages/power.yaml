@@ -4,11 +4,11 @@
 
 homeassistant:
   customize:
-    sensor.aeotec_home_energy_meter_power_11_4:
+    sensor.energy_meter_power_9_4:
       friendly_name: Power Usage (all)
-    sensor.aeotec_home_energy_meter_power_11_4_2:
+    sensor.energy_meter_power_9_4_2:
       friendly_name: Power Usage (Phase 1)
-    sensor.aeotec_home_energy_meter_power_11_4_3:
+    sensor.energy_meter_power_9_4_3:
       friendly_name: Power Usage (Phase 2)
 
 
@@ -32,7 +32,7 @@ group:
   ups:
     name: Power/UPS Status
     entities:
-      - sensor.aeotec_home_energy_meter_power_11_4
+      - sensor.energy_meter_power_9_4
       - sensor.ups_status
       - sensor.ups_input_voltage
       - sensor.ups_load
