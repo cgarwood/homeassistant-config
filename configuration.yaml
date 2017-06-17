@@ -47,7 +47,7 @@ influxdb:
       - sensor.pws_relative_humidity
       - sensor.garage_multisensor_temperature_8_1
       - sensor.garage_multisensor_relative_humidity_8_5
-      - sensor.home_energy_meter_power_9_4
+      - sensor.energy_meter_power_9_4
 
 # Enables support for tracking state changes over time.
 history:

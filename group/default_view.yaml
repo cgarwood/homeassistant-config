@@ -6,6 +6,7 @@ default_view:
     - group.all_lights
     - group.all_switches
     - fan.living_room_fan
+    - lock.front_door_locked_10_0
     - group.multisensor
     - group.hvac
     - camera.driveway_cam

@@ -7,22 +7,24 @@ light.guest_bathroom_fan_light_level_7_0:
   delay: 3
   polling_intensity: 1
 
-sensor.front_door_alarm_level_3_1:
+sensor.front_door_alarm_level_2_1:
   ignored: true
-sensor.back_door_alarm_level_4_1:
+sensor.back_door_alarm_level_3_1:
   ignored: true
-sensor.front_door_alarm_type_3_0:
+sensor.front_door_alarm_type_2_0:
   ignored: true
-sensor.back_door_alarm_type_4_0:
+sensor.back_door_alarm_type_3_0:
   ignored: true
-sensor.front_door_burglar_3_10:
+sensor.front_door_burglar_2_10:
   ignored: true
-sensor.back_door_burglar_4_10:
+sensor.back_door_burglar_3_10:
   ignored: true
-sensor.front_door_sourcenodeid_3_2:
+sensor.front_door_sourcenodeid_2_2:
   ignored: true
-sensor.back_door_sourcenodeid_4_2:
-  ignored: true  
+sensor.back_door_sourcenodeid_3_2:
+  ignored: true
+sensor.front_door_sourcenodeid_10_2:
+  ignored: true
   
 sensor.energy_meter_exporting_9_32:
   ignored: true

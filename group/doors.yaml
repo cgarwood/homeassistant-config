@@ -7,5 +7,6 @@ doors:
 door_sensor_batteries:
   name: Door Sensor Batteries
   entities:
+    - sensor.front_door_lock_battery
     - sensor.front_door_battery
     - sensor.back_door_battery
