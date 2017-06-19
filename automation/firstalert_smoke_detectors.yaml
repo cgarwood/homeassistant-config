@@ -3,11 +3,11 @@
     # 1 = smoke, 2 = CO, 12 = test, 13 = idle
     - platform: numeric_state
       entity_id: sensor.hallway_smoke_detector_alarm_type_4_0
-      below: 12
+      below: 13
   condition:
     - condition: numeric_state
       entity_id: sensor.hallway_smoke_detector_alarm_type_4_0
-      above: 1
+      above: 0
   action:
     # Turn on lights so we can see to get out
     - service: homeassistant.turn_on

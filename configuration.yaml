@@ -136,8 +136,8 @@ media_player:
   - platform: firetv
   - platform: cast
 
-mqtt:
-  broker: 127.0.0.1
+#mqtt:
+#  broker: 127.0.0.1
   
 nest:
   client_id: !secret nest_client_id
