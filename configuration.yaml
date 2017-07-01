@@ -34,6 +34,8 @@ recorder:
       - sensor.garage_multisensor_alarm_type_10_0
       - sensor.garage_multisensor_alarm_level_10_1
       - sensor.energy_meter_power_9_4_3
+      - sensor.ups_load
+      - sensor.ups_time_left
 
 influxdb:
   username: !secret influxdb_user
@@ -48,6 +50,8 @@ influxdb:
       - sensor.garage_multisensor_temperature_8_1
       - sensor.garage_multisensor_relative_humidity_8_5
       - sensor.energy_meter_power_9_4
+      - sensor.ups_load
+      - sensor.ups_time_left
 
 # Enables support for tracking state changes over time.
 history:
@@ -135,6 +139,10 @@ ios:
 media_player:
   - platform: firetv
   - platform: cast
+  - platform: vizio
+    host: 192.168.1.199
+    access_token: !secret vizio_access_token
+    name: Living Room TV
 
 #mqtt:
 #  broker: 127.0.0.1
@@ -142,7 +150,7 @@ media_player:
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
-  
+ 
 wink:
   email: !secret wink_email
   password: !secret wink_password

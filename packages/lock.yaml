@@ -19,3 +19,16 @@ sensor:
               mdi:battery-alert
             {% endif %}
           {% endif %}
+          
+automation:
+  alias: 'Lock Notifications'
+  trigger:
+    platform: state
+    entity_id: lock.front_door_locked_10_0
+  action:
+    service: notify.ios
+    data_template:
+      title: Door Lock Notification
+      message: >-
+        Status: {{ states.lock.front_door_locked_10_0.attributes.lock_status }}
+        Notification: {{ states.lock.front_door_locked_10_0.attributes.notification }}
