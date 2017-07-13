@@ -2,28 +2,28 @@
   initial_state: false
   trigger:
     - platform: state
-      entity_id: binary_sensor.front_door_sensor_2_0
+      entity_id: binary_sensor.front_door_sensor
       from: 'on'
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.front_door_sensor_2_0
+      entity_id: binary_sensor.front_door_sensor
       from: 'off'
       to: 'on'
     - platform: state
-      entity_id: binary_sensor.back_door_sensor_3_0
+      entity_id: binary_sensor.back_door_sensor
       from: 'on'
       to: 'off'
     - platform: state
-      entity_id: binary_sensor.back_door_sensor_3_0
+      entity_id: binary_sensor.back_door_sensor
       from: 'off'
       to: 'on'
   action:
     - service: notify.ios
       data_template:
         title: >-
-          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor_2_0' -%}
+          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor' -%}
             Front Door 
-          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor_3_0' -%}
+          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor' -%}
             Back Door 
           {%- endif -%}
           {{ ' ' }}
@@ -33,9 +33,9 @@
             Closed
           {%- endif -%}
         message: >-
-          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor_2_0' -%}
+          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor' -%}
             Front Door 
-          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor_3_0' -%}
+          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor' -%}
             Back Door 
           {%- endif -%}
           {{ ' ' }}

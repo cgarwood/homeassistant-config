@@ -1,8 +1,8 @@
 # Binary Sensors
-binary_sensor.front_door_sensor_2_0:
+binary_sensor.front_door_sensor:
   friendly_name: Front Door Open
   sensor_class: opening
-binary_sensor.back_door_sensor_3_0:
+binary_sensor.back_door_sensor:
   friendly_name: Back Door Open
   sensor_class: opening
 binary_sensor.hallway_fan:
@@ -28,9 +28,9 @@ group.all_switches:
   hidden: false
 
 # Lights
-light.guest_bathroom_vanity_light_level_5_0:
+light.guest_bathroom_vanity_light_level:
   friendly_name: Guest Bathroom Vanity Light
-light.guest_bathroom_fan_light_level_7_0:
+light.guest_bathroom_fan_light_level:
   friendly_name: Guest Bathroom Fan Light
 
 # Scripts
@@ -41,9 +41,9 @@ script.goodbyelights:
 ## Door Sensors
 
 ## Smoke Detector
-sensor.hallway_smoke_detector_alarm_level_4_1:
+sensor.hallway_smoke_detector_alarm_level:
   hidden: true
-sensor.hallway_smoke_detector_alarm_type_4_0:
+sensor.hallway_smoke_detector_alarm_type:
   friendly_name: Smoke Detector Status
 ## Nest Weather Sensors
 sensor.pws_temp_f:
@@ -63,9 +63,11 @@ sensor.back_door_battery:
   friendly_name: Back Door Battery
 sensor.hallway_smoke_battery:
   friendly_name: Hallway Smoke Detector Battery
+sensor.front_door_lock_battery:
+  friendly_name: Front Door Lock Battery
 
 # Switches
-switch.guest_bathroom_fan_switch_6_0:
+switch.guest_bathroom_fan_switch:
   friendly_name: Guest Bathroom Exhaust Fan
 #switch.ge_unknown_type5052_id3031_switch_12_0:
 #  friendly_name: Wax Melt

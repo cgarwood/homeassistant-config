@@ -2,11 +2,11 @@ sequence:
 #  - alias: Turn on Light Dim
 #    service: homeassistant.turn_on
 #    data:
-#      entity_id: light.guest_bathroom_vanity_light_level_5_0
+#      entity_id: light.guest_bathroom_vanity_light_level
 #      brightness: 10
   - delay:
       minutes: 3
   - alias: Turn off  Light
     service: homeassistant.turn_off
     data:
-      entity_id: light.guest_bathroom_vanity_light_level_5_0
+      entity_id: light.guest_bathroom_vanity_light_level

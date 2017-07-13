@@ -1,57 +1,57 @@
-light.guest_bathroom_vanity_light_level_5_0:
+light.guest_bathroom_vanity_light_level:
   refresh_value: true
   delay: 3
   polling_intensity: 1
-light.guest_bathroom_fan_light_level_7_0:
+light.guest_bathroom_fan_light_level:
   refresh_value: true
   delay: 3
   polling_intensity: 1
 
-sensor.front_door_alarm_level_2_1:
+sensor.front_door_alarm_level:
   ignored: true
-sensor.back_door_alarm_level_3_1:
+sensor.back_door_alarm_level:
   ignored: true
-sensor.front_door_alarm_type_2_0:
+sensor.front_door_alarm_type:
   ignored: true
-sensor.back_door_alarm_type_3_0:
+sensor.back_door_alarm_type:
   ignored: true
-sensor.front_door_burglar_2_10:
+sensor.front_door_burglar:
   ignored: true
-sensor.back_door_burglar_3_10:
+sensor.back_door_burglar:
   ignored: true
-sensor.front_door_sourcenodeid_2_2:
+sensor.front_door_sourcenodeid:
   ignored: true
-sensor.back_door_sourcenodeid_3_2:
+sensor.back_door_sourcenodeid:
   ignored: true
-sensor.front_door_sourcenodeid_10_2:
-  ignored: true
-  
-sensor.energy_meter_exporting_9_32:
-  ignored: true
-sensor.energy_meter_exporting_9_32_2:
-  ignored: true
-sensor.energy_meter_exporting_9_32_3:
-  ignored: true
-sensor.energy_meter_previous_reading_9_1:
-  ignored: true
-sensor.energy_meter_previous_reading_9_1_2:
-  ignored: true
-sensor.energy_meter_previous_reading_9_1_3:
-  ignored: true
-sensor.energy_meter_power_9_8:
-  ignored: true
-sensor.energy_meter_power_9_8_2:
-  ignored: true
-sensor.energy_meter_power_9_8_3:
-  ignored: true
-sensor.energy_meter_interval_9_2:
-  ignored: true
-sensor.energy_meter_interval_9_2_2:
-  ignored: true
-sensor.energy_meter_interval_9_2_3:
+sensor.front_door_sourcenodeid_2:
   ignored: true
   
-sensor.garage_multisensor_sourcenodeid_8_2:
+sensor.energy_meter_exporting:
   ignored: true
-sensor.garage_multisensor_ultraviolet_8_27:
+sensor.energy_meter_exporting_2:
+  ignored: true
+sensor.energy_meter_exporting_3:
+  ignored: true
+sensor.energy_meter_previous_reading:
+  ignored: true
+sensor.energy_meter_previous_reading_2:
+  ignored: true
+sensor.energy_meter_previous_reading_3:
+  ignored: true
+sensor.energy_meter_power_4:
+  ignored: true
+sensor.energy_meter_power_5:
+  ignored: true
+sensor.energy_meter_power_6:
+  ignored: true
+sensor.energy_meter_interval:
+  ignored: true
+sensor.energy_meter_interval_2:
+  ignored: true
+sensor.energy_meter_interval_3:
+  ignored: true
+  
+sensor.garage_multisensor_sourcenodeid:
+  ignored: true
+sensor.garage_multisensor_ultraviolet:
   ignored: true

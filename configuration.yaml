@@ -33,7 +33,7 @@ recorder:
       - sensor.garage_multisensor_burglar_10_10
       - sensor.garage_multisensor_alarm_type_10_0
       - sensor.garage_multisensor_alarm_level_10_1
-      - sensor.energy_meter_power_9_4_3
+      - sensor.energy_meter_power_3
       - sensor.ups_load
       - sensor.ups_time_left
 
@@ -47,9 +47,9 @@ influxdb:
       - sensor.hallway_thermostat_hvac_state
       - sensor.pws_temp_f
       - sensor.pws_relative_humidity
-      - sensor.garage_multisensor_temperature_8_1
-      - sensor.garage_multisensor_relative_humidity_8_5
-      - sensor.energy_meter_power_9_4
+      - sensor.garage_multisensor_temperature
+      - sensor.garage_multisensor_relative_humidity
+      - sensor.energy_meter_power
       - sensor.ups_load
       - sensor.ups_time_left
 
@@ -88,7 +88,7 @@ logbook:
       - zwave
     entities:
       - sensor.pws_wind_dir
-      - sensor.hallway_smoke_detector_alarm_type_4_0
+      - sensor.hallway_smoke_detector_alarm_type
 
 # Config Panel
 config:
@@ -102,6 +102,7 @@ http:
     - 192.168.1.0/24
   cors_allowed_origins:
     - 'https://192.168.1.220'
+    - '*'
     - !secret cors_address
 
 # Set up primary components    
@@ -139,10 +140,10 @@ ios:
 media_player:
   - platform: firetv
   - platform: cast
-  - platform: vizio
-    host: 192.168.1.199
-    access_token: !secret vizio_access_token
-    name: Living Room TV
+#  - platform: vizio
+#    host: 192.168.1.199
+#    access_token: !secret vizio_access_token
+#    name: Living Room TV
 
 #mqtt:
 #  broker: 127.0.0.1

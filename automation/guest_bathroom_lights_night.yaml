@@ -11,14 +11,14 @@
         after: '23:00:00'
         before: '5:00:00'
       - condition: state
-        entity_id: light.guest_bathroom_fan_light_level_7_0
+        entity_id: light.guest_bathroom_fan_light_level
         state: 'off'
       - condition: state
-        entity_id: light.guest_bathroom_vanity_light_level_5_0
+        entity_id: light.guest_bathroom_vanity_light_level
         state: 'off'
   action:
   - service: homeassistant.turn_on
-    entity_id: light.guest_bathroom_vanity_light_level_5_0
+    entity_id: light.guest_bathroom_vanity_light_level
   - service: script.turn_off
     entity_id: script.guest_bathroom_light_night
   - service: homeassistant.turn_on

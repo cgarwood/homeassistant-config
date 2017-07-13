@@ -2,10 +2,10 @@ sequence:
 #  - alias: Turn on Light
 #    service: homeassistant.turn_on
 #    data:
-#      entity_id: light.guest_bathroom_fan_light_level_7_0
+#      entity_id: light.guest_bathroom_fan_light_level
   - delay:
       minutes: 3
   - alias: Turn off  Light
     service: homeassistant.turn_off
     data:
-      entity_id: light.guest_bathroom_fan_light_level_7_0
+      entity_id: light.guest_bathroom_fan_light_level

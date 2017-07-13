@@ -19,7 +19,7 @@
 - alias: Auto Entry Lights
   trigger:
     platform: state
-    entity_id: binary_sensor.front_door_sensor_2_0
+    entity_id: binary_sensor.front_door_sensor
     to: 'on'
   condition:
     condition: and

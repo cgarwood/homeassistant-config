@@ -5,8 +5,8 @@ indoor_lights:
     - light.hallway
     - light.living_room
     - light.living_room_fan_light
-    - light.guest_bathroom_fan_light_level_7_0
-    - light.guest_bathroom_vanity_light_level_5_0
+    - light.guest_bathroom_fan_light_level
+    - light.guest_bathroom_vanity_light_level
     - light.kitchen
 
 outdoor_lights:
