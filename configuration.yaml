@@ -47,6 +47,7 @@ influxdb:
       - sensor.hallway_thermostat_hvac_state
       - sensor.pws_temp_f
       - sensor.pws_relative_humidity
+      - sensor.pws_feelslike_f
       - sensor.garage_multisensor_temperature
       - sensor.garage_multisensor_relative_humidity
       - sensor.energy_meter_power
@@ -103,7 +104,10 @@ http:
   cors_allowed_origins:
     - 'https://192.168.1.220'
     - '*'
-    - !secret cors_address
+    - !secret cors_address1
+    - !secret cors_address2
+  ip_ban_enabled: True
+  login_attempts_threshold: 5
 
 # Set up primary components    
 alexa:
@@ -140,10 +144,10 @@ ios:
 media_player:
   - platform: firetv
   - platform: cast
-#  - platform: vizio
-#    host: 192.168.1.199
-#    access_token: !secret vizio_access_token
-#    name: Living Room TV
+  - platform: vizio
+    host: 192.168.1.199
+    access_token: !secret vizio_access_token
+    name: Living Room TV
 
 #mqtt:
 #  broker: 127.0.0.1
@@ -175,6 +179,11 @@ sensor:
       - weather
       - wind_dir
       - wind_mph
+      - feelslike_f
+      - precip_1d
+      - precip_today_in
+      - temp_high_1d_f
+      - temp_low_1d_f
   - platform: systemmonitor
     resources:
       - type: memory_use_percent
@@ -207,6 +216,11 @@ notify:
     platform: html5
     gcm_api_key: !secret gcm_api_key
     gcm_sender_id: !secret gcm_sender_id
+  
+  # Custom Kindle Fire Interface. Picks up notifications from the HA Event Stream, so this is mostly a dummy command to expose a service for the tablets to listen for  
+  - name: hatouch
+    platform: command_line
+    command: ''
     
 # Input Booleans
 input_boolean:
