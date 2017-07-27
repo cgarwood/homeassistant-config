@@ -228,6 +228,15 @@ input_boolean:
     name: Recently Arrived Home
     initial: off
 
+# Input Selects
+input_select:
+  house_mode:
+    options:
+      - Home
+      - Away
+      - Asleep
+      - Vacation
+
 # The rest...
 automation: !include_dir_merge_list automation
 group: !include_dir_merge_named group
