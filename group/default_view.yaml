@@ -20,3 +20,4 @@ default_view:
     - binary_sensor.bi_driveway
     - script.goodbyelights
     - scene.baby_bedtime
+    - input_select.house_mode
