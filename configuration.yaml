@@ -120,9 +120,9 @@ alexa:
 #    password: !secret ipw_password
 
 camera:
-  - platform: ffmpeg
+  - platform: mjpeg
     name: Driveway Cam
-    input: -rtsp_transport tcp -i rtsp://192.168.1.240:554/s2
+    mjpeg_url: !secret driveway_cam
     
 climate:
   platform: nest
@@ -141,8 +141,14 @@ emulated_hue:
 
 ios:
 
+logger:
+  default: warning
+  logs:
+    requests.packages.urllib3.connectionpool: error
+    homeassistant.platforms.camera: error
+     
 media_player:
-  - platform: firetv
+#  - platform: firetv
   - platform: cast
   - platform: vizio
     host: 192.168.1.199
