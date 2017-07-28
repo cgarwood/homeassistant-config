@@ -3,6 +3,7 @@
 !.gitignore
 !README.md
 !*.yaml
+!*.py
 !/alexa/
 !/automation/
 !/group/
@@ -10,6 +11,7 @@
 !/scenes/
 !/scripts/
 !/appdaemon/
+!/appdaemon/apps/
 
 # Ignore the following YAML files as well
 known_devices.yaml
