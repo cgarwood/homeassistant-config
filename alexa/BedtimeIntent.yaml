@@ -2,5 +2,5 @@ action:
   - service: scene.turn_on
     entity_id: scene.baby_bedtime
 speech:
-  type: plaintext
+  type: plain
   text: OK

@@ -21,3 +21,6 @@ default_view:
     - script.goodbyelights
     - scene.baby_bedtime
     - input_select.house_mode
+    - input_boolean.guest_mode
+    - camera.hatouch_living_room
+    - camera.hatouch_living_room_screen

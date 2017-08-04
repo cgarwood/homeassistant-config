@@ -111,7 +111,6 @@ http:
 
 # Set up primary components    
 alexa:
-  intents: !include_dir_named alexa
 
 #android_ip_webcam:
 #  - host: 192.168.1.211
@@ -123,6 +122,15 @@ camera:
   - platform: mjpeg
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
+  
+  # Custom Tablet Interface
+  # Commented out for the moment as it causes Fully Kiosk Browser to become unstable and crash
+#  - platform: generic
+#    name: HATouch Living Room
+#    still_image_url: !secret hatouch_living_room_camera_url
+#  - platform: generic
+#    name: HATouch Living Room Screen
+#    still_image_url: !secret hatouch_living_room_screenshot_url
     
 climate:
   platform: nest
@@ -139,6 +147,10 @@ emulated_hue:
     - light
     - switch
 
+# Custom Component for custom Kindle Fire interface
+hatouch:
+
+
 ios:
 
 logger:
@@ -146,6 +158,7 @@ logger:
   logs:
     requests.packages.urllib3.connectionpool: error
     homeassistant.platforms.camera: error
+    homeassistant.components.media_player: error
      
 media_player:
 #  - platform: firetv
@@ -233,6 +246,9 @@ input_boolean:
   recently_home:
     name: Recently Arrived Home
     initial: off
+  guest_mode:
+    name: Guest Mode
+    initial: off
 
 # Input Selects
 input_select:
@@ -246,6 +262,7 @@ input_select:
 # The rest...
 automation: !include_dir_merge_list automation
 group: !include_dir_merge_named group
+intent_script: !include_dir_named alexa
 scene: !include_dir_merge_list scenes
 script: !include_dir_named scripts
 zone: !include zone.yaml

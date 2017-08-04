@@ -1,3 +1,8 @@
+##
+# Automatically lock doors, turn off lights, and leave a dim night 
+# light on for a few seconds so you can see to get down the hallway. 
+##
+
 import appdaemon.appapi as appapi
 
 class GoodNight(appapi.AppDaemon):
@@ -33,7 +38,8 @@ class GoodNight(appapi.AppDaemon):
         self.call_service('homeassistant/turn_off', entity_id = 'light.kitchen')
         self.call_service('homeassistant/turn_off', entity_id = 'light.entryway')
         self.call_service('homeassistant/turn_off', entity_id = 'light.hallway')
-
+        self.call_service('homeassistant/turn_off', entity_id = 'fan.living_room_fan')
+        
         # If Living Room or Cabinet lights are on, set them to dim for ~30 seconds then turn off
         self.timer = False
         if (self.get_state('light.cabinet_lights') == 'on'):
@@ -55,7 +61,11 @@ class GoodNight(appapi.AppDaemon):
 
         # Tell everyone goodnight :)
         self.call_service('notify/hatouch', title = 'Goodnight', message = 'Goodnight', data = {'tts':'Good night', 'persist':False})
-    
+        
+        # Turn off Kindle/HATouch Screens
+        self.call_service('hatouch/screen_off')
+        
+        
     # Turn off remaining lights after 30s timer
     def lightsout(self, kwargs):
         self.call_service('homeassistant/turn_off', entity_id = 'light.living_room_fan_light')

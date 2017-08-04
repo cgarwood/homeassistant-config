@@ -17,5 +17,5 @@ action:
       entity_id:
         - light.front_porch
 speech:
-  type: plaintext
+  type: plain
   text: "See you when you get back"
