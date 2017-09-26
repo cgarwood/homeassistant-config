@@ -159,6 +159,8 @@ logger:
     requests.packages.urllib3.connectionpool: error
     homeassistant.platforms.camera: error
     homeassistant.components.media_player: error
+    homeassistant.components.lock.zwave: debug
+    homeassistant.components.lock: debug
      
 media_player:
 #  - platform: firetv
@@ -183,7 +185,7 @@ wink:
   
 zwave:
   usb_path: /dev/zwave
-  config_path: /srv/hass/src/open-zwave-control-panel/config
+  #config_path: /srv/hass/src/open-zwave-control-panel/config
   polling_interval: 60000
   device_config: !include zwave_device_config.yaml
       

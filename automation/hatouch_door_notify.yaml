@@ -1,0 +1,59 @@
+- alias: HATouch Door Chime
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.front_door_sensor
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.front_door_sensor
+      from: 'off'
+      to: 'on'
+    - platform: state
+      entity_id: binary_sensor.back_door_sensor
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: binary_sensor.back_door_sensor
+      from: 'off'
+      to: 'on'
+  action:
+    - service: notify.hatouch
+      data_template:
+        title: >-
+          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor' -%}
+            Front Door 
+          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor' -%}
+            Back Door 
+          {%- endif -%}
+          {{ ' ' }}
+          {%- if trigger.to_state.state == 'on' -%}
+            Opened
+          {%- elif trigger.to_state.state == 'off' -%}
+            Closed
+          {%- endif -%}
+        message: >-
+          {%- if trigger.entity_id == 'binary_sensor.front_door_sensor' -%}
+            Front Door 
+          {%- elif trigger.entity_id == 'binary_sensor.back_door_sensor' -%}
+            Back Door 
+          {%- endif -%}
+          {{ ' ' }}
+          {%- if trigger.to_state.state == 'on' -%}
+            Opened
+          {%- elif trigger.to_state.state == 'off' -%}
+            Closed
+          {% endif %}
+        data:
+          sound: >-
+            {%- if trigger.to_state.state == 'on' -%}
+              strings.mp3
+            {%- elif trigger.to_state.state == 'off' -%}
+              strings2.mp3
+            {% endif %}
+          type: >-
+            {%- if trigger.to_state.state == 'on' -%}
+              warning
+            {%- elif trigger.to_state.state == 'off' -%}
+              success
+            {% endif %}
+          persist: false
