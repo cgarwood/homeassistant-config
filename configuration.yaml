@@ -188,6 +188,7 @@ zwave:
   #config_path: /srv/hass/src/open-zwave-control-panel/config
   polling_interval: 60000
   device_config: !include zwave_device_config.yaml
+  network_key: !secret zwave_network_key
       
 # Additional Sensors
 sensor:
