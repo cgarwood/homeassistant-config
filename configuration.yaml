@@ -26,8 +26,8 @@ recorder:
       - zwave
     entities:
       - sun.sun
-      - sensor.cpu_use
-      - sensor.ram_use
+      - sensor.cpu_used
+      - sensor.ram_used
       - sensor.garage_multisensor_ultraviolet_10_27
       - sensor.garage_multisensor_sourcenodeid_10_2
       - sensor.garage_multisensor_burglar_10_10
@@ -52,7 +52,6 @@ influxdb:
       - sensor.garage_multisensor_relative_humidity
       - sensor.energy_meter_power
       - sensor.ups_load
-      - sensor.ups_time_left
 
 # Enables support for tracking state changes over time.
 history:
@@ -156,11 +155,7 @@ ios:
 logger:
   default: warning
   logs:
-    requests.packages.urllib3.connectionpool: error
-    homeassistant.platforms.camera: error
-    homeassistant.components.media_player: error
-    homeassistant.components.lock.zwave: debug
-    homeassistant.components.lock: debug
+     urllib3.connectionpool: fatal
      
 media_player:
 #  - platform: firetv
@@ -169,23 +164,16 @@ media_player:
     host: 192.168.1.199
     access_token: !secret vizio_access_token
     name: Living Room TV
-
-#mqtt:
-#  broker: 127.0.0.1
   
 nest:
   client_id: !secret nest_client_id
   client_secret: !secret nest_client_secret
  
 wink:
-  email: !secret wink_email
-  password: !secret wink_password
-  #client_id: !secret wink_clientid
-  #client_secret: !secret wink_clientsecret
+  local_control: true
   
 zwave:
   usb_path: /dev/zwave
-  #config_path: /srv/hass/src/open-zwave-control-panel/config
   polling_interval: 60000
   device_config: !include zwave_device_config.yaml
   network_key: !secret zwave_network_key

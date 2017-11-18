@@ -13,7 +13,7 @@ class GoodNight(appapi.AppDaemon):
     def goodnight(self, entity, attribute, old, new, kwargs):
         # Check if the front door is closed, and lock it if so
         if (self.get_state('binary_sensor.front_door_sensor') == 'off'):
-            self.call_service('lock/lock', entity_id = 'lock.front_door_locked')
+            self.call_service('lock/lock', entity_id = 'lock.front_door_lock_locked')
         else:
             # Send a notification to close the door and lock it
             self.call_service('notify/hatouch', title = 'Door Open', message = 'The Front Door is still open. Please close and lock the door.', data = {'tts':'The front door is still open. Please close and lock the front door', 'sound':'attention.mp3', 'type':'error'})
@@ -32,6 +32,9 @@ class GoodNight(appapi.AppDaemon):
         # Turn off TV
         self.call_service('homeassistant/turn_off', entity_id = 'media_player.living_room_tv')
 
+        # Turn off Misc Devices
+        self.call_service('homeassistant/turn_off', entity_id = 'switch.wax_melt_switch')
+        
         # Turn off lights in communal areas (not bathrooms or bedrooms)
         self.call_service('homeassistant/turn_off', entity_id = 'light.back_porch')
         self.call_service('homeassistant/turn_off', entity_id = 'light.front_porch')

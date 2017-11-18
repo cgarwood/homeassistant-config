@@ -2,9 +2,9 @@ sensor:
   - platform: template
     sensors:
       front_door_lock_battery:
-        value_template: "{{ states.zwave.front_door_2.attributes.battery_level|default(-1)|int if states.zwave.front_door_2 is not none }}"
+        value_template: "{{ states.zwave.front_door_lock.attributes.battery_level|default(-1)|int if states.zwave.front_door_lock is not none }}"
         unit_of_measurement: '%'
-        entity_id: zwave.front_door_2
+        entity_id: zwave.front_door_lock
         icon_template: >-
           {% set battery_level = states('sensor.front_door_lock_battery')|int('unknown') %}
           {% if battery_level == 'unknown' %}
@@ -24,11 +24,11 @@ automation:
   alias: 'Lock Notifications'
   trigger:
     platform: state
-    entity_id: lock.front_door_locked
+    entity_id: lock.front_door_lock_locked
   action:
     service: notify.ios
     data_template:
       title: Door Lock Notification
       message: >-
-        Status: {{ states.lock.front_door_locked.attributes.lock_status }}
-        Notification: {{ states.lock.front_door_locked.attributes.notification }}
+        Status: {{ states.lock.front_door_lock_locked.attributes.lock_status }}
+        Notification: {{ states.lock.front_door_lock_locked.attributes.notification }}
