@@ -34,7 +34,7 @@
         operation_mode: 'off'
         
     # Send notification
-    - service: notify.pb
+    - service: notify.ios
       data:
         title: "Hallway Smoke/CO Detector"
         message: |

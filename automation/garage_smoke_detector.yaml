@@ -34,7 +34,7 @@
         operation_mode: 'off'
         
     # Send notification
-    - service: notify.pb
+    - service: notify.ios
       data:
         title: "Garage Smoke/CO Detector"
         message: |
