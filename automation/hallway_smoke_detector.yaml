@@ -1,4 +1,4 @@
-- alias: Smoke/CO Alarm
+- alias: Hallway Smoke/CO Alarm
   trigger:
     # 1 = smoke, 2 = CO, 12 = test, 13 = idle
     - platform: numeric_state

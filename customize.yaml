@@ -40,12 +40,17 @@ script.goodbyelights:
 # Sensors
 ## Door Sensors
 
-## Smoke Detector
+## Smoke Detectors
 sensor.hallway_smoke_detector_alarm_level:
   hidden: true
 sensor.hallway_smoke_detector_alarm_type:
-  friendly_name: Smoke Detector Status
-## Nest Weather Sensors
+  friendly_name: Hallway Smoke Detector Status
+sensor.garage_smoke_detector_alarm_level:
+  hidden: true
+sensor.garage_smoke_detector_alarm_type:
+  friendly_name: Garage Smoke Detector Status
+  
+## Wunderground Weather Sensors
 sensor.pws_temp_f:
   friendly_name: Current Temperature
 sensor.pws_relative_humidity:
@@ -69,5 +74,3 @@ sensor.front_door_lock_battery:
 # Switches
 switch.guest_bathroom_fan_switch:
   friendly_name: Guest Bathroom Exhaust Fan
-#switch.ge_unknown_type5052_id3031_switch_12_0:
-#  friendly_name: Wax Melt
