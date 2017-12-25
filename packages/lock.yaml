@@ -29,6 +29,7 @@ automation:
     service: notify.ios
     data_template:
       title: Door Lock Notification
-      message: >-
+      message: |
+        State: {{ states.lock.front_door_lock_locked.state }}
         Status: {{ states.lock.front_door_lock_locked.attributes.lock_status }}
         Notification: {{ states.lock.front_door_lock_locked.attributes.notification }}

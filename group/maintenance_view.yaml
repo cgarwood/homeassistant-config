@@ -6,4 +6,5 @@ maintenance:
     - group.smoke_detector_batteries
     - group.system_monitor
     - group.ups
+    - group.water_sensors
     - group.all_automations

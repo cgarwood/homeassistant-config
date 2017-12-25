@@ -1,0 +1,8 @@
+- alias: Christmas Lights - Auto Off
+  trigger:
+    - platform: time
+      at: '22:00:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - switch.outside_plug_switch

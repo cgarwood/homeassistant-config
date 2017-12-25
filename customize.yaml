@@ -1,17 +1,21 @@
 # Binary Sensors
+## Door Sensors
 binary_sensor.front_door_sensor:
   friendly_name: Front Door Open
   sensor_class: opening
 binary_sensor.back_door_sensor:
   friendly_name: Back Door Open
   sensor_class: opening
-binary_sensor.hallway_fan:
+  
+## HVAC Sensors
+binary_sensor.hallway_thermostat_fan:
   friendly_name: Fan
-binary_sensor.hallway_hvac_ac_state:
-  friendly_name: Air Conditioning
-binary_sensor.hallway_hvac_heater_state:
-  friendly_name: Heat
-
+  
+## Water Sensors
+binary_sensor.water_sensor_sensor:
+  friendly_name: Kitchen Water Sensor
+  sensor_class: problem
+  
 # Device Trackers
 device_tracker.charlessiphone:
   friendly_name: Charles's iPhone
@@ -61,6 +65,7 @@ sensor.pws_wind_dir:
   friendly_name: Wind Direction
 sensor.pws_wind_mph:
   friendly_name: Wind Speed
+  
 ## Battery Levels
 sensor.front_door_battery:
   friendly_name: Front Door Battery
@@ -68,6 +73,8 @@ sensor.back_door_battery:
   friendly_name: Back Door Battery
 sensor.hallway_smoke_battery:
   friendly_name: Hallway Smoke Detector Battery
+sensor.garage_smoke_battery:
+  friendly_name: Garage Smoke Detector Battery
 sensor.front_door_lock_battery:
   friendly_name: Front Door Lock Battery
 
