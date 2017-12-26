@@ -132,29 +132,16 @@ camera:
   - platform: mjpeg
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
-  
-  # Custom Tablet Interface
-  # Commented out for the moment as it causes Fully Kiosk Browser to become unstable and crash
-#  - platform: generic
-#    name: HATouch Living Room
-#    still_image_url: !secret hatouch_living_room_camera_url
-#  - platform: generic
-#    name: HATouch Living Room Screen
-#    still_image_url: !secret hatouch_living_room_screenshot_url
     
 climate:
   platform: nest
 
 device_tracker:
-#  - platform: unifi
-#    username: !secret unifi_username
-#    password: !secret unifi_password
-#    verify_ssl: false
-#    track_new_devices: false
   - platform: unifi_direct
     host: 192.168.1.101
     username: !secret unifiap_user
     password: !secret unifiap_password
+    track_new_devices: false
 
 emulated_hue:
   exposed_domains:
