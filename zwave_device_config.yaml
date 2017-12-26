@@ -6,7 +6,6 @@ light.guest_bathroom_fan_light_level:
   refresh_value: true
   delay: 3
   polling_intensity: 1
-
 sensor.front_door_alarm_level:
   ignored: true
 sensor.back_door_alarm_level:
@@ -25,7 +24,6 @@ sensor.back_door_sourcenodeid:
   ignored: true
 sensor.front_door_sourcenodeid_2:
   ignored: true
-  
 sensor.energy_meter_exporting:
   ignored: true
 sensor.energy_meter_exporting_2:
@@ -50,8 +48,19 @@ sensor.energy_meter_interval_2:
   ignored: true
 sensor.energy_meter_interval_3:
   ignored: true
-  
 sensor.garage_multisensor_sourcenodeid:
   ignored: true
 sensor.garage_multisensor_ultraviolet:
   ignored: true
+sensor.garage_side_door_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.garage_side_door_sensor:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.garage_inside_door_sensor:
+  ignored: true
+  polling_intensity: 0
+sensor.garage_inside_door_sourcenodeid:
+  ignored: true
+  polling_intensity: 0

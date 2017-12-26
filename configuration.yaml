@@ -118,6 +118,16 @@ alexa:
 #    username: !secret ipw_username
 #    password: !secret ipw_password
 
+binary_sensor:
+  - platform: template
+    sensors:
+      garage_inside_door:
+        friendly_name: "Interior Garage Door"
+        value_template: "{{ is_state('sensor.garage_inside_door_access_control', '22') }}"
+      garage_side_door:
+        friendly_name: "Garage Side Door"
+        value_template: "{{ is_state('sensor.garage_side_door_access_control', '22') }}"
+        
 camera:
   - platform: mjpeg
     name: Driveway Cam
