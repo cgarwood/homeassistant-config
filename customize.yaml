@@ -9,7 +9,7 @@ binary_sensor.back_door_sensor:
   
 ## HVAC Sensors
 binary_sensor.hallway_thermostat_fan:
-  friendly_name: Fan
+  friendly_name: Central Fan
   
 ## Water Sensors
 binary_sensor.water_sensor_sensor:

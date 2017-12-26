@@ -64,3 +64,12 @@ binary_sensor.garage_inside_door_sensor:
 sensor.garage_inside_door_sourcenodeid:
   ignored: true
   polling_intensity: 0
+sensor.front_door_lock_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.garage_door_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.water_sensor_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
