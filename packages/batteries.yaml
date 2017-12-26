@@ -38,6 +38,44 @@ sensor:
               mdi:battery-alert
             {% endif %}
           {% endif %}
+      
+      garage_inside_door_battery:
+        value_template: "{{ states.zwave.garage_inside_door.attributes.battery_level|default(-1)|int if states.zwave.garage_inside_door is not none }}"
+        unit_of_measurement: '%'
+        entity_id: zwave.garage_inside_door
+        icon_template: >-
+          {% set battery_level = states('sensor.garage_inside_door_battery')|int('unknown') %}
+          {% if battery_level == 'unknown' %}
+            mdi:battery-unknown
+          {% else %}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if battery_round >= 100 %}
+              mdi:battery
+            {% elif battery_round > 0 %}
+              mdi:battery-{{ battery_round }}
+            {% else %}
+              mdi:battery-alert
+            {% endif %}
+          {% endif %}
+          
+      garage_side_door_battery:
+        value_template: "{{ states.zwave.garage_side_door.attributes.battery_level|default(-1)|int if states.zwave.garage_side_door is not none }}"
+        unit_of_measurement: '%'
+        entity_id: zwave.garage_side_door
+        icon_template: >-
+          {% set battery_level = states('sensor.garage_side_door_battery')|int('unknown') %}
+          {% if battery_level == 'unknown' %}
+            mdi:battery-unknown
+          {% else %}
+            {% set battery_round = (battery_level|int / 10)|int * 10 %}
+            {% if battery_round >= 100 %}
+              mdi:battery
+            {% elif battery_round > 0 %}
+              mdi:battery-{{ battery_round }}
+            {% else %}
+              mdi:battery-alert
+            {% endif %}
+          {% endif %}
           
       hallway_smoke_battery:
         value_template: "{{ states.zwave.hallway_smoke_detector.attributes.battery_level|default(-1)|int if states.zwave.hallway_smoke_detector is not none }}"

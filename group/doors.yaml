@@ -3,6 +3,8 @@ doors:
   entities:
     - binary_sensor.front_door_sensor
     - binary_sensor.back_door_sensor
+    - binary_sensor.garage_inside_door
+    - binary_sensor.garage_side_door
     
 door_sensor_batteries:
   name: Door Sensor Batteries
@@ -10,3 +12,5 @@ door_sensor_batteries:
     - sensor.front_door_lock_battery
     - sensor.front_door_battery
     - sensor.back_door_battery
+    - sensor.garage_inside_door_battery
+    - sensor.garage_side_door_battery

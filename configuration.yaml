@@ -90,6 +90,8 @@ logbook:
       - sensor.pws_wind_dir
       - sensor.hallway_smoke_detector_alarm_type
       - sensor.garage_smoke_detector_alarm_type
+      - sensor.front_door_lock_alarm_level
+      - sensor.front_door_lock_alarm_type
 
 # Config Panel
 config:
