@@ -143,7 +143,8 @@ device_tracker:
     host: 192.168.1.101
     username: !secret unifiap_user
     password: !secret unifiap_password
-    track_new_devices: false
+    new_device_defaults:
+      track_new_devices: false
 
 emulated_hue:
   exposed_domains:
@@ -255,6 +256,22 @@ input_datetime:
     
 # Input Selects
 input_select:
+  charles_status:
+    options:
+      - Just Arrived
+      - Home
+      - Just Left
+      - Away
+      - Extended Away
+    initial: Home
+  tina_status:
+    options:
+      - Just Arrived
+      - Home
+      - Just Left
+      - Away
+      - Extended Away
+    initial: Home
   house_mode:
     options:
       - Just Arrived
