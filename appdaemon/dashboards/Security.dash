@@ -1,0 +1,48 @@
+title: Security
+widget_dimensions: [128, 128]
+widget_margins: [10, 10]
+columns: 7
+global_parameters:
+    use_hass_icon: 1
+
+driveway_cam:
+    widget_type: camera
+    title: Driveway
+    entity: camera.driveway_cam
+    entity_picture: https://192.168.1.220:8123/api/camera_proxy/camera.driveway_cam?token=090462231ffec435ca57aaff5a5e46952e3ec7fb144a9d2c9ce12e2b15493b67
+    refresh: 1
+    
+fan_light:
+    widget_type: light
+    title: Living Room
+    entity: light.living_room_fan_light
+    use_hass_icon: 1
+    
+front_door_lock:
+    widget_type: lock
+    title: Front Door
+    entity: lock.front_door_lock_locked
+
+nav_index: 
+    widget_type: navigate
+    url: '/Index'
+    title: 'Dashboard'
+    skin: 'gemini'
+    
+nav_media:
+    widget_type: navigate
+    url: '/Media'
+    title: 'Media'
+    skin: 'gemini'
+
+nav_security:
+    widget_type: navigate
+    url: '/Security'
+    title: 'Security'
+    skin: 'gemini'
+    
+layout:
+    - driveway_cam(5x3), binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
+    -
+    -
+    - nav_index, nav_media, nav_security

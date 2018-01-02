@@ -1,0 +1,13 @@
+title: Screensaver
+widget_dimensions: [120, 120]
+widget_margins: [10, 10]
+columns: 1
+rows: 1
+
+screensaver:
+  widget_type: screensaver
+  path: https://192.168.1.220/hatouch/get_pictures.php
+  dashboard: Index
+
+layout:
+  - screensaver

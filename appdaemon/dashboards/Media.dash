@@ -1,0 +1,57 @@
+title: Main Panel
+widget_dimensions: [128, 128]
+widget_margins: [10, 10]
+columns: 7
+global_parameters:
+    use_hass_icon: 1
+
+fan_light:
+    widget_type: light
+    title: Living Room
+    entity: light.living_room_fan_light
+    use_hass_icon: 1
+    
+accent_light:
+    widget_type: light
+    title: Accent Lights
+    entity: light.living_room
+    use_hass_icon: 1
+
+indoor_temp:
+    widget_type: climate
+    title: Indoor Temperature
+    entity: climate.hallway
+    
+outdoor_temp:
+    widget_type: sensor
+    title: Outdoor Temperature
+    entity: sensor.pws_temp_f
+    
+front_door_lock:
+    widget_type: lock
+    title: Front Door
+    entity: lock.front_door_lock_locked
+
+nav_index: 
+    widget_type: navigate
+    url: '/Index'
+    title: 'Dashboard'
+    skin: 'gemini'
+    
+nav_media:
+    widget_type: navigate
+    url: '/Media'
+    title: 'Media'
+    skin: 'gemini'
+
+nav_security:
+    widget_type: navigate
+    url: '/Security'
+    title: 'Security'
+    skin: 'gemini'
+    
+layout:
+    - fan_light, accent_light, spacer, indoor_temp, outdoor_temp, sensor.pws_relative_humidity, sensor.pws_weather
+    - light.front_porch, light.back_porch
+    - switch.wax_melt_switch, light.kitchen, spacer, spacer, binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
+    - nav_index, nav_media, nav_security

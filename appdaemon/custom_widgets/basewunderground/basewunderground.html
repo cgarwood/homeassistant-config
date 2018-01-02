@@ -1,0 +1,33 @@
+<div class="background" data-bind="style: { 'background-image': 'url('+weather_background()+')'}">
+	<div class="background-overlay">
+		<h1 class="title" data-bind="text: title, attr:{ style: title_style}"></h1>
+		<img class="icon" data-bind="attr:{ src: weather_icon}">
+		<div class="temp" data-bind="attr: {style: main_style}">
+			<p class="primary-info" data-bind="text: pws_temp_f"></p>
+			<p class="primary-unit" data-bind="html: unit, attr: {style: unit_style}"></p>
+		</div>
+		
+		<ul data-bind="attr: {style: sub_style}" class="secondary-info">
+			<li><i class="fa fa-tint"></i> <span data-bind="text: pws_relative_humidity"></span>%</li>
+			<li><i class="fa fa-leaf"></i> <span data-bind="text: pws_wind_mph"></span>mph <span data-bind="text: pws_wind_dir"></span></li>
+			<li><i class="fa fa-umbrella"></i> <span data-bind="text: pws_precip_1d"></span>%</li>
+		</ul>
+		<p data-bind="text:pws_weather_1d" style="clear: left; padding-top: 12px;"></p>
+		<hr>
+		<div class="forecast day1">
+			<p><i class="fa fa-thermometer"></i> <span data-bind="text: pws_temp_high_1d_f"></span>&deg;F</p>
+			<p><img class="icon" data-bind="attr:{ src: weather_icon_1d}"></p>
+			<p><i class="fa fa-thermometer-0"></i> <span data-bind="text: pws_temp_low_1d_f"></span>&deg;F</p>
+		</div>
+		<div class="forecast day2">
+			<p><i class="fa fa-thermometer"></i> <span data-bind="text: pws_temp_high_2d_f"></span>&deg;F</p>
+			<p><img class="icon" data-bind="attr:{ src: weather_icon_2d}"></p>
+			<p><i class="fa fa-thermometer-0"></i> <span data-bind="text: pws_temp_low_2d_f"></span>&deg;F</p>
+		</div>
+		<div class="forecast day3">
+			<p><i class="fa fa-thermometer"></i> <span data-bind="text: pws_temp_high_3d_f"></span>&deg;F</p>
+			<p><img class="icon" data-bind="attr:{ src: weather_icon_3d}"></p>
+			<p><i class="fa fa-thermometer-0"></i> <span data-bind="text: pws_temp_low_3d_f"></span>&deg;F</p>
+		</div>
+	</div>
+</div>

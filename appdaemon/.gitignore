@@ -1,1 +1,6 @@
+!*
+!custom_widgets/**
+!custom_css/**
+apps/__pycache__
+/compiled/
 secrets.yaml

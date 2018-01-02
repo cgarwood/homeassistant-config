@@ -1,0 +1,13 @@
+widget_type: basescreensaver
+fields:
+  date: ""
+  time: ""
+  dayOfWeek: ""
+  monthText: ""
+  day: ""
+  ampm: ""
+static_css:
+  widget_style: ""
+static_icons: []
+icons: []
+css: []
