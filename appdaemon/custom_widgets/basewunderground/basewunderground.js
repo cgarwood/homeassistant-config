@@ -1,9 +1,7 @@
 function basewunderground(widget_id, url, skin, parameters) {
-	// Will be using "self" throughout for the various flavors of "this"
-	// so for consistency ...
-
 	self = this;
 
+	//Holdover from darksky widget. Not currently used
 	self.weather_icons = {
 		"rain": '&#xe009',
 		"snow": '&#xe036',
@@ -17,6 +15,7 @@ function basewunderground(widget_id, url, skin, parameters) {
 		"partly-cloudy-night": '&#xe002'    
 	};
 	
+	//Mapping Wunderground icons to background images
 	self.bg_mapping = {
 		'chanceflurries' : 'snow.jpg',
 		'chancerain' : 'rain.jpg',
@@ -59,13 +58,9 @@ function basewunderground(widget_id, url, skin, parameters) {
 	}
 
 	// Initialization
-
 	self.widget_id = widget_id;
 
-	// Store on brightness or fallback to a default
-
 	// Parameters may come in useful later on
-
 	self.parameters = parameters;
 
 	var callbacks = [];
@@ -96,15 +91,8 @@ function basewunderground(widget_id, url, skin, parameters) {
 	];
 
 	// Finally, call the parent constructor to get things moving
-
 	WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks);
 
-	// Function Definitions
-
-	// The StateAvailable function will be called when
-	// self.state[<entity>] has valid information for the requested entity
-	// state is the initial state
-	// Methods
 
 	function OnStateUpdate(self, state) {
 		set_view(self, state)
@@ -139,8 +127,7 @@ function basewunderground(widget_id, url, skin, parameters) {
 				var background = 'partlycloudy.jpg';
 			}
 			self.set_field(self, "weather_background", 'https://192.168.1.220/hadashboard/weather_backgrounds/' + background)
-        }
-		else {
+		} else {
 			var field = state.entity_id.split(".")[1];
 			self.set_field(self, field, state.state)
 		}
