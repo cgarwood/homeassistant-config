@@ -36,6 +36,13 @@ recorder:
       - sensor.energy_meter_power_3
       - sensor.ups_load
       - sensor.ups_time_left
+      - sensor.pws_temp_high_2d_f
+      - sensor.pws_temp_low_2d_f
+      - sensor.pws_temp_high_3d_f
+      - sensor.pws_temp_low_3d_f
+      - sensor.weather_1d
+      - sensor.weather_2d
+      - sensor.weather_3d
 
 influxdb:
   username: !secret influxdb_user
@@ -51,7 +58,6 @@ influxdb:
       - sensor.garage_multisensor_temperature
       - sensor.garage_multisensor_relative_humidity
       - sensor.energy_meter_power
-      - sensor.ups_load
 
 # Enables support for tracking state changes over time.
 history:
@@ -201,6 +207,13 @@ sensor:
       - precip_today_in
       - temp_high_1d_f
       - temp_low_1d_f
+      - temp_high_2d_f
+      - temp_low_2d_f
+      - temp_high_3d_f
+      - temp_low_3d_f
+      - weather_1d
+      - weather_2d
+      - weather_3d
   - platform: systemmonitor
     resources:
       - type: memory_use_percent
