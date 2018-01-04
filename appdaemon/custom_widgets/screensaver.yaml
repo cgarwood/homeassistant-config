@@ -6,6 +6,28 @@ fields:
   monthText: ""
   day: ""
   ampm: ""
+  
+  pws_temp_f: ""
+  pws_relative_humidity: ""
+  pws_wind_mph: ""
+  pws_wind_dir: ""
+  unit: ""
+  weather_icon: ""
+  weather_background: ""
+  pws_precip_1d: ""
+  pws_temp_high_1d_f: ""
+  pws_temp_low_1d_f: ""
+  pws_temp_high_2d_f: ""
+  pws_temp_low_2d_f: ""
+  pws_temp_high_3d_f: ""
+  pws_temp_low_3d_f: ""
+  pws_weather_1d: ""
+  pws_weather_2d: ""
+  pws_weather_3d: ""
+  weather_icon_1d: ""
+  weather_icon_2d: ""
+  weather_icon_3d: ""
+  
 static_css:
   widget_style: ""
 static_icons: []

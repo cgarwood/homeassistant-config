@@ -32,6 +32,20 @@
     z-index: 2;
 }
 
+.left {
+	float: left;
+}
+.right {
+	float: right;
+}
+/* Clock Styles */
+#datetime {
+	opacity: 0;
+}
+#datetime.showing {
+	opacity: 1;
+	z-index: 5;
+}
 .clock {
 	position: fixed;
 	color: white;
@@ -51,4 +65,66 @@
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
 	color: white;
 	font-size: 60px;
+}
+
+/* Weather Slide Styles */
+.weather {
+	font-size: 32px;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+}
+.weather h1 {
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+	color: white;
+	font-size: 60px;
+	text-align: left;
+	margin: 32px 48px;
+}
+.weather .icon {
+	font-family: "Climacons-Font";
+	float: left;
+	margin-left: 20px;
+	margin-right: 24px;
+}
+
+.weather .current-conditions.icon {
+	font-size: 180px;
+	margin-top: -24px;
+}
+
+.weather .temp {
+	text-align: left;
+	font-size: 120px;
+	font-weight: bold;
+	float: left;
+}
+.weather .temp .unit {
+	font-size: .5em;
+}
+
+.weather .secondary-info {
+	clear: left;
+}
+.weather .forecast.day1 {
+	border-left: 0;
+}
+.weather .forecast {
+	float: left;
+	text-align: center;
+	padding-left: 4px;
+	padding-right: 4px;
+	width: 31%;
+	border-left: 1px solid rgba(255, 255, 255, 0.25);
+	display: block;
+}
+
+.weather .forecast .icon {
+	float: none;
+	margin-left: 8px 0;
+	font-size: 72px;
+}
+
+.weather hr {
+	border: 0;
+	height: 1px;
+	background: rgba(255, 255, 255, 0.25);
 }
