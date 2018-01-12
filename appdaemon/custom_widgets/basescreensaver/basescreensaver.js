@@ -1,3 +1,9 @@
+//TODO:
+//- Add news slide
+//- Add slide(s) for weather alerts
+//- Add temperature and current weather icon overlay on slideshow (show when clock is showing)
+//- Include camera(s) in slideshow?
+
 function basescreensaver(widget_id, url, skin, parameters) {
 
 	self = this
@@ -31,6 +37,7 @@ function basescreensaver(widget_id, url, skin, parameters) {
 	];
 	
 	//Mapping Wunderground icons to background images
+	//TODO: Combine self.bg_mapping and self.weather_icons into a single object
 	self.bg_mapping = {
 		'chanceflurries' : 'snow.jpg',
 		'chancerain' : 'rain.jpg',
@@ -110,15 +117,18 @@ function basescreensaver(widget_id, url, skin, parameters) {
 		'nt_snow' : '&#xe036',
 		'nt_sunny' : '&#xe02d',
 		'nt_tstorms' : '&#xe025'
-		
-	
 	};
 	
 	WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
 
+	//Start the clock loop
 	updateTime(self)
 	setInterval(updateTime, 500, self)
-
+	
+	//Fetch pictures for the slideshow
+	get_pictures()
+	
+	//Functions to update the clock
 	function updateTime(self) {
 		var today = new Date();
 		h = today.getHours();
@@ -145,7 +155,6 @@ function basescreensaver(widget_id, url, skin, parameters) {
 			time = time + ":" + formatTime(s)
 		}
 		
-		//time = time + pm;
 		self.set_field(self, "time", time);
 		self.set_field(self, "ampm", pm);
 	}
@@ -166,8 +175,8 @@ function basescreensaver(widget_id, url, skin, parameters) {
 		else { return h; }
 	}
 	
-	get_pictures()
-	
+	//Function to get the JSON list of pictures from the specified path and append it to the list of slides
+	//TODO: convert hardcoded background-image url to config variable
 	function get_pictures() {
 		var photos = $.getJSON(self.parameters.path, function(d) {
 			for (var i = 0; i < d.length; i++) {
@@ -176,6 +185,7 @@ function basescreensaver(widget_id, url, skin, parameters) {
 		})
 	}
 	
+	//Set up the slideshow
 	var slides = document.querySelectorAll('#slides .slide');
 	var currentSlide = 0;
 	var slideTimer = 6000;

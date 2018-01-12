@@ -1,18 +1,52 @@
+//Weather Underground Widget
+//Designed for a (2x2) size
+
+//TODO:
+//- Switch from entity_picture to weather_icon
+
 function basewunderground(widget_id, url, skin, parameters) {
 	self = this;
 
-	//Holdover from darksky widget. Not currently used
+	//TODO: Combine self.bg_mapping and self.weather_icons into a single object
 	self.weather_icons = {
-		"rain": '&#xe009',
-		"snow": '&#xe036',
-		"sleet": '&#xe003',
-		"wind": '&#xe021',
-		"fog": '&#xe01b',
-		"cloudy": '&#xe000',
-		"clear-day": '&#xe028',
-		"clear-night": '&#xe02d',
-		"partly-cloudy-day": '&#xe001',
-		"partly-cloudy-night": '&#xe002'    
+		'chanceflurries' : '&#xe036',
+		'chancerain' : '&#xe009',
+		'chancesleet' : '&#xe009g',
+		'chancesnow' : '&#xe036',
+		'chancetstorms' : '&#xe026',
+		'clear' : '&#xe028',
+		'cloudy' : '&#xe000',
+		'flurries' : '&#xe036',
+		'fog' : '&#xe01b',
+		'hazy' : '&#xe01b',
+		'mostlycloudy' : '&#xe001',
+		'mostlysunny' : '&#xe001',
+		'partlycloudy' : '&#xe001',
+		'partlysunny' : '&#xe001',
+		'sleet' : '&#xe009',
+		'rain' : '&#xe009',
+		'snow' : '&#xe036',
+		'sunny' : '&#xe028',
+		'tstorms' : '&#xe025',
+		'nt_chanceflurries' : '&#xe036',
+		'nt_chancerain' : '&#xe009',
+		'nt_chancesleet' : '&#xe009',
+		'nt_chancesnow' : '&#xe036',
+		'nt_chancetstorms' : '&#xe027',
+		'nt_clear' : '&#xe02d',
+		'nt_cloudy' : '&#xe000',
+		'nt_flurries' : '&#xe036',
+		'nt_fog' : '&#xe01b',
+		'nt_hazy' : '&#xe01b',
+		'nt_mostlycloudy' : '&#xe000',
+		'nt_mostlysunny' : '&#xe02d',
+		'nt_partlycloudy' : '&#xe002',
+		'nt_partlysunny' : '&#xe000',
+		'nt_sleet' : '&#xe003',
+		'nt_rain' : '&#xe009',
+		'nt_snow' : '&#xe036',
+		'nt_sunny' : '&#xe02d',
+		'nt_tstorms' : '&#xe025'
 	};
 	
 	//Mapping Wunderground icons to background images

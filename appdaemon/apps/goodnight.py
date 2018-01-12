@@ -3,9 +3,9 @@
 # light on for a few seconds so you can see to get down the hallway. 
 ##
 
-import appdaemon.appapi as appapi
+import appdaemon.plugins.hass.hassapi as hass
 
-class GoodNight(appapi.AppDaemon):
+class GoodNight(hass.Hass):
 
     def initialize(self):
         self.listen_state(self.goodnight, "input_select.house_mode", new = "Asleep")

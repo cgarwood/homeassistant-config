@@ -1,11 +1,11 @@
-AppDaemon:
-  logfile: STDOUT
-  errorfile: STDERR
+appdaemon:
   threads: 10
   #cert_path: /home/hass/ssl_cert.crt
   cert_verify: False
-HASS:
-  ha_url: !secret ha_url
-  ha_key: !secret ha_key
-HADashboard:
+  plugins:
+    HASS:
+      type: hass
+      ha_url: !secret ha_url
+      ha_key: !secret ha_key
+hadashboard:
   dash_url: http://192.168.1.220:5050

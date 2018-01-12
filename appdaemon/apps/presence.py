@@ -3,9 +3,9 @@
 # Adapted from https://philhawthorne.com/making-home-assistants-presence-detection-not-so-binary/
 ##
 
-import appdaemon.appapi as appapi
+import appdaemon.plugins.hass.hassapi as hass
 
-class Presence(appapi.AppDaemon):
+class Presence(hass.Hass):
 
     def initialize(self):
         # Handle device trackers
