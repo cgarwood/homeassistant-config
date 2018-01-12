@@ -1,7 +1,6 @@
 //TODO:
 //- Add news slide
 //- Add slide(s) for weather alerts
-//- Add temperature and current weather icon overlay on slideshow (show when clock is showing)
 //- Include camera(s) in slideshow?
 
 function basescreensaver(widget_id, url, skin, parameters) {

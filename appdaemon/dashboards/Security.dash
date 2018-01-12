@@ -1,5 +1,5 @@
 title: Security
-widget_dimensions: [128, 128]
+widget_dimensions: [126, 126]
 widget_margins: [10, 10]
 columns: 7
 global_parameters:
@@ -22,27 +22,9 @@ front_door_lock:
     widget_type: lock
     title: Front Door
     entity: lock.front_door_lock_locked
-
-nav_index: 
-    widget_type: navigate
-    url: '/Index'
-    title: 'Dashboard'
-    skin: 'gemini'
-    
-nav_media:
-    widget_type: navigate
-    url: '/Media'
-    title: 'Media'
-    skin: 'gemini'
-
-nav_security:
-    widget_type: navigate
-    url: '/Security'
-    title: 'Security'
-    skin: 'gemini'
     
 layout:
-    - driveway_cam(5x3), binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
+    - driveway_cam(5x3), binary_sensor.back_door_sensor, binary_sensor.front_door_sensor
+    - front_door_lock
     -
-    -
-    - nav_index, nav_media, nav_security
+    - include: nav_main

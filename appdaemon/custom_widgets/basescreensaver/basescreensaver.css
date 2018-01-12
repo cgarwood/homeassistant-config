@@ -46,6 +46,30 @@
 	opacity: 1;
 	z-index: 5;
 }
+.overlay_weather {
+	position: fixed;
+	right: 48px;
+	top: 32px;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 1);
+	font-size: 48px;
+	font-weight: bold;
+	height: 73px;
+}
+.overlay_weather .icon {
+	font-family: "Climacons-Font";
+	padding-right: 10px;
+	font-size: 72px;
+	display: block;
+	float: left;
+}
+.overlay_weather .temp {
+	margin-top: 10px;
+	display: block;
+	float: left;
+}
+.overlay_weather .unit {
+	font-size: 28px;
+}
 .clock {
 	position: fixed;
 	color: white;
