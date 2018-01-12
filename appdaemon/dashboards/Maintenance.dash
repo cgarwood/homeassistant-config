@@ -1,0 +1,12 @@
+title: Maintenance
+widget_dimensions: [126, 126]
+widget_margins: [10, 10]
+columns: 7
+global_parameters:
+    use_hass_icon: 1
+
+layout:
+  - sensor.energy_meter_power, sensor.ups_input_voltage, sensor.ups_status, spacer, spacer, spacer, binary_sensor.water_sensor_sensor
+  - spacer
+  - spacer
+  - include: nav_main

@@ -1,0 +1,83 @@
+title: Lights
+widget_dimensions: [126, 126]
+widget_margins: [10, 10]
+columns: 7
+global_parameters:
+    use_hass_icon: 1
+
+
+fan_light:
+    widget_type: light
+    title: Living Room
+    entity: light.living_room_fan_light
+    use_hass_icon: 1
+    widget_style: 'background-color: #2b5797'
+    
+accent_light:
+    widget_type: light
+    title: Accent Lights
+    entity: light.living_room
+    use_hass_icon: 1
+    widget_style: 'background-color: #2b5797'
+    
+entryway_light:
+    widget_type: light
+    title: Entryway
+    entity: light.entryway
+    use_hass_icon: 1
+    widget_style: 'background-color: #2b5797'
+    
+kitchen_light:
+    widget_type: light
+    title: Kitchen
+    entity: light.kitchen
+    use_hass_icon: 1
+    widget_style: 'background-color:  #7e3878'
+
+cabinet_light:
+    widget_type: light
+    title: Under Cabinet Lights
+    entity: light.cabinet_lights
+    use_hass_icon: 1
+    widget_style: 'background-color:  #7e3878'
+
+hallway_light:
+    widget_type: light
+    title: Hallway
+    entity: light.hallway
+    use_hass_icon: 1
+    widget_style: 'background-color: #2b5797'    
+    
+front_porch_light:
+    widget_type: light
+    title: Front Porch
+    entity: light.front_porch
+    use_hass_icon: 1
+    widget_style: 'background-color: #1e7145'    
+
+back_porch_light:
+    widget_type: light
+    title: Back Porch
+    entity: light.back_porch
+    use_hass_icon: 1
+    widget_style: 'background-color: #1e7145'
+
+guest_bathroom_vanity_light:
+    widget_type: light
+    title: Guest Bathroom Vanity Lights
+    entity: light.guest_bathroom_vanity_light_level
+    use_hass_icon: 1
+    widget_style: 'background-color: #da532c'  
+
+guest_bathroom_fan_light:
+    widget_type: light
+    title: Guest Bathroom Fan Light
+    entity: light.guest_bathroom_fan_light_level
+    use_hass_icon: 1
+    widget_style: 'background-color: #da532c'      
+
+layout:
+  - fan_light, accent_light, entryway_light, spacer, spacer, kitchen_light, cabinet_light
+  - front_porch_light, back_porch_light, spacer, guest_bathroom_vanity_light, guest_bathroom_fan_light, spacer, hallway_light
+  - spacer
+  - include: nav_main
