@@ -38,11 +38,11 @@
 .right {
 	float: right;
 }
-/* Clock Styles */
-#datetime {
+/* Clock/Weather Overlay Styles */
+#overlay {
 	opacity: 0;
 }
-#datetime.showing {
+#overlay.showing {
 	opacity: 1;
 	z-index: 5;
 }
@@ -102,7 +102,7 @@
 	text-align: left;
 	margin: 32px 48px;
 }
-.weather-alerts h2 {
+.weather h2, .weather-alerts h2 {
 	font-size: 48px;
 	text-align: left;
 	margin: 32px;
@@ -158,17 +158,16 @@
 }
 
 .weather-alerts {
+	text-align: left;
 	background: #da532c;
 }
 .weather-alerts .expires {
-	text-align: left;
 	margin-left: 32px;
 	margin-top: -24px;
 	margin-bottom: 0px;
 	font-size: 18px;
 }
 .weather-alerts .message {
-	text-align: left;
 	margin: 24px 32px;
 	font-size: 24px;
 }

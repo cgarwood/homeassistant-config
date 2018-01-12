@@ -178,11 +178,11 @@ function basescreensaver(widget_id, url, skin, parameters) {
 	}
 	
 	//Function to get the JSON list of pictures from the specified path and append it to the list of slides
-	//TODO: convert hardcoded background-image url to config variable
 	function get_pictures() {
-		var photos = $.getJSON(self.parameters.path, function(d) {
+		var photos = $.getJSON(self.parameters.picture_source, function(d) {
 			for (var i = 0; i < d.length; i++) {
-				$("#slides").append('<li class="slide" style="background-image: url(\'https://192.168.1.220'+d[i]+'\');"></li>');
+				var image_url = self.parameters.picture_path + d[i];
+				$("#slides").append('<li class="slide" style="background-image: url(\''+image_url+'\');"></li>');
 			}
 		})
 	}
@@ -208,11 +208,11 @@ function basescreensaver(widget_id, url, skin, parameters) {
 		}
 		slides[currentSlide].classList.add('showing');
 		
-		if (slides[currentSlide].classList.contains('noclock')) {
-			document.getElementById('datetime').classList.remove('showing');
+		if (slides[currentSlide].classList.contains('no-overlay')) {
+			document.getElementById('overlay').classList.remove('showing');
 		} else {
-			if (!document.getElementById('datetime').classList.contains('showing')) {
-				document.getElementById('datetime').classList.add('showing');
+			if (!document.getElementById('overlay').classList.contains('showing')) {
+				document.getElementById('overlay').classList.add('showing');
 			}
 		}
 		
@@ -314,11 +314,10 @@ function basescreensaver(widget_id, url, skin, parameters) {
 				//Default background
 				var background = 'partlycloudy.jpg';
 			}
-			self.set_field(self, "weather_background", 'https://192.168.1.220/hadashboard/weather_backgrounds/' + background)
+			self.set_field(self, "weather_background", self.parameters.weather_background_path + background)
 		} else {
 			var field = state.entity_id.split(".")[1];
 			self.set_field(self, field, state.state)
 		}
 	}
-
 }

@@ -1,5 +1,5 @@
 <ul id="slides">
-	<li class="slide showing weather noclock timer-double" data-bind="style: { 'background-image': 'url('+weather_background()+')'}">
+	<li class="slide showing weather no-overlay timer-double" data-bind="style: { 'background-image': 'url('+weather_background()+')'}">
 		<h1 class="title">Current Conditions</h1>
 		<p data-bind="text:pws_weather_1d" style="text-align: left; margin-left: 48px; margin-top: -16px; margin-bottom: 24px;"></p>
 		<div class="left" style="margin-left: 40px; width: 47%;">
@@ -37,14 +37,14 @@
 			</div>
 		</div>
 	</li>
-	<li class="slide weather-alerts noclock timer-double">
+	<li class="slide weather-alerts no-overlay timer-double">
 		<h1 class="title">Weather Alerts</h1>
 		<h2><i class="fa fa-warning"></i> <span data-bind="text: weather_alert_title"></span></h2>
 		<p class="expires">Expires: <span data-bind="text: weather_alert_expires"></span></p>
 		<p class="message" data-bind="html: weather_alert_message"></pre>
 	</li>
 </ul>
-<div id="datetime">
+<div id="overlay">
 	<div class="overlay_weather"><span class="icon" data-bind="html: weather_icon"></span><div class="temp"><span data-bind="html: pws_temp_f"></span><span class="unit" data-bind="html: unit"></span></div></div>
 	<div class="clock"><span data-bind="text:time"></span><small data-bind="text:ampm"></small></div>
 	<div class="date"><span data-bind="text:dayOfWeek"></span>, <span data-bind="text:monthText"></span> <span data-bind="text:day"></span></div>

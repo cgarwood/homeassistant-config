@@ -24,7 +24,7 @@ front_door_lock:
     entity: lock.front_door_lock_locked
     
 layout:
-    - driveway_cam(5x3), binary_sensor.back_door_sensor, binary_sensor.front_door_sensor
+    - driveway_cam(5x3), binary_sensor.back_door_sensor, binary_sensor.front_door_sensor,
+    - binary_sensor.garage_inside_door
     - front_door_lock
-    -
     - include: nav_main

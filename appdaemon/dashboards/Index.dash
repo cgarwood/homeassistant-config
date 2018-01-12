@@ -56,6 +56,6 @@ weather:
     
 layout:
     - fan_light, accent_light, spacer, spacer, indoor_temp, weather(2x2)
-    - light.front_porch, light.back_porch, weather(2x2)
-    - christmas_tree, christmas_lights, binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
+    - light.front_porch, light.back_porch
+    - spacer, spacer, spacer, binary_sensor.garage_inside_door, binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
     - include: nav_main

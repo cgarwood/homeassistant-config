@@ -6,7 +6,9 @@ rows: 1
 
 screensaver:
   widget_type: screensaver
-  path: https://192.168.1.220/hatouch/get_pictures.php
+  picture_source: https://192.168.1.220/hatouch/get_pictures.php
+  picture_path: https://192.168.1.220
+  weather_background_path: https://192.168.1.220/hadashboard/weather_backgrounds/
   dashboard: Index
 
 layout:
