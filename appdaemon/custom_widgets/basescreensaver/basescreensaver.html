@@ -37,6 +37,12 @@
 			</div>
 		</div>
 	</li>
+	<li class="slide weather-alerts noclock timer-double">
+		<h1 class="title">Weather Alerts</h1>
+		<h2><i class="fa fa-warning"></i> <span data-bind="text: weather_alert_title"></span></h2>
+		<p class="expires">Expires: <span data-bind="text: weather_alert_expires"></span></p>
+		<p class="message" data-bind="html: weather_alert_message"></pre>
+	</li>
 </ul>
 <div id="datetime">
 	<div class="overlay_weather"><span class="icon" data-bind="html: weather_icon"></span><div class="temp"><span data-bind="html: pws_temp_f"></span><span class="unit" data-bind="html: unit"></span></div></div>

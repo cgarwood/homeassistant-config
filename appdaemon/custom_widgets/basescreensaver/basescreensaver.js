@@ -33,6 +33,7 @@ function basescreensaver(widget_id, url, skin, parameters) {
 		{"entity": "sensor.pws_weather_1d", "initial": self.OnStateAvailable, "update": self.OnStateUpdate},
 		{"entity": "sensor.pws_weather_2d", "initial": self.OnStateAvailable, "update": self.OnStateUpdate},
 		{"entity": "sensor.pws_weather_3d", "initial": self.OnStateAvailable, "update": self.OnStateUpdate},
+		{"entity": "sensor.pws_alerts", "initial": self.OnStateAvailable, "update": self.OnStateUpdate}
 	];
 	
 	//Mapping Wunderground icons to background images
@@ -118,6 +119,8 @@ function basescreensaver(widget_id, url, skin, parameters) {
 		'nt_tstorms' : '&#xe025'
 	};
 	
+	self.weather_alert_count = 0;
+	
 	WidgetBase.call(self, widget_id, url, skin, parameters, monitored_entities, callbacks)  
 
 	//Start the clock loop
@@ -197,7 +200,12 @@ function basescreensaver(widget_id, url, skin, parameters) {
 	function nextSlide() {
 		slides = document.querySelectorAll('#slides .slide');
 		slides[currentSlide].classList.remove('showing');
-		currentSlide = (currentSlide+1)%slides.length;
+		if (slides[(currentSlide+1)%slides.length].classList.contains('weather-alerts') && self.weather_alert_count == 0) {
+			//Skip the weather alerts slide if there's not an active alert
+			currentSlide = (currentSlide+2)%slides.length
+		} else {
+			currentSlide = (currentSlide+1)%slides.length;
+		}
 		slides[currentSlide].classList.add('showing');
 		
 		if (slides[currentSlide].classList.contains('noclock')) {
@@ -249,12 +257,33 @@ function basescreensaver(widget_id, url, skin, parameters) {
 	}
 	
 	function OnStateUpdate(self, state) {
+		if (state.entity_id == "sensor.pws_alerts") {
+			if (parseInt(state.state) > 0) {
+				//create the alerts slide if it doesnt exist
+				self.set_field(self, "weather_alert_title", state.attributes.Description)
+				self.set_field(self, "weather_alert_message", state.attributes.Messagereplace(/([^>\r\n\r\n]?)(\r\n\r\n|\n\r\n\r|\r\r|\n\n)/g, '$1' + '<br><br>' + '$2'))
+				self.set_field(self, "weather_alert_expires", state.attributes.Expires)
+				self.set_field(self, "weather_alert_date", state.attributes.Date)
+			} else {
+				//remove the alerts slide if it exists
+			}
+			self.weather_alert_count = state.state;
+		}
 		set_view(self, state)
 	}
 
 	function OnStateAvailable(self, state) {
 		if (state.entity_id == "sensor.pws_temp_f") {
 			self.set_field(self, "unit", state.attributes.unit_of_measurement)
+		}
+		if (state.entity_id == "sensor.pws_alerts") {
+			if (parseInt(state.state) > 0) {
+				self.set_field(self, "weather_alert_title", state.attributes.Description)
+				self.set_field(self, "weather_alert_message", state.attributes.Message.replace(/([^>\r\n\r\n]?)(\r\n\r\n|\n\r\n\r|\r\r|\n\n)/g, '$1' + '<br><br>' + '$2'))
+				self.set_field(self, "weather_alert_expires", state.attributes.Expires)
+				self.set_field(self, "weather_alert_date", state.attributes.Date)
+			}
+			self.weather_alert_count = state.state;
 		}
 		set_view(self, state)
 	}

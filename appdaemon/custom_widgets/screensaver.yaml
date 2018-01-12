@@ -28,6 +28,12 @@ fields:
   weather_icon_2d: ""
   weather_icon_3d: ""
   
+  pws_alerts: 0
+  weather_alert_title: ""
+  weather_alert_date: ""
+  weather_alert_expires: ""
+  weather_alert_message: ""
+  
 static_css:
   widget_style: ""
 static_icons: []
