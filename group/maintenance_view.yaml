@@ -8,3 +8,9 @@ maintenance:
     - group.ups
     - group.water_sensors
     - group.all_automations
+    - group.ad_automations
+    
+ad_automations:
+  name: AppDaemon Automations
+  entities:
+    - input_boolean.ad_door_chime

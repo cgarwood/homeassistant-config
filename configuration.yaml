@@ -40,9 +40,9 @@ recorder:
       - sensor.pws_temp_low_2d_f
       - sensor.pws_temp_high_3d_f
       - sensor.pws_temp_low_3d_f
-      - sensor.weather_1d
-      - sensor.weather_2d
-      - sensor.weather_3d
+      - sensor.pws_weather_1d
+      - sensor.pws_weather_2d
+      - sensor.pws_weather_3d
 
 influxdb:
   username: !secret influxdb_user
@@ -160,7 +160,6 @@ emulated_hue:
 # Custom Component for custom Kindle Fire interface
 hatouch:
 
-
 ios:
 
 logger:
@@ -175,8 +174,6 @@ media_player:
     host: 192.168.1.199
     access_token: !secret vizio_access_token
     name: Living Room TV
-  #- platform: floorplan_speaker
-  #  name: Living Room Tablet
   
 nest:
   client_id: !secret nest_client_id
@@ -260,7 +257,10 @@ input_boolean:
   guest_mode:
     name: Guest Mode
     initial: off
-
+  ad_door_chime:
+    name: Door Chime
+    initial: off
+    
 # Date/Time Inputs
 input_datetime:
   christmas_light_auto_off:

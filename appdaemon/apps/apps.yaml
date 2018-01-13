@@ -5,3 +5,7 @@ goodnight:
 presence:
   module: presence
   class: Presence
+doorchime:
+  module: door_chime
+  class: DoorChime
+  constrain_input_boolean: input_boolean.ad_door_chime
