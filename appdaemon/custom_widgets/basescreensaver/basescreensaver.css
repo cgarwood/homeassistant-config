@@ -115,13 +115,13 @@
 }
 
 .weather .current-conditions.icon {
-	font-size: 180px;
+	font-size: 170px;
 	margin-top: -24px;
 }
 
 .weather .temp {
 	text-align: left;
-	font-size: 120px;
+	font-size: 110px;
 	font-weight: bold;
 	float: left;
 }

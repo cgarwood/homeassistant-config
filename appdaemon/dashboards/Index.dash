@@ -52,15 +52,9 @@ christmas_tree:
 
 weather:
     widget_type: wunderground
-
-news:
-    widget_type: rss
-    entity: news1
-    interval: 10
-    title: News
     
 layout:
     - fan_light, accent_light, spacer, spacer, indoor_temp, weather(2x2)
     - light.front_porch, light.back_porch
-    - news(3x1), binary_sensor.garage_inside_door, binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
+    - spacer(3x1), binary_sensor.garage_inside_door, binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
     - include: nav_main

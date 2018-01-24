@@ -1,10 +1,10 @@
 # Binary Sensors
 ## Door Sensors
 binary_sensor.front_door_sensor:
-  friendly_name: Front Door Open
+  friendly_name: Front Door
   sensor_class: opening
 binary_sensor.back_door_sensor:
-  friendly_name: Back Door Open
+  friendly_name: Back Door
   sensor_class: opening
   
 ## HVAC Sensors

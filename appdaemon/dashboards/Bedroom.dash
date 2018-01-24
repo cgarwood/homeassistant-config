@@ -1,0 +1,52 @@
+title: Bedroom Panel
+widget_dimensions: [126, 126]
+widget_margins: [10, 10]
+columns: 7
+global_parameters:
+    use_hass_icon: 1
+
+fan_light:
+    widget_type: light
+    title: Living Room
+    entity: light.living_room_fan_light
+    use_hass_icon: 1
+    widget_style: 'background-color: #2b5797'
+    
+kitchen_light:
+    widget_type: light
+    title: Kitchen
+    entity: light.kitchen
+    use_hass_icon: 1
+    widget_style: 'background-color: #2b5797'
+    
+front_porch_light:
+    widget_type: light
+    title: Front Porch
+    entity: light.front_porch
+    use_hass_icon: 1
+    widget_style: 'background-color: #2b5797'
+
+indoor_temp:
+    widget_type: climate
+    title: Indoor Temperature
+    entity: climate.hallway
+    
+front_door_lock:
+    widget_type: lock
+    title: Front Door
+    entity: lock.front_door_lock_locked
+
+driveway_cam:
+    widget_type: camera
+    title: Driveway
+    entity: camera.driveway_cam
+    entity_picture: https://192.168.1.220:8123/api/camera_proxy/camera.driveway_cam?token=090462231ffec435ca57aaff5a5e46952e3ec7fb144a9d2c9ce12e2b15493b67
+    refresh: 1
+
+weather:
+    widget_type: wunderground
+    
+layout:
+    - fan_light, kitchen_light, front_porch_light, spacer, indoor_temp, weather(2x2)
+    - binary_sensor.bi_driveway, binary_sensor.garage_inside_door, binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
+    - driveway_cam(4x2)

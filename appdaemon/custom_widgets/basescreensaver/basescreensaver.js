@@ -184,10 +184,18 @@ function basescreensaver(widget_id, url, skin, parameters) {
 	
 	
 	function OnButtonClick(self) {
+		var dashboard = parameters.dashboards['default'];
+		
+		if (typeof fully !== "undefined") {
+			var deviceId = fully.getDeviceId();
+			if (typeof parameters.dashboards[deviceId] !== "undefined") {
+				dashboard = parameters.dashboards[deviceId];
+			}
+		}
 		if ("url" in parameters) {
 			url = parameters.url
 		} else {
-			url = "/" + parameters.dashboard
+			url = "/" + dashboard
 		}
 		var i = 0;
 

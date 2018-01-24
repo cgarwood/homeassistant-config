@@ -9,7 +9,10 @@ screensaver:
   picture_source: https://192.168.1.220/hatouch/get_pictures.php
   picture_path: https://192.168.1.220
   weather_background_path: https://192.168.1.220/hadashboard/weather_backgrounds/
-  dashboard: Index
+  dashboards:
+    default: Index
+    6363f925-f08d6a9e: Index
+    2eeeb1-f08d6f6d: Bedroom
 
 layout:
   - screensaver
