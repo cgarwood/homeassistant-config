@@ -21,19 +21,42 @@ indoor_temp:
     widget_type: climate
     title: Indoor Temperature
     entity: climate.hallway
+
+app_plex:
+    widget_type: navigate
+    title: Plex
+    url: "intent:#Intent;component=com.plexapp.android/com.plexapp.plex.activities.SplashActivity;end"
     
-outdoor_temp:
-    widget_type: sensor
-    title: Outdoor Temperature
-    entity: sensor.pws_temp_f
+app_netflix:
+    widget_type: navigate
+    title: Netflix
+    url: "intent:#Intent;component=com.netflix.mediaclient/com.netflix.mediaclient.ui.launch.UIWebViewActivity;end"
     
-front_door_lock:
-    widget_type: lock
-    title: Front Door
-    entity: lock.front_door_lock_locked
+app_spotify2:
+    widget_type: navigate
+    title: Spotify
+    url: "intent:#Intent;component=com.spotify.music/com.spotify.music.MainActivity;end"
+
+app_spotify:
+    widget_type: javascript
+    fields:
+      title: Spotify
+      title2: ""
+      icon: ""
+    static_css:
+      title_style: ""
+      title2_style: ""
+      icon_style: ""
+      widget_style: ""
+    icons:
+      icon_active: ""
+      icon_inactive: ""
+    #command: "fully.startApplication('com.spotify.music');"
+    command: "fully.startApplication('com.plexapp.android');"
+    #command: 'alert("test");'
     
 layout:
-    - fan_light, accent_light
+    - fan_light, accent_light, spacer(3x1), app_plex, app_netflix
     - spacer
     - spacer
     - include: nav_main

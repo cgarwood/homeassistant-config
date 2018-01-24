@@ -23,8 +23,14 @@ sensor:
 automation:
   alias: 'Lock Notifications'
   trigger:
-    platform: state
-    entity_id: lock.front_door_lock_locked
+    - platform: state
+      entity_id: lock.front_door_lock_locked
+      from: 'locked'
+      to: 'unlocked'
+    - platform: state
+      entity_id: lock.front_door_lock_locked
+      from: 'unlocked'
+      to: 'locked'
   action:
     service: notify.ios
     data_template:

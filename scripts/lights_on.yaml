@@ -1,0 +1,7 @@
+# For bedroom tablets (HADashboard)
+# Turn on all lights
+sequence:
+  - alias: Turn on lights
+    service: homeassistant.turn_on
+    data:
+      entity_id: group.all_lights
