@@ -1,7 +1,15 @@
-multisensor:
-  name: Multisensor
+garage_multisensor:
+  name: Garage Multisensor
   entities:
     - binary_sensor.garage_multisensor_sensor
     - sensor.garage_multisensor_temperature
     - sensor.garage_multisensor_relative_humidity
     - sensor.garage_multisensor_luminance
+    
+living_room_multisensor:
+  name: Living Room Multisensor
+  entities:
+    - binary_sensor.living_room_multisensor_motion
+    - sensor.living_room_multisensor_temperature
+    - sensor.living_room_multisensor_relative_humidity
+    - sensor.living_room_multisensor_luminance

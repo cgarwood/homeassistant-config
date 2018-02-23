@@ -6,6 +6,10 @@ binary_sensor.front_door_sensor:
 binary_sensor.back_door_sensor:
   friendly_name: Back Door
   sensor_class: opening
+binary_sensor.garage_multisensor_sensor:
+  friendly_name: Garage Motion
+binary_sensor.living_room_multisensor_motion:
+  friendly_name: Living Room Motion
   
 ## HVAC Sensors
 binary_sensor.hallway_thermostat_fan:

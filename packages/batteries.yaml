@@ -4,7 +4,6 @@ sensor:
       front_door_battery:
         value_template: "{{ states.zwave.front_door.attributes.battery_level|default(-1)|int if states.zwave.front_door is not none }}"
         unit_of_measurement: '%'
-        entity_id: zwave.front_door
         icon_template: >-
           {% set battery_level = states('sensor.front_door_battery')|int('unknown') %}
           {% if battery_level == 'unknown' %}
@@ -23,7 +22,6 @@ sensor:
       back_door_battery:
         value_template: "{{ states.zwave.back_door.attributes.battery_level|default(-1)|int if states.zwave.back_door is not none }}"
         unit_of_measurement: '%'
-        entity_id: zwave.back_door
         icon_template: >-
           {% set battery_level = states('sensor.back_door_battery')|int('unknown') %}
           {% if battery_level == 'unknown' %}
@@ -42,7 +40,6 @@ sensor:
       garage_inside_door_battery:
         value_template: "{{ states.zwave.garage_inside_door.attributes.battery_level|default(-1)|int if states.zwave.garage_inside_door is not none }}"
         unit_of_measurement: '%'
-        entity_id: zwave.garage_inside_door
         icon_template: >-
           {% set battery_level = states('sensor.garage_inside_door_battery')|int('unknown') %}
           {% if battery_level == 'unknown' %}
@@ -61,7 +58,6 @@ sensor:
       garage_side_door_battery:
         value_template: "{{ states.zwave.garage_side_door.attributes.battery_level|default(-1)|int if states.zwave.garage_side_door is not none }}"
         unit_of_measurement: '%'
-        entity_id: zwave.garage_side_door
         icon_template: >-
           {% set battery_level = states('sensor.garage_side_door_battery')|int('unknown') %}
           {% if battery_level == 'unknown' %}
@@ -80,7 +76,6 @@ sensor:
       hallway_smoke_battery:
         value_template: "{{ states.zwave.hallway_smoke_detector.attributes.battery_level|default(-1)|int if states.zwave.hallway_smoke_detector is not none }}"
         unit_of_measurement: '%'
-        entity_id: zwave.hallway_smoke_detector
         icon_template: >-
           {% set battery_level = states('sensor.hallway_smoke_battery')|int('unknown') %}
           {% if battery_level == 'unknown' %}
@@ -99,7 +94,6 @@ sensor:
       garage_smoke_battery:
         value_template: "{{ states.zwave.garage_smoke_detector.attributes.battery_level|default(-1)|int if states.zwave.garage_smoke_detector is not none }}"
         unit_of_measurement: '%'
-        entity_id: zwave.garage_smoke_detector
         icon_template: >-
           {% set battery_level = states('sensor.garage_smoke_battery')|int('unknown') %}
           {% if battery_level == 'unknown' %}

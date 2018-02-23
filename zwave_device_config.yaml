@@ -61,6 +61,9 @@ binary_sensor.garage_side_door_sensor:
 binary_sensor.garage_inside_door_sensor:
   ignored: true
   polling_intensity: 0
+binary_sensor.nursery_door_sensor:
+  ignored: true
+  polling_intensity: 0
 sensor.garage_inside_door_sourcenodeid:
   ignored: true
   polling_intensity: 0
@@ -71,5 +74,35 @@ sensor.garage_door_sourcenodeid:
   ignored: true
   polling_intensity: 0
 sensor.water_sensor_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.living_room_multisensor_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.living_room_multisensor_sensor:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.nursery_window:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.office_window:
+  ignored: true
+  polling_intensity: 0
+sensor.office_window_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.nursery_window_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.master_bedroom_window_sensor:
+  ignored: true
+  polling_intensity: 0
+sensor.master_bedroom_window_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+binary_sensor.master_bedroom_window2:
+  ignored: true
+  polling_intensity: 0
+sensor.master_bedroom_window2_sourcenodeid:
   ignored: true
   polling_intensity: 0

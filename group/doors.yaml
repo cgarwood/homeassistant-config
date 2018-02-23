@@ -14,3 +14,11 @@ door_sensor_batteries:
     - sensor.back_door_battery
     - sensor.garage_inside_door_battery
     - sensor.garage_side_door_battery
+    
+windows:
+  name: Windows
+  entities:
+    - binary_sensor.nursery_window
+    - binary_sensor.office_window
+    - binary_sensor.master_bedroom_window
+    - binary_sensor.master_bedroom_window2

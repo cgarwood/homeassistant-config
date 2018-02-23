@@ -5,8 +5,24 @@ columns: 7
 global_parameters:
     use_hass_icon: 1
 
+tablet_off:
+    widget_type: javascript
+    fields:
+      title: Tablet Off
+      title2: ""
+      icon: "fa-tv"
+    static_css:
+      title_style: ""
+      title2_style: ""
+      icon_style: ""
+      widget_style: ""
+    icons:
+      icon_active: "fa-tv"
+      icon_inactive: "fa-tv"
+    command: "fully.startScreensaver();"
+    
 layout:
   - sensor.energy_meter_power, sensor.ups_input_voltage, sensor.ups_status, spacer, spacer, spacer, binary_sensor.water_sensor_sensor
   - spacer
-  - spacer
+  - tablet_off
   - include: nav_main

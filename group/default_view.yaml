@@ -1,18 +1,19 @@
 default_view:
+  name: Home
   view: yes
   entities:
     - group.doors
+    - group.windows
     - group.weather
     - group.all_lights
     - group.all_switches
     - fan.living_room_fan
     - lock.front_door_lock_locked
-    - group.multisensor
+    - group.garage_multisensor
+    - group.living_room_multisensor
     - group.hvac
     - camera.driveway_cam
     - media_player.living_room
-    - media_player.living_room_speakers
-    - media_player.amazon_fire_tv
     - media_player.living_room_tv
     - sun.sun
     - device_tracker.charlessiphone
@@ -22,5 +23,3 @@ default_view:
     - scene.baby_bedtime
     - input_select.house_mode
     - input_boolean.guest_mode
-    - camera.hatouch_living_room
-    - camera.hatouch_living_room_screen

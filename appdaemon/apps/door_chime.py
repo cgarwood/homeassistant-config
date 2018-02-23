@@ -11,6 +11,7 @@ class DoorChime(hass.Hass):
         self.listen_state(self.chime, "binary_sensor.back_door_sensor")
         self.listen_state(self.chime, "binary_sensor.garage_side_door")
         self.listen_state(self.chime, "binary_sensor.garage_inside_door")
+        self.listen_state(self.chime, "binary_sensor.nursery_door")
 
     def chime(self, entity, attribute, old, new, kwargs):
         friendly_name = self.get_state(entity, attribute="friendly_name")

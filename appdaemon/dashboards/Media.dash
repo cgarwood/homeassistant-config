@@ -51,9 +51,8 @@ app_spotify:
     icons:
       icon_active: ""
       icon_inactive: ""
-    #command: "fully.startApplication('com.spotify.music');"
-    command: "fully.startApplication('com.plexapp.android');"
-    #command: 'alert("test");'
+    command: "fully.startApplication('com.spotify.music');"
+    #command: "fully.startApplication('com.plexapp.android');"
     
 layout:
     - fan_light, accent_light, spacer(3x1), app_plex, app_netflix
