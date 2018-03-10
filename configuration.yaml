@@ -283,6 +283,9 @@ input_boolean:
   ad_door_chime:
     name: Door Chime
     initial: off
+  ad_auto_bathroom_lights:
+    name: Auto Bathroom Lights
+    initial: off
     
 # Date/Time Inputs
 input_datetime:

@@ -7,7 +7,6 @@ import appdaemon.plugins.hass.hassapi as hass
 class FanRemotes(hass.Hass):
 
     def initialize(self):
-        print('Initializing')
         self.listen_state(self.handle_light, "sensor.office_light_pico")
         self.listen_state(self.handle_fan, "sensor.office_fan_pico")
         

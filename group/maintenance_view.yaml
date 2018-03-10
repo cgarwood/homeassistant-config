@@ -14,3 +14,4 @@ ad_automations:
   name: AppDaemon Automations
   entities:
     - input_boolean.ad_door_chime
+    - input_boolean.ad_auto_bathroom_lights

@@ -12,3 +12,7 @@ doorchime:
 fanremotes:
   module: fanremotes
   class: FanRemotes
+autobathroomlights:
+  module: autobathroomlights
+  class: AutoBathroomLights
+  constrain_input_boolean: input_boolean.ad_auto_bathroom_lights
