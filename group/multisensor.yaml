@@ -13,3 +13,11 @@ living_room_multisensor:
     - sensor.living_room_multisensor_temperature
     - sensor.living_room_multisensor_relative_humidity
     - sensor.living_room_multisensor_luminance
+
+guest_bathroom_multisensor:
+  name: Guest Bathroom Multisensor
+  entities:
+    - binary_sensor.guest_bathroom_multisensor_motion
+    - sensor.guest_bathroom_multisensor_temperature
+    - sensor.guest_bathroom_multisensor_relative_humidity
+    - sensor.guest_bathroom_multisensor_luminance

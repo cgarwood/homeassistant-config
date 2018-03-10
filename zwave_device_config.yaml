@@ -106,3 +106,12 @@ binary_sensor.master_bedroom_window2:
 sensor.master_bedroom_window2_sourcenodeid:
   ignored: true
   polling_intensity: 0
+sensor.guest_bathroom_multisensor_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.guest_bathroom_multisensor_homehealth:
+  ignored: true
+  polling_intensity: 0
+sensor.guest_bathroom_multisensor_emergency:
+  ignored: true
+  polling_intensity: 0

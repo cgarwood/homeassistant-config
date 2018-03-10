@@ -9,3 +9,6 @@ doorchime:
   module: door_chime
   class: DoorChime
   constrain_input_boolean: input_boolean.ad_door_chime
+fanremotes:
+  module: fanremotes
+  class: FanRemotes

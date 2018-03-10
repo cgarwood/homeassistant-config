@@ -27,13 +27,8 @@ recorder:
       - zwave
     entities:
       - sun.sun
-      - sensor.cpu_used
-      - sensor.ram_used
-      - sensor.garage_multisensor_ultraviolet_10_27
-      - sensor.garage_multisensor_sourcenodeid_10_2
-      - sensor.garage_multisensor_burglar_10_10
-      - sensor.garage_multisensor_alarm_type_10_0
-      - sensor.garage_multisensor_alarm_level_10_1
+      - sensor.processor_use
+      - sensor.memory_use_percent
       - sensor.energy_meter_power_3
       - sensor.ups_load
       - sensor.ups_time_left
@@ -44,6 +39,9 @@ recorder:
       - sensor.pws_weather_1d
       - sensor.pws_weather_2d
       - sensor.pws_weather_3d
+      - camera.driveway_cam
+      - sensor.office_light_pico
+      - sensor.office_fan_pico
 
 influxdb:
   username: !secret influxdb_user
@@ -61,6 +59,8 @@ influxdb:
       - sensor.energy_meter_power
       - sensor.living_room_multisensor_temperature
       - sensor.living_room_multisensor_relative_humidity
+      - sensor.guest_bathroom_multisensor_temperature
+      - sensor.guest_bathroom_multisensor_relative_humidity
 
 # Enables support for tracking state changes over time.
 history:
@@ -156,6 +156,9 @@ binary_sensor:
       living_room_multisensor_motion:
         friendly_name: "Living Room Multisensor Motion"
         value_template: "{{ is_state('sensor.living_room_multisensor_burglar', '8') }}"  
+      guest_bathroom_multisensor_motion:
+        friendly_name: "Guest Bathroom Multisensor Motion"
+        value_template: "{{ is_state('sensor.guest_bathroom_multisensor_burglar', '8') }}" 
 camera:
   - platform: mjpeg
     name: Driveway Cam
@@ -165,12 +168,13 @@ climate:
   platform: nest
 
 device_tracker:
-#  - platform: unifi_direct
-#    host: 192.168.1.101
-#    username: !secret unifiap_user
-#    password: !secret unifiap_password
-#    new_device_defaults:
-#      track_new_devices: false
+  - platform: unifi
+    host: 192.168.1.201
+    verify_ssl: false
+    username: !secret unifi_username
+    password: !secret unifi_password
+    new_device_defaults:
+      track_new_devices: false
 
 emulated_hue:
   exposed_domains:
@@ -187,6 +191,10 @@ logger:
   logs:
      urllib3.connectionpool: fatal
      
+lutron_caseta_pro:
+  bridges:
+    - host: 192.168.1.221
+    
 media_player:
 #  - platform: firetv
   - platform: cast
@@ -263,11 +271,6 @@ notify:
     platform: html5
     gcm_api_key: !secret gcm_api_key
     gcm_sender_id: !secret gcm_sender_id
-  
-  # Custom Kindle Fire Interface. Picks up notifications from the HA Event Stream, so this is mostly a dummy command to expose a service for the tablets to listen for  
-  - name: hatouch
-    platform: command_line
-    command: ''
     
 # Input Booleans
 input_boolean:
@@ -314,10 +317,10 @@ input_select:
       - Extended Away
       - Asleep
       
-switch:
-  - platform: tplink
-    host: 192.168.1.232
-    name: Christmas Tree
+#switch:
+#  - platform: tplink
+#    host: 192.168.1.232
+#    name: Christmas Tree
 
 # The rest...
 alert: !include_dir_merge_named alerts

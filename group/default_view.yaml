@@ -11,6 +11,7 @@ default_view:
     - lock.front_door_lock_locked
     - group.garage_multisensor
     - group.living_room_multisensor
+    - group.guest_bathroom_multisensor
     - group.hvac
     - camera.driveway_cam
     - media_player.living_room
