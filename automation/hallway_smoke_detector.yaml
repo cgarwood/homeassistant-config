@@ -12,11 +12,11 @@
     # Turn on lights so we can see to get out
     - service: homeassistant.turn_on
       entity_id: 
-        - light.hallway
-        - light.living_room
+        - light.hallway_light
+        - light.living_room_accent_lights
         - light.living_room_fan_light
-        - light.front_porch
-        - light.back_porch
+        - light.front_porch_light
+        - light.back_porch_light
         - light.guest_bathroom_fan_light_level
       data:
         brightness: 255

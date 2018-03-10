@@ -15,7 +15,7 @@ fan_light:
 kitchen_light:
     widget_type: light
     title: Kitchen
-    entity: light.kitchen
+    entity: light.kitchen_light
     use_hass_icon: 1
     widget_style: 'background-color: #2b5797'
     

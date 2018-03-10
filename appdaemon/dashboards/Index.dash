@@ -15,7 +15,7 @@ fan_light:
 accent_light:
     widget_type: light
     title: Accent Lights
-    entity: light.living_room
+    entity: light.living_room_light
     use_hass_icon: 1
     widget_style: 'background-color: #2b5797'
 
@@ -55,6 +55,6 @@ weather:
     
 layout:
     - fan_light, accent_light, spacer, spacer, indoor_temp, weather(2x2)
-    - light.front_porch, light.back_porch
+    - light.front_porch_light, light.back_porch_light
     - spacer(3x1), binary_sensor.garage_inside_door, binary_sensor.back_door_sensor, binary_sensor.front_door_sensor, front_door_lock
     - include: nav_main

@@ -12,4 +12,4 @@
         after_offset: '00:10:00'
   action:
     service: homeassistant.turn_on
-    entity_id: light.front_porch
+    entity_id: light.front_porch_light

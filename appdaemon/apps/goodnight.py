@@ -36,28 +36,28 @@ class GoodNight(hass.Hass):
         self.call_service('homeassistant/turn_off', entity_id = 'switch.wax_melt_switch')
         
         # Turn off lights in communal areas (not bathrooms or bedrooms)
-        self.call_service('homeassistant/turn_off', entity_id = 'light.back_porch')
-        self.call_service('homeassistant/turn_off', entity_id = 'light.front_porch')
-        self.call_service('homeassistant/turn_off', entity_id = 'light.kitchen')
-        self.call_service('homeassistant/turn_off', entity_id = 'light.entryway')
-        self.call_service('homeassistant/turn_off', entity_id = 'light.hallway')
+        self.call_service('homeassistant/turn_off', entity_id = 'light.back_porch_light')
+        self.call_service('homeassistant/turn_off', entity_id = 'light.front_porch_light')
+        self.call_service('homeassistant/turn_off', entity_id = 'light.kitchen_light')
+        self.call_service('homeassistant/turn_off', entity_id = 'light.entryway_light')
+        self.call_service('homeassistant/turn_off', entity_id = 'light.hallway_light')
         self.call_service('homeassistant/turn_off', entity_id = 'fan.living_room_fan')
         
         # If Living Room or Cabinet lights are on, set them to dim for ~30 seconds then turn off
         self.timer = False
-        if (self.get_state('light.cabinet_lights') == 'on'):
+        if (self.get_state('light.kitchen_cabinet_lights') == 'on'):
             self.timer = True
-            self.call_service('homeassistant/turn_on', entity_id = 'light.cabinet_lights', brightness = 10)
-        if (self.get_state('light.living_room_fan_light') == 'on' and self.get_state('light.living_room') == 'on'):
+            self.call_service('homeassistant/turn_on', entity_id = 'light.kitchen_cabinet_lights', brightness = 10)
+        if (self.get_state('light.living_room_fan_light') == 'on' and self.get_state('light.living_room_accent_lights') == 'on'):
             self.timer = True
-            self.call_service('homeassistant/turn_on', entity_id = 'light.living_room', brightness = 120)
+            self.call_service('homeassistant/turn_on', entity_id = 'light.living_room_accent_lights', brightness = 120)
             self.call_service('homeassistant/turn_off', entity_id = 'light.living_room_fan_light')
         elif (self.get_state('light.living_room_fan_light') == 'on'):
             self.timer = True
             self.call_service('homeassistant/turn_on', entity_id = 'light.living_room_fan_light', brightness = 10)
-        elif (self.get_state('light.living_room') == 'on'):
+        elif (self.get_state('light.living_room_accent_lights') == 'on'):
             self.timer = True
-            self.call_service('homeassistant/turn_on', entity_id = 'light.living_room', brightness = 120)
+            self.call_service('homeassistant/turn_on', entity_id = 'light.living_room_accent_lights', brightness = 120)
 
         if (self.timer):
             self.handle = self.run_in(self.lightsout, 30)
@@ -72,5 +72,5 @@ class GoodNight(hass.Hass):
     # Turn off remaining lights after 30s timer
     def lightsout(self, kwargs):
         self.call_service('homeassistant/turn_off', entity_id = 'light.living_room_fan_light')
-        self.call_service('homeassistant/turn_off', entity_id = 'light.living_room')
-        self.call_service('homeassistant/turn_off', entity_id = 'light.cabinet_lights')
+        self.call_service('homeassistant/turn_off', entity_id = 'light.living_room_accent_lights')
+        self.call_service('homeassistant/turn_off', entity_id = 'light.kitchen_cabinet_lights')

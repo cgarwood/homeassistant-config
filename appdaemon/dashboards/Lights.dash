@@ -16,49 +16,49 @@ fan_light:
 accent_light:
     widget_type: light
     title: Accent Lights
-    entity: light.living_room
+    entity: light.living_room_accent_lights
     use_hass_icon: 1
     widget_style: 'background-color: #2b5797'
     
 entryway_light:
     widget_type: light
     title: Entryway
-    entity: light.entryway
+    entity: light.entryway_light
     use_hass_icon: 1
     widget_style: 'background-color: #2b5797'
     
 kitchen_light:
     widget_type: light
     title: Kitchen
-    entity: light.kitchen
+    entity: light.kitchen_light
     use_hass_icon: 1
     widget_style: 'background-color:  #7e3878'
 
 cabinet_light:
     widget_type: light
     title: Under Cabinet Lights
-    entity: light.cabinet_lights
+    entity: light.kitchen_cabinet_lights
     use_hass_icon: 1
     widget_style: 'background-color:  #7e3878'
 
 hallway_light:
     widget_type: light
     title: Hallway
-    entity: light.hallway
+    entity: light.hallway_light
     use_hass_icon: 1
     widget_style: 'background-color: #2b5797'    
     
 front_porch_light:
     widget_type: light
     title: Front Porch
-    entity: light.front_porch
+    entity: light.front_porch_light
     use_hass_icon: 1
     widget_style: 'background-color: #1e7145'    
 
 back_porch_light:
     widget_type: light
     title: Back Porch
-    entity: light.back_porch
+    entity: light.back_porch_light
     use_hass_icon: 1
     widget_style: 'background-color: #1e7145'
 
