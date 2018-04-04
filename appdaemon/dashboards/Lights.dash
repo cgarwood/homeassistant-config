@@ -9,7 +9,7 @@ global_parameters:
 fan_light:
     widget_type: light
     title: Living Room
-    entity: light.living_room_fan_light
+    entity: light.living_room
     use_hass_icon: 1
     widget_style: 'background-color: #2b5797'
     

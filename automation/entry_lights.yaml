@@ -27,10 +27,10 @@
       - condition: sun
         after: sunset
       - condition: state
-        entity_id: light.living_room
+        entity_id: light.living_room_accent_lights
         state: 'off'
       - condition: state
-        entity_id: light.living_room_fan_light
+        entity_id: light.living_room
         state: 'off'
       - condition: or
         conditions:
@@ -43,4 +43,4 @@
   action:
     service: homeassistant.turn_on
     data:
-      entity_id: light.living_room_fan_light
+      entity_id: light.entryway_light

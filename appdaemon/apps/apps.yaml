@@ -16,3 +16,6 @@ autobathroomlights:
   module: autobathroomlights
   class: AutoBathroomLights
   constrain_input_boolean: input_boolean.ad_auto_bathroom_lights
+weatheralerts:
+  module: weather_alerts
+  class: WeatherAlerts

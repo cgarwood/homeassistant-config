@@ -12,7 +12,7 @@ class FanRemotes(hass.Hass):
         
     def handle_light(self, entity, attribute, old, new, kwargs):
         if (entity == "sensor.office_light_pico"):
-            controlled_entity = "light.office_light"
+            controlled_entity = "light.office"
             
         if (new == '1'):
             # On
