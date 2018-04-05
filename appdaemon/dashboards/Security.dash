@@ -22,9 +22,19 @@ front_door_lock:
     widget_type: lock
     title: Front Door
     entity: lock.front_door_lock_locked
+
+doors:
+  widget_type: binary_sensor
+  entity: group.doors
+  title: Doors
+  
+windows:
+  widget_type: binary_sensor
+  entity: group.windows
+  title: Windows
     
 layout:
-    - driveway_cam(5x3), binary_sensor.back_door_sensor, binary_sensor.front_door_sensor,
-    - binary_sensor.garage_inside_door
+    - driveway_cam(5x3), doors, windows
+    - spacer
     - front_door_lock
     - include: nav_main
