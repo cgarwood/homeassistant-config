@@ -1,5 +1,8 @@
 ##
 # WeatherUnderground Weather Alerts
+# Monitors specific alert types and plays an alert tone & TTS on tablets
+#
+# TODO: Different alert tones for different alert types?
 ##
 
 import appdaemon.plugins.hass.hassapi as hass
@@ -26,7 +29,6 @@ class WeatherAlerts(hass.Hass):
             for k,v in monitored_alerts.items():
                 # Check if the alert should be monitored
                 if (new['attributes']['Description'] == v):
-                    # Was the previous state > 1?
                     if (int(old['state']) > 1):
                         # Check if it's the same alert so we don't fire the alert tone again
                         if (new['attributes']['Message'] != old['attributes']['Message_' + k]):

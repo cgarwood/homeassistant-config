@@ -64,17 +64,32 @@ influxdb:
 
 # Enables support for tracking state changes over time.
 history:
-  exclude:
+  include:
     domains:
-      - automation
+      - binary_sensor
+      - device_tracker
+      - lock
+      - light
+      - switch
+      - fan
     entities:
-      - sensor.last_boot
-      - sensor.back_door_battery
-      - sensor.front_door_battery
-      - sensor.hallway_smoke_battery
+      - sensor.hallway_thermostat_hvac_state
+      - sensor.hallway_thermostat_operation_mode
+      - sensor.ups_status
+  exclude:
+    entities:
+      - binary_sensor.gang
+      - binary_sensor.hallway_thermostat_has_leaf
+      - binary_sensor.hallway_thermostat_is_using_emergency_heat
+      - binary_sensor.hallway_thermostat_online
+      - binary_sensor.hallway_thermostat_is_locked
+      - binary_sensor.office_fan
+      - binary_sensor.living_room_fan_light_remote
+      - binary_sensor.living_room_fan_remote
       
 # Enables the frontend
 frontend:
+  development_repo: /srv/dev/home-assistant-polymer
 
 # Additional Panels
 panel_iframe:
