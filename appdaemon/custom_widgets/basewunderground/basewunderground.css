@@ -53,6 +53,7 @@
 .widget-basewunderground-{{id}} .primary-info {
 	font-size: 300%;
 	font-weight: 400;
+	margin-right: 0;
 }
 
 .widget-basewunderground-{{id}} .primary-unit {
@@ -105,6 +106,22 @@
 	margin-left: 8px;
 }
 
+.widget-basewunderground-{{id}} .current-conditions.icon {
+	font-size: 64px;
+	margin-top: -10px;
+}
+.widget-basewunderground-{{id}} .forecast .icon {
+	font-size: 32px;
+	margin: 8px;
+	float: none;
+}
+
+.widget-basewunderground-{{id}} .icon {
+	font-family: "Climacons-Font";
+	float: left;
+	margin-left: 20px;
+}
+
 .widget-basewunderground-{{id}} .temp {
 	text-align: left;
 	padding-left: 8px;
@@ -122,8 +139,4 @@
 }
 .widget-basewunderground-{{id}} .forecast {
 	display: block;
-}
-.widget-basewunderground-{{id}} .forecast .icon {
-	float: none;
-	margin-left: 0;
 }
