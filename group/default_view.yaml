@@ -7,7 +7,7 @@ default_view:
     - group.weather
     - group.all_lights
     - group.all_switches
-    - fan.living_room_fan
+    - group.all_fans
     - lock.front_door_lock_locked
     - group.garage_multisensor
     - group.living_room_multisensor

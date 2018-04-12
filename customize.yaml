@@ -34,6 +34,8 @@ group.all_automations:
   hidden: false
 group.all_switches:
   hidden: false
+group.all_fans:
+  hidden: false
 
 # Lights
 light.guest_bathroom_vanity_light_level:
