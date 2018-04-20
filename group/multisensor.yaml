@@ -4,7 +4,6 @@ garage_multisensor:
     - binary_sensor.garage_multisensor_sensor
     - sensor.garage_multisensor_temperature
     - sensor.garage_multisensor_relative_humidity
-    - sensor.garage_multisensor_luminance
     
 living_room_multisensor:
   name: Living Room Multisensor
@@ -12,7 +11,6 @@ living_room_multisensor:
     - binary_sensor.living_room_multisensor_motion
     - sensor.living_room_multisensor_temperature
     - sensor.living_room_multisensor_relative_humidity
-    - sensor.living_room_multisensor_luminance
 
 guest_bathroom_multisensor:
   name: Guest Bathroom Multisensor
@@ -20,4 +18,3 @@ guest_bathroom_multisensor:
     - binary_sensor.guest_bathroom_multisensor_motion
     - sensor.guest_bathroom_multisensor_temperature
     - sensor.guest_bathroom_multisensor_relative_humidity
-    - sensor.guest_bathroom_multisensor_luminance
