@@ -19,3 +19,6 @@ autobathroomlights:
 weatheralerts:
   module: weather_alerts
   class: WeatherAlerts
+smokedetectors:
+  module: smoke_detectors
+  class: SmokeDetectors

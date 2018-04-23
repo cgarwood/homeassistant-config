@@ -225,7 +225,7 @@ nest:
   client_secret: !secret nest_client_secret
  
 wink:
-  local_control: true
+#  local_control: true
   
 zwave:
   usb_path: /dev/zwave

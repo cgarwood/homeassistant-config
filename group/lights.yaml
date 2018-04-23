@@ -4,12 +4,26 @@ indoor_lights:
     - light.entryway_light
     - light.hallway_light
     - light.living_room_accent_lights
-    - light.living_room_fan_light
+    - light.living_room
     - light.guest_bathroom_fan_light_level
     - light.guest_bathroom_vanity_light_level
     - light.kitchen_light
+    - light.master_bedroom
+    - light.office
 
 outdoor_lights:
   entities:
     - light.back_porch_light
     - light.front_porch_light
+    
+emergency_lights:
+  entities:
+    - light.back_porch_light
+    - light.front_porch_light
+    - light.entryway_light
+    - light.hallway_light
+    - light.living_room_accent_lights
+    - light.guest_bathroom_fan_light_level
+    - light.kitchen_light
+    - light.master_bedroom
+    - light.office
