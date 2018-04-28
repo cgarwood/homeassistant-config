@@ -18,6 +18,7 @@ door_sensor_batteries:
 windows:
   name: Windows
   entities:
+    - binary_sensor.kitchen_window
     - binary_sensor.nursery_window
     - binary_sensor.office_window
     - binary_sensor.master_bedroom_window
