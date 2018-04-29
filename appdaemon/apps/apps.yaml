@@ -22,3 +22,6 @@ weatheralerts:
 smokedetectors:
   module: smoke_detectors
   class: SmokeDetectors
+guestbathroomlightwatcher:
+  module: guest_bathroom_light_watcher
+  class: GuestBathroomLightWatcher
