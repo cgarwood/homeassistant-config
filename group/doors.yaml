@@ -5,6 +5,7 @@ doors:
     - binary_sensor.back_door_sensor
     - binary_sensor.garage_inside_door
     - binary_sensor.garage_side_door
+    - binary_sensor.garage_door_sensor
     
 door_sensor_batteries:
   name: Door Sensor Batteries

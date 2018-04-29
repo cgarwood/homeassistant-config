@@ -6,6 +6,9 @@ binary_sensor.front_door_sensor:
 binary_sensor.back_door_sensor:
   friendly_name: Back Door
   sensor_class: opening
+binary_sensor.garage_door_sensor:
+  friendly_name: Garage Door
+  sensor_class: opening
 binary_sensor.garage_multisensor_sensor:
   friendly_name: Garage Motion
 binary_sensor.living_room_multisensor_motion:
@@ -77,10 +80,18 @@ sensor.front_door_battery:
   friendly_name: Front Door Battery
 sensor.back_door_battery:
   friendly_name: Back Door Battery
+sensor.garage_inside_door_battery:
+  friendly_name: Garage Inside Door Battery
+sensor.garage_side_door_battery:
+  friendly_name: Garage Side Door Battery
 sensor.hallway_smoke_battery:
   friendly_name: Hallway Smoke Detector Battery
 sensor.garage_smoke_battery:
   friendly_name: Garage Smoke Detector Battery
+sensor.nursery_smoke_battery:
+  friendly_name: Nursery Smoke Detector Battery
+sensor.office_smoke_battery:
+  friendly_name: Office Smoke Detector Battery
 sensor.front_door_lock_battery:
   friendly_name: Front Door Lock Battery
 
