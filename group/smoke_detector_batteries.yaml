@@ -3,3 +3,5 @@ smoke_detector_batteries:
   entities:
     - sensor.garage_smoke_battery
     - sensor.hallway_smoke_battery
+    - sensor.office_smoke_battery
+    - sensor.nursery_smoke_battery
