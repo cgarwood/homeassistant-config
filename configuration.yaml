@@ -89,7 +89,7 @@ history:
       
 # Enables the frontend
 frontend:
-  development_repo: /srv/dev/home-assistant-polymer
+#  development_repo: /srv/dev/home-assistant-polymer
 
 # Additional Panels
 panel_iframe:
@@ -110,14 +110,12 @@ logbook:
     domains:
       - automation
       - zwave
+      - sensor
+  include:
     entities:
-      - sensor.pws_wind_dir
-      - sensor.hallway_smoke_detector_alarm_type
-      - sensor.garage_smoke_detector_alarm_type
-      - sensor.nursery_smoke_detector_alarm_type
-      - sensor.office_smoke_detector_alarm_type
-      - sensor.nursery_smoke_detector_alarm_level
-      - sensor.office_smoke_detector_alarm_level
+      - sensor.ups_status
+      - sensor.hallway_thermostat_hvac_state
+      - sensor.hallway_thermostat_operation_mode
 
 # Config Panel
 config:
@@ -164,6 +162,12 @@ binary_sensor:
       office_window:
         friendly_name: "Office Window"
         value_template: "{{ is_state('sensor.office_window_access_control', '22') }}"
+      kitchen_window:
+        friendly_name: "Kitchen Window"
+        value_template: "{{ is_state('sensor.kitchen_window_access_control', '22') }}"
+      master_bathroom_window:
+        friendly_name: "Master Bathroom Window"
+        value_template: "{{ is_state('sensor.master_bathroom_window_access_control', '22') }}"
       master_bedroom_window:
         friendly_name: "Master Bedroom Window"
         value_template: "{{ is_state('sensor.master_bedroom_window_access_control', '22') }}"

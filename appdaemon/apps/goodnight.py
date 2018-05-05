@@ -16,7 +16,7 @@ class GoodNight(hass.Hass):
             self.call_service('lock/lock', entity_id = 'lock.front_door_lock_locked')
         else:
             # Send a notification to close the door and lock it
-            self.call_service('notify/hatouch', title = 'Door Open', message = 'The Front Door is still open. Please close and lock the door.', data = {'tts':'The front door is still open. Please close and lock the front door', 'sound':'attention.mp3', 'type':'error'})
+            self.fire_event('hadashboard', command='notify', title = 'Door Open', message = 'The Front Door is still open. Please close and lock the door.', tts = 'The front door is still open. Please close and lock the front door', sound = 'attention.mp3', type = 'error')
             # Abort the rest of the execution
             self.call_service('input_select/select_option', entity_id = 'input_select.house_mode', option = 'Home')
             return
@@ -24,7 +24,7 @@ class GoodNight(hass.Hass):
         # Check if back door is open
         if (self.get_state('binary_sensor.back_door_sensor') == 'on'):
             # Send a notification to close the door and lock it
-            self.call_service('notify/hatouch', title = 'Back Door Open', message = 'The Back Door is still open. Please close and lock the door.', data = {'tts':'The back door is still open. Please close and lock the back door', 'sound':'attention.mp3', 'type':'error'})
+            self.fire_event('hadashboard', command='notify', title = 'Back Door Open', message = 'The Back Door is still open. Please close and lock the door.', data = {'tts':'The back door is still open. Please close and lock the back door', 'sound':'attention.mp3', 'type':'error'})
             # Abort the rest of the execution
             self.call_service('input_select/select_option', entity_id = 'input_select.house_mode', option = 'Home')
             return
@@ -63,10 +63,10 @@ class GoodNight(hass.Hass):
             self.handle = self.run_in(self.lightsout, 30)
 
         # Tell everyone goodnight :)
-        self.call_service('notify/hatouch', title = 'Goodnight', message = 'Goodnight', data = {'tts':'Good night', 'persist':False})
+        self.fire_event('hadashboard', command='notify', title = 'Goodnight', message = 'Goodnight', data = {'tts':'Good night', 'persist':False})
         
         # Turn off Kindle/HATouch Screens
-        self.call_service('hatouch/screen_off')
+        # self.call_service('hatouch/screen_off')
         
         
     # Turn off remaining lights after 30s timer
