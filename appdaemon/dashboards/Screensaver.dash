@@ -6,9 +6,15 @@ rows: 1
 
 screensaver:
   widget_type: screensaver
-  picture_source: https://192.168.1.220/hatouch/get_pictures.php
+  
+  picture_sources:
+    default: https://192.168.1.220/hatouch/get_pictures.php
+    6363f925-f08d6a9e: https://192.168.1.220/hatouch/get_pictures.php
+#    2eeeb1-f08d6f6d: https://192.168.1.220/hatouch/get_pictures.php?path=master_bedroom
+
   picture_path: https://192.168.1.220
   weather_background_path: https://192.168.1.220/hadashboard/weather_backgrounds/
+
   dashboards:
     default: Index
     6363f925-f08d6a9e: Index

@@ -87,7 +87,7 @@ function basescreensaver(widget_id, url, skin, parameters) {
 	setInterval(updateTime, 500, self)
 	
 	//Fetch pictures for the slideshow
-	get_pictures()
+	get_pictures(self)
 	
 	//Functions to update the clock
 	function updateTime(self) {
@@ -137,8 +137,19 @@ function basescreensaver(widget_id, url, skin, parameters) {
 	}
 	
 	//Function to get the JSON list of pictures from the specified path and append it to the list of slides
-	function get_pictures() {
-		var photos = $.getJSON(self.parameters.picture_source, function(d) {
+	function get_pictures(self) {
+		var picture_source = self.parameters.picture_sources['default'];
+		
+		if (typeof fully !== "undefined") {
+						
+			var deviceId = fully.getDeviceId();
+			if (typeof self.parameters.picture_sources[deviceId] !== "undefined") {
+				picture_source = self.parameters.picture_sources[deviceId];
+			}
+			
+		}
+		
+		var photos = $.getJSON(picture_source, function(d) {
 			for (var i = 0; i < d.length; i++) {
 				var image_url = self.parameters.picture_path + d[i];
 				$("#slides").append('<li class="slide" style="background-image: url(\''+image_url+'\');"></li>');
