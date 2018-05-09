@@ -2,17 +2,38 @@
 ## Door Sensors
 binary_sensor.front_door_sensor:
   friendly_name: Front Door
-  sensor_class: opening
+  device_class: opening
 binary_sensor.back_door_sensor:
   friendly_name: Back Door
-  sensor_class: opening
+  device_class: opening
 binary_sensor.garage_door_sensor:
   friendly_name: Garage Door
-  sensor_class: opening
+  device_class: opening
+binary_sensor.garage_inside_door:
+  device_class: opening
+binary_sensor.garage_side_door:
+  device_class: opening
+binary_sensor.kitchen_window:
+  device_class: opening
+binary_sensor.nursery_window:
+  device_class: opening
+binary_sensor.office_window:
+  device_class: opening
+binary_sensor.master_bedroom_window:
+  device_class: opening
+binary_sensor.master_bathroom_window:
+  device_class: opening
+  
+## Motion Sensors
 binary_sensor.garage_multisensor_sensor:
   friendly_name: Garage Motion
+  device_class: motion
 binary_sensor.living_room_multisensor_motion:
   friendly_name: Living Room Motion
+  device_class: motion
+binary_sensor.guest_bathroom_multisensor_motion:
+  friendly_name: Guest Bathroom Motion
+  device_class: motion
   
 ## HVAC Sensors
 binary_sensor.hallway_thermostat_fan:
@@ -21,7 +42,7 @@ binary_sensor.hallway_thermostat_fan:
 ## Water Sensors
 binary_sensor.water_sensor_sensor:
   friendly_name: Kitchen Water Sensor
-  sensor_class: problem
+  device_class: problem
   
 # Device Trackers
 device_tracker.charlessiphone:
