@@ -8,13 +8,13 @@ global_parameters:
 fan_light:
     widget_type: light
     title: Living Room
-    entity: light.living_room_fan_light
+    entity: light.living_room
     use_hass_icon: 1
     
 accent_light:
     widget_type: light
     title: Accent Lights
-    entity: light.living_room
+    entity: light.living_room_accent_lights
     use_hass_icon: 1
 
 indoor_temp:

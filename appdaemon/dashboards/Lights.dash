@@ -77,7 +77,7 @@ guest_bathroom_fan_light:
     widget_style: 'background-color: #da532c'      
 
 layout:
-  - fan_light, accent_light, entryway_light, spacer, spacer, kitchen_light, cabinet_light
-  - front_porch_light, back_porch_light, spacer, guest_bathroom_vanity_light, guest_bathroom_fan_light, spacer, hallway_light
+  - fan_light, accent_light, entryway_light, hallway_light, spacer, kitchen_light, cabinet_light
+  - front_porch_light, back_porch_light, spacer, guest_bathroom_vanity_light, guest_bathroom_fan_light, spacer, spacer
   - spacer
   - include: nav_main

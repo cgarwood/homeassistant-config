@@ -31,6 +31,8 @@ head_includes:
  - <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
  - <script type="text/javascript" src="https://192.168.1.220/hadashboard/screensaver.js"></script>
  - <script type="text/javascript" src="https://192.168.1.220/hadashboard/custom_events.js"></script>
+ - <script type="text/javascript" src="https://192.168.1.220/hadashboard/tingle.min.js"></script>
+ - <link rel="stylesheet" href="https://192.168.1.220/hadashboard/tingle.css">
  - <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
 #
