@@ -61,6 +61,8 @@ influxdb:
       - sensor.living_room_multisensor_relative_humidity
       - sensor.guest_bathroom_multisensor_temperature
       - sensor.guest_bathroom_multisensor_relative_humidity
+      - sensor.nursery_multisensor_temperature
+      - sensor.nursery_multisensor_relative_humidity
 
 # Enables support for tracking state changes over time.
 history:
@@ -175,11 +177,14 @@ binary_sensor:
         friendly_name: "Master Bedroom Window (Left Side)"
         value_template: "{{ is_state('sensor.master_bedroom_window2_access_control', '22') }}"
       living_room_multisensor_motion:
-        friendly_name: "Living Room Multisensor Motion"
+        friendly_name: "Living Room Motion"
         value_template: "{{ is_state('sensor.living_room_multisensor_burglar', '8') }}"  
       guest_bathroom_multisensor_motion:
-        friendly_name: "Guest Bathroom Multisensor Motion"
-        value_template: "{{ is_state('sensor.guest_bathroom_multisensor_burglar', '8') }}" 
+        friendly_name: "Guest Bathroom Motion"
+        value_template: "{{ is_state('sensor.guest_bathroom_multisensor_burglar', '8') }}"
+      nursery_multisensor_motion:
+        friendly_name: "Nursery Motion"
+        value_template: "{{ is_state('sensor.nursery_multisensor_burglar', '8') }}" 
 camera:
   - platform: mjpeg
     name: Driveway Cam

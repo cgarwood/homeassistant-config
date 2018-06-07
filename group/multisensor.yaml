@@ -19,6 +19,13 @@ guest_bathroom_multisensor:
     - sensor.guest_bathroom_multisensor_temperature
     - sensor.guest_bathroom_multisensor_relative_humidity
 
+nursery_multisensor:
+  name: Nursery Multisensor
+  entities:
+    - binary_sensor.nursery_multisensor_motion
+    - sensor.nursery_multisensor_temperature
+    - sensor.nursery_multisensor_relative_humidity
+
 multisensor_batteries:
   name: Multisensor Batteries
   entities:

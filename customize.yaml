@@ -29,10 +29,10 @@ binary_sensor.garage_multisensor_sensor:
   friendly_name: Garage Motion
   device_class: motion
 binary_sensor.living_room_multisensor_motion:
-  friendly_name: Living Room Motion
   device_class: motion
 binary_sensor.guest_bathroom_multisensor_motion:
-  friendly_name: Guest Bathroom Motion
+  device_class: motion
+binary_sensor.nursery_multisensor_motion:
   device_class: motion
   
 ## HVAC Sensors
