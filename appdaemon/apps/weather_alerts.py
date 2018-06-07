@@ -39,7 +39,7 @@ class WeatherAlerts(hass.Hass):
                         if (new['attributes']['Message'] != old['attributes']['Message']):
                             alert = True
                            
-            # If we have a new alert, fire off the alert tone and read the TTS               
+            # If we have a new alert, fire off the alert tone and read the TTS
             if (alert == True):
                 message = new['attributes']['Message'].split('Lat...Lon')[0]
                 self.fire_event('hadashboard', command='play_sound', sound = 'eas.mp3', tts = message)
@@ -49,7 +49,13 @@ class WeatherAlerts(hass.Hass):
             for k,v in monitored_alerts.items():
                 if ('Description_'+k in new['attributes']):
                     # We have a monitored alert, see if it's new
-                    if (new['attributes']['Message_'+k] != old['attributes']['Message_'+k]):
+                    
+                    if (int(old['state']) < 2):
+                        oldMessage = old['attributes']['Message'];
+                    else:
+                        oldMessage = old['attributes']['Message_'+k];
+                        
+                    if (new['attributes']['Message_'+k] != oldMessage):
                         # New message
                         alert = True
                         message = new['attributes']['Message_'+k].split('Lat...Lon')[0]
