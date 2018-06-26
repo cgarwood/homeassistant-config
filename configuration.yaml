@@ -137,6 +137,8 @@ http:
   ip_ban_enabled: True
   login_attempts_threshold: 5
 
+cloud:
+
 # Set up primary components    
 alexa:
 
@@ -190,8 +192,8 @@ camera:
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
     
-climate:
-  platform: nest
+#climate:
+#  platform: nest
 
 device_tracker:
   - platform: unifi
@@ -201,11 +203,6 @@ device_tracker:
     password: !secret unifi_password
     new_device_defaults:
       track_new_devices: false
-
-emulated_hue:
-  exposed_domains:
-    - light
-    - switch
 
 # Custom Component for custom Kindle Fire interface
 hatouch:
@@ -223,7 +220,7 @@ lutron_caseta_pro:
     
 media_player:
 #  - platform: firetv
-  - platform: cast
+#  - platform: cast
   - platform: vizio
     host: 192.168.1.199
     access_token: !secret vizio_access_token
