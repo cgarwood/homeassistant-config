@@ -20,9 +20,19 @@ tablet_off:
       icon_active: "fa-tv"
       icon_inactive: "fa-tv"
     command: "fully.startScreensaver();"
-    
+  
+tileboard:
+  widget_type: navigate
+  url: "https://local.garwood.family/tileboard"
+  title: TileBoard
+  
+hassui:
+  widget_type: navigate
+  url: "https://ha.garwood.family"
+  title: HomeAssistant UI
+  
 layout:
   - sensor.energy_meter_power, sensor.ups_input_voltage, sensor.ups_status, spacer, spacer, spacer, binary_sensor.water_sensor_sensor
-  - spacer
+  - spacer, spacer, spacer, spacer, spacer, hassui, tileboard
   - tablet_off
   - include: nav_main
