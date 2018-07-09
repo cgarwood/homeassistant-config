@@ -42,6 +42,7 @@ recorder:
       - camera.driveway_cam
       - sensor.office_light_pico
       - sensor.office_fan_pico
+      - media_player.living_room
 
 influxdb:
   username: !secret influxdb_user
