@@ -13,6 +13,10 @@ default_view:
     - group.living_room_multisensor
     - group.guest_bathroom_multisensor
     - group.nursery_multisensor
+    - group.master_bedroom_multisensor
+    - group.guest_bedroom_multisensor
+    - group.attic_multisensor
+    - group.hvac_multisensor
     - group.hvac
     - camera.driveway_cam
     - media_player.living_room

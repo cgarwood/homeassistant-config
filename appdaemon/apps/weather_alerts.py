@@ -42,7 +42,7 @@ class WeatherAlerts(hass.Hass):
             # If we have a new alert, fire off the alert tone and read the TTS
             if (alert == True):
                 message = new['attributes']['Message'].split('Lat...Lon')[0]
-                self.fire_event('hadashboard', command='play_sound', sound = 'eas.mp3', tts = message)
+                self.fire_event('tileboard', command='tts', sound = 'eas.mp3', message = message)
         
         # If the state is > 1, the alert type is appended to the attributes
         elif (int(new['state']) > 1):
@@ -61,5 +61,5 @@ class WeatherAlerts(hass.Hass):
                         message = new['attributes']['Message_'+k].split('Lat...Lon')[0]
                         
             if (alert == True):
-                self.fire_event('hadashboard', command='play_sound', sound = 'eas.mp3', tts = message)
+                self.fire_event('tileboard', command='tts', sound = 'eas.mp3', message = message)
                 

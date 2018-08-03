@@ -26,8 +26,38 @@ nursery_multisensor:
     - sensor.nursery_multisensor_temperature
     - sensor.nursery_multisensor_relative_humidity
 
+master_bedroom_multisensor:
+  name: Master Bedroom Multisensor
+  entities:
+    - binary_sensor.master_bedroom_multisensor_motion
+    - sensor.master_bedroom_multisensor_temperature
+    - sensor.master_bedroom_multisensor_relative_humidity
+
+guest_bedroom_multisensor:
+  name: Guest Bedroom Multisensor
+  entities:
+    - binary_sensor.guest_bedroom_multisensor_motion
+    - sensor.guest_bedroom_multisensor_temperature
+    - sensor.guest_bedroom_multisensor_relative_humidity
+    
 multisensor_batteries:
   name: Multisensor Batteries
   entities:
     - sensor.guest_bathroom_multisensor_battery
     - sensor.living_room_multisensor_battery
+
+attic_multisensor:
+  name: Attic Multisensor
+  entities:
+    - sensor.attic_temperature
+    - sensor.attic_humidity
+    - sensor.attic_pressure
+hvac_multisensor:
+  name: HVAC
+  entities:
+    - sensor.hvac_supply_temperature
+    - sensor.hvac_return_temperature
+    - sensor.hvac_supply_humidity
+    - sensor.hvac_return_humidity
+    - sensor.hvac_supply_pressure
+    - sensor.hvac_return_pressure

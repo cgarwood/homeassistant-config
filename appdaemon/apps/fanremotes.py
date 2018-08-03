@@ -14,13 +14,16 @@ class FanRemotes(hass.Hass):
         
     def handle_light(self, entity, attribute, old, new, kwargs):
         if (entity == "sensor.office_light_pico"):
-            controlled_entity = "light.office"
+            controlled_entity = "switch.office"
         if (entity == "sensor.master_bedroom_light_pico"):
-            controlled_entity = "light.master_bedroom"
+            controlled_entity = "switch.master_bedroom"
             
         if (new == '1'):
             # On
-            self.call_service('homeassistant/turn_on', entity_id = controlled_entity, brightness = 255)
+            #if (controlled_entity == "switch.master_bedroom"):
+            self.call_service('homeassistant/turn_on', entity_id = controlled_entity)
+            #else:
+            #    self.call_service('homeassistant/turn_on', entity_id = controlled_entity, brightness = 255)
             
         if (new == '2'):
             # Favorite

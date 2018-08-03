@@ -61,12 +61,9 @@ class GoodNight(hass.Hass):
 
         if (self.timer):
             self.handle = self.run_in(self.lightsout, 30)
-
-        # Tell everyone goodnight :)
-        self.fire_event('hadashboard', command='notify', title = 'Goodnight', message = 'Goodnight', data = {'tts':'Good night', 'persist':False})
         
-        # Turn off Kindle/HATouch Screens
-        # self.call_service('hatouch/screen_off')
+        # Turn off Kindle Screens
+        self.fire_event('tileboard', command='screen_off')
         
         
     # Turn off remaining lights after 30s timer

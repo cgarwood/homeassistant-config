@@ -10,6 +10,7 @@ maintenance:
     - group.water_sensors
     - group.all_automations
     - group.ad_automations
+    - group.fan_canopy_power
     
 ad_automations:
   name: AppDaemon Automations

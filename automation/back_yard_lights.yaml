@@ -1,0 +1,17 @@
+- alias: Back Yard Lights on at Sunset
+  trigger:
+    - platform: sun
+      event: sunset
+  action:
+    service: homeassistant.turn_on
+    entity_id: light.back_yard_dimmer
+    data:
+      brightness: 50
+
+- alias: Back Yard Lights off at 10:00
+  trigger:
+    - platform: time
+      at: '22:00:00'
+  action:
+    service: homeassistant.turn_off
+    entity_id: light.back_yard_dimmer

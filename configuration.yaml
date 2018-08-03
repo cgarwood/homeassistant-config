@@ -64,6 +64,16 @@ influxdb:
       - sensor.guest_bathroom_multisensor_relative_humidity
       - sensor.nursery_multisensor_temperature
       - sensor.nursery_multisensor_relative_humidity
+      - sensor.attic_temperature
+      - sensor.attic_humidity
+      - sensor.hvac_return_temperature
+      - sensor.hvac_return_humidity
+      - sensor.hvac_supply_temperature
+      - sensor.hvac_supply_humidity
+      - sensor.master_bedroom_multisensor_temperature
+      - sensor.master_bedroom_multisensor_relative_humidity
+      - sensor.guest_bedroom_multisensor_temperature
+      - sensor.guest_bedroom_multisensor_relative_humidity
 
 # Enables support for tracking state changes over time.
 history:
@@ -126,8 +136,8 @@ config:
 # Set up HTTP frontend
 http:
   api_password: !secret http_password
-  ssl_certificate: /home/hass/ssl_cert.crt
-  ssl_key: /home/hass/ssl_cert.key
+  ssl_certificate: /etc/letsencrypt/live/garwood.family/fullchain.pem
+  ssl_key: /etc/letsencrypt/live/garwood.family/privkey.pem
   trusted_networks:
     - 192.168.1.0/24
   cors_allowed_origins:
@@ -176,18 +186,22 @@ binary_sensor:
       master_bedroom_window:
         friendly_name: "Master Bedroom Window"
         value_template: "{{ is_state('sensor.master_bedroom_window_access_control', '22') }}"
-      master_bedroom_window2:
-        friendly_name: "Master Bedroom Window (Left Side)"
-        value_template: "{{ is_state('sensor.master_bedroom_window2_access_control', '22') }}"
       living_room_multisensor_motion:
         friendly_name: "Living Room Motion"
-        value_template: "{{ is_state('sensor.living_room_multisensor_burglar', '8') }}"  
+        value_template: "{{ is_state('sensor.living_room_multisensor_burglar', '8') }}"
       guest_bathroom_multisensor_motion:
         friendly_name: "Guest Bathroom Motion"
         value_template: "{{ is_state('sensor.guest_bathroom_multisensor_burglar', '8') }}"
       nursery_multisensor_motion:
         friendly_name: "Nursery Motion"
-        value_template: "{{ is_state('sensor.nursery_multisensor_burglar', '8') }}" 
+        value_template: "{{ is_state('sensor.nursery_multisensor_burglar', '8') }}"
+      master_bedroom_multisensor_motion:
+        friendly_name: "Master Bedroom Motion"
+        value_template: "{{ is_state('sensor.master_bedroom_multisensor_burglar', '8') }}"
+      guest_bedroom_multisensor_motion:
+        friendly_name: "Guest Bedroom Motion"
+        value_template: "{{ is_state('sensor.guest_bedroom_multisensor_burglar', '8') }}"
+
 camera:
   - platform: mjpeg
     name: Driveway Cam
@@ -205,15 +219,16 @@ device_tracker:
     new_device_defaults:
       track_new_devices: false
 
-# Custom Component for custom Kindle Fire interface
-hatouch:
-
 ios:
 
 logger:
   default: warning
   logs:
      urllib3.connectionpool: fatal
+     #bellows: debug
+     #zigpy: debug
+     #platform.zha: debug
+     #components.zha: debug
      
 lutron_caseta_pro:
   bridges:
@@ -239,7 +254,11 @@ zwave:
   polling_interval: 60000
   device_config: !include zwave_device_config.yaml
   network_key: !secret zwave_network_key
-      
+  
+zha:
+  usb_path: /dev/zigbee
+  database_path: /home/hass/zigbee.db 
+
 # Additional Sensors
 sensor:
   - platform: wunderground
@@ -307,6 +326,9 @@ input_boolean:
     initial: off
   guest_mode:
     name: Guest Mode
+    initial: off
+  goodnight_script:
+    name: Goodnight
     initial: off
   ad_door_chime:
     name: Door Chime
