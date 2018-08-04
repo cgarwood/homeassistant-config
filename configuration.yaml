@@ -327,7 +327,7 @@ input_boolean:
   guest_mode:
     name: Guest Mode
     initial: off
-  goodnight_script:
+  goodnight:
     name: Goodnight
     initial: off
   ad_door_chime:

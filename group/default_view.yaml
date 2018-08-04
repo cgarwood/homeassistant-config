@@ -26,6 +26,6 @@ default_view:
     - device_tracker.tinasiphone
     - binary_sensor.bi_driveway
     - script.goodbyelights
-    - scene.baby_bedtime
     - input_select.house_mode
     - input_boolean.guest_mode
+    - input_boolean.goodnight
