@@ -1,8 +1,7 @@
 action:
-  - service: input_select.select_option
+  - service: input_boolean.turn_on
     data:
-      entity_id: input_select.house_mode
-      option: Asleep
+      entity_id: input_boolean.goodnight
 
 speech:
   type: plain
