@@ -115,6 +115,4 @@ sensor.guest_bathroom_multisensor_homehealth:
 sensor.guest_bathroom_multisensor_emergency:
   ignored: true
   polling_intensity: 0
-switch.master_bedroom_fan_canopy_switch_switch:
-  refresh_value: true
 

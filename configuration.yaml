@@ -9,9 +9,6 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-# Allows you to issue voice commands from the frontend
-conversation:
-
 # Checks for available updates
 updater:
   reporting: False
@@ -102,7 +99,6 @@ history:
       
 # Enables the frontend
 frontend:
-#  development_repo: /srv/dev/home-assistant-polymer
 
 # Additional Panels
 panel_iframe:
@@ -113,6 +109,8 @@ panel_iframe:
     
 # Discover some devices automatically
 discovery:
+  ignore:
+    - sabnzbd
 
 # Track the sun
 sun:
@@ -147,6 +145,8 @@ http:
     - !secret cors_address2
   ip_ban_enabled: True
   login_attempts_threshold: 5
+  trusted_proxies: 127.0.0.1
+  use_x_forwarded_for: true
 
 cloud:
 
@@ -225,6 +225,7 @@ logger:
   default: warning
   logs:
      urllib3.connectionpool: fatal
+     #asyncio: debug
      #bellows: debug
      #zigpy: debug
      #platform.zha: debug
@@ -257,7 +258,12 @@ zwave:
   
 zha:
   usb_path: /dev/zigbee
-  database_path: /home/hass/zigbee.db 
+  database_path: /home/hass/zigbee.db
+  device_config:
+    00:22:a3:00:00:20:ce:42-1:
+      type: light
+    00:22:a3:00:00:20:db:24-1:
+      type: light
 
 # Additional Sensors
 sensor:
