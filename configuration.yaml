@@ -37,9 +37,19 @@ recorder:
       - sensor.pws_weather_2d
       - sensor.pws_weather_3d
       - camera.driveway_cam
+      - media_player.living_room
       - sensor.office_light_pico
       - sensor.office_fan_pico
-      - media_player.living_room
+      - sensor.master_bedroom_fan_pico
+      - sensor.master_bedroom_light_pico
+      - sensor.entryway_pico
+      - sensor.front_porch_pico
+      - sensor.hallway_pico
+      - sensor.living_room_pico
+      - sensor.kitchen_cabinet_pico
+      - sensor.attic_pressure
+      - sensor.hvac_return_pressure
+      - sensor.hvac_supply_pressure
 
 influxdb:
   username: !secret influxdb_user
