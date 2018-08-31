@@ -19,6 +19,7 @@ recorder:
   exclude:
     domains:
       - group
+      - media_player
       - updater
       - zone
       - zwave
@@ -37,7 +38,6 @@ recorder:
       - sensor.pws_weather_2d
       - sensor.pws_weather_3d
       - camera.driveway_cam
-      - media_player.living_room
       - sensor.office_light_pico
       - sensor.office_fan_pico
       - sensor.master_bedroom_fan_pico
@@ -116,6 +116,12 @@ panel_iframe:
     title: 'Graphs'
     icon: 'mdi:chart-line'
     url: !secret grafana_url
+
+panel_custom:
+  - name: zwavegraph
+    sidebar_title: Z-Wave Graph
+    sidebar_icon: mdi:access-point-network
+    url_path: zwavegraph
     
 # Discover some devices automatically
 discovery:
@@ -140,6 +146,13 @@ logbook:
 
 # Config Panel
 config:
+
+auth:
+  auth_providers:
+    - type: homeassistant
+    - type: legacy_api_password
+    - type: trusted_networks
+      
 
 # Set up HTTP frontend
 http:
@@ -216,9 +229,6 @@ camera:
   - platform: mjpeg
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
-    
-#climate:
-#  platform: nest
 
 device_tracker:
   - platform: unifi
@@ -238,8 +248,10 @@ logger:
      #asyncio: debug
      #bellows: debug
      #zigpy: debug
-     #platform.zha: debug
-     #components.zha: debug
+#     platform.zha: debug
+#     components.zha: debug
+#     homeassistant.components.sensor: debug
+ #    homeassistant.components.websocket_api: critical
      
 lutron_caseta_pro:
   bridges:
@@ -252,6 +264,10 @@ media_player:
     host: 192.168.1.199
     access_token: !secret vizio_access_token
     name: Living Room TV
+  - platform: alexa
+    email: !secret alexa_username
+    password: !secret alexa_password
+    url: 'amazon.com'
   
 nest:
   client_id: !secret nest_client_id
@@ -345,6 +361,18 @@ input_boolean:
     initial: off
   goodnight:
     name: Goodnight
+    initial: off
+  tb_living_room_quiet:
+    name: Living Room TileBoard Quiet Mode
+    initial: off
+  tb_master_bedroom_quiet:
+    name: Master Bedroom TileBoard Quiet Mode
+    initial: off
+  tb_nursery_quiet:
+    name: Nursery TileBoard Quiet Mode
+    initial: off
+  tb_guest_bedroom_quiet:
+    name: Guest Bedroom TileBoard Quiet Mode
     initial: off
   ad_door_chime:
     name: Door Chime
