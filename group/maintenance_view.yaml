@@ -10,10 +10,18 @@ maintenance:
     - group.water_sensors
     - group.all_automations
     - group.ad_automations
-    - group.fan_canopy_power
+    - group.tablet_controls
     
 ad_automations:
   name: AppDaemon Automations
   entities:
     - input_boolean.ad_door_chime
     - input_boolean.ad_auto_bathroom_lights
+    
+tablet_controls:
+  name: Tablet Controls
+  entities:
+    - input_boolean.tb_living_room_quiet
+    - input_boolean.tb_master_bedroom_quiet
+    - input_boolean.tb_guest_bedroom_quiet
+    - input_boolean.tb_nursery_quiet
