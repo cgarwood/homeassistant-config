@@ -176,12 +176,6 @@ cloud:
 # Set up primary components    
 alexa:
 
-#android_ip_webcam:
-#  - host: 192.168.1.211
-#    name: Living Room Tablet
-#    username: !secret ipw_username
-#    password: !secret ipw_password
-
 binary_sensor:
   - platform: template
     sensors:
@@ -246,20 +240,17 @@ logger:
   logs:
      urllib3.connectionpool: fatal
      #asyncio: debug
-     #bellows: debug
-     #zigpy: debug
+#     bellows: debug
+#     zigpy: debug
 #     platform.zha: debug
 #     components.zha: debug
 #     homeassistant.components.sensor: debug
- #    homeassistant.components.websocket_api: critical
      
 lutron_caseta_pro:
   bridges:
     - host: 192.168.1.221
     
 media_player:
-#  - platform: firetv
-#  - platform: cast
   - platform: vizio
     host: 192.168.1.199
     access_token: !secret vizio_access_token
@@ -286,9 +277,14 @@ zha:
   usb_path: /dev/zigbee
   database_path: /home/hass/zigbee.db
   device_config:
+    # Master Bedroom Light
     00:22:a3:00:00:20:ce:42-1:
       type: light
+    # Guest Bedroom Light
     00:22:a3:00:00:20:db:24-1:
+      type: light
+    # Nursery Light
+    00:22:a3:00:00:20:d0:23-1:
       type: light
 
 # Additional Sensors
@@ -337,19 +333,12 @@ notify:
     platform: pushbullet
     api_key: !secret pb_api_key
     channel_name: !secret pb_channel
-  
-  - name: firetv
-    platform: nfandroidtv
-    host: 192.168.1.231
     
   - name: html5
     platform: html5
     gcm_api_key: !secret gcm_api_key
     gcm_sender_id: !secret gcm_sender_id
-    
-  - name: living_room_echo
-    platform: command_line
-    command: "/home/hass/alexa_wrapper.sh -d 'Living Room Echo'"
+
     
 # Input Booleans
 input_boolean:
