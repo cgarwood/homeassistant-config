@@ -81,6 +81,12 @@ influxdb:
       - sensor.master_bedroom_multisensor_relative_humidity
       - sensor.guest_bedroom_multisensor_temperature
       - sensor.guest_bedroom_multisensor_relative_humidity
+      - sensor.attic_temperature
+      - sensor.attic_humidity
+      - sensor.hvac_supply_temperature
+      - sensor.hvac_return_temperature
+      - sensor.hvac_supply_humidity
+      - sensor.hvac_return_humidity
 
 # Enables support for tracking state changes over time.
 history:
