@@ -34,6 +34,9 @@ class SmokeDetectors(hass.Hass):
             # Get alarm location
             attributes = self.get_state(entity, attribute = 'all')
             location = attributes['attributes']['friendly_name'].split(' ')[0]
+
+            # Turn on TileBoard displays
+            self.fire_event('tileboard', command='screen_on')
             
         # Custom actions depending on alarm type
         if (new == '1'):
@@ -45,6 +48,7 @@ class SmokeDetectors(hass.Hass):
             
             # Send an alert
             self.call_service('notify/ios', title = "Smoke Detected", message = 'Smoke detected in ' + location)
+            self.fire_event('tileboard', command='notify', title = 'Smoke Detected', message = 'Smoke detected in ' + location, sound = '/sounds/fire.mp3', type = 'error')
             
         elif (new == '2'):
             # Carbon Monoxide
@@ -56,9 +60,11 @@ class SmokeDetectors(hass.Hass):
             
             # Send an alert
             self.call_service('notify/ios', title = "Carbon Monoxide Detected", message = 'Carbon Monoxide detected in ' + location)
-            
+            self.fire_event('tileboard', command='notify', title = 'Carbon Monoxide Detected', message = 'Carbon Monoxide detected in ' + location, sound = '/sounds/fire.mp3', type = 'error')
+
         elif (new == '12'):
             # Test Button
 
             # Send an alert
             self.call_service('notify/ios', title = "Smoke Detector Test", message = 'Testing ' + location + ' smoke detector')
+            self.fire_event('tileboard', command='notify', title = 'Smoke Detector Test', message = 'Testing ' + location + ' smoke detector', sound = '/sounds/fire.mp3', type = 'error')

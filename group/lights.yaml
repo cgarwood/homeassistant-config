@@ -26,4 +26,5 @@ emergency_lights:
     - light.guest_bathroom_fan_light_level
     - light.kitchen_light
     - light.master_bedroom
-    - light.office
+    - light.guest_bedroom
+    - light.nursery

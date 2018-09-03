@@ -9,14 +9,18 @@ class FanRemotes(hass.Hass):
     def initialize(self):
         self.listen_state(self.handle_light, "sensor.office_light_pico")
         self.listen_state(self.handle_light, "sensor.master_bedroom_light_pico")
+        self.listen_state(self.handle_light, "sensor.nursery_light_pico")
         self.listen_state(self.handle_fan, "sensor.office_fan_pico")
         self.listen_state(self.handle_fan, "sensor.master_bedroom_fan_pico")
+        self.listen_state(self.handle_fan, "sensor.nursery_fan_pico")
         
     def handle_light(self, entity, attribute, old, new, kwargs):
         if (entity == "sensor.office_light_pico"):
             controlled_entity = "light.guest_bedroom"
         if (entity == "sensor.master_bedroom_light_pico"):
             controlled_entity = "light.master_bedroom"
+        if (entity == "sensor.nursery_light_pico"):
+            controlled_entity = "light.nursery"
             
         if (new == '1'):
             # On
@@ -41,9 +45,11 @@ class FanRemotes(hass.Hass):
     def handle_fan(self, entity, attribute, old, new, kwargs):
         
         if (entity == "sensor.office_fan_pico"):
-            controlled_entity = "fan.office_fan"
+            controlled_entity = "fan.guest_bedroom"
         if (entity == "sensor.master_bedroom_fan_pico"):
             controlled_entity = "fan.master_bedroom_fan"
+        if (entity == "sensor.nursery_fan_pico"):
+            controlled_entity = "fan.nursery_fan"
             
         if (new == '1'):
             # On
