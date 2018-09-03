@@ -38,6 +38,7 @@ class SmokeDetectors(hass.Hass):
             # Turn on TileBoard displays
             self.fire_event('tileboard', command='screen_on')
             self.fire_event('tileboard', command='open_page', page='alert')
+            self.fire_event('tileboard', command='set_volume', volume=100)
             
         # Custom actions depending on alarm type
         if (new == '1'):
