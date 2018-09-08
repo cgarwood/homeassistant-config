@@ -153,13 +153,6 @@ logbook:
 # Config Panel
 config:
 
-auth:
-  auth_providers:
-    - type: homeassistant
-    - type: legacy_api_password
-    - type: trusted_networks
-      
-
 # Set up HTTP frontend
 http:
   api_password: !secret http_password
@@ -244,13 +237,11 @@ ios:
 logger:
   default: warning
   logs:
-     urllib3.connectionpool: fatal
-     #asyncio: debug
-#     bellows: debug
-#     zigpy: debug
-#     platform.zha: debug
-#     components.zha: debug
-#     homeassistant.components.sensor: debug
+    urllib3.connectionpool: fatal
+    #bellows: debug
+    #zigpy: debug
+    #homeassistant.components.sensor: debug
+    #homeassistant.components.fan: debug
      
 lutron_caseta_pro:
   bridges:
@@ -271,7 +262,6 @@ nest:
   client_secret: !secret nest_client_secret
  
 wink:
-#  local_control: true
   
 zwave:
   usb_path: /dev/zwave
