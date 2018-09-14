@@ -9,7 +9,3 @@ appdaemon:
       ha_key: !secret ha_key
 hadashboard:
   dash_url: http://192.168.1.220:5050
-  rss_feeds:
-    - feed: !secret rss_news1
-      target: news1
-  rss_update: 900
