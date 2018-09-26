@@ -348,22 +348,16 @@ input_boolean:
     initial: off
   goodnight:
     name: Goodnight
-    initial: off
   tb_living_room_quiet:
     name: Living Room TileBoard Quiet Mode
-    initial: off
   tb_master_bedroom_quiet:
     name: Master Bedroom TileBoard Quiet Mode
-    initial: off
   tb_nursery_quiet:
     name: Nursery TileBoard Quiet Mode
-    initial: off
   tb_guest_bedroom_quiet:
     name: Guest Bedroom TileBoard Quiet Mode
-    initial: off
   ad_door_chime:
     name: Door Chime
-    initial: off
   ad_auto_bathroom_lights:
     name: Auto Bathroom Lights
     initial: off
