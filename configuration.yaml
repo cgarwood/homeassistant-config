@@ -233,8 +233,6 @@ device_tracker:
     new_device_defaults:
       track_new_devices: false
 
-ios:
-
 logger:
   default: warning
   logs:
@@ -258,10 +256,6 @@ media_player:
   #  email: !secret alexa_username
   #  password: !secret alexa_password
   #  url: 'amazon.com'
-  
-nest:
-  client_id: !secret nest_client_id
-  client_secret: !secret nest_client_secret
  
 wink:
   
