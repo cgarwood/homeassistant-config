@@ -235,8 +235,8 @@ device_tracker:
 
 logger:
   default: warning
-  logs:
-    urllib3.connectionpool: fatal
+  #logs:
+    #urllib3.connectionpool: fatal
     #bellows: debug
     #zigpy: debug
     #homeassistant.components.sensor: debug
@@ -313,12 +313,12 @@ notify:
   - name: ios
     platform: group
     services:
-      - service: ios_charless_iphone 
+      - service: ios_charlessiphone 
   
   - name: emergency
     platform: group
     services:
-      - service: ios_charless_iphone
+      - service: ios_charlessiphone
       - service: pb
       
   - name: pb
