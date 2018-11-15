@@ -5,7 +5,7 @@ homeassistant:
   elevation: 196
   latitude: !secret latitude
   longitude: !secret longitude
-  
+
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
@@ -79,6 +79,8 @@ influxdb:
       - sensor.hvac_supply_humidity
       - sensor.master_bedroom_multisensor_temperature
       - sensor.master_bedroom_multisensor_relative_humidity
+      - sensor.master_bathroom_multisensor_temperature
+      - sensor.master_bathroom_multisensor_relative_humidity
       - sensor.guest_bedroom_multisensor_temperature
       - sensor.guest_bedroom_multisensor_relative_humidity
       - sensor.attic_temperature
@@ -112,7 +114,7 @@ history:
       - binary_sensor.office_fan
       - binary_sensor.living_room_fan_light_remote
       - binary_sensor.living_room_fan_remote
-      
+
 # Enables the frontend
 frontend:
   development_repo: /srv/dev/home-assistant-polymer
@@ -129,7 +131,7 @@ panel_custom:
     sidebar_title: Z-Wave Graph
     sidebar_icon: mdi:access-point-network
     url_path: zwavegraph
-    
+
 # Discover some devices automatically
 discovery:
   ignore:
@@ -173,7 +175,7 @@ http:
 
 cloud:
 
-# Set up primary components    
+# Set up primary components
 alexa:
 
 binary_sensor:
@@ -215,6 +217,9 @@ binary_sensor:
       master_bedroom_multisensor_motion:
         friendly_name: "Master Bedroom Motion"
         value_template: "{{ is_state('sensor.master_bedroom_multisensor_burglar', '8') }}"
+      master_bathroom_multisensor_motion:
+        friendly_name: "Master Bathroom Motion"
+        value_template: "{{ is_state('sensor.master_bathroom_multisensor_burglar', '8') }}"
       guest_bedroom_multisensor_motion:
         friendly_name: "Guest Bedroom Motion"
         value_template: "{{ is_state('sensor.guest_bedroom_multisensor_burglar', '8') }}"
@@ -235,18 +240,19 @@ device_tracker:
 
 logger:
   default: warning
-  #logs:
+  logs:
+    homeassistant.components.zwave: info
     #urllib3.connectionpool: fatal
     #bellows: debug
     #zigpy: debug
     #homeassistant.components.sensor: debug
     #homeassistant.components.fan: debug
     #homeassistant.components.zha: debug
-     
+
 lutron_caseta_pro:
   bridges:
     - host: 192.168.1.221
-    
+
 media_player:
   - platform: vizio
     host: 192.168.1.199
@@ -256,15 +262,15 @@ media_player:
   #  email: !secret alexa_username
   #  password: !secret alexa_password
   #  url: 'amazon.com'
- 
+
 wink:
-  
+
 zwave:
   usb_path: /dev/zwave
-  polling_interval: 60000
+  #polling_interval: 60000
   device_config: !include zwave_device_config.yaml
   network_key: !secret zwave_network_key
-  
+
 zha:
   usb_path: /dev/zigbee
   database_path: /home/hass/zigbee.db
@@ -313,25 +319,25 @@ notify:
   - name: ios
     platform: group
     services:
-      - service: ios_charlessiphone 
-  
+      - service: ios_charlessiphone
+
   - name: emergency
     platform: group
     services:
       - service: ios_charlessiphone
       - service: pb
-      
+
   - name: pb
     platform: pushbullet
     api_key: !secret pb_api_key
     channel_name: !secret pb_channel
-    
+
   - name: html5
     platform: html5
     gcm_api_key: !secret gcm_api_key
     gcm_sender_id: !secret gcm_sender_id
 
-    
+
 # Input Booleans
 input_boolean:
   recently_home:
@@ -355,13 +361,13 @@ input_boolean:
   ad_auto_bathroom_lights:
     name: Auto Bathroom Lights
     initial: off
-    
+
 # Date/Time Inputs
 input_datetime:
   christmas_light_auto_off:
     has_date: false
     has_time: true
-    
+
 # Input Selects
 input_select:
   charles_status:
@@ -388,7 +394,7 @@ input_select:
       - Away
       - Extended Away
       - Asleep
-      
+
 #switch:
 #  - platform: tplink
 #    host: 192.168.1.232

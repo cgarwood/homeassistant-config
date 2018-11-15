@@ -4,7 +4,7 @@ garage_multisensor:
     - binary_sensor.garage_multisensor_sensor
     - sensor.garage_multisensor_temperature
     - sensor.garage_multisensor_relative_humidity
-    
+
 living_room_multisensor:
   name: Living Room Multisensor
   entities:
@@ -33,13 +33,19 @@ master_bedroom_multisensor:
     - sensor.master_bedroom_multisensor_temperature
     - sensor.master_bedroom_multisensor_relative_humidity
 
+master_bathroom_multisensor:
+  name: Master Bathroom Multisensor
+  entities:
+    - binary_sensor.master_bathroom_multisensor_motion
+    - sensor.master_bathroom_multisensor_temperature
+    - sensor.master_bathroom_multisensor_relative_humidity
 guest_bedroom_multisensor:
   name: Guest Bedroom Multisensor
   entities:
     - binary_sensor.guest_bedroom_multisensor_motion
     - sensor.guest_bedroom_multisensor_temperature
     - sensor.guest_bedroom_multisensor_relative_humidity
-    
+
 multisensor_batteries:
   name: Multisensor Batteries
   entities:

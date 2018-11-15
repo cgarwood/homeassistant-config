@@ -14,6 +14,7 @@ default_view:
     - group.guest_bathroom_multisensor
     - group.nursery_multisensor
     - group.master_bedroom_multisensor
+    - group.master_bathroom_multisensor
     - group.guest_bedroom_multisensor
     - group.attic_multisensor
     - group.hvac_multisensor
