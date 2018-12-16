@@ -6,6 +6,9 @@ light.guest_bathroom_fan_light_level:
   refresh_value: true
   delay: 3
   polling_intensity: 1
+switch.living_room_smart_plug:
+  refresh_value: true
+  delay: 3
 sensor.front_door_alarm_level:
   ignored: true
 sensor.back_door_alarm_level:
@@ -115,4 +118,3 @@ sensor.guest_bathroom_multisensor_homehealth:
 sensor.guest_bathroom_multisensor_emergency:
   ignored: true
   polling_intensity: 0
-

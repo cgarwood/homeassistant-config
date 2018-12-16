@@ -25,3 +25,6 @@ smokedetectors:
 guestbathroomlightwatcher:
   module: guest_bathroom_light_watcher
   class: GuestBathroomLightWatcher
+magic_cubes:
+  module: magic_cubes
+  class: MagicCubes

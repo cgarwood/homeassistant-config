@@ -277,7 +277,6 @@ lutron_caseta_pro:
     - host: 192.168.1.221
 
 media_player:
-  # Vizio integration currently broken (0.83) with new Vizio firmware
   - platform: vizio
     host: 192.168.1.199
     access_token: !secret vizio_access_token

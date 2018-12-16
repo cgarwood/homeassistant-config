@@ -17,5 +17,5 @@
 known_devices.yaml
 secrets.yaml
 zone.yaml
-entity_registry.yaml
+ip_bans.yaml
 appdaemon/appdaemon.yaml
