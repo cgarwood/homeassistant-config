@@ -21,6 +21,7 @@ recorder:
       - group
       - media_player
       - updater
+      - zha
       - zone
       - zwave
     entities:
@@ -122,8 +123,8 @@ frontend:
 # Additional Panels
 panel_iframe:
   grafana:
-    title: 'Graphs'
-    icon: 'mdi:chart-line'
+    title: "Graphs"
+    icon: "mdi:chart-line"
     url: !secret grafana_url
 
 panel_custom:
@@ -161,11 +162,11 @@ http:
   api_password: !secret http_password
   ssl_certificate: /etc/letsencrypt/live/garwood.family/fullchain.pem
   ssl_key: /etc/letsencrypt/live/garwood.family/privkey.pem
-  trusted_networks:
-    - 192.168.1.0/24
+  #trusted_networks:
+  #  - 192.168.1.0/24
   cors_allowed_origins:
-    - 'https://192.168.1.220'
-    - '*'
+    - "https://192.168.1.220"
+    - "*"
     - !secret cors_address1
     - !secret cors_address2
   ip_ban_enabled: True
@@ -238,13 +239,35 @@ device_tracker:
     new_device_defaults:
       track_new_devices: false
 
+homekit:
+  filter:
+    include_domains:
+      - climate
+      - light
+      - fan
+      - switch
+    include_entities:
+      - sensor.living_room_multisensor_temperature
+      - sensor.guest_bathroom_multisensor_temperature
+      - sensor.guest_bedroom_multisensor_temperature
+      - sensor.master_bathroom_multisensor_temperature
+      - sensor.master_bedroom_multisensor_temperature
+      - sensor.nursery_multisensor_temperature
+      - sensor.living_room_multisensor_relative_humidity
+      - sensor.guest_bathroom_multisensor_relative_humidity
+      - sensor.guest_bedroom_multisensor_relative_humidity
+      - sensor.master_bathroom_multisensor_relative_humidity
+      - sensor.master_bedroom_multisensor_relative_humidity
+      - sensor.nursery_multisensor_relative_humidity
+
 logger:
   default: warning
   logs:
-    homeassistant.components.zwave: info
+    #homeassistant.components.zwave: info
     #urllib3.connectionpool: fatal
     #bellows: debug
     #zigpy: debug
+    #homeassistant.core: debug
     #homeassistant.components.sensor: debug
     #homeassistant.components.fan: debug
     #homeassistant.components.zha: debug
@@ -254,6 +277,7 @@ lutron_caseta_pro:
     - host: 192.168.1.221
 
 media_player:
+  # Vizio integration currently broken (0.83) with new Vizio firmware
   - platform: vizio
     host: 192.168.1.199
     access_token: !secret vizio_access_token
@@ -274,6 +298,7 @@ zwave:
 zha:
   usb_path: /dev/zigbee
   database_path: /home/hass/zigbee.db
+  enable_quirks: true
   device_config:
     # Master Bedroom Light
     00:22:a3:00:00:20:ce:42-1:
@@ -337,7 +362,6 @@ notify:
     gcm_api_key: !secret gcm_api_key
     gcm_sender_id: !secret gcm_sender_id
 
-
 # Input Booleans
 input_boolean:
   recently_home:
@@ -395,10 +419,13 @@ input_select:
       - Extended Away
       - Asleep
 
-#switch:
-#  - platform: tplink
-#    host: 192.168.1.232
-#    name: Christmas Tree
+switch:
+  - platform: tplink
+    host: 192.168.1.232
+    name: Hallway Christmas Lights
+  - platform: tplink
+    host: 192.168.1.233
+    name: Living Room Christmas Lights
 
 # The rest...
 alert: !include_dir_merge_named alerts

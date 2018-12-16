@@ -1,0 +1,35 @@
+- alias: Outside Lights on at Sunset
+  trigger:
+    - platform: sun
+      event: sunset
+  action:
+    service: homeassistant.turn_on
+    entity_id:
+      - switch.outside_plug_switch
+      - switch.garage_smart_plug_switch
+
+- alias: Outside Lights off at 10:00
+  trigger:
+    - platform: time
+      at: "22:00:00"
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - switch.outside_plug_switch
+      - switch.garage_smart_plug_switch
+- alias: Outside Lights Over-Power Shutoff
+  trigger:
+    - platform: numeric_state
+      entity_id: sensor.garage_smart_plug_power
+      above: 100
+      for:
+        seconds: 5
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.garage_smart_plug_switch
+    - service: notify.ios
+      data_template:
+        title: Outside Light Power Alert
+        message: |
+          Outside lights exceeded power limit and were shut off
+          Power draw: {{ states.sensor.garage_smart_plug_power.state }} W

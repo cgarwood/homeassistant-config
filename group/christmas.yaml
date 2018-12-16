@@ -1,0 +1,7 @@
+christmas:
+  name: Christmas
+  entities:
+    - switch.living_room_smart_plug
+    - switch.hallway_christmas_lights
+    - switch.living_room_christmas_lights
+    - switch.wax_melt_switch
