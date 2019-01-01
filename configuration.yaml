@@ -262,15 +262,12 @@ homekit:
 
 logger:
   default: warning
-  logs:
-    #homeassistant.components.zwave: info
-    #urllib3.connectionpool: fatal
-    #bellows: debug
-    #zigpy: debug
-    #homeassistant.core: debug
-    #homeassistant.components.sensor: debug
-    #homeassistant.components.fan: debug
-    #homeassistant.components.zha: debug
+  #logs:
+  #homeassistant.components.zwave: info
+  #bellows: debug
+  #zigpy: debug
+  #homeassistant.components.fan: debug
+  #homeassistant.components.zha: debug
 
 lutron_caseta_pro:
   bridges:
@@ -371,6 +368,8 @@ input_boolean:
     initial: off
   goodnight:
     name: Goodnight
+  goodnight_master:
+    name: Master Goodnight
   tb_living_room_quiet:
     name: Living Room TileBoard Quiet Mode
   tb_master_bedroom_quiet:
