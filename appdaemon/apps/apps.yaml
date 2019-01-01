@@ -28,3 +28,9 @@ guestbathroomlightwatcher:
 magic_cubes:
   module: magic_cubes
   class: MagicCubes
+living_room_night_lights:
+  module: living_room_night_lights
+  class: LivingRoomNightLights
+battery_checker:
+  module: battery_checker
+  class: BatteryChecker
