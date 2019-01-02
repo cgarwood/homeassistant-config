@@ -40,7 +40,7 @@ class LivingRoomNightLights(hass.Hass):
             # Start a lights off timer
             self.light_off_timer = self.run_in(self.lights_out, 30)
 
-    def lights_out(self):
+    def lights_out(self, kwargs):
         self.call_service('homeassistant/turn_off',
                           entity_id='light.living_room_accent_lights')
         self.call_service('homeassistant/turn_off',

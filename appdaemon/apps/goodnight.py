@@ -16,6 +16,9 @@ class GoodNight(hass.Hass):
         # Turn off at 6:15am
         self.run_daily(self.goodmorning, time(6, 15, 0))
 
+        # Nursery Door alerts
+        self.listen_state(self.chime, "binary_sensor.nursery_door")
+
     def goodnight(self, entity, attribute, old, new, kwargs):
          # Sanity Check
         if (self.time_in_range(time(20, 00), time(23, 59), datetime.now().time()) or self.time_in_range(time(00, 00), time(5, 00), datetime.now().time())):
@@ -196,3 +199,8 @@ class GoodNight(hass.Hass):
                           entity_id='input_boolean.goodnight')
         self.call_service('input_boolean/turn_off',
                           entity_id='input_boolean.goodnight_master')
+
+    def chime(self, entity, attribute, old, new, kwargs):
+        if (new == 'on' and self.get_state('input_boolean.goodnight') == 'on'):
+            self.fire_event("tileboard", command="tts",
+                            sound="/sounds/strings.mp3", message="Nursery Door Opened", target="master_bedroom")
