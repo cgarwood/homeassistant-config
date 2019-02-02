@@ -157,6 +157,9 @@ logbook:
 # Config Panel
 config:
 
+# System Health
+system_health:
+
 # Set up HTTP frontend
 http:
   api_password: !secret http_password
@@ -283,8 +286,6 @@ media_player:
   #  password: !secret alexa_password
   #  url: 'amazon.com'
 
-wink:
-
 zwave:
   usb_path: /dev/zwave
   #polling_interval: 60000
@@ -304,6 +305,9 @@ zha:
       type: light
     # Nursery Light
     00:22:a3:00:00:20:d0:23-1:
+      type: light
+    # Living Room Light
+    00:22:a3:00:00:16:bc:fa-1:
       type: light
 
 # Additional Sensors

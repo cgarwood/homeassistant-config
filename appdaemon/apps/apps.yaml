@@ -34,3 +34,6 @@ living_room_night_lights:
 battery_checker:
   module: battery_checker
   class: BatteryChecker
+#temperature_alerts:
+#  module: temperature_alerts
+#  class: TemperatureAlerts

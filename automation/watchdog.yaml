@@ -1,18 +1,18 @@
 # Turn off outside lights if they are turned on during the day
 - alias: Watchdog - Outside Lights
   trigger:
-    - platform: time
-      minutes: '/10'
+    - platform: time_pattern
+      minutes: "/10"
       seconds: 0
   condition:
     condition: and
     conditions:
       - condition: state
         entity_id: sun.sun
-        state: 'above_horizon'
+        state: "above_horizon"
       - condition: state
         entity_id: group.outdoor_lights
-        state: 'on'
+        state: "on"
   action:
     service: homeassistant.turn_off
     entity_id:
