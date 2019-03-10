@@ -14,7 +14,7 @@ class GoodNight(hass.Hass):
         self.setup_goodnight_master_listener(None)
 
         # Turn off at 6:15am
-        self.run_daily(self.goodmorning, time(6, 15, 0))
+        self.run_daily(self.goodmorning, time(6, 30, 0))
 
         # Nursery Door alerts
         self.listen_state(self.chime, "binary_sensor.nursery_door")
@@ -97,16 +97,8 @@ class GoodNight(hass.Hass):
                               entity_id='switch.living_room_smartplug')
 
             # Turn off lights in communal areas (not bathrooms or bedrooms)
-            self.call_service('homeassistant/turn_off',
-                              entity_id='light.back_porch_light')
-            self.call_service('homeassistant/turn_off',
-                              entity_id='light.front_porch_light')
-            self.call_service('homeassistant/turn_off',
-                              entity_id='light.kitchen_light')
-            self.call_service('homeassistant/turn_off',
-                              entity_id='light.entryway_light')
-            self.call_service('homeassistant/turn_off',
-                              entity_id='light.hallway_light')
+            self.call_service('homeassistant/turn_on',
+                              entity_id='scene.common_lights_off')
             self.call_service('homeassistant/turn_off',
                               entity_id='fan.living_room_fan')
 

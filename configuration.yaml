@@ -31,13 +31,6 @@ recorder:
       - sensor.energy_meter_power_3
       - sensor.ups_load
       - sensor.ups_time_left
-      - sensor.pws_temp_high_2d_f
-      - sensor.pws_temp_low_2d_f
-      - sensor.pws_temp_high_3d_f
-      - sensor.pws_temp_low_3d_f
-      - sensor.pws_weather_1d
-      - sensor.pws_weather_2d
-      - sensor.pws_weather_3d
       - camera.driveway_cam
       - sensor.office_light_pico
       - sensor.office_fan_pico
@@ -51,6 +44,10 @@ recorder:
       - sensor.attic_pressure
       - sensor.hvac_return_pressure
       - sensor.hvac_supply_pressure
+      - sensor.dark_sky_minutely_summary
+      - sensor.dark_sky_hourly_summary
+      - sensor.dark_sky_daily_summary
+      - sensor.dark_sky_icon_0
 
 influxdb:
   username: !secret influxdb_user
@@ -60,9 +57,6 @@ influxdb:
       - climate.hallway
       - sensor.hallway_thermostat_humidity
       - sensor.hallway_thermostat_hvac_state
-      - sensor.pws_temp_f
-      - sensor.pws_relative_humidity
-      - sensor.pws_feelslike_f
       - sensor.garage_multisensor_temperature
       - sensor.garage_multisensor_relative_humidity
       - sensor.energy_meter_power
@@ -90,6 +84,8 @@ influxdb:
       - sensor.hvac_return_temperature
       - sensor.hvac_supply_humidity
       - sensor.hvac_return_humidity
+      - sensor.dark_sky_temperature
+      - sensor.dark_sky_humidity
 
 # Enables support for tracking state changes over time.
 history:
@@ -267,9 +263,9 @@ logger:
   default: warning
   #logs:
   #homeassistant.components.zwave: info
+  #homeassistant.core: debug
   #bellows: debug
   #zigpy: debug
-  #homeassistant.components.fan: debug
   #homeassistant.components.zha: debug
 
 lutron_caseta_pro:
@@ -312,27 +308,35 @@ zha:
 
 # Additional Sensors
 sensor:
-  - platform: wunderground
-    api_key: !secret wunderground_api_key
+  - platform: mold_indicator
+    name: Living Room Condensation
+    indoor_temp_sensor: sensor.living_room_multisensor_temperature
+    indoor_humidity_sensor: sensor.living_room_multisensor_relative_humidity
+    outdoor_temp_sensor: sensor.dark_sky_temperature
+    calibration_factor: 1.5
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    forecast:
+      - 0
     monitored_conditions:
-      - alerts
-      - temp_f
-      - relative_humidity
-      - weather
-      - wind_dir
-      - wind_mph
-      - feelslike_f
-      - precip_1d
-      - precip_today_in
-      - temp_high_1d_f
-      - temp_low_1d_f
-      - temp_high_2d_f
-      - temp_low_2d_f
-      - temp_high_3d_f
-      - temp_low_3d_f
-      - weather_1d
-      - weather_2d
-      - weather_3d
+      - summary
+      - icon
+      - precip_type
+      - precip_probability
+      - precip_accumulation
+      - temperature
+      - apparent_temperature
+      - wind_speed
+      - wind_gust
+      - wind_bearing
+      - humidity
+      - temperature_high
+      - temperature_low
+      - nearest_storm_distance
+      - nearest_storm_bearing
+      - minutely_summary
+      - hourly_summary
+      - daily_summary
   - platform: systemmonitor
     resources:
       - type: memory_use_percent
