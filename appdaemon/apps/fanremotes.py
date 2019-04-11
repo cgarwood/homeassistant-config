@@ -14,6 +14,8 @@ class FanRemotes(hass.Hass):
         self.listen_state(self.handle_light, "sensor.nursery_light_pico")
         self.listen_state(self.handle_light,
                           "sensor.living_room_fan_light_pico")
+        self.listen_state(self.handle_light,
+                          "sensor.guest_bathroom_pico")
         self.listen_state(self.handle_fan, "sensor.office_fan_pico")
         self.listen_state(self.handle_fan, "sensor.master_bedroom_fan_pico")
         self.listen_state(self.handle_fan, "sensor.nursery_fan_pico")
@@ -23,7 +25,8 @@ class FanRemotes(hass.Hass):
         remotes = {
             "sensor.office_light_pico": {
                 'controlled_entity': 'light.guest_bedroom',
-                'favorite_level': 10
+                'favorite_level': 10,
+                'tablet': 'zoeys_room'
             },
             "sensor.master_bedroom_light_pico": {
                 'controlled_entity': 'light.master_bedroom',
@@ -39,6 +42,10 @@ class FanRemotes(hass.Hass):
                 'controlled_entity': 'light.living_room',
                 'favorite_level': 5,
                 'tablet': 'living_room'
+            },
+            "sensor.guest_bathroom_pico": {
+                'controlled_entity': 'light.guest_bathroom_fan_light_level',
+                'favorite_level': 50,
             }
         }
 
