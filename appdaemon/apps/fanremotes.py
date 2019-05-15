@@ -16,6 +16,8 @@ class FanRemotes(hass.Hass):
                           "sensor.living_room_fan_light_pico")
         self.listen_state(self.handle_light,
                           "sensor.guest_bathroom_pico")
+        self.listen_state(self.handle_light,
+                          "sensor.zoey_s_bedroom_pico")
         self.listen_state(self.handle_fan, "sensor.office_fan_pico")
         self.listen_state(self.handle_fan, "sensor.master_bedroom_fan_pico")
         self.listen_state(self.handle_fan, "sensor.nursery_fan_pico")
@@ -46,6 +48,10 @@ class FanRemotes(hass.Hass):
             "sensor.guest_bathroom_pico": {
                 'controlled_entity': 'light.guest_bathroom_fan_light_level',
                 'favorite_level': 50,
+            },
+            "sensor.zoey_s_bedroom_pico": {
+                'controlled_entity': 'light.zoeys_lamp',
+                'favorite_level': 15,
             }
         }
 

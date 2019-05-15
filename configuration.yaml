@@ -391,12 +391,39 @@ input_boolean:
   ad_auto_bathroom_lights:
     name: Auto Bathroom Lights
     initial: off
+  auto_fan_master_bedroom:
+    name: Master Bedroom Auto Fan
+    initial: off
+  auto_fan_nursery:
+    name: Nursery Auto Fan
+    initial: off
+  auto_fan_zoey:
+    name: Zoey's Bedroom Auto Fan
+    initial: off
 
 # Date/Time Inputs
 input_datetime:
   christmas_light_auto_off:
     has_date: false
     has_time: true
+
+# Numeric Inputs
+input_number:
+  auto_fan_master_bedroom_target:
+    min: 60
+    max: 80
+    mode: box
+    unit_of_measurement: "°F"
+  auto_fan_nursery_target:
+    min: 60
+    max: 80
+    mode: box
+    unit_of_measurement: "°F"
+  auto_fan_zoey_target:
+    min: 60
+    max: 80
+    mode: box
+    unit_of_measurement: "°F"
 
 # Input Selects
 input_select:
