@@ -178,6 +178,12 @@ cloud:
 # Set up primary components
 alexa:
 
+alexa_media:
+  accounts:
+    - email: !secret alexa_username
+      password: !secret alexa_password
+      url: 'amazon.com'
+
 binary_sensor:
   - platform: template
     sensors:
@@ -229,6 +235,11 @@ camera:
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
 
+custom_updater:
+  component_urls:
+    - https://raw.githubusercontent.com/keatontaylor/alexa_media_player/master/custom_components.json
+    - https://raw.githubusercontent.com/upsert/lutron-caseta-pro/master/custom_updater.json
+
 device_tracker:
   - platform: unifi
     host: 192.168.1.201
@@ -277,10 +288,6 @@ media_player:
     host: 192.168.1.199
     access_token: !secret vizio_access_token
     name: Living Room TV
-  #- platform: alexa
-  #  email: !secret alexa_username
-  #  password: !secret alexa_password
-  #  url: 'amazon.com'
 
 zwave:
   usb_path: /dev/zwave
@@ -360,11 +367,6 @@ notify:
     platform: pushbullet
     api_key: !secret pb_api_key
     channel_name: !secret pb_channel
-
-  - name: html5
-    platform: html5
-    gcm_api_key: !secret gcm_api_key
-    gcm_sender_id: !secret gcm_sender_id
 
 # Input Booleans
 input_boolean:
