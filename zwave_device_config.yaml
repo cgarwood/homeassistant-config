@@ -118,3 +118,27 @@ sensor.guest_bathroom_multisensor_homehealth:
 sensor.guest_bathroom_multisensor_emergency:
   ignored: true
   polling_intensity: 0
+sensor.guest_bedroom_multisensor_homehealth:
+  ignored: true
+  polling_intensity: 0
+sensor.guest_bedroom_multisensor_sourcenodeid:
+  ignored: true
+  polling_intensity: 0
+sensor.guest_bedroom_multisensor_emergency:
+  ignored: true
+  polling_intensity: 0
+sensor.hank_hkzwso01_smart_plug_previous_reading:
+  ignored: true
+  polling_intensity: 0
+sensor.hank_hkzwso01_smart_plug_previous_reading_2:
+  ignored: true
+  polling_intensity: 0
+sensor.living_room_smart_plug_previous_reading:
+  ignored: true
+  polling_intensity: 0
+sensor.hank_hkzwso01_smart_plug_previous_reading_3:
+  ignored: true
+  polling_intensity: 0
+sensor.garage_smart_plug_previous_reading_2:
+  ignored: true
+  polling_intensity: 0

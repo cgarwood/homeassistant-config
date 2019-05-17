@@ -21,6 +21,7 @@ recorder:
       - camera
       - group
       - media_player
+      - scene
       - updater
       - zha
       - zone
@@ -35,6 +36,8 @@ recorder:
       - camera.driveway_cam
       - sensor.office_light_pico
       - sensor.office_fan_pico
+      - sensor.nursery_light_pico
+      - sensor.nursery_fan_pico
       - sensor.master_bedroom_fan_pico
       - sensor.master_bedroom_light_pico
       - sensor.entryway_pico
@@ -49,6 +52,7 @@ recorder:
       - sensor.dark_sky_hourly_summary
       - sensor.dark_sky_daily_summary
       - sensor.dark_sky_icon_0
+      - persistent_notification.config_entry_discovery
     event_types:
       - service_removed
       - service_executed
