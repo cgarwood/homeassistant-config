@@ -171,6 +171,14 @@ class GoodNight(hass.Hass):
     def goodmorning(self, kwargs):
         self.reset_switches()
 
+        # Turn off auto-fan in bedrooms
+        self.call_service('homeassistant/turn_off',
+                          entity_id='input_boolean.auto_fan_master_bedroom')
+        self.call_service('homeassistant/turn_off',
+                          entity_id='input_boolean.auto_fan_nursery')
+        self.call_service('homeassistant/turn_off',
+                          entity_id='input_boolean.auto_fan_zoey')
+
     # Helper Functions
     def time_in_range(self, start, end, x):
         if start <= end:

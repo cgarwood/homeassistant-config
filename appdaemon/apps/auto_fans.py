@@ -26,6 +26,13 @@ class AutoFans(hass.Hass):
                 'enabled': 'input_boolean.auto_fan_nursery',
                 'callbacks': {}
             },
+            {
+                'fan': 'fan.guest_bedroom',
+                'temperature': 'sensor.guest_bedroom_multisensor_temperature',
+                'target': 'input_number.auto_fan_zoey_target',
+                'enabled': 'input_boolean.auto_fan_zoey',
+                'callbacks': {}
+            },
         ]
 
         for fan in self.fans:

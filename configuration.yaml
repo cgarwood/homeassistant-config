@@ -18,6 +18,7 @@ recorder:
   purge_interval: 0
   exclude:
     domains:
+      - camera
       - group
       - media_player
       - updater
@@ -48,6 +49,24 @@ recorder:
       - sensor.dark_sky_hourly_summary
       - sensor.dark_sky_daily_summary
       - sensor.dark_sky_icon_0
+    event_types:
+      - service_removed
+      - service_executed
+      - platform_discovered
+      - homeassistant_start
+      - homeassistant_stop
+      - feedreader
+      - service_registered
+      - call_service
+      - component_loaded
+      - system_log_event
+      - automation_triggered
+      - script_started
+      - timer_out_of_sync
+      - !secret alexa_media_event
+      - zwave.network_stop
+      - zwave.network_start
+      - zwave.network_ready
 
 influxdb:
   username: !secret influxdb_user
