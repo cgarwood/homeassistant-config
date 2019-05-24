@@ -1,65 +1,60 @@
 ##
-# WeatherUnderground Weather Alerts
+# National Weather Service Weather Alerts
 # Monitors specific alert types and plays an alert tone & TTS on tablets
 #
 # TODO: Different alert tones for different alert types?
 ##
 
 import appdaemon.plugins.hass.hassapi as hass
+import datetime
+import requests
+
 
 class WeatherAlerts(hass.Hass):
 
     def initialize(self):
-        self.listen_state(self.handle_alerts, "sensor.pws_alerts", attribute = "all")
-    
-    def handle_alerts(self, entity, attribute, old, new, kwargs):
-        
-        # Alert types to monitor and send alert tone/TTS:
-        monitored_alerts = {
-            "TOR" : "Tornado Warning",
-            "WRN" : "Severe Thunderstorm Warning",
-            "SPE" : "Special Weather Statement",
-            "SVR" : "Severe Weather Statement"
-        }
-        
-        alert = False
-        
-        # If the sensor state is only 1, the alert type is not appended to the attributes.
-        if (int(new['state']) == 1):
-            for k,v in monitored_alerts.items():
-                # Check if the alert should be monitored
-                if (new['attributes']['Description'] == v):
-                    if (int(old['state']) > 1):
-                        # Check if it's the same alert so we don't fire the alert tone again
-                        if (new['attributes']['Message'] != old['attributes']['Message_' + k]):
-                            # We have a new alert message
-                            alert = True
-                    else:
-                        # Check if the message has changed
-                        if (new['attributes']['Message'] != old['attributes']['Message']):
-                            alert = True
-                           
-            # If we have a new alert, fire off the alert tone and read the TTS
-            if (alert == True):
-                message = new['attributes']['Message'].split('Lat...Lon')[0]
-                self.fire_event('tileboard', command='tts', sound = 'eas.mp3', message = message)
-        
-        # If the state is > 1, the alert type is appended to the attributes
-        elif (int(new['state']) > 1):
-            for k,v in monitored_alerts.items():
-                if ('Description_'+k in new['attributes']):
-                    # We have a monitored alert, see if it's new
-                    
-                    if (int(old['state']) < 2):
-                        oldMessage = old['attributes']['Message'];
-                    else:
-                        oldMessage = old['attributes']['Message_'+k];
-                        
-                    if (new['attributes']['Message_'+k] != oldMessage):
-                        # New message
-                        alert = True
-                        message = new['attributes']['Message_'+k].split('Lat...Lon')[0]
-                        
-            if (alert == True):
-                self.fire_event('tileboard', command='tts', sound = 'eas.mp3', message = message)
-                
+        self.alerts = {}
+        self.monitored_alerts = [
+            "Tornado Warning",
+            "Severe Thunderstorm Warning",
+            # "Severe Thunderstorm Watch",
+            "Severe Weather Statement",
+            "Special Weather Statement"
+        ]
+        time = datetime.datetime.now()
+        self.run_every(self.check_alerts, time, 2 * 60)
+
+    def check_alerts(self, kwargs):
+        url = self.args["alerts_url"]
+        resp = requests.get(url)
+        data = resp.json()
+
+        for alert in data['features']:
+            alert = alert['properties']
+            # self.log("Processing alert: {}".format(alert['event']))
+
+            # Only track specific alert types
+            if (alert['event'] not in self.monitored_alerts):
+                # self.log("Ignoring alert: {}".format(alert['event']))
+                continue
+
+            # If we already have the alert in the list, check and see if the details have changed
+            if (alert['id'] in self.alerts.keys()):
+                if (alert['description'] == self.alerts[alert['id']]['description']):
+                    # It's the same, do nothing
+                    # self.log("Alert Unchanged: {}".format(alert['event']))
+                    continue
+
+            # Update our local cache
+            self.alerts[alert['id']] = alert
+            self.log("New alert: {}".format(alert['event']))
+
+            # Set message for Alexa TTS
+            message = alert['description']
+            data = {
+                'type': 'announce'
+            }
+            self.fire_event('tileboard', command='play_sound',
+                            sound='/sounds/eas2.mp3', target='living_room')
+            self.call_service('notify/alexa_media_everywhere',
+                              message=message, data=data)

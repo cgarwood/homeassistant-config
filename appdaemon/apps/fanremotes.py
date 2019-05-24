@@ -24,6 +24,7 @@ class FanRemotes(hass.Hass):
         self.listen_state(self.handle_fan, "sensor.living_room_fan_pico")
 
     def handle_light(self, entity, attribute, old, new, kwargs):
+        self.log('Pico Button Press: {} - {}'.format(entity, new))
         remotes = {
             "sensor.office_light_pico": {
                 'controlled_entity': 'light.guest_bedroom',
@@ -112,7 +113,7 @@ class FanRemotes(hass.Hass):
                                   brightness=new_level)
 
     def handle_fan(self, entity, attribute, old, new, kwargs):
-
+        self.log('Pico Button Press: {} - {}'.format(entity, new))
         if (entity == "sensor.office_fan_pico"):
             controlled_entity = "fan.guest_bedroom"
         if (entity == "sensor.master_bedroom_fan_pico"):

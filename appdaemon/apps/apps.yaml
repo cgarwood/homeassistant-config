@@ -19,6 +19,7 @@ autobathroomlights:
 weatheralerts:
   module: weather_alerts
   class: WeatherAlerts
+  alerts_url: !secret alerts_url
 smokedetectors:
   module: smoke_detectors
   class: SmokeDetectors

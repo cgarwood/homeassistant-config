@@ -6,8 +6,8 @@ Configuration files from my Home-Assistant installation, running on a Raspberry 
 - (AppDaemon) Severe Weather Alerts play an alert tone and TTS over wall-mounted tablets
 - (AppDaemon) Door Chime plays a chime when doors are opened/closed over wall-mounted tablets
 - (AppDaemon) Goodnight script locks doors, turns off TV, turns off lights in common areas, and leaves a few dim lights on for 30s so you can see to get down the hallway
-- (HADashboard) Custom screensaver widget shows current weather conditions, weather alerts, and acts as a digital picture frame.
-- Smoke Detector activation sends an alert, turns on lights, turns off HVAC
+- (AppDaemon) Auto Fans script automatically adjusts bedroom ceiling fans based on current room temperature
+- (AppDaemon) Smoke Detector activation sends an alert, turns on lights, turns off HVAC
 
 ## Devices include:
 - [Amazon Echo Dots](http://a.co/1qqqE3R)
