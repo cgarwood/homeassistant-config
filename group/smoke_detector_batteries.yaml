@@ -1,7 +1,0 @@
-smoke_detector_batteries:  
-  name: Smoke Detector Batteries
-  entities:
-    - sensor.garage_smoke_battery
-    - sensor.hallway_smoke_battery
-    - sensor.office_smoke_battery
-    - sensor.nursery_smoke_battery

@@ -1,6 +1,0 @@
-system_monitor:
-  name: System Monitor
-  entities:
-    - sensor.memory_use_percent
-    - sensor.processor_use
-    - sensor.last_boot

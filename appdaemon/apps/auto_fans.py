@@ -104,7 +104,7 @@ class AutoFans(hass.Hass):
         # If we're above target temperature adjust speed based on how far above
         if (temperature > target):
             speed = 'low'
-            if (temperature > target + 8):
+            if (temperature > target + 5):
                 speed = 'medium'
 
             # Turn the fan on if it's off and we're more than 1 degree above target
