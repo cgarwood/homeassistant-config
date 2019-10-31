@@ -23,7 +23,9 @@ binary_sensor.master_bedroom_window:
   device_class: opening
 binary_sensor.master_bathroom_window:
   device_class: opening
-  
+binary_sensor.nursery_door:
+  device_class: opening
+
 ## Motion Sensors
 binary_sensor.garage_multisensor_sensor:
   friendly_name: Garage Motion
@@ -34,23 +36,23 @@ binary_sensor.guest_bathroom_multisensor_motion:
   device_class: motion
 binary_sensor.nursery_multisensor_motion:
   device_class: motion
-  
+
 ## HVAC Sensors
 binary_sensor.hallway_thermostat_fan:
   friendly_name: Central Fan
-  
+
 ## Water Sensors
 binary_sensor.water_sensor_sensor:
   friendly_name: Kitchen Water Sensor
   device_class: problem
-  
+
 # Device Trackers
 device_tracker.charlessiphone:
   friendly_name: Charles's iPhone
 device_tracker.tinasiphone:
   friendly_name: Tina's iPhone
-  
-# Groups  
+
+# Groups
 group.all_lights:
   hidden: false
   emulated_hue_hidden: false
@@ -70,7 +72,7 @@ light.guest_bathroom_fan_light_level:
 # Scripts
 script.goodbyelights:
   friendly_name: Goodbye
-  
+
 # Sensors
 ## Door Sensors
 
@@ -83,19 +85,7 @@ sensor.garage_smoke_detector_alarm_level:
   hidden: true
 sensor.garage_smoke_detector_alarm_type:
   friendly_name: Garage Smoke Detector Status
-  
-## Wunderground Weather Sensors
-sensor.pws_temp_f:
-  friendly_name: Current Temperature
-sensor.pws_relative_humidity:
-  friendly_name: Humidity
-sensor.pws_weather:
-  friendly_name: Current Conditions
-sensor.pws_wind_dir:
-  friendly_name: Wind Direction
-sensor.pws_wind_mph:
-  friendly_name: Wind Speed
-  
+
 ## Battery Levels
 sensor.front_door_battery:
   friendly_name: Front Door Battery

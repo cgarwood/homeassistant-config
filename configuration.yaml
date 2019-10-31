@@ -181,11 +181,8 @@ system_health:
 
 # Set up HTTP frontend
 http:
-  api_password: !secret http_password
   ssl_certificate: /etc/letsencrypt/live/garwood.family/fullchain.pem
   ssl_key: /etc/letsencrypt/live/garwood.family/privkey.pem
-  #trusted_networks:
-  #  - 192.168.1.0/24
   cors_allowed_origins:
     - "https://192.168.1.220"
     - "*"
@@ -205,7 +202,7 @@ alexa_media:
   accounts:
     - email: !secret alexa_username
       password: !secret alexa_password
-      url: 'amazon.com'
+      url: "amazon.com"
 
 binary_sensor:
   - platform: template
@@ -258,19 +255,8 @@ camera:
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
 
-custom_updater:
-  component_urls:
-    - https://raw.githubusercontent.com/keatontaylor/alexa_media_player/master/custom_components.json
-    - https://raw.githubusercontent.com/upsert/lutron-caseta-pro/master/custom_updater.json
-
-device_tracker:
-  - platform: unifi
-    host: 192.168.1.201
-    verify_ssl: false
-    username: !secret unifi_username
-    password: !secret unifi_password
-    new_device_defaults:
-      track_new_devices: false
+hacs:
+  token: !secret github_access_token
 
 homekit:
   filter:
@@ -312,9 +298,12 @@ media_player:
     access_token: !secret vizio_access_token
     name: Living Room TV
 
+mobile_app:
+
+person:
+
 zwave:
   usb_path: /dev/zwave
-  #polling_interval: 60000
   device_config: !include zwave_device_config.yaml
   network_key: !secret zwave_network_key
 
@@ -371,6 +360,8 @@ sensor:
     resources:
       - type: memory_use_percent
       - type: processor_use
+      - type: disk_use_percent
+        arg: /home
       - type: last_boot
 
 # Notify Platforms
@@ -378,18 +369,27 @@ notify:
   - name: ios
     platform: group
     services:
-      - service: ios_charlessiphone
+      - service: mobile_app_charles_s_iphone
+
+  - name: charles
+    platform: group
+    services:
+      - service: mobile_app_charles_s_iphone
 
   - name: emergency
     platform: group
     services:
-      - service: ios_charlessiphone
+      - service: mobile_app_charles_s_iphone
       - service: pb
 
   - name: pb
     platform: pushbullet
     api_key: !secret pb_api_key
     channel_name: !secret pb_channel
+
+  - name: firetv_livingroom
+    platform: nfandroidtv
+    host: 192.168.1.231
 
 # Input Booleans
 input_boolean:
@@ -425,6 +425,12 @@ input_boolean:
   auto_fan_zoey:
     name: Zoey's Bedroom Auto Fan
     initial: off
+  nursery_night_door_chime:
+    name: Nursery Overnight Door Chime
+  living_room_night_lights:
+    name: Living Room Night Lights
+  lockout_zoey:
+    name: Lockout Zoey's Bedroom Controls
 
 # Date/Time Inputs
 input_datetime:
@@ -478,12 +484,17 @@ input_select:
       - Asleep
 
 switch:
-  - platform: tplink
-    host: 192.168.1.232
-    name: Hallway Christmas Lights
-  - platform: tplink
-    host: 192.168.1.233
-    name: Living Room Christmas Lights
+  #- platform: tplink
+  #  host: 192.168.1.232
+  #  name: Hallway Christmas Lights
+  #- platform: tplink
+  #  host: 192.168.1.233
+  #  name: Living Room Christmas Lights
+  - platform: wake_on_lan
+    mac_address: "d4-be-d9-4c-37-65"
+    name: Development Laptop
+
+wake_on_lan:
 
 # The rest...
 alert: !include_dir_merge_named alerts

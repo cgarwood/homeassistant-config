@@ -201,6 +201,6 @@ class GoodNight(hass.Hass):
                           entity_id='input_boolean.goodnight_master')
 
     def chime(self, entity, attribute, old, new, kwargs):
-        if (new == 'on' and self.get_state('input_boolean.goodnight') == 'on'):
+        if (new == 'on' and self.get_state('input_boolean.goodnight') == 'on' and self.get_state('input_boolean.nursery_night_door_chime') == 'on'):
             self.fire_event("tileboard", command="tts",
                             sound="/sounds/strings.mp3", message="Nursery Door Opened", target="master_bedroom")

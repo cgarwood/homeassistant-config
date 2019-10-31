@@ -19,7 +19,7 @@ class WeatherAlerts(hass.Hass):
             "Severe Thunderstorm Warning",
             # "Severe Thunderstorm Watch",
             "Severe Weather Statement",
-            "Special Weather Statement"
+            # "Special Weather Statement"
         ]
         time = datetime.datetime.now()
         self.run_every(self.check_alerts, time, 2 * 60)

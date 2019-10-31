@@ -23,15 +23,16 @@ weatheralerts:
 smokedetectors:
   module: smoke_detectors
   class: SmokeDetectors
-guestbathroomlightwatcher:
-  module: guest_bathroom_light_watcher
-  class: GuestBathroomLightWatcher
+#guestbathroomlightwatcher:
+#  module: guest_bathroom_light_watcher
+#  class: GuestBathroomLightWatcher
 magic_cubes:
   module: magic_cubes
   class: MagicCubes
 living_room_night_lights:
   module: living_room_night_lights
   class: LivingRoomNightLights
+  constrain_input_boolean: input_boolean.living_room_night_lights
 battery_checker:
   module: battery_checker
   class: BatteryChecker

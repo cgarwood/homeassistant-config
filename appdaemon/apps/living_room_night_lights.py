@@ -38,7 +38,7 @@ class LivingRoomNightLights(hass.Hass):
 
         if (new == 'off' and goodnight):
             # Start a lights off timer
-            self.light_off_timer = self.run_in(self.lights_out, 30)
+            self.light_off_timer = self.run_in(self.lights_out, 300) # was 30
 
     def lights_out(self, kwargs):
         self.call_service('homeassistant/turn_off',

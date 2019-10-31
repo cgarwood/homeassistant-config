@@ -1,0 +1,16 @@
+master_bedroom:
+  - light.master_bedroom
+  - fan.master_bedroom_fan
+  - input_boolean.auto_fan_master_bedroom
+
+nursery:
+  - light.nursery
+  - light.nursery_lamp
+  - fan.nursery_fan
+  - input_boolean.auto_fan_nursery
+
+zoeys_room:
+  - light.guest_bedroom
+  - fan.guest_bedroom
+  - light.zoeys_lamp
+  - input_boolean.auto_fan_zoey

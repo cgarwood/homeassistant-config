@@ -33,8 +33,12 @@ class SmokeDetectors(hass.Hass):
                 'lock/unlock', entity_id='lock.front_door_lock_locked')
 
             # Turn off HVAC
-            self.call_service('climate/set_operation_mode',
-                              entity_id='climate.hallway', operation_mode='off')
+            self.call_service('climate/turn_off',
+                              entity_id='climate.hallway')
+
+            # Turn off "Goodnight" mode
+            self.call_service('homeassistant/turn_off',
+                              entity_id='input_boolean.goodnight')
 
             # Get alarm location
             attributes = self.get_state(entity, attribute='all')
@@ -54,6 +58,8 @@ class SmokeDetectors(hass.Hass):
                               entity_id='group.all_fans')
             self.call_service('homeassistant/turn_off',
                               entity_id='switch.guest_bathroom_fan_switch')
+            self.call_service('homeassistant/turn_off',
+                              entity_id='group.auto_fans')
 
             # Send an alert
             self.call_service('notify/ios', title="Smoke Detected",

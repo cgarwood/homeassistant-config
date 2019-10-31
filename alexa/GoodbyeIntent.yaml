@@ -4,6 +4,9 @@ action:
       entity_id:
         - group.indoor_lights
         - fan.living_room_fan
+        - fan.nursery_fan
+        - fan.master_bedroom_fan
+        - fan.guest_bedroom
   - condition: sun
     after: sunset
   - service: homeassistant.turn_on
