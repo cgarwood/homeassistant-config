@@ -137,7 +137,7 @@ history:
 
 # Enables the frontend
 frontend:
-  development_repo: /srv/dev/home-assistant-polymer
+  # development_repo: /srv/dev/home-assistant-polymer
 
 # Additional Panels
 panel_iframe:
@@ -181,8 +181,8 @@ system_health:
 
 # Set up HTTP frontend
 http:
-  ssl_certificate: /etc/letsencrypt/live/garwood.family/fullchain.pem
-  ssl_key: /etc/letsencrypt/live/garwood.family/privkey.pem
+  ssl_certificate: /letsencrypt/live/garwood.family/fullchain.pem
+  ssl_key: /letsencrypt/live/garwood.family/privkey.pem
   cors_allowed_origins:
     - "https://192.168.1.220"
     - "*"
@@ -306,10 +306,11 @@ zwave:
   usb_path: /dev/zwave
   device_config: !include zwave_device_config.yaml
   network_key: !secret zwave_network_key
+  config_path: /config/ozw_config
 
 zha:
   usb_path: /dev/zigbee
-  database_path: /home/hass/zigbee.db
+  database_path: /config/zigbee.db
   enable_quirks: true
   device_config:
     # Master Bedroom Light
@@ -484,14 +485,8 @@ input_select:
       - Asleep
 
 switch:
-  #- platform: tplink
-  #  host: 192.168.1.232
-  #  name: Hallway Christmas Lights
-  #- platform: tplink
-  #  host: 192.168.1.233
-  #  name: Living Room Christmas Lights
   - platform: wake_on_lan
-    mac_address: "d4-be-d9-4c-37-65"
+    mac: "d4-be-d9-4c-37-65"
     name: Development Laptop
 
 wake_on_lan:
