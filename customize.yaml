@@ -46,12 +46,6 @@ binary_sensor.water_sensor_sensor:
   friendly_name: Kitchen Water Sensor
   device_class: problem
 
-# Device Trackers
-device_tracker.charlessiphone:
-  friendly_name: Charles's iPhone
-device_tracker.tinasiphone:
-  friendly_name: Tina's iPhone
-
 # Groups
 group.all_lights:
   hidden: false

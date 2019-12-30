@@ -205,6 +205,7 @@ alexa_media:
       url: "amazon.com"
 
 binary_sensor:
+  - platform: blueiris
   - platform: template
     sensors:
       garage_inside_door:
@@ -250,7 +251,33 @@ binary_sensor:
         friendly_name: "Guest Bedroom Motion"
         value_template: "{{ is_state('sensor.guest_bedroom_multisensor_burglar', '8') }}"
 
+blueiris:
+  host: !secret blueiris_host
+  port: !secret blueiris_port
+  username: !secret blueiris_username
+  password: !secret blueiris_password
+  camera:
+    - id: BackYard
+      name: Back Yard
+      room: ""
+    - id: FrontYard
+      name: Front Yard
+      room: ""
+    - id: FrontPorch
+      name: Front Porch
+      room: ""
+    - id: Driveway
+      name: Driveway
+      room: ""
+    - id: SideYard
+      name: Side Yard
+      room: ""
+    - id: RLDome
+      name: RLDome
+      room: ""
+
 camera:
+  - platform: blueiris
   - platform: mjpeg
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
