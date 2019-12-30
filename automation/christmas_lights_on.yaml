@@ -5,4 +5,5 @@
   action:
     service: homeassistant.turn_on
     entity_id:
-      - switch.outside_plug_switch
+      - switch.garage_greenwave_port_1_switch
+      - switch.garage_greenwave_port_2_switch
