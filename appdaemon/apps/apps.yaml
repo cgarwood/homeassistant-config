@@ -39,6 +39,11 @@ battery_checker:
 auto_fans:
   module: auto_fans
   class: AutoFans
+mailbox:
+  module: mailbox
+  class: Mailbox
+  tmp_path: !secret tmp_path
+  tmp_url: !secret tmp_url
 #temperature_alerts:
 #  module: temperature_alerts
 #  class: TemperatureAlerts
