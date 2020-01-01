@@ -12,6 +12,9 @@
 !/scripts/
 !/appdaemon/
 !/appdaemon/apps/
+!/themes/
+!/lovelace/
+!/lovelace/views/
 
 # Ignore the following YAML files as well
 known_devices.yaml

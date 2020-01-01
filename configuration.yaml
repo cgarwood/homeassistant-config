@@ -137,6 +137,7 @@ history:
 
 # Enables the frontend
 frontend:
+  themes: !include_dir_merge_named themes
   # development_repo: /srv/dev/home-assistant-polymer
 
 # Additional Panels
@@ -145,12 +146,6 @@ panel_iframe:
     title: "Graphs"
     icon: "mdi:chart-line"
     url: !secret grafana_url
-
-panel_custom:
-  - name: zwavegraph
-    sidebar_title: Z-Wave Graph
-    sidebar_icon: mdi:access-point-network
-    url_path: zwavegraph
 
 # Discover some devices automatically
 discovery:
@@ -276,6 +271,16 @@ blueiris:
       name: RLDome
       room: ""
 
+browser_mod:
+  prefix: "browser_"
+  devices:
+    a2f1d74c_32e12ef7:
+      name: DesktopChrome
+    6363f925-f08d6a9e:
+      name: living_room_tablet
+  disable:
+    - all
+
 camera:
   - platform: blueiris
   - platform: mjpeg
@@ -314,6 +319,11 @@ logger:
   #bellows: debug
   #zigpy: debug
   #homeassistant.components.zha: debug
+
+lovelace:
+  mode: yaml
+
+lovelace_gen:
 
 lutron_caseta_pro:
   bridges:
@@ -391,6 +401,9 @@ sensor:
       - type: disk_use_percent
         arg: /home
       - type: last_boot
+  - platform: weatheralerts
+    state: IN
+    zone: !secret nws_alert_zone
 
 # Notify Platforms
 notify:
@@ -517,6 +530,11 @@ switch:
     name: Development Laptop
 
 wake_on_lan:
+
+weather:
+  - platform: darksky
+    api_key: !secret darksky_api_key
+    mode: daily
 
 # The rest...
 alert: !include_dir_merge_named alerts

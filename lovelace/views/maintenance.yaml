@@ -1,0 +1,86 @@
+path: maintenance
+title: Maintenance
+badges: []
+cards:
+  - entities:
+      - sensor.front_door_lock_battery
+      - sensor.front_door_battery
+      - sensor.back_door_battery
+      - sensor.garage_inside_door_battery
+      - sensor.garage_side_door_battery
+    show_header_toggle: false
+    title: Door Sensor Batteries
+    type: entities
+  - entities:
+      - sensor.kitchen_window_battery
+      - sensor.nursery_window_battery
+      - sensor.office_window_battery
+      - sensor.master_bedroom_window_battery
+      - sensor.master_bathroom_window_battery
+    show_header_toggle: false
+    title: Window Sensor Batteries
+    type: entities
+  - entities:
+      - sensor.garage_smoke_battery
+      - sensor.hallway_smoke_battery
+      - sensor.office_smoke_battery
+      - sensor.nursery_smoke_battery
+    show_header_toggle: false
+    title: Smoke Detector Batteries
+    type: entities
+  - entities:
+      - sensor.memory_use_percent
+      - sensor.processor_use
+      - sensor.last_boot
+    show_header_toggle: false
+    title: System Monitor
+    type: entities
+  - entities:
+      - sensor.energy_meter_power
+      - sensor.ups_status
+      - sensor.ups_input_voltage
+      - sensor.ups_load
+      - sensor.ups_battery
+      - sensor.ups_time_left
+    show_header_toggle: false
+    title: Power/UPS Status
+    type: entities
+  - entities:
+      - binary_sensor.water_sensor_sensor
+    show_header_toggle: false
+    title: Water Sensors
+    type: entities
+  - entities:
+      - entity: automation.auto_entry_lights
+      - entity: automation.back_yard_lights_off_at_10_00
+      - entity: automation.back_yard_lights_on_at_sunset
+      - entity: automation.christmas_lights_auto_off
+      - entity: automation.christmas_lights_on_at_sunset
+      - entity: automation.door_open_closed_notifications
+      - entity: automation.guest_bathroom_auto_lights_day
+      - entity: automation.guest_bathroom_auto_lights_night
+      - entity: automation.lock_notifications
+      - entity: automation.outside_lights_over_power_shutoff
+      - entity: automation.outside_lights_off_at_10_00
+      - entity: automation.outside_lights_on_at_sunset
+      - entity: automation.porch_light_arrival
+      - entity: automation.power_failure_notification
+      - entity: automation.recently_arrived_home
+      - entity: automation.sunrise_actions
+      - entity: automation.watchdog_outside_lights
+    title: all automations
+    type: entities
+  - entities:
+      - entity: input_boolean.ad_door_chime
+      - entity: input_boolean.ad_auto_bathroom_lights
+      - entity: input_boolean.nursery_night_door_chime
+      - entity: input_boolean.living_room_night_lights
+    title: AppDaemon Automations
+    type: entities
+  - entities:
+      - input_boolean.tb_living_room_quiet
+      - input_boolean.tb_master_bedroom_quiet
+      - input_boolean.tb_guest_bedroom_quiet
+      - input_boolean.tb_nursery_quiet
+    title: Tablet Controls
+    type: entities

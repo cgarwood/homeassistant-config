@@ -1,0 +1,68 @@
+path: rooms
+title: Rooms
+badges: []
+cards:
+  - entities:
+      - entity: binary_sensor.living_room_multisensor_motion
+      - entity: sensor.living_room_multisensor_temperature
+      - entity: sensor.living_room_multisensor_relative_humidity
+      - entity: light.living_room
+      - entity: light.living_room_accent_lights
+      - entity: fan.living_room_fan
+      - entity: media_player.living_room_tv
+      - entity: switch.living_room_smart_plug
+    title: Living Room
+    type: entities
+  - entities:
+      - entity: binary_sensor.master_bedroom_multisensor_motion
+      - entity: binary_sensor.master_bedroom_window
+      - entity: sensor.master_bedroom_multisensor_temperature
+      - entity: sensor.master_bedroom_multisensor_relative_humidity
+      - entity: light.master_bedroom
+      - entity: fan.master_bedroom_fan
+      - entity: input_number.auto_fan_master_bedroom_target
+      - entity: input_boolean.auto_fan_master_bedroom
+    title: Master Bedroom
+    type: entities
+  - entities:
+      - entity: binary_sensor.nursery_multisensor_motion
+      - entity: binary_sensor.nursery_door
+      - entity: binary_sensor.nursery_window
+      - entity: sensor.nursery_multisensor_temperature
+      - entity: sensor.nursery_multisensor_relative_humidity
+      - entity: light.nursery
+      - entity: light.nursery_lamp
+      - entity: fan.nursery_fan
+      - entity: input_number.auto_fan_nursery_target
+      - entity: input_boolean.auto_fan_nursery
+    title: Nursery
+    type: entities
+  - entities:
+      - entity: binary_sensor.guest_bedroom_multisensor_motion
+      - entity: binary_sensor.office_window
+      - entity: sensor.guest_bedroom_multisensor_temperature
+      - entity: sensor.guest_bedroom_multisensor_relative_humidity
+      - entity: light.guest_bedroom
+      - entity: fan.guest_bedroom
+      - entity: light.zoeys_lamp
+      - entity: input_number.auto_fan_zoey_target
+      - entity: input_boolean.auto_fan_zoey
+    title: Zoey's Room
+    type: entities
+  - entities:
+      - entity: binary_sensor.guest_bathroom_multisensor_motion
+      - entity: sensor.guest_bathroom_multisensor_temperature
+      - entity: sensor.guest_bathroom_multisensor_relative_humidity
+      - entity: light.guest_bathroom_vanity_light_level
+      - entity: light.guest_bathroom_fan_light_level
+      - entity: switch.guest_bathroom_fan_switch
+      - entity: switch.guest_bathroom_smartplug
+    title: Guest Bathroom
+    type: entities
+  - entities:
+      - entity: binary_sensor.master_bathroom_multisensor_motion
+      - entity: sensor.master_bathroom_multisensor_temperature
+      - entity: sensor.master_bathroom_multisensor_relative_humidity
+      - entity: binary_sensor.master_bathroom_window
+    title: Master Bathroom
+    type: entities

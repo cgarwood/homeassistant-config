@@ -1,0 +1,73 @@
+path: living-room-climate
+title: Living Room Climate
+panel: true
+badges: []
+cards:
+  - type: "custom:layout-card"
+    layout: vertical
+    min-columns: 3
+    max-columns: 3
+    column_width: [34%, 32%, 33%]
+    cards:
+      - type: "custom:simple-thermostat"
+        control:
+          _headings: true
+          hvac: true
+          preset:
+            none:
+              name: "Normal"
+            eco:
+              name: "Eco"
+            away: false
+            "Away and Eco": false
+          fan:
+            auto:
+              icon: false
+        sensors:
+          - entity: sensor.hallway_thermostat_humidity
+            name: Humidity
+          - entity: binary_sensor.hallway_thermostat_fan
+            name: Fan
+        entity: climate.hallway
+        name: false
+
+      - type: horizontal-stack
+        cards:
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.hvac_supply_temperature
+            name: Supply Air
+            animate: true
+          - type: custom:mini-graph-card
+            entities:
+              - sensor.hvac_return_temperature
+            name: Return Air
+            animate: true
+
+      - break
+
+      - type: vertical-stack
+        cards:
+          - type: entities
+            entities:
+              - entity: fan.living_room_fan
+                type: "custom:fan-control-entity-row"
+                name: Living Room
+              - entity: fan.master_bedroom_fan
+                type: "custom:fan-control-entity-row"
+                name: Master Bedroom
+              - entity: fan.nursery_fan
+                type: "custom:fan-control-entity-row"
+                name: Nursery
+              - entity: fan.guest_bedroom
+                type: "custom:fan-control-entity-row"
+                name: Zoey's Room
+            style: |
+              #states {
+                padding: 8px;
+              }
+
+      - break
+
+      - type: "weather-forecast"
+        entity: weather.dark_sky
