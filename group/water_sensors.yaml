@@ -1,4 +1,0 @@
-water_sensors:
-  name: Water Sensors
-  entities:
-    - binary_sensor.water_sensor_sensor
