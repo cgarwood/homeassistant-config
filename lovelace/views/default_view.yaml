@@ -61,6 +61,8 @@ cards:
       - entity: light.kitchen_main_lights
       - entity: light.laundry_room_main_lights
       - entity: light.zoeys_lamp
+      - entity: light.master_bathroom_vanity_light_level
+      - entity: light.master_bathroom_fan_light_level
         toggle: true
         type: "custom:slider-entity-row"
       - entity: light.master_bedroom_lamp
@@ -70,10 +72,8 @@ cards:
     type: entities
   - entities:
       - entity: switch.guest_bathroom_fan_switch
+      - entity: switch.master_bathroom_fan_switch
       - entity: switch.living_room_smart_plug
-      - entity: switch.garage_smart_plug_switch
-      - entity: switch.nursery_multisensor_switch
-      - entity: switch.outside_plug_switch
       - entity: switch.wax_melt_switch
       - entity: switch.guest_bathroom_smartplug
       - entity: switch.development_laptop

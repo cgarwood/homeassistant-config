@@ -1,0 +1,18 @@
+'1587733765946':
+  alias: Alexa Test
+  sequence:
+  - data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.living_room_echo
+    service: media_player.play_media
+  - data:
+      media_content_id: amzn_sfx_doorbell_chime_01
+      media_content_type: sound
+    entity_id: media_player.master_bedroom_echo
+    service: media_player.play_media
+  - data:
+      media_content_id: ding dong doorbell
+      media_content_type: announce
+      target: media_player.alexa_everywhere
+    service: notify.alexa_media

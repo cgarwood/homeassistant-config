@@ -31,31 +31,6 @@ custom_header:
     <div><div>{{states('sensor.dark_sky_summary')}} {{states.weather.dark_sky.attributes.temperature}}°</div></div>
     <div><div>{{states('sensor.dark_sky_hourly_summary')}}</div></div>
     </div></div>
-resources:
-  - type: module
-    url: /community_plugin/button-card/button-card.js
-  - type: module
-    url: /community_plugin/lovelace-card-mod/card-mod.js
-  - type: js
-    url: /community_plugin/rgb-light-card/card.js
-  - type: module
-    url: /community_plugin/lovelace-slider-entity-row/slider-entity-row.js
-  - type: module
-    url: /community_plugin/simple-thermostat/simple-thermostat.js
-  - type: module
-    url: /community_plugin/custom-header/custom-header.js
-  - type: module
-    url: /community_plugin/simple-weather-card/simple-weather-card-bundle.js
-  - type: module
-    url: /community_plugin/restriction-card/restriction-card.js
-  - type: module
-    url: /community_plugin/mini-media-player/mini-media-player-bundle.js
-  - type: module
-    url: /community_plugin/mini-graph-card/mini-graph-card-bundle.js
-  - type: js
-    url: /community_plugin/fan-control-entity-row/fan-control-entity-row.js
-  - type: module
-    url: /community_plugin/lovelace-layout-card/layout-card.js
 
 title: Home
 views:
@@ -65,3 +40,49 @@ views:
   - !include lovelace/views/sensors.yaml
   - !include lovelace/views/living_room_dashboard.yaml
   - !include lovelace/views/living_room_climate.yaml
+
+
+button_card_templates:
+  light_button:
+    icon: mdi:lightbulb
+    show_state: true
+    show_last_changed: true
+    size: 1.7em
+    aspect_ratio: 1/1
+    styles:
+      card:
+        - font-size: 11px
+        - padding: 10px 10px 10px 10px
+      label:
+        - opacity: 0.8
+        - font-size: 11px
+      name:
+        - font-size: 1.8em
+        - font-weight: 300
+      grid:
+        - grid-template-areas: '"i s" "n n" "l l"'
+        - grid-template-columns: 35% auto
+        - grid-template-rows: 1fr min-content min-content
+        - grid-row-gap: 8px
+      img_cell:
+        - font-size: 14px
+        - justify-content: left
+      icon:
+        - text-align: left
+        - margin-right: 0.4em
+        - margin-left: 0px
+      state:
+        - font-size: 15.5px
+        - max-height: 1.4em
+        - min-height: 1.4em
+        - opacity: 0.75
+        - justify-self: end
+    state:
+      - value: 'off'
+        styles:
+          card:
+            - filter: opacity(50%)
+          icon:
+            - filter: grayscale(100%)
+    hold_action:
+      action: more-info

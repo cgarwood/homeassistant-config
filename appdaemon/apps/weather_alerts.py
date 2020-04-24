@@ -21,8 +21,8 @@ class WeatherAlerts(hass.Hass):
             "Severe Weather Statement",
             # "Special Weather Statement"
         ]
-        time = datetime.datetime.now()
-        self.run_every(self.check_alerts, time, 2 * 60)
+        now = datetime.datetime.now() + datetime.timedelta(seconds=1)
+        self.run_every(self.check_alerts, now, 2 * 60)
 
     def check_alerts(self, kwargs):
         url = self.args["alerts_url"]

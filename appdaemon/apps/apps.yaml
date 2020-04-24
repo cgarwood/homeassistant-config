@@ -44,6 +44,12 @@ mailbox:
   class: Mailbox
   tmp_path: !secret tmp_path
   tmp_url: !secret tmp_url
+master_bathroom_indicator_lights:
+  module: master_bathroom_indicator_lights
+  class: MasterBathroomIndicatorLights
+test:
+  module: test
+  class: Test
 #temperature_alerts:
 #  module: temperature_alerts
 #  class: TemperatureAlerts

@@ -7,25 +7,62 @@ cards:
     layout: vertical
     min-columns: 3
     max-columns: 3
-    column_width: [38%, 31%, 31%]
+    column_width: [34%, 33%, 33%]
     cards:
-      - type: entities
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          entity: light.living_room
+          name: Main
+          template: light_button
+          aspect_ratio: 1.5/1
+        - type: custom:button-card
+          entity: light.living_room_accent_lights
+          name: Accent
+          template: light_button
+          icon: mdi:track-light
+          aspect_ratio: 1.5/1
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          entity: light.living_room_accent_lights
+          name: Porch
+          template: light_button
+          icon: mdi:outdoor-lamp
+        - type: custom:button-card
+          entity: light.entryway_light
+          name: Entry
+          template: light_button
+        - type: custom:button-card
+          entity: light.dining_room_main_lights
+          name: Dining
+          template: light_button
+          icon: mdi:ceiling-light
+      - type: horizontal-stack
+        cards:
+        - type: custom:button-card
+          entity: fan.living_room_fan
+          name: Fan
+          template: light_button
+          icon: mdi:fan
+          state_display: >
+            [[[ return entity.attributes.speed.charAt(0).toUpperCase() + entity.attributes.speed.slice(1)]]]
+          state:
+            - value: 'on'
+              spin: true
+        - type: custom:gap-card
+        - type: custom:gap-card
+      - type: custom:calendar-card
+        hideHeader: true
+        numberOfDays: 30
+        eventsLimit: 4
+        highlightToday: true
+        progressBar: true
+        showLocationIcon: false
+        showMultiDay: true
         entities:
-          - entity: light.living_room
-            name: Main Light
-            toggle: true
-            type: "custom:slider-entity-row"
-          - entity: fan.living_room_fan
-            type: "custom:fan-control-entity-row"
-            name: Ceiling Fan
-          - entity: light.living_room_accent_lights
-            name: Accent Lights
-            toggle: true
-            type: "custom:slider-entity-row"
-          - entity: light.entryway_light
-            name: Entryway
-            toggle: true
-            type: "custom:slider-entity-row"
+          - calendar.family
+          - calendar.holidays_in_united_states
 
       - break
 

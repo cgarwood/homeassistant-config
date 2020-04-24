@@ -1,0 +1,13 @@
+- id: popup_camera_on_motion
+  alias: Popup Camera When Motion Detected
+  trigger:
+    platform: state
+    entity_id: binary_sensor.front_porch_motion
+    to: "on"
+  action:
+    - service: browser_mod.command
+      data:
+        command: more-info
+        entity_id: camera.front_porch
+        deviceID:
+          - living_room_tablet

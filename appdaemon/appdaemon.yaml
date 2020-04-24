@@ -1,11 +1,14 @@
+secrets: /config/appdaemon/secrets.yaml
 appdaemon:
-  threads: 10
-  #cert_path: /home/hass/ssl_cert.crt
   cert_verify: False
   plugins:
     HASS:
       type: hass
-      ha_url: !secret ha_url
-      token: !secret ha_token
-  log:
-    logfile: /srv/appdaemon/appdaemon.log
+  time_zone: America/Indiana/Indianapolis
+  latitude: !secret latitude
+  longitude: !secret longitude
+  elevation: 196
+http:
+  url: http://127.0.0.1:5050
+admin:
+api:

@@ -38,11 +38,15 @@ cards:
               - sensor.hvac_supply_temperature
             name: Supply Air
             animate: true
+            hours_to_show: 4
+            points_per_hour: 6
           - type: custom:mini-graph-card
             entities:
               - sensor.hvac_return_temperature
             name: Return Air
             animate: true
+            hours_to_show: 4
+            points_per_hour: 6
 
       - break
 
@@ -62,6 +66,20 @@ cards:
               - entity: fan.guest_bedroom
                 type: "custom:fan-control-entity-row"
                 name: Zoey's Room
+
+              - type: custom:fold-entity-row
+                head:
+                  type: section
+                  label: Auto Fans
+                entities:
+                  - entity: input_boolean.auto_fan_master_bedroom
+                    name: Master Bedroom
+                  - entity: input_number.auto_fan_master_bedroom_target
+                    name: Target
+                  - entity: input_boolean.auto_fan_nursery
+                    name: Nursery
+                  - entity: input_boolean.auto_fan_zoey
+                    name: Zoey's Room
             style: |
               #states {
                 padding: 8px;

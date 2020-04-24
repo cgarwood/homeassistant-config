@@ -60,5 +60,3 @@ dark:
   custom_card_background: "rgba(67, 73, 82, 1)"
   custom_motion_off: "rgba(255,102,102,0.5)"
   custom_motion_detected: "rgba(0,196,172,1)"
-
-  paper-toggle-button-checked-bar-color: "var(--accent-color)"

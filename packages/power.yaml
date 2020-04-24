@@ -14,8 +14,7 @@ homeassistant:
 
 # Default settings for apcupsd
 apcupsd:
-  host: localhost
-  port: 3551
+  host: a722577e-apcupsd
   
 # Set up apcupsd sensors
 sensor:
