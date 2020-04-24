@@ -7,15 +7,6 @@ doors:
     - binary_sensor.garage_side_door
     - binary_sensor.garage_door_sensor
     
-door_sensor_batteries:
-  name: Door Sensor Batteries
-  entities:
-    - sensor.front_door_lock_battery
-    - sensor.front_door_battery
-    - sensor.back_door_battery
-    - sensor.garage_inside_door_battery
-    - sensor.garage_side_door_battery
-    
 windows:
   name: Windows
   entities:
@@ -24,12 +15,3 @@ windows:
     - binary_sensor.office_window
     - binary_sensor.master_bedroom_window
     - binary_sensor.master_bathroom_window
-    
-window_sensor_batteries:
-  name: Window Sensor Batteries
-  entities:
-    - sensor.kitchen_window_battery
-    - sensor.nursery_window_battery
-    - sensor.office_window_battery
-    - sensor.master_bedroom_window_battery
-    - sensor.master_bathroom_window_battery
