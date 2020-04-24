@@ -2,16 +2,6 @@
 ## Power and UPS
 ################################################################
 
-homeassistant:
-  customize:
-    sensor.energy_meter_power:
-      friendly_name: Power Usage (all)
-    sensor.energy_meter_power_2:
-      friendly_name: Power Usage (Phase 1)
-    sensor.energy_meter_power_3:
-      friendly_name: Power Usage (Phase 2)
-
-
 # Default settings for apcupsd
 apcupsd:
   host: a722577e-apcupsd
