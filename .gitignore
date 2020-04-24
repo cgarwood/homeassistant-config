@@ -17,6 +17,7 @@
 !/lovelace/views/
 
 # Ignore the following YAML files as well
+google_calendars.yaml
 known_devices.yaml
 secrets.yaml
 zone.yaml
