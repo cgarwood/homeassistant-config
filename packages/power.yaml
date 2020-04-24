@@ -25,18 +25,6 @@ sensor:
     - status
     - timeleft
     - bcharge
-    
-# Groups
-group:
-  ups:
-    name: Power/UPS Status
-    entities:
-      - sensor.energy_meter_power
-      - sensor.ups_status
-      - sensor.ups_input_voltage
-      - sensor.ups_load
-      - sensor.ups_battery
-      - sensor.ups_time_left
  
 # Automations
 automation:
@@ -51,7 +39,7 @@ automation:
 #      for:
 #        minutes: 2
   action:
-    service: notify.pb
+    service: notify.charles
     data_template:
         title: >-
           {%- if trigger.to_state.state == 'ONBATT' -%}
