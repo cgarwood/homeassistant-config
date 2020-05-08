@@ -106,6 +106,8 @@ influxdb:
       - sensor.hvac_return_temperature
       - sensor.hvac_supply_humidity
       - sensor.hvac_return_humidity
+      - sensor.master_bedroom_hvac_supply_temperature
+      - sensor.master_bedroom_hvac_supply_humidity
       - sensor.nursery_hvac_supply_temperature
       - sensor.nursery_hvac_supply_humidity
       - sensor.zoeys_room_hvac_supply_temperature
