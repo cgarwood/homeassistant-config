@@ -116,6 +116,8 @@ influxdb:
       - sensor.nursery_condensation
       - sensor.master_bedroom_condensation
       - sensor.zoey_s_bedroom_condensation
+      - sensor.water_softener_current_water_flow
+      - sensor.water_softener_remaining_capacity
 
 # Enables support for tracking state changes over time.
 history:
@@ -365,6 +367,12 @@ lovelace:
     url: /hacsfiles/light-entity-card/light-entity-card.js
   - type: module
     url: /hacsfiles/lovelace-gap-card/gap-card.js
+  dashboards:
+    living-room-tablet:
+      mode: yaml
+      title: Living Room Tablet
+      show_in_sidebar: true
+      filename: lovelace_living_room_tablet.yaml
 lovelace_gen:
 
 lutron_caseta_pro:
@@ -374,11 +382,6 @@ lutron_caseta_pro:
 mobile_app:
 
 person:
-
-#vizio:
-#  host: 192.168.1.199
-#  access_token: !secret vizio_access_token
-#  name: Living Room TV
 
 zwave:
   # usb_path: /dev/zwave
@@ -430,6 +433,22 @@ sensor:
     indoor_humidity_sensor: sensor.guest_bedroom_multisensor_relative_humidity
     outdoor_temp_sensor: sensor.dark_sky_temperature
     calibration_factor: 1.4
+
+  - platform: mqtt
+    name: "Water Softener Current Water Flow"
+    unit_of_measurement: "gpm"
+    state_topic: "wripli/state"
+    value_template: "{{ value_json['current-flow'] / 10 }}"
+  - platform: mqtt
+    name: "Water Softener Remaining Capacity"
+    unit_of_measurement: "gallons"
+    state_topic: "wripli/state"
+    value_template: "{{ value_json['cap-remain'] }}"
+  - platform: mqtt
+    name: "Water Softener Days until Regeneration"
+    unit_of_measurement: "days"
+    state_topic: "wripli/state"
+    value_template: "{{ value_json['day-remain'] }}"
 
   - platform: darksky
     api_key: !secret darksky_api_key
@@ -483,12 +502,6 @@ notify:
     platform: group
     services:
       - service: mobile_app_charles_s_iphone
-      - service: pb
-
-  - name: pb
-    platform: pushbullet
-    api_key: !secret pb_api_key
-    channel_name: !secret pb_channel
 
   - name: firetv_livingroom
     platform: nfandroidtv
@@ -506,14 +519,6 @@ input_boolean:
     name: Goodnight
   goodnight_master:
     name: Master Goodnight
-  tb_living_room_quiet:
-    name: Living Room TileBoard Quiet Mode
-  tb_master_bedroom_quiet:
-    name: Master Bedroom TileBoard Quiet Mode
-  tb_nursery_quiet:
-    name: Nursery TileBoard Quiet Mode
-  tb_guest_bedroom_quiet:
-    name: Guest Bedroom TileBoard Quiet Mode
   ad_door_chime:
     name: Door Chime
   ad_auto_bathroom_lights:
@@ -606,3 +611,5 @@ intent_script: !include_dir_named alexa
 scene: !include_dir_merge_list scenes
 script: !include_dir_named scripts
 zone: !include zone.yaml
+
+default_config:
