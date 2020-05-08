@@ -1,0 +1,18 @@
+# Handle Water Leaks
+- alias: Water Leaks
+  trigger:
+    - platform: state
+      entity_id: binary_sensor.garage_water_sensor
+      to: 'on'
+  action:
+    - service: homeassistant.turn_off
+      entity_id: switch.water_main_valve
+    - service: notify.ios
+      data_template:
+        title: '{{"\uD83D\uDCA7"}} Water Leak Detected'
+        message: A water leak has been detected. Main water line will be shut off.
+    - service: notify.alexa_media_everywhere
+      data_template:
+          message: A water leak has been detected. Shutting off water.
+          type: announce
+
