@@ -3,28 +3,28 @@ title: Maintenance
 badges: []
 cards:
   - entities:
-      - sensor.front_door_lock_battery
-      - sensor.front_door_battery
-      - sensor.back_door_battery
-      - sensor.garage_inside_door_battery
-      - sensor.garage_side_door_battery
+      - sensor.front_door_lock_battery_level
+      - sensor.front_door_battery_level
+      - sensor.back_door_battery_level
+      - sensor.garage_inside_door_battery_level
+      - sensor.garage_side_door_battery_level
     show_header_toggle: false
     title: Door Sensor Batteries
     type: entities
   - entities:
-      - sensor.kitchen_window_battery
-      - sensor.nursery_window_battery
-      - sensor.office_window_battery
-      - sensor.master_bedroom_window_battery
-      - sensor.master_bathroom_window_battery
+      - sensor.kitchen_window_battery_level
+      - sensor.nursery_window_battery_level
+      - sensor.office_window_battery_level
+      - sensor.master_bedroom_window_battery_level
+      - sensor.master_bathroom_window_battery_level
     show_header_toggle: false
     title: Window Sensor Batteries
     type: entities
   - entities:
-      - sensor.garage_smoke_battery
-      - sensor.hallway_smoke_battery
-      - sensor.office_smoke_battery
-      - sensor.nursery_smoke_battery
+      - sensor.garage_smoke_detector_battery_level
+      - sensor.hallway_smoke_detector_battery_level
+      - sensor.office_smoke_detector_battery_level
+      - sensor.nursery_smoke_detector_battery_level
     show_header_toggle: false
     title: Smoke Detector Batteries
     type: entities
@@ -36,7 +36,6 @@ cards:
     title: System Monitor
     type: entities
   - entities:
-      - sensor.energy_meter_power
       - sensor.ups_status
       - sensor.ups_input_voltage
       - sensor.ups_load
@@ -76,11 +75,4 @@ cards:
       - entity: input_boolean.nursery_night_door_chime
       - entity: input_boolean.living_room_night_lights
     title: AppDaemon Automations
-    type: entities
-  - entities:
-      - input_boolean.tb_living_room_quiet
-      - input_boolean.tb_master_bedroom_quiet
-      - input_boolean.tb_guest_bedroom_quiet
-      - input_boolean.tb_nursery_quiet
-    title: Tablet Controls
     type: entities

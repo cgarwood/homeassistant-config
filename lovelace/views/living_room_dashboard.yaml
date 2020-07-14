@@ -1,130 +1,473 @@
-path: living-room-dashboard
-title: Living Room Dashboard
-panel: true
-badges: []
-cards:
-  - type: "custom:layout-card"
-    layout: vertical
-    min-columns: 3
-    max-columns: 3
-    column_width: [34%, 33%, 33%]
-    cards:
-      - type: horizontal-stack
-        cards:
-        - type: custom:button-card
-          entity: light.living_room
-          name: Main
-          template: light_button
-          aspect_ratio: 1.5/1
-        - type: custom:button-card
-          entity: light.living_room_accent_lights
-          name: Accent
-          template: light_button
-          icon: mdi:track-light
-          aspect_ratio: 1.5/1
-      - type: horizontal-stack
-        cards:
-        - type: custom:button-card
-          entity: light.living_room_accent_lights
-          name: Porch
-          template: light_button
-          icon: mdi:outdoor-lamp
-        - type: custom:button-card
-          entity: light.entryway_light
-          name: Entry
-          template: light_button
-        - type: custom:button-card
-          entity: light.dining_room_main_lights
-          name: Dining
-          template: light_button
-          icon: mdi:ceiling-light
-      - type: horizontal-stack
-        cards:
-        - type: custom:button-card
-          entity: fan.living_room_fan
-          name: Fan
-          template: light_button
-          icon: mdi:fan
-          state_display: >
-            [[[ return entity.attributes.speed.charAt(0).toUpperCase() + entity.attributes.speed.slice(1)]]]
+button_card_templates:
+  light_button:
+    type: 'custom:button-card'
+    aspect_ratio: 1/1
+    size: 60%
+    show_state: true
+    show_name: true
+    show_label: false
+    styles:
+      icon:
+        - height: auto
+      img_cell:
+        - justify-content: start
+        - align-items: start
+        - font-size: 14px
+      grid:
+        - grid-template-areas: '"i . info" "n n n" "s s s" "l l l"'
+        - grid-template-columns: 50px 1fr 32px
+        - grid-template-rows: 1fr 0.min-content min-content min-content
+        - position: relative
+      card:
+        - padding: 8px
+      name:
+        - justify-self: start
+        - align-self: end
+        - font-weight: 300
+        - font-size: 16px
+        - text-align: start
+        - position: relative
+        - display: inline-block
+        - width: 100%
+        - align-content: start
+        - text-align: start
+        - text-overflow: unset
+      state:
+        - justify-self: start
+        - align-self: end
+        - font-weight: bold
+        - font-family: Helvetica
+        - font-size: 12px
+        - text-align: start
+      custom_fields:
+        info:
+          - align-self: start
+    custom_fields:
+      info: |
+        [[[
+          function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+          }
+
+          let length = 41;
+          const width = 3;
+
+          if (entity.state === 'on' && entity.attributes.brightness) {
+            const radius = length / 2;
+            const brightness = Math.round(entity.attributes.brightness / 2.54);
+            const circumference = radius * 2 * Math.PI;
+            return `
+              <svg viewBox="0 0 50 50">
+                <circle cx="25" cy="25" r="${radius}" fill="none" stroke="var(--paper-item-icon-color)" opacity="0.5" stroke-width="${width}" />
+                <circle style="
+                    transform: rotate(-90deg);
+                    transform-origin: 50% 50%;
+                    stroke-dasharray: ${circumference};
+                    stroke-dashoffset: ${circumference - brightness / 100 * circumference};
+                  "
+                  id="c_brightness" cx="25" cy="25" r="${radius}" stroke="var(--paper-item-icon-active-color)" stroke-width="${width}" fill="none" stroke-linecap="round" />
+                <text x="50%" y="54%" fill="var(--primary-text-color)" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="10">%</tspan>
+                </text>
+              </svg>
+              `;
+            }
+        ]]]
+    state:
+      - value: 'on'
+        styles:
+          card:
+            - opacity: 1
+          icon:
+            - color: |
+                [[[
+                  var [domain, object_id] = entity.entity_id.split('.');
+                  if (domain === "light")
+                    return 'var(--button-card-light-color)';
+                  return 'var(--paper-item-icon-color)';
+                ]]]
           state:
-            - value: 'on'
-              spin: true
-        - type: custom:gap-card
-        - type: custom:gap-card
-      - type: custom:calendar-card
-        hideHeader: true
-        numberOfDays: 30
-        eventsLimit: 4
-        highlightToday: true
-        progressBar: true
-        showLocationIcon: false
-        showMultiDay: true
-        entities:
-          - calendar.family
-          - calendar.holidays_in_united_states
+            - color: gray
+          name:
+            - color: var(--primary-text-color)
+          lock:
+            - color: white
+          label:
+            - color: gray
+      - value: 'off'
+        styles:
+          card:
+            - opacity: 0.5
+          icon:
+            - color: var(--paper-item-icon-color)
+          name:
+            - color: var(--primary-text-color)
+          state:
+            - color: var(--primary-text-color)
+          label:
+            - color: var(--primary-text-color)
+          lock:
+            - color: var(--paper-item-icon-color)
+      - value: unavailable
+        styles:
+          card:
+            - opacity: 0.2
+          icon:
+            - color: var(--paper-item-icon-color)
+          name:
+            - color: var(--primary-text-color)
+          state:
+            - color: 'hsl(0, 100%, 50%)'
+          label:
+            - color: var(--primary-text-color)
+          lock:
+            - color: var(--paper-item-icon-color)
+    tap_action:
+      action: toggle
+      haptic: light
+    hold_action:
+      action: more-info
+      haptic: heavy
+  fan_button:
+    type: 'custom:button-card'
+    aspect_ratio: 1/1
+    size: 60%
+    show_state: true
+    show_name: true
+    show_label: false
+    styles:
+      icon:
+        - height: auto
+      img_cell:
+        - justify-content: start
+        - align-items: start
+        - font-size: 14px
+      grid:
+        - grid-template-areas: '"i . info" "n n n" "s s s" "l l l"'
+        - grid-template-columns: 50px 1fr 50px
+        - grid-template-rows: 1fr 0.min-content min-content min-content
+        - position: relative
+      card:
+        - padding: 8px
+      name:
+        - justify-self: start
+        - align-self: end
+        - font-weight: 300
+        - font-size: 16px
+        - text-align: start
+        - position: relative
+        - display: inline-block
+        - width: 100%
+        - align-content: start
+        - text-align: start
+        - text-overflow: unset
+      state:
+        - justify-self: start
+        - align-self: end
+        - font-weight: bold
+        - font-size: 12px
+        - text-align: start
+      custom_fields:
+        info:
+          - align-self: start
+          - margin-left: '-13px'
+          - margin-right: 16px
+          - margin-top: '-8px'
+    custom_fields:
+      info: |
+        [[[
+          function capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+          }
 
-      - break
+          let length = 41;
+          const width = 3;
 
-      - type: "custom:simple-weather-card"
-        backdrop: true
-        custom:
-          - high: sensor.dark_sky_daytime_high_temperature_0d
-          - low: sensor.dark_sky_overnight_low_temperature_0d
-        entity: weather.dark_sky
-        name: " "
-        secondary_info: wind_speed
-
-      - type: "custom:simple-thermostat"
-        control: false
-        entity: climate.hallway
-        name: false
-
-      - type: horizontal-stack
-        cards:
-          - type: custom:mini-graph-card
+          if (entity.state === 'on' && entity.attributes.speed && entity.attributes.speed_list)  {
+            const text = capitalizeFirstLetter(entity.attributes.speed);
+            const gap = 5;
+            const edge = (50 - length) / 2;
+            const y = 38 - edge;
+            var items = entity.attributes.speed_list;
+            items = items.filter(function(item) { return item !== 'off' })
+            items = items.filter(function(item) { return item !== 'on' })
+            items = items.filter(function(item) { return item !== 'auto' })
+            items = items.filter(function(item) { return item !== 'smart' })
+            const current = items.indexOf(entity.attributes.speed)
+            var i;
+            var x1 = edge;
+            var ret = `<svg  viewBox="0 0 50 50">`;
+            var l = (length - gap * (items.length - 1)) / items.length;
+            for (i = 0; i < items.length; i++) {
+              var x2 = x1 + l;
+              var color = (i <= current) ? "var(--paper-item-icon-active-color)" : "var(--paper-item-icon-color)";
+              var opacity = (i <= current) ? "1.0" : "0.5";
+              ret += `<line x1="${x1}" y1="${y}" x2="${x2}" y2="${y}" stroke="${color}" stroke-width="${width}" opacity="${opacity}" stroke-linecap="round" />`;
+              x1 = x2 + gap;
+            }
+            ret += `<text x="50%" y="42%" fill="var(--primary-text-color)" font-size="14" text-anchor="middle" alignment-baseline="middle">${text}</text></svg>`
+            return ret;
+          }
+        ]]]
+    state:
+      - value: 'on'
+        spin: true
+        styles:
+          card:
+            - opacity: 1
+          icon:
+            - color: |
+                [[[
+                  var [domain, object_id] = entity.entity_id.split('.');
+                  if (domain === "light")
+                    return 'var(--button-card-light-color)';
+                  return 'var(--paper-item-icon-color)';
+                ]]]
+          state:
+            - color: gray
+          name:
+            - color: var(--primary-text-color)
+          lock:
+            - color: white
+          label:
+            - color: gray
+      - value: 'off'
+        styles:
+          card:
+            - opacity: 0.5
+          icon:
+            - color: var(--paper-item-icon-color)
+          name:
+            - color: var(--primary-text-color)
+          state:
+            - color: var(--primary-text-color)
+          label:
+            - color: var(--primary-text-color)
+          lock:
+            - color: var(--paper-item-icon-color)
+      - value: unavailable
+        styles:
+          card:
+            - opacity: 0.2
+          icon:
+            - color: var(--paper-item-icon-color)
+          name:
+            - color: var(--primary-text-color)
+          state:
+            - color: 'hsl(0, 100%, 50%)'
+          label:
+            - color: var(--primary-text-color)
+          lock:
+            - color: var(--paper-item-icon-color)
+    tap_action:
+      action: toggle
+      haptic: light
+    hold_action:
+      action: more-info
+      haptic: heavy
+  mini-button:
+    styles:
+      card:
+        - font-size: 12px
+        - padding: 8px 8px 8px 8px
+      img_cell:
+        - width: 48px
+        - margin-bottom: 4px
+      label:
+        - opacity: 0.8
+        - font-size: 11px
+      name:
+        - font-size: 1em
+        - font-weight: 300
+custom_header:
+  compact_mode: true
+  exceptions: []
+  footer_mode: false
+  header_text: >-
+    <style> #flip {height:24px;overflow:hidden;} #flip > div > div
+    {color:#fff;height:24px;margin-bottom:24px;display:inline-block;} #flip
+    div:first-child {animation: show 10s linear infinite;} .time { font-weight:
+    bold; float: left; padding-right: 16px;} @keyframes show {  0%
+    {margin-top:-144px;}  5% {margin-top:-96px;}  33% {margin-top:-96px;}  38%
+    {margin-top:-48px;}  66% {margin-top:-48px;}  76% {margin-top:0px;}  100%
+    {margin-top:0px;}} #flipper p {position:fixed;color:#999; } </style> <div
+    id=flipper> <span class=time>{{hours12}}:{{minutesLZ}} {{ampm}}</span> <div
+    id=flip> <div><div>{{states('sensor.dark_sky_daily_summary')}}</div></div>
+    <div><div>{{states('sensor.dark_sky_hourly_summary')}}</div></div>
+    <div><div>{{states('sensor.dark_sky_summary')}}
+    {{states.weather.dark_sky.attributes.temperature}}°</div></div>
+    <div><div>{{states('sensor.dark_sky_hourly_summary')}}</div></div>
+    </div></div>
+  split_mode: false
+title: Living Room Tablet
+views:
+  - badges: []
+    cards:
+      - cards:
+          - cards:
+              - aspect_ratio: 1.5/1
+                entity: light.living_room
+                name: Main
+                template: light_button
+                type: 'custom:button-card'
+              - aspect_ratio: 1.5/1
+                entity: light.living_room_accent_lights
+                icon: 'mdi:track-light'
+                name: Accent
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - entity: light.front_porch_light
+                icon: 'mdi:outdoor-lamp'
+                name: Porch
+                template: light_button
+                type: 'custom:button-card'
+              - entity: light.entryway_light
+                name: Entry
+                template: light_button
+                type: 'custom:button-card'
+              - entity: light.dining_room_main_lights
+                icon: 'mdi:ceiling-light'
+                name: Dining
+                template: light_button
+                type: 'custom:button-card'
+            type: horizontal-stack
+          - cards:
+              - entity: fan.living_room_fan
+                icon: 'mdi:fan'
+                name: Fan
+                template: fan_button
+                type: 'custom:button-card'
+              - type: 'custom:gap-card'
+              - type: 'custom:gap-card'
+            type: horizontal-stack
+          - dateBottomFormat: ddd
+            dateTopFormat: DD
+            disableLinks: false
+            endText: End
             entities:
-              - sensor.living_room_multisensor_temperature
-            name: Temp
-            animate: true
-          - type: custom:mini-graph-card
-            entities:
-              - sensor.living_room_multisensor_relative_humidity
-            name: Humidity
-            icon: mdi:water-percent
-            animate: true
-
-      - break
-
-      - type: vertical-stack
-        cards:
-          - type: "custom:button-card"
+              - calendar.family
+              - calendar.holidays_in_united_states
+            eventsLimit: '4'
+            fullDayEventText: All day
+            hardLimit: false
+            hideDeclined: false
+            hideHeader: true
+            hidePastEvents: false
+            hideTime: false
+            highlightToday: true
+            ignoreEventsByLocationExpression: ''
+            ignoreEventsExpression: ''
+            maxHeight: false
+            notifyDateTimeFormat: 'MM/DD/YYYY HH:mma'
+            notifyEntity: null
+            numberOfDays: '30'
+            progressBar: true
+            removeFromEventTitle: ''
+            showEventOrigin: false
+            showLocation: false
+            showLocationIcon: false
+            showMultiDay: true
+            startText: Start
+            timeFormat: 'HH:mma'
+            title: Calendar
+            type: 'custom:calendar-card'
+          - type: 'custom:gap-card'
+        type: vertical-stack
+      - cards:
+          - backdrop: true
+            custom:
+              - high: sensor.dark_sky_daytime_high_temperature_0d
+              - low: sensor.dark_sky_overnight_low_temperature_0d
+            entity: weather.dark_sky
+            name: ' '
+            secondary_info: wind_speed
+            type: 'custom:simple-weather-card'
+          - entity: climate.hallway
+            type: thermostat
+          - cards:
+              - animate: true
+                entities:
+                  - sensor.living_room_multisensor_temperature
+                name: Temp
+                type: 'custom:mini-graph-card'
+              - animate: true
+                entities:
+                  - sensor.living_room_multisensor_relative_humidity
+                icon: 'mdi:water-percent'
+                name: Humidity
+                type: 'custom:mini-graph-card'
+            type: horizontal-stack
+        type: vertical-stack
+      - cards:
+          - confirmation:
+              text: Are you sure you want to toggle Goodnight mode?
             entity: input_boolean.goodnight
-            icon: "mdi:weather-night"
-            name: Goodnight
-            confirmation:
-              text: "Are you sure you want to toggle Goodnight mode?"
+            icon: 'mdi:weather-night'
+            layout: icon_name
             lock:
               enabled: true
               unlock: hold
+            name: Goodnight
+            type: 'custom:button-card'
+          - icon: 'mdi:car-side'
             layout: icon_name
-          - type: "custom:button-card"
-            icon: "mdi:car-side"
             name: Goodbye
+            type: 'custom:button-card'
+          - icon: 'mdi:trash-can'
             layout: icon_name
-          - type: "custom:button-card"
-            icon: "mdi:trash-can"
             name: Trash Pickup Tomorrow
-            layout: icon_name
-          - type: "custom:button-card"
-            icon: "mdi:help-rhombus"
-            name: quick toggle / notice
-            layout: icon_name
-            action: url
-            url_path: "javascript:fully.setScreenBrightness(20);"
-          - type: "custom:button-card"
-            icon: "mdi:help-rhombus"
-            name: quick toggle / notice
-            layout: icon_name
-            action: url
-            url_path: "javascript:fully.setScreenBrightness(255);"
+            type: 'custom:button-card'
+          - cards:
+              - icon: 'mdi:brightness-5'
+                name: Dim
+                tap_action:
+                  action: nothing
+                  fire_js: '[[[ fully.setScreenBrightness(25) ]]]'
+                template: mini-button
+                type: 'custom:button-card'
+              - icon: 'mdi:brightness-7'
+                name: Bright
+                tap_action:
+                  action: nothing
+                  fire_js: '[[[ fully.setScreenBrightness(255) ]]]'
+                template: mini-button
+                type: 'custom:button-card'
+              - icon: 'mdi:television-off'
+                name: Screen Off
+                tap_action:
+                  action: nothing
+                  fire_js: '[[[ fully.startScreensaver() ]]]'
+                template: mini-button
+                type: 'custom:button-card'
+              - icon: 'mdi:television-off'
+                name: Screen Off
+                tap_action:
+                  action: nothing
+                  fire_js: '[[[ fully.startScreensaver() ]]]'
+                template: mini-button
+                type: 'custom:button-card'
+            type: horizontal-stack
+        type: vertical-stack
+    panel: false
+    path: dashboard
+    title: Dashboard
+    visible:
+      - user: ab365b8e49fe4fbaa3f6eef98157a440
+      - user: 7638ce19125941849e6d3d45309f0c93
+  - badges: []
+    cards:
+      - control: false
+        entity: climate.hallway
+        icon: false
+        name: false
+        step_layout: row
+        type: 'custom:simple-thermostat'
+      - type: 'custom:gap-card'
+      - type: 'custom:gap-card'
+    panel: false
+    path: climate
+    title: Climate
+    visible:
+      - user: ab365b8e49fe4fbaa3f6eef98157a440
+      - user: 7638ce19125941849e6d3d45309f0c93
