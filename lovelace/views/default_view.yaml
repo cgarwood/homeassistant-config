@@ -159,6 +159,12 @@ cards:
         - type: "custom:button-card"
           template: label_card_primary
           name: "???"
+
+        - type: custom:vacuum-card
+          entity: vacuum.rockrobo
+          map: camera.rockrobo_map
+          image: False
+
         - type: custom:layout-card
           layout: horizontal
           column_width: 98

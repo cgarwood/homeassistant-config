@@ -149,7 +149,7 @@ history:
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes
-  # development_repo: /srv/dev/home-assistant-polymer
+  # development_repo: /share/ha-frontend
 
 # Additional Panels
 panel_iframe:
@@ -196,7 +196,7 @@ http:
     - !secret cors_address2
   ip_ban_enabled: True
   login_attempts_threshold: 5
-  trusted_proxies: 127.0.0.1
+  trusted_proxies: 192.168.1.220
   use_x_forwarded_for: true
 
 cloud:
@@ -327,12 +327,18 @@ lovelace:
     url: /hacsfiles/lovelace-gap-card/gap-card.js
   - type: module
     url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
+  - type: module
+    url: /hacsfiles/vacuum-card/vacuum-card.js
+  - type: module
+    url: /hacsfiles/bar-card/bar-card.js
+
   dashboards:
     living-room-tablet:
       mode: yaml
       title: Living Room Tablet
       show_in_sidebar: true
       filename: lovelace_living_room_tablet.yaml
+      
 lovelace_gen:
 
 lutron_caseta_pro:
