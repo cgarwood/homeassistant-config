@@ -15,5 +15,5 @@ automation:
       title: Door Lock Notification
       message: |
         State: {{ states.lock.front_door_lock_locked.state }}
-        Status: {{ states.lock.front_door_lock_locked.attributes.lock_status }}
-        Notification: {{ states.lock.front_door_lock_locked.attributes.notification }}
+        Status: {{ states.sensor.front_door_lock_access_control.attributes.label }}
+        User code: {{ states.sensor.front_door_lock_user_code.state }}
