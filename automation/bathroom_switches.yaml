@@ -1,0 +1,54 @@
+- alias: Guest Bathroom Double Tap Off
+  trigger:
+    - platform: event
+      event_type: ozw.scene_activated
+      event_data:
+        node_id: 47
+        scene_id: 1
+        scene_value_id: 4
+    - platform: event
+      event_type: ozw.scene_activated
+      event_data:
+        node_id: 48
+        scene_id: 1
+        scene_value_id: 4
+    - platform: event
+      event_type: ozw.scene_activated
+      event_data:
+        node_id: 49
+        scene_id: 1
+        scene_value_id: 4
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - light.guest_bathroom_fan_light_level
+      - light.guest_bathroom_vanity_light_level
+      - switch.guest_bathroom_fan_switch
+
+- alias: Master Bathroom Double Tap Off
+  trigger:
+    - platform: event
+      event_type: ozw.scene_activated
+      event_data:
+        node_id: 52
+        scene_id: 1
+        scene_value_id: 4
+    - platform: event
+      event_type: ozw.scene_activated
+      event_data:
+        node_id: 53
+        scene_id: 1
+        scene_value_id: 4
+    - platform: event
+      event_type: ozw.scene_activated
+      event_data:
+        node_id: 54
+        scene_id: 1
+        scene_value_id: 4
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - light.master_bathroom_fan_light_level
+      - light.master_bathroom_vanity_light_level
+      - switch.master_bathroom_fan_switch
+
