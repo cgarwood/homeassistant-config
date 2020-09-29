@@ -30,7 +30,6 @@ recorder:
       - sun.sun
       - sensor.processor_use
       - sensor.memory_use_percent
-      - sensor.energy_meter_power_3
       - sensor.ups_load
       - sensor.ups_time_left
       - sensor.office_light_pico
@@ -67,9 +66,6 @@ recorder:
       - script_started
       - timer_out_of_sync
       - !secret alexa_media_event
-      - zwave.network_stop
-      - zwave.network_start
-      - zwave.network_ready
 
 influxdb:
   username: !secret influxdb_user
@@ -90,10 +86,6 @@ influxdb:
       - sensor.nursery_multisensor_relative_humidity
       - sensor.attic_temperature
       - sensor.attic_humidity
-      - sensor.hvac_return_temperature
-      - sensor.hvac_return_humidity
-      - sensor.hvac_supply_temperature
-      - sensor.hvac_supply_humidity
       - sensor.master_bedroom_multisensor_temperature
       - sensor.master_bedroom_multisensor_relative_humidity
       - sensor.master_bathroom_multisensor_temperature
@@ -151,13 +143,6 @@ frontend:
   themes: !include_dir_merge_named themes
   # development_repo: /share/ha-frontend
 
-# Additional Panels
-panel_iframe:
-  grafana:
-    title: "Graphs"
-    icon: "mdi:chart-line"
-    url: !secret grafana_url
-
 # Discover some devices automatically
 discovery:
   ignore:
@@ -171,7 +156,6 @@ logbook:
   exclude:
     domains:
       - automation
-      - zwave
       - sensor
   include:
     entities:
@@ -196,19 +180,15 @@ http:
     - !secret cors_address2
   ip_ban_enabled: True
   login_attempts_threshold: 5
-  trusted_proxies: 192.168.1.220
+  trusted_proxies:
+    - 192.168.1.220
+    - 127.0.0.1
   use_x_forwarded_for: true
 
 cloud:
 
 # Set up primary components
 alexa:
-
-alexa_media:
-  accounts:
-    - email: !secret alexa_username
-      password: !secret alexa_password
-      url: "amazon.com"
 
 binary_sensor:
   - platform: blueiris
@@ -257,10 +237,6 @@ camera:
 google:
   client_id: !secret google_calendar_client_id
   client_secret: !secret google_calendar_client_secret
-
-hacs:
-  token: !secret github_access_token
-  appdaemon: true
 
 homekit:
   filter:
@@ -554,6 +530,13 @@ switch:
   - platform: wake_on_lan
     mac: "d4-be-d9-4c-37-65"
     name: Development Laptop
+  
+  - platform: mqtt
+    command_topic: "shellies/shelly1-gdo/relay/0/command"
+    state_topic: "shellies/shelly1-gdo/relay/0"
+    name: "Garage Door"
+    payload_on: "on"
+    payload_off: "off"
 
 wake_on_lan:
 
