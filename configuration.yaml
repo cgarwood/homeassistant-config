@@ -179,7 +179,7 @@ http:
     - !secret cors_address1
     - !secret cors_address2
   ip_ban_enabled: True
-  login_attempts_threshold: 5
+  login_attempts_threshold: 10
   trusted_proxies:
     - 192.168.1.220
     - 127.0.0.1
@@ -275,8 +275,6 @@ lovelace:
     url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
   - type: module
     url: /hacsfiles/simple-thermostat/simple-thermostat.js
-  - type: module
-    url: /hacsfiles/custom-header/custom-header.js
   - type: module
     url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
   - type: module
