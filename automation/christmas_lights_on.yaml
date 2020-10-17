@@ -1,4 +1,4 @@
-- alias: Christmas Lights - On at Sunset
+- alias: Holiday Lights - On at Sunset
   trigger:
     - platform: sun
       event: sunset
@@ -6,4 +6,27 @@
     service: homeassistant.turn_on
     entity_id:
       - switch.garage_greenwave_port_1_switch
+      - switch.garage_greenwave_port_4_switch
+
+- alias: Holiday Lights - On 20 min after sunset
+  trigger:
+    - platform: sun
+      event: sunset
+      offset: "00:20:00"
+  action:
+    service: homeassistant.turn_on
+    entity_id:
       - switch.garage_greenwave_port_2_switch
+      - switch.garage_greenwave_port_3_switch
+
+- alias: Holiday Lights - On in Morning
+  trigger:
+    - platform: time
+      at: "06:40:00"
+  action:
+    service: homeassistant.turn_on
+    entity_id:
+      - switch.garage_greenwave_port_1_switch
+      - switch.garage_greenwave_port_2_switch
+      - switch.garage_greenwave_port_3_switch
+      - switch.garage_greenwave_port_4_switch

@@ -1,4 +1,4 @@
-- alias: Christmas Lights - Auto Off
+- alias: Holiday Lights - Auto Off Night
   trigger:
     - platform: time
       at: "22:00:00"
@@ -7,3 +7,19 @@
     entity_id:
       - switch.garage_greenwave_port_1_switch
       - switch.garage_greenwave_port_2_switch
+      - switch.garage_greenwave_port_3_switch
+      - switch.garage_greenwave_port_4_switch
+
+- alias: Holiday Lights - Auto Off Morning
+  trigger:
+    - platform: time
+      at: "08:00:00"
+    - platform: sun
+      event: sunrise
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - switch.garage_greenwave_port_1_switch
+      - switch.garage_greenwave_port_2_switch
+      - switch.garage_greenwave_port_3_switch
+      - switch.garage_greenwave_port_4_switch

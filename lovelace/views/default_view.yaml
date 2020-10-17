@@ -160,19 +160,31 @@ cards:
           template: label_card_primary
           name: "???"
 
-        - type: custom:vacuum-card
-          entity: vacuum.rockrobo
-          map: camera.rockrobo_map
-          image: False
-
         - type: custom:layout-card
           layout: horizontal
           column_width: 98
           cards:
             - type: 'custom:button-card'
-              entity: light.master_bedroom
-              name: Master Bed
+              entity: switch.garage_greenwave_port_1_switch
+              name: Inflates
               template: light_button2
+            - type: 'custom:button-card'
+              entity: switch.garage_greenwave_port_2_switch
+              name: Tree Flood 1
+              template: light_button2
+            - type: 'custom:button-card'
+              entity: switch.garage_greenwave_port_3_switch
+              name: Tree Flood 2
+              template: light_button2
+            - type: 'custom:button-card'
+              entity: switch.garage_greenwave_port_4_switch
+              name: Other
+              template: light_button2
+        
+        - type: custom:vacuum-card
+          entity: vacuum.rockrobo
+          map: camera.rockrobo_map
+          image: False
 
     - type: custom:layout-card
       layout: auto
