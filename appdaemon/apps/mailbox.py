@@ -22,4 +22,4 @@ class Mailbox(hass.Hass):
             self.call_service('notify/charles', title="\uD83D\uDCEC You've Got Mail", message="", data={"attachment":attachment})
 
             if (self.get_state("input_boolean.goodnight") == "off"):
-                self.fire_event("tileboard", command="play_sound", sound="/sounds/yougotmail.mp3")
+                self.fire_event("snapcast_notify", sound="local:yougotmail.mp3")

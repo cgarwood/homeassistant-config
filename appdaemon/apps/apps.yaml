@@ -50,6 +50,7 @@ master_bathroom_indicator_lights:
 notifier:
   module: notifier
   class: Notifier
+  sounds_url: !secret sounds_url
 test:
   module: test
   class: Test

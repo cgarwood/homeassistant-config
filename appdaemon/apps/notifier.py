@@ -29,6 +29,8 @@ class Notifier(hass.Hass):
 
         # If we have a sound file, play it
         if self.sound is not None:
+            if (self.sound[0:6] == "local:"):
+                self.sound = f"{self.args['sounds_url']}/{self.sound[6:]}"
             self.call_service(
                 "media_player/play_media",
                 entity_id="media_player.mpd_notifications",
