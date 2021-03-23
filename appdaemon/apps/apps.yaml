@@ -47,6 +47,9 @@ mailbox:
 master_bathroom_indicator_lights:
   module: master_bathroom_indicator_lights
   class: MasterBathroomIndicatorLights
+notifier:
+  module: notifier
+  class: Notifier
 test:
   module: test
   class: Test
