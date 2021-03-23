@@ -1,0 +1,23 @@
+
+kiosk_screens:
+  name: Kiosk Screens
+  entities:
+    - light.living_room_kiosk_screen
+    - light.master_bedroom_kiosk_screen
+    - light.nursery_kiosk_screen
+    - light.zoeys_room_kiosk_screen
+
+snapcast_kiosks_all:
+  entities:
+    - media_player.snapcast_client_living_room_kiosk
+    - media_player.snapcast_client_master_bedroom_kiosk
+    - media_player.snapcast_client_nursery_kiosk
+    - media_player.snapcast_client_zoeys_room_kiosk
+snapcast_kiosks_primary:
+  entities:
+    - media_player.snapcast_client_living_room_kiosk
+    - media_player.snapcast_client_master_bedroom_kiosk
+snapcast_kiosks_kids_rooms:
+  entities:
+    - media_player.snapcast_client_nursery_kiosk
+    - media_player.snapcast_client_zoeys_room_kiosk
