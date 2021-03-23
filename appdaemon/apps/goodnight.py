@@ -134,7 +134,7 @@ class GoodNight(hass.Hass):
                 if (self.get_state('light.living_room') == 'on' and self.get_state('light.living_room_accent_lights') == 'on'):
                     self.timer = True
                     self.call_service(
-                        'homeassistant/turn_on', entity_id='light.living_room_accent_lights', brightness=120)
+                        'homeassistant/turn_on', entity_id='light.living_room_accent_lights', brightness=10)
                     self.call_service('homeassistant/turn_off',
                                       entity_id='light.living_room')
                 elif (self.get_state('light.living_room') == 'on'):
@@ -144,13 +144,11 @@ class GoodNight(hass.Hass):
                 elif (self.get_state('light.living_room_accent_lights') == 'on'):
                     self.timer = True
                     self.call_service(
-                        'homeassistant/turn_on', entity_id='light.living_room_accent_lights', brightness=120)
+                        'homeassistant/turn_on', entity_id='light.living_room_accent_lights', brightness=10)
 
                 if (self.timer):
                     self.handle = self.run_in(self.lightsout, 30)
 
-            # Turn off Kindle Screens
-            self.fire_event('tileboard', command='screen_off')
         else:
             self.fire_event('tileboard', command='notify', target='living_room', title='Are you sure?',
                             message='It\'s too early for Goodnight. Try again between 8pm and 5am.', sound='/sounds/connected.mp3', type='error', lifetime=30)
