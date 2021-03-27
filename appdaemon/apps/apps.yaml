@@ -51,6 +51,9 @@ notifier:
   module: notifier
   class: Notifier
   sounds_url: !secret sounds_url
+water_leaks:
+  module: water_leaks
+  class: WaterLeaks
 test:
   module: test
   class: Test
