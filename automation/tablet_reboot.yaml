@@ -1,19 +1,21 @@
-# Automatically reboot wall tablets twice a week at 1am
+# Automatically reboot wall tablets on a schedule
+- alias: Wall Tablet Scheduled Reboot
+  trigger:
+    - platform: time
+      at: "01:00:00"
 
-trigger:
-  - platform: time
-    at: "01:00:00"
+  condition:
+    - condition: time
+      weekday:
+        - mon
+        - wed
+        - fri
+        - sat
 
-condition:
-  - condition: time
-    weekday:
-      - mon
-      - thu
-
-action:
-  - service: fullykiosk.reboot_device
-    entity_id:
-      - media_player.living_room_kiosk_media_player
-      - media_player.master_bedroom_kiosk_media_player
-      - media_player.nursery_kiosk_media_player
-      - media_player.zoeys_room_kiosk_media_player
+  action:
+    - service: fullykiosk.reboot_device
+      entity_id:
+        - media_player.living_room_kiosk_media_player
+        - media_player.master_bedroom_kiosk_media_player
+        - media_player.nursery_kiosk_media_player
+        - media_player.zoeys_room_kiosk_media_player
