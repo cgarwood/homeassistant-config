@@ -49,12 +49,8 @@ class WeatherAlerts(hass.Hass):
             self.alerts[alert['id']] = alert
             self.log("New alert: {}".format(alert['event']))
 
-            # Set message for Alexa TTS
-            message = alert['description']
-            data = {
-                'type': 'announce'
-            }
-            self.fire_event('tileboard', command='play_sound',
-                            sound='/sounds/eas2.mp3', target='living_room')
-            self.call_service('notify/alexa_media_everywhere',
-                              message=message, data=data)
+            # Set message for TTS announcement
+            message = alert['description'].replace("*","")
+            message = message.replace('\n',"")
+
+            self.fire_event('snapcast_notify', sound='local:eas2.mp3', tts=message)
