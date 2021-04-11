@@ -1,12 +1,15 @@
 - alias: 'Lock Notifications'
   trigger:
     - platform: event
-      event_type: zwave_js_event
+      event_type: zwave_js_notification
       event_data:
         node_id: 14
   action:
     service: notify.ios
-    data_template:
+    data:
       title: Door Lock Notification
-      message: |
-        Message: {{ trigger.event.data.label }}
+      message: >
+        {{ trigger.event.data.event_label }}
+        {% if trigger.event.data.parameters.userId %}
+        User Code {{ trigger.event.data.parameters.userId }}
+        {% endif %}
