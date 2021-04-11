@@ -2,10 +2,6 @@ homeassistant:
   customize: !include customize.yaml
   packages: !include_dir_named packages
 
-# Checks for available updates
-updater:
-  reporting: False
-
 recorder:
   db_url: !secret mysql_server
   purge_interval: 0
@@ -68,23 +64,9 @@ influxdb:
       - climate.hallway
       - sensor.hallway_thermostat_humidity
       - sensor.hallway_thermostat_hvac_state
-      - sensor.garage_multisensor_temperature
-      - sensor.garage_multisensor_relative_humidity
       - sensor.energy_meter_power
-      - sensor.living_room_multisensor_temperature
-      - sensor.living_room_multisensor_relative_humidity
-      - sensor.guest_bathroom_multisensor_temperature
-      - sensor.guest_bathroom_multisensor_relative_humidity
-      - sensor.nursery_multisensor_temperature
-      - sensor.nursery_multisensor_relative_humidity
       - sensor.attic_temperature
       - sensor.attic_humidity
-      - sensor.master_bedroom_multisensor_temperature
-      - sensor.master_bedroom_multisensor_relative_humidity
-      - sensor.master_bathroom_multisensor_temperature
-      - sensor.master_bathroom_multisensor_relative_humidity
-      - sensor.guest_bedroom_multisensor_temperature
-      - sensor.guest_bedroom_multisensor_relative_humidity
       - sensor.attic_temperature
       - sensor.attic_humidity
       - sensor.hvac_supply_temperature
@@ -105,6 +87,10 @@ influxdb:
       - sensor.zoey_s_bedroom_condensation
       - sensor.water_softener_current_water_flow
       - sensor.water_softener_remaining_capacity
+    entity_globs:
+      - sensor.iotawatt_*
+      - sensor.*_multisensor_temperature
+      - sensor.*_multisensor_relative_humidity
 
 # Enables support for tracking state changes over time.
 history:
@@ -184,8 +170,8 @@ cloud:
 # Set up primary components
 alexa:
 
-binary_sensor:
-  - platform: blueiris
+# binary_sensor:
+#   - platform: blueiris
 
 blueiris:
   host: !secret blueiris_host
@@ -275,8 +261,6 @@ lovelace:
     url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
   - type: module
     url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-  - type: js
-    url: /hacsfiles/fan-control-entity-row/fan-control-entity-row.js
   - type: module
     url: /hacsfiles/lovelace-layout-card/layout-card.js
   - type: module
@@ -293,7 +277,10 @@ lovelace:
     url: /hacsfiles/vacuum-card/vacuum-card.js
   - type: module
     url: /hacsfiles/bar-card/bar-card.js
-
+  - type: module
+    url: /hacsfiles/lovelace-tileboard-view/tileboard-view.js
+  - type: module
+    url: /hacsfiles/swipe-card/swipe-card.js
   dashboards:
     living-room-tablet:
       mode: yaml
@@ -511,6 +498,19 @@ input_select:
       - Away
       - Extended Away
       - Asleep
+
+media_player:
+  - platform: snapcast
+    host: 192.168.1.223
+  - platform: mpd
+    name: MPD Music
+    host: 192.168.1.223
+    port: 6600
+  - platform: mpd
+    name: MPD Notifications
+    host: 192.168.1.223
+    port: 6601
+    scan_interval: 2
 
 switch:
   - platform: wake_on_lan
