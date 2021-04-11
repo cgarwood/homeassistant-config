@@ -26,7 +26,7 @@ class WeatherAlerts(hass.Hass):
 
     def check_alerts(self, kwargs):
         url = self.args["alerts_url"]
-        resp = requests.get(url)
+        resp = requests.get(url, timeout=10)
         data = resp.json()
 
         for alert in data['features']:
