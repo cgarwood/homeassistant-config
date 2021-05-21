@@ -175,7 +175,6 @@ browser_mod:
     - all
 
 camera:
-  - platform: blueiris
   - platform: mjpeg
     name: Driveway Cam
     mjpeg_url: !secret driveway_cam
