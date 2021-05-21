@@ -26,8 +26,6 @@ automation:
     - platform: state
       entity_id: sensor.ups_status
       to: 'ONLINE'
-#      for:
-#        minutes: 2
   action:
     service: notify.charles
     data_template:
