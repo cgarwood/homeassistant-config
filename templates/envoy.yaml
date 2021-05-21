@@ -1,0 +1,68 @@
+- sensor:
+  - name: Encharge Total Current
+    unit_of_measurement: W
+    device_class: power
+    state: "{{ states('sensor.encharge_122035013273_current')|int + states('sensor.encharge_122035013278_current')|int + states('sensor.encharge_122035013286_current')|int }}"
+
+  - name: Encharge Battery Level
+    unit_of_measurement: "%"
+    device_class: battery
+    state: >
+      {% set bat_total = states('sensor.encharge_122035013273_battery_level')|int + states('sensor.encharge_122035013278_battery_level')|int + states('sensor.encharge_122035013286_battery_level')|int %}
+      {{ (bat_total / 3) | round() }}
+
+  - name: Envoy House Consumption
+    unit_of_measurement: W
+    device_class: power
+    state: "{{ states('sensor.envoy_current_energy_consumption')|int + (states('sensor.encharge_total_current')|int * 0.8) }}"
+
+  - name: Envoy Grid Consumption
+    unit_of_measurement: W
+    device_class: power
+    state: "{{ states('sensor.envoy_current_energy_consumption')|int - states('sensor.envoy_current_energy_production')|int }}"
+
+
+
+  - name: Solar UI Solar to Battery
+    unit_of_measurement: W
+    device_class: power
+    state: >
+      {% if states('sensor.encharge_total_current')|int < 0 %}
+        {{ states('sensor.encharge_total_current')|int * -1 * 0.8 }}
+      {% else %}
+        0
+      {% endif %}
+  - name: Solar UI Solar to Grid
+    unit_of_measurement: W
+    device_class: power
+    state: >
+      {% if states('sensor.envoy_grid_consumption')|int < 0 %}
+        {{ (-1 * states('sensor.envoy_grid_consumption')|int) }}
+      {% else %}
+        0
+      {% endif %}
+  - name: Solar UI Solar to House
+    unit_of_measurement: W
+    device_class: power
+    state: >
+      {{ states('sensor.envoy_current_energy_production')|int - states('sensor.solar_ui_solar_to_battery')|int - (states('sensor.solar_ui_solar_to_grid')|int)|abs}}
+  
+  - name: Solar UI Grid to House
+    unit_of_measurement: W
+    device_class: power
+    state: >
+      {% if states('sensor.envoy_grid_consumption')|int > 0 %}
+        {{ states('sensor.envoy_grid_consumption') }}
+      {% else %}
+        0
+      {% endif %}
+
+  - name: Solar UI Battery to House
+    unit_of_measurement: W
+    device_class: power
+    state: >
+      {% if states('sensor.encharge_total_current')|int > 0 %}
+        {{ states('sensor.encharge_total_current') }}
+      {% else %}
+        0
+      {% endif %}

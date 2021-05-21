@@ -15,23 +15,15 @@ recorder:
       - zha
       - zone
       - zwave
+    entity_globs:
+      - sensor.*_pico
+      - sensor.solar_ui_*
     entities:
       - sun.sun
       - sensor.processor_use
       - sensor.memory_use_percent
       - sensor.ups_load
       - sensor.ups_time_left
-      - sensor.office_light_pico
-      - sensor.office_fan_pico
-      - sensor.nursery_light_pico
-      - sensor.nursery_fan_pico
-      - sensor.master_bedroom_fan_pico
-      - sensor.master_bedroom_light_pico
-      - sensor.entryway_pico
-      - sensor.front_porch_pico
-      - sensor.hallway_pico
-      - sensor.living_room_pico
-      - sensor.kitchen_cabinet_pico
       - sensor.attic_pressure
       - sensor.hvac_return_pressure
       - sensor.hvac_supply_pressure
@@ -89,6 +81,8 @@ influxdb:
       - sensor.water_softener_remaining_capacity
     entity_globs:
       - sensor.iotawatt_*
+      - sensor.envoy_*
+      - sensor.encharge_*_current
       - sensor.*_multisensor_temperature
       - sensor.*_multisensor_relative_humidity
 
@@ -169,34 +163,6 @@ cloud:
 
 # Set up primary components
 alexa:
-
-# binary_sensor:
-#   - platform: blueiris
-
-blueiris:
-  host: !secret blueiris_host
-  port: !secret blueiris_port
-  username: !secret blueiris_username
-  password: !secret blueiris_password
-  camera:
-    - id: BackYard
-      name: Back Yard
-      room: ""
-    - id: FrontYard
-      name: Front Yard
-      room: ""
-    - id: FrontPorch
-      name: Front Porch
-      room: ""
-    - id: Driveway
-      name: Driveway
-      room: ""
-    - id: SideYard
-      name: Side Yard
-      room: ""
-    - id: RLDome
-      name: RLDome
-      room: ""
 
 browser_mod:
   prefix: "browser_"
@@ -281,6 +247,8 @@ lovelace:
     url: /hacsfiles/lovelace-tileboard-view/tileboard-view.js
   - type: module
     url: /hacsfiles/swipe-card/swipe-card.js
+  - type: module
+    url: /hacsfiles/tesla-style-solar-power-card/tesla-style-solar-power-card.js
   dashboards:
     living-room-tablet:
       mode: yaml
@@ -538,6 +506,7 @@ group: !include_dir_merge_named group
 intent_script: !include_dir_named alexa
 scene: !include_dir_merge_list scenes
 script: !include_dir_named scripts
+template: !include_dir_merge_list templates
 zone: !include zone.yaml
 
 default_config:

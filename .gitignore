@@ -15,6 +15,7 @@
 !/themes/
 !/lovelace/
 !/lovelace/views/
+!/templates/
 
 # Ignore the following YAML files as well
 google_calendars.yaml
