@@ -56,27 +56,14 @@ influxdb:
       - climate.hallway
       - sensor.hallway_thermostat_humidity
       - sensor.hallway_thermostat_hvac_state
-      - sensor.energy_meter_power
-      - sensor.attic_temperature
-      - sensor.attic_humidity
       - sensor.attic_temperature
       - sensor.attic_humidity
       - sensor.hvac_supply_temperature
       - sensor.hvac_return_temperature
       - sensor.hvac_supply_humidity
       - sensor.hvac_return_humidity
-      - sensor.master_bedroom_hvac_supply_temperature
-      - sensor.master_bedroom_hvac_supply_humidity
-      - sensor.nursery_hvac_supply_temperature
-      - sensor.nursery_hvac_supply_humidity
-      - sensor.zoeys_room_hvac_supply_temperature
-      - sensor.zoeys_room_hvac_supply_humidity
       - sensor.dark_sky_temperature
       - sensor.dark_sky_humidity
-      - sensor.living_room_condensation
-      - sensor.nursery_condensation
-      - sensor.master_bedroom_condensation
-      - sensor.zoey_s_bedroom_condensation
       - sensor.water_softener_current_water_flow
       - sensor.water_softener_remaining_capacity
     entity_globs:
@@ -85,6 +72,9 @@ influxdb:
       - sensor.encharge_*_current
       - sensor.*_multisensor_temperature
       - sensor.*_multisensor_relative_humidity
+      - sensor.*_condensation
+      - sensor.*_hvac_*_temperature
+      - sensor.*_hvac_*_humidity
 
 # Enables support for tracking state changes over time.
 history:
@@ -102,14 +92,10 @@ history:
       - sensor.ups_status
   exclude:
     entities:
-      - binary_sensor.gang
       - binary_sensor.hallway_thermostat_has_leaf
       - binary_sensor.hallway_thermostat_is_using_emergency_heat
       - binary_sensor.hallway_thermostat_online
       - binary_sensor.hallway_thermostat_is_locked
-      - binary_sensor.office_fan
-      - binary_sensor.living_room_fan_light_remote
-      - binary_sensor.living_room_fan_remote
 
 # Enables the frontend
 frontend:
