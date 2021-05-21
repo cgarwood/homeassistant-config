@@ -1,8 +1,6 @@
 button_card_templates:
   light_button:
     type: 'custom:button-card'
-    aspect_ratio: 1/1
-    size: 60%
     show_state: true
     show_name: true
     show_label: false
@@ -20,6 +18,7 @@ button_card_templates:
         - position: relative
       card:
         - padding: 8px
+        - height: 100%
       name:
         - justify-self: start
         - align-self: end
@@ -42,6 +41,8 @@ button_card_templates:
       custom_fields:
         info:
           - align-self: start
+    extra_styles: |
+      :host { display: inline !important; }
     custom_fields:
       info: |
         [[[
@@ -281,174 +282,64 @@ button_card_templates:
 
 title: Living Room Tablet
 views:
-  - badges: []
-    cards:
-      - cards:
-          - cards:
-              - aspect_ratio: 1.5/1
-                entity: light.living_room
-                name: Main
-                template: light_button
-                type: 'custom:button-card'
-              - aspect_ratio: 1.5/1
-                entity: light.living_room_accent_lights
-                icon: 'mdi:track-light'
-                name: Accent
-                template: light_button
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - entity: light.front_porch_light
-                icon: 'mdi:outdoor-lamp'
-                name: Porch
-                template: light_button
-                type: 'custom:button-card'
-              - entity: light.entryway_light
-                name: Entry
-                template: light_button
-                type: 'custom:button-card'
-              - entity: light.dining_room_main_lights
-                icon: 'mdi:ceiling-light'
-                name: Dining
-                template: light_button
-                type: 'custom:button-card'
-            type: horizontal-stack
-          - cards:
-              - entity: fan.living_room_fan
-                icon: 'mdi:fan'
-                name: Fan
-                template: fan_button
-                type: 'custom:button-card'
-              - type: 'custom:gap-card'
-              - type: 'custom:gap-card'
-            type: horizontal-stack
-          - dateBottomFormat: ddd
-            dateTopFormat: DD
-            disableLinks: false
-            endText: End
-            entities:
-              - calendar.family
-              - calendar.holidays_in_united_states
-            eventsLimit: '4'
-            fullDayEventText: All day
-            hardLimit: false
-            hideDeclined: false
-            hideHeader: true
-            hidePastEvents: false
-            hideTime: false
-            highlightToday: true
-            ignoreEventsByLocationExpression: ''
-            ignoreEventsExpression: ''
-            maxHeight: false
-            notifyDateTimeFormat: 'MM/DD/YYYY HH:mma'
-            notifyEntity: null
-            numberOfDays: '30'
-            progressBar: true
-            removeFromEventTitle: ''
-            showEventOrigin: false
-            showLocation: false
-            showLocationIcon: false
-            showMultiDay: true
-            startText: Start
-            timeFormat: 'HH:mma'
-            title: Calendar
-            type: 'custom:calendar-card'
-          - type: 'custom:gap-card'
-        type: vertical-stack
-      - cards:
-          - backdrop: true
-            custom:
-              - high: sensor.dark_sky_daytime_high_temperature_0d
-              - low: sensor.dark_sky_overnight_low_temperature_0d
-            entity: weather.dark_sky
-            name: ' '
-            secondary_info: wind_speed
-            type: 'custom:simple-weather-card'
-          - entity: climate.hallway
-            type: thermostat
-          - cards:
-              - animate: true
-                entities:
-                  - sensor.living_room_multisensor_temperature
-                name: Temp
-                type: 'custom:mini-graph-card'
-              - animate: true
-                entities:
-                  - sensor.living_room_multisensor_relative_humidity
-                icon: 'mdi:water-percent'
-                name: Humidity
-                type: 'custom:mini-graph-card'
-            type: horizontal-stack
-        type: vertical-stack
-      - cards:
-          - confirmation:
-              text: Are you sure you want to toggle Goodnight mode?
-            entity: input_boolean.goodnight
-            icon: 'mdi:weather-night'
-            layout: icon_name
-            lock:
-              enabled: true
-              unlock: hold
-            name: Goodnight
-            type: 'custom:button-card'
-          - icon: 'mdi:car-side'
-            layout: icon_name
-            name: Goodbye
-            type: 'custom:button-card'
-          - icon: 'mdi:trash-can'
-            layout: icon_name
-            name: Trash Pickup Tomorrow
-            type: 'custom:button-card'
-          - cards:
-              - icon: 'mdi:brightness-5'
-                name: Dim
-                tap_action:
-                  action: nothing
-                  fire_js: '[[[ fully.setScreenBrightness(25) ]]]'
-                template: mini-button
-                type: 'custom:button-card'
-              - icon: 'mdi:brightness-7'
-                name: Bright
-                tap_action:
-                  action: nothing
-                  fire_js: '[[[ fully.setScreenBrightness(255) ]]]'
-                template: mini-button
-                type: 'custom:button-card'
-              - icon: 'mdi:television-off'
-                name: Screen Off
-                tap_action:
-                  action: nothing
-                  fire_js: '[[[ fully.startScreensaver() ]]]'
-                template: mini-button
-                type: 'custom:button-card'
-              - icon: 'mdi:television-off'
-                name: Screen Off
-                tap_action:
-                  action: nothing
-                  fire_js: '[[[ fully.startScreensaver() ]]]'
-                template: mini-button
-                type: 'custom:button-card'
-            type: horizontal-stack
-        type: vertical-stack
-    panel: false
-    path: dashboard
+  - path: dashboard
     title: Dashboard
-    visible:
-      - user: ab365b8e49fe4fbaa3f6eef98157a440
-      - user: 7638ce19125941849e6d3d45309f0c93
-  - badges: []
-    cards:
-      - control: false
-        entity: climate.hallway
-        icon: false
-        name: false
-        step_layout: row
-        type: 'custom:simple-thermostat'
-      - type: 'custom:gap-card'
-      - type: 'custom:gap-card'
     panel: false
-    path: climate
-    title: Climate
+    background: center / cover no-repeat fixed  url('https://local.garwood.family/tileboard/images/bg2.png')
+    kiosk_mode:
+      mobile_settings:
+        hide_header: true
+    type: 'custom:tileboard-view'
+    view_layout:
+      tile_size: 120
+      tile_margin: 8
     visible:
-      - user: ab365b8e49fe4fbaa3f6eef98157a440
-      - user: 7638ce19125941849e6d3d45309f0c93
+    - user: ab365b8e49fe4fbaa3f6eef98157a440
+    - user: 7638ce19125941849e6d3d45309f0c93
+    badges: []
+    cards:
+      - type: 'custom:swipe-card'
+        view_layout:
+          width: 3
+          height: 2
+        start_card: 1
+        reset_after: 30
+        parameters:
+          spaceBetween: 8
+          autoHeight: false
+          pagination:
+            type: bullets
+        cards:
+          - type: weather-forecast
+            entity: weather.dark_sky
+            style: |
+              ha-card {
+                background: transparent;
+                color: white;
+                box-shadow: none;
+              }
+          - type: markdown
+            content: >
+              <table><tr><td width="200px">
+                <h3>test</h3>
+                <strong>Current Temperature:</strong> {{state_attr('weather.dark_sky','temperature') | round}}&deg;F</br>
+                {% if is_state("sun.sun","above_horizon") -%}
+                  <strong>Next Sunset:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_setting"), '')) | timestamp_custom("%-I:%M %p")}}
+                {%- else -%}
+                  <strong>Next Sunrise:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_rising"), '')) | timestamp_custom("%-I:%M %p")}}
+                {%- endif %}</br></br>
+                <strong>SmartHome Mode:</strong> {{ states('input_text.home_mode') }}</br>
+                <strong>Doors:</strong> {{ states('sensor.door_locks')}}</br>
+              </td><td></br><img
+              src="https://darksky.net/{{states('sensor.dashboard_weather')}}"
+              width="190px" /></td></tr> <tr><td colspan="2">{{
+              states('sensor.dashboard_occupancy')
+              }}</td></tr></table></br>
+            style: |
+              ha-card {
+                background: transparent;
+                color: white;
+              }
+          - type: markdown
+            content: >
+              test test test

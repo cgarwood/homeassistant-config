@@ -9,14 +9,16 @@ cards:
   - type: vertical-stack
     cards:
     - type: custom:layout-card
-      layout: vertical
+      layout_type: custom:vertical-layout
       cards:
         - type: "custom:button-card"
           template: label_card_primary
           name: Common Areas
         - type: custom:layout-card
-          layout: horizontal
-          column_width: 98
+          layout_type: custom:horizontal-layout
+          layout:
+            width: 98
+            max_cols: 4
           cards:
             - type: 'custom:button-card'
               entity: light.living_room
@@ -77,14 +79,16 @@ cards:
               name: Fence
               template: light_button2
 
-        - break
+        - type: custom:layout-break
 
         - type: "custom:button-card"
           template: label_card_primary
           name: Bedrooms & Bathrooms
         - type: custom:layout-card
-          layout: horizontal
-          column_width: 98
+          layout_type: custom:horizontal-layout
+          layout:
+            width: 98
+            max_cols: 4
           cards:
             - type: 'custom:button-card'
               entity: light.master_bedroom
@@ -154,33 +158,27 @@ cards:
               icon: mdi:fan
               template: light_button2
 
-        - break
+        - type: custom:layout-break
 
         - type: "custom:button-card"
           template: label_card_primary
           name: "???"
-
-        - type: custom:layout-card
-          layout: horizontal
-          column_width: 98
-          cards:
-            - type: 'custom:button-card'
-              entity: switch.garage_greenwave_port_1_switch
-              name: Inflates
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: switch.garage_greenwave_port_2_switch
-              name: Tree Flood 1
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: switch.garage_greenwave_port_3_switch
-              name: Tree Flood 2
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: switch.garage_greenwave_port_4_switch
-              name: Other
-              template: light_button2
         
+        - type: custom:tesla-style-solar-power-card
+          house_consumption_entity: sensor.envoy_house_consumption
+          generation_to_house_entity: sensor.solar_ui_solar_to_house
+          generation_to_grid_entity: sensor.solar_ui_solar_to_grid
+          generation_to_battery_entity: sensor.solar_ui_solar_to_battery
+          battery_to_house_entity: sensor.solar_ui_battery_to_house
+          grid_to_house_entity: sensor.solar_ui_grid_to_house
+          house_entity: sensor.envoy_house_consumption
+          generation_entity: sensor.envoy_current_energy_production
+          
+
+          hide_inactive_lines: 1
+          change_house_bubble_color_with_flow: 1
+          
+
         - type: custom:vacuum-card
           entity: vacuum.rockrobo
           map: camera.rockrobo_map
@@ -220,7 +218,7 @@ cards:
           title: all switches
           type: entities
         - entities:
-            - binary_sensor.garage_multisensor_sensor
+            - binary_sensor.garage_multisensor_motion
             - sensor.garage_multisensor_temperature
             - sensor.garage_multisensor_relative_humidity
           show_header_toggle: false
