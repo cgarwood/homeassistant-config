@@ -7,6 +7,7 @@ action:
         - fan.nursery_fan
         - fan.master_bedroom_fan
         - fan.guest_bedroom
+        - media_player.living_room_tv
   - condition: sun
     after: sunset
   - service: homeassistant.turn_on
