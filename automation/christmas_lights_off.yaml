@@ -5,9 +5,9 @@
   action:
     service: homeassistant.turn_off
     entity_id:
-      - switch.garage_greenwave_port_1_switch
-      - switch.garage_greenwave_port_2_switch
-      - switch.garage_greenwave_port_3_switch
+      - switch.holiday_lights_port1
+      - switch.holiday_lights_port2
+      - switch.holiday_lights_port3
 
 - alias: Holiday Lights - Auto Off Morning
   trigger:
@@ -18,6 +18,6 @@
   action:
     service: homeassistant.turn_off
     entity_id:
-      - switch.garage_greenwave_port_1_switch
-      - switch.garage_greenwave_port_2_switch
-      - switch.garage_greenwave_port_3_switch
+      - switch.holiday_lights_port1
+      - switch.holiday_lights_port2
+      - switch.holiday_lights_port3
