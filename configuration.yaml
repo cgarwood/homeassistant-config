@@ -66,6 +66,7 @@ influxdb:
       - sensor.dark_sky_humidity
       - sensor.water_softener_current_water_flow
       - sensor.water_softener_remaining_capacity
+      - sensor.encharge_battery_level
     entity_globs:
       - sensor.iotawatt_*
       - sensor.envoy_*
@@ -142,7 +143,7 @@ http:
   trusted_proxies:
     - 192.168.1.220
     - 127.0.0.1
-    - 192.168.253.1
+    - 192.168.1.200
   use_x_forwarded_for: true
 
 cloud:
@@ -229,11 +230,13 @@ lovelace:
   - type: module
     url: /hacsfiles/bar-card/bar-card.js
   - type: module
-    url: /hacsfiles/lovelace-tileboard-view/tileboard-view.js
-  - type: module
     url: /hacsfiles/swipe-card/swipe-card.js
   - type: module
     url: /hacsfiles/tesla-style-solar-power-card/tesla-style-solar-power-card.js
+  - type: module
+    url: /hacsfiles/kiosk-mode/kiosk-mode.js
+  - type: module
+    url: /hacsfiles/power-distribution-card/power-distribution-card.js
   dashboards:
     living-room-tablet:
       mode: yaml
@@ -458,17 +461,21 @@ media_player:
   - platform: mpd
     name: MPD Music
     host: 192.168.1.223
-    port: 6600
+    port: 6601
   - platform: mpd
     name: MPD Notifications
     host: 192.168.1.223
-    port: 6601
+    port: 6602
     scan_interval: 2
 
 switch:
   - platform: wake_on_lan
-    mac: "d4-be-d9-4c-37-65"
+    mac: "d4-be-d9-5c-42-93"
     name: Development Laptop
+  
+  - platform: wake_on_lan
+    mac: "70-85-C2-94-01-AB"
+    name: Charles Workstation
   
   - platform: mqtt
     command_topic: "shellies/shelly1-gdo/relay/0/command"

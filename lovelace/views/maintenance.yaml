@@ -2,6 +2,29 @@ path: maintenance
 title: Maintenance
 badges: []
 cards:
+  - type: "custom:power-distribution-card"
+    entities:
+      - entity: sensor.iotawatt_input_solar
+        name: Solar
+        preset: solar
+      - entity: sensor.iotawatt_input_battery
+        preset: battery
+        name: Battery
+      - entity: sensor.iotawatt_house_consumption
+        preset: home
+        name: Home
+        invert_value: true
+      - entity: sensor.iotawatt_grid_consumption
+        preset: grid
+        name: Grid
+    center:
+      type: card
+      content:
+        type: glance
+        entities:
+          - entity: binary_sensor.grid_status_atom_grid_status
+            name: Grid Status
+
   - entities:
       - sensor.front_door_lock_battery_level
       - sensor.front_door_battery_level
@@ -23,7 +46,8 @@ cards:
   - entities:
       - sensor.garage_smoke_detector_battery_level
       - sensor.hallway_smoke_detector_battery_level
-      - sensor.office_smoke_detector_battery_level
+      - sensor.zoeys_bedroom_smoke_detector_battery_level
+      - sensor.master_bedroom_smoke_detector_battery_level
       - sensor.nursery_smoke_detector_battery_level
     show_header_toggle: false
     title: Smoke Detector Batteries

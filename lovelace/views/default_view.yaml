@@ -165,15 +165,16 @@ cards:
           name: "???"
         
         - type: custom:tesla-style-solar-power-card
-          house_consumption_entity: sensor.envoy_house_consumption
+          house_consumption_entity: sensor.iotawatt_house_consumption
           generation_to_house_entity: sensor.solar_ui_solar_to_house
           generation_to_grid_entity: sensor.solar_ui_solar_to_grid
           generation_to_battery_entity: sensor.solar_ui_solar_to_battery
           battery_to_house_entity: sensor.solar_ui_battery_to_house
           grid_to_house_entity: sensor.solar_ui_grid_to_house
-          house_entity: sensor.envoy_house_consumption
-          generation_entity: sensor.envoy_current_energy_production
-          
+          house_entity: sensor.iotawatt_house_consumption
+          generation_entity: sensor.iotawatt_input_solar
+          battery_entity: sensor.iotawatt_input_battery
+          grid_entity: sensor.iotawatt_grid_consumption          
 
           hide_inactive_lines: 1
           change_house_bubble_color_with_flow: 1
