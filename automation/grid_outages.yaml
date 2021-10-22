@@ -1,0 +1,25 @@
+- alias: Grid On Notification
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.grid_status_atom_grid_status
+      from: "off"
+      to: "on"
+  action:
+    service: notify.ios
+    data:
+      title: Power Grid Restored
+      message: Power from the grid has been restored.
+
+- alias: Grid Out Notification
+  trigger:
+    - platform: state
+      entity_id:
+        - binary_sensor.grid_status_atom_grid_status
+      from: "on"
+      to: "off"
+  action:
+    service: notify.ios
+    data:
+      title: Power Grid Outage
+      message: Grid outage detected. Running off solar & batteries.
