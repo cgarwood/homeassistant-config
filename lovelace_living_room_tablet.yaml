@@ -279,67 +279,63 @@ button_card_templates:
       name:
         - font-size: 1em
         - font-weight: 300
-
+#kiosk_mode:
+#  hide_header: true
 title: Living Room Tablet
 views:
   - path: dashboard
     title: Dashboard
-    panel: false
-    background: center / cover no-repeat fixed  url('https://local.garwood.family/tileboard/images/bg2.png')
-    kiosk_mode:
-      mobile_settings:
-        hide_header: true
-    type: 'custom:tileboard-view'
-    view_layout:
-      tile_size: 120
-      tile_margin: 8
+    panel: true
+    theme: neon
+    type: 'custom:grid-layout'
+    layout:
+      grid-template-columns: auto 30px 25%
+      grid-template-rows: auto
+      grid-template-areas: |
+        "header header header"
+        "main . sidebar"
+        "footer footer footer"
     visible:
     - user: ab365b8e49fe4fbaa3f6eef98157a440
     - user: 7638ce19125941849e6d3d45309f0c93
     badges: []
+    card_mod:
+      style: |
+        ha-card {
+        --ha-card-border-radius: 0px;
+        background: transparent;}
     cards:
-      - type: 'custom:swipe-card'
-        view_layout:
-          width: 3
-          height: 2
-        start_card: 1
-        reset_after: 30
-        parameters:
-          spaceBetween: 8
-          autoHeight: false
-          pagination:
-            type: bullets
+      - type: 'custom:layout-card'
+        layout_type: 'custom:grid-layout'
+        layout:
+          grid-template-columns: 25% 55% 20%
+          grid-template-rows: auto
+          grid-template-areas: |
+            "clock . weather"
         cards:
-          - type: weather-forecast
+          - type: 'custom:simple-weather-card'
+            view_layout:
+              grid-area: weather
+              place-items: end end
+            #tap_action:
+            #  action: navigate
+            #  navigation_path: '#p5'
+            card_mod:
+              style: |
+                ha-card {
+                  --ha-card-background: transparent; 
+                  font-weight: normal !important;
+                  font-size: 12px;
+                  border: 1px solid red !important;
+                } 
+                .weather__info__title { font-size: 22px; font-weight: bold; }
+                .weather__info--add { display: none !important; }
             entity: weather.dark_sky
-            style: |
-              ha-card {
-                background: transparent;
-                color: white;
-                box-shadow: none;
-              }
-          - type: markdown
-            content: >
-              <table><tr><td width="200px">
-                <h3>test</h3>
-                <strong>Current Temperature:</strong> {{state_attr('weather.dark_sky','temperature') | round}}&deg;F</br>
-                {% if is_state("sun.sun","above_horizon") -%}
-                  <strong>Next Sunset:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_setting"), '')) | timestamp_custom("%-I:%M %p")}}
-                {%- else -%}
-                  <strong>Next Sunrise:</strong> {{as_timestamp(strptime(state_attr("sun.sun", "next_rising"), '')) | timestamp_custom("%-I:%M %p")}}
-                {%- endif %}</br></br>
-                <strong>SmartHome Mode:</strong> {{ states('input_text.home_mode') }}</br>
-                <strong>Doors:</strong> {{ states('sensor.door_locks')}}</br>
-              </td><td></br><img
-              src="https://darksky.net/{{states('sensor.dashboard_weather')}}"
-              width="190px" /></td></tr> <tr><td colspan="2">{{
-              states('sensor.dashboard_occupancy')
-              }}</td></tr></table></br>
-            style: |
-              ha-card {
-                background: transparent;
-                color: white;
-              }
-          - type: markdown
-            content: >
-              test test test
+            name: " "
+            backdrop:
+              day: transparent
+              night: transparent
+            style:
+              top: 70px
+              left: 770px
+      
