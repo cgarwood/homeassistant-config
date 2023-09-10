@@ -13,9 +13,9 @@
         - sat
 
   action:
-    - service: fullykiosk.reboot_device
+    - service: button.press
       entity_id:
-        - media_player.living_room_kiosk_media_player
-        - media_player.master_bedroom_kiosk_media_player
-        - media_player.nursery_kiosk_media_player
-        - media_player.zoeys_room_kiosk_media_player
+        - button.living_room_kiosk_restart_device
+        - button.master_bedroom_kiosk_restart_device
+        - button.nursery_kiosk_restart_device
+        - button.zoeys_room_kiosk_restart_device
