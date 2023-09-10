@@ -209,10 +209,10 @@ cards:
           title: Windows
           type: entities
         - type: weather-forecast
-          entity: weather.dark_sky
+          entity: weather.nws
           name: Weather
         - entities:
-            - entity: switch.living_room_smart_plug
+            - entity: switch.sunshine
             - entity: switch.wax_melt_switch
             - entity: switch.guest_bathroom_smartplug
             - entity: switch.development_laptop

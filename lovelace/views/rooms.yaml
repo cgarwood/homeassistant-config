@@ -10,7 +10,7 @@ cards:
       - entity: light.living_room_accent_lights
       - entity: fan.living_room_fan
       - entity: media_player.living_room_tv
-      - entity: switch.living_room_smart_plug
+      - entity: switch.sunshine
     title: Living Room
     type: entities
   - entities:
