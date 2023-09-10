@@ -95,7 +95,7 @@ class AutoFans(hass.Hass):
         # Process changes to temperature or target and send commands to the fan
 
         fan_state = self.get_state(fan['fan'])
-        fan_speed = self.get_state(fan['fan'], attribute='speed')
+        fan_speed = self.get_state(fan['fan'], attribute='percentage')
 
         # Turn the fan off if we reach or drop below target temperature
         if (temperature <= target and fan_state == 'on'):
@@ -103,19 +103,19 @@ class AutoFans(hass.Hass):
 
         # If we're above target temperature adjust speed based on how far above
         if (temperature > target):
-            speed = 'low'
+            speed = 33
             if (temperature > target + 5):
-                speed = 'medium'
+                speed = 66
 
             # Turn the fan on if it's off and we're more than 1 degree above target
             if (fan_state == 'off' and temperature > target + 1):
                 self.call_service(
-                    'fan/turn_on', entity_id=fan['fan'], speed=speed)
+                    'fan/turn_on', entity_id=fan['fan'], percentage=speed)
 
             # If current fan speed doesn't match what we think, adjust it
             if (fan_state == 'on' and fan_speed != speed):
                 self.call_service(
-                    'fan/set_speed', entity_id=fan['fan'], speed=speed)
+                    'fan/set_percentage', entity_id=fan['fan'], percentage=speed)
 
 
 def find(lst, key, value):
