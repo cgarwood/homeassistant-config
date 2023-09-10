@@ -4,17 +4,14 @@ homeassistant:
 
 recorder:
   db_url: !secret mysql_server
-  purge_interval: 0
   exclude:
     domains:
       - camera
       - group
       - media_player
       - scene
-      - updater
       - zha
       - zone
-      - zwave
     entity_globs:
       - sensor.*_pico
       - sensor.solar_ui_*
@@ -62,12 +59,14 @@ influxdb:
       - sensor.hvac_return_temperature
       - sensor.hvac_supply_humidity
       - sensor.hvac_return_humidity
-      - sensor.dark_sky_temperature
-      - sensor.dark_sky_humidity
       - sensor.water_softener_current_water_flow
       - sensor.water_softener_remaining_capacity
       - sensor.encharge_battery_level
+      - sensor.greenhouse_temperature
+      - sensor.greenhouse_humidity
+      - switch.greenhouse_fan
     entity_globs:
+      - sensor.nws_*
       - sensor.iotawatt_*
       - sensor.envoy_*
       - sensor.encharge_*_current
@@ -79,34 +78,11 @@ influxdb:
 
 # Enables support for tracking state changes over time.
 history:
-  include:
-    domains:
-      - binary_sensor
-      - device_tracker
-      - lock
-      - light
-      - switch
-      - fan
-    entities:
-      - sensor.hallway_thermostat_hvac_state
-      - sensor.hallway_thermostat_operation_mode
-      - sensor.ups_status
-  exclude:
-    entities:
-      - binary_sensor.hallway_thermostat_has_leaf
-      - binary_sensor.hallway_thermostat_is_using_emergency_heat
-      - binary_sensor.hallway_thermostat_online
-      - binary_sensor.hallway_thermostat_is_locked
 
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes
   # development_repo: /share/ha-frontend
-
-# Discover some devices automatically
-discovery:
-  ignore:
-    - sabnzbd
 
 # Track the sun
 sun:
@@ -138,8 +114,8 @@ http:
     - "*"
     - !secret cors_address1
     - !secret cors_address2
-  ip_ban_enabled: True
-  login_attempts_threshold: 10
+  ip_ban_enabled: False
+  #login_attempts_threshold: 10
   trusted_proxies:
     - 192.168.1.220
     - 127.0.0.1
@@ -160,15 +136,6 @@ browser_mod:
       name: living_room_tablet
   disable:
     - all
-
-camera:
-  - platform: mjpeg
-    name: Driveway Cam
-    mjpeg_url: !secret driveway_cam
-
-google:
-  client_id: !secret google_calendar_client_id
-  client_secret: !secret google_calendar_client_secret
 
 homekit:
   filter:
@@ -222,8 +189,6 @@ lovelace:
   - type: module
     url: /hacsfiles/light-entity-card/light-entity-card.js
   - type: module
-    url: /hacsfiles/lovelace-gap-card/gap-card.js
-  - type: module
     url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
   - type: module
     url: /hacsfiles/vacuum-card/vacuum-card.js
@@ -237,15 +202,9 @@ lovelace:
     url: /hacsfiles/kiosk-mode/kiosk-mode.js
   - type: module
     url: /hacsfiles/power-distribution-card/power-distribution-card.js
-  dashboards:
-    living-room-tablet:
-      mode: yaml
-      title: Living Room Tablet
-      show_in_sidebar: true
-      filename: lovelace_living_room_tablet.yaml
+  - type: module
+    url: /hacsfiles/lovelace-mushroom/mushroom.js
       
-lovelace_gen:
-
 lutron_caseta_pro:
   bridges:
     - host: 192.168.1.221
@@ -298,46 +257,6 @@ sensor:
     outdoor_temp_sensor: sensor.dark_sky_temperature
     calibration_factor: 1.4
 
-  - platform: mqtt
-    name: "Water Softener Current Water Flow"
-    unit_of_measurement: "gpm"
-    state_topic: "wripli/state"
-    value_template: "{{ value_json['current-flow'] / 10 }}"
-  - platform: mqtt
-    name: "Water Softener Remaining Capacity"
-    unit_of_measurement: "gallons"
-    state_topic: "wripli/state"
-    value_template: "{{ value_json['cap-remain'] }}"
-  - platform: mqtt
-    name: "Water Softener Days until Regeneration"
-    unit_of_measurement: "days"
-    state_topic: "wripli/state"
-    value_template: "{{ value_json['day-remain'] }}"
-
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    forecast:
-      - 0
-    monitored_conditions:
-      - summary
-      - icon
-      - precip_type
-      - precip_probability
-      - precip_accumulation
-      - temperature
-      - apparent_temperature
-      - wind_speed
-      - wind_gust
-      - wind_bearing
-      - humidity
-      - temperature_high
-      - temperature_low
-      - nearest_storm_distance
-      - nearest_storm_bearing
-      - minutely_summary
-      - hourly_summary
-      - daily_summary
-
   - platform: systemmonitor
     resources:
       - type: memory_use_percent
@@ -355,17 +274,23 @@ notify:
   - name: ios
     platform: group
     services:
-      - service: mobile_app_charles_s_iphone
+      - service: mobile_app_charles_iphone
+      - service: mobile_app_tinas_iphone
 
   - name: charles
     platform: group
     services:
-      - service: mobile_app_charles_s_iphone
+      - service: mobile_app_charles_iphone
+  
+  - name: tina
+    platform: group
+    services:
+      - service: mobile_app_tinas_iphone
 
   - name: emergency
     platform: group
     services:
-      - service: mobile_app_charles_s_iphone
+      - service: mobile_app_charles_iphone
 
 # Input Booleans
 input_boolean:
@@ -452,8 +377,6 @@ input_select:
       - Asleep
 
 media_player:
-  - platform: snapcast
-    host: 192.168.1.223
   - platform: mpd
     name: MPD Music
     host: 192.168.1.223
@@ -466,26 +389,10 @@ media_player:
 
 switch:
   - platform: wake_on_lan
-    mac: "d4-be-d9-5c-42-93"
-    name: Development Laptop
-  
-  - platform: wake_on_lan
     mac: "70-85-C2-94-01-AB"
     name: Charles Workstation
-  
-  - platform: mqtt
-    command_topic: "shellies/shelly1-gdo/relay/0/command"
-    state_topic: "shellies/shelly1-gdo/relay/0"
-    name: "Garage Door"
-    payload_on: "on"
-    payload_off: "off"
 
 wake_on_lan:
-
-weather:
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    mode: daily
 
 # The rest...
 alert: !include_dir_merge_named alerts
@@ -496,5 +403,7 @@ scene: !include_dir_merge_list scenes
 script: !include_dir_named scripts
 template: !include_dir_merge_list templates
 zone: !include zone.yaml
+
+automation 2: !include automations.yaml
 
 default_config:
