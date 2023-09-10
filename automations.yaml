@@ -1,1 +1,46 @@
-[]
+- id: '1659127900114'
+  alias: Greenhouse Fan On
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.greenhouse_temperature
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    above: input_number.greenhouse_fan_setpoint
+  condition: []
+  action:
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.greenhouse_fan
+  - service: notify.tina
+    data:
+      message: Greenhouse Temperature ({{ states('sensor.greenhouse_temperature')
+        }}) higher than setpoint ({{states('input_number.greenhouse_fan_setpoint')}})
+        - Activating Fans
+  mode: single
+- id: '1659128695170'
+  alias: Greenhouse Fan Off
+  description: ''
+  trigger:
+  - platform: numeric_state
+    entity_id: sensor.greenhouse_temperature
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+    below: input_number.greenhouse_fan_setpoint
+  condition: []
+  action:
+  - service: switch.turn_off
+    data: {}
+    target:
+      entity_id: switch.greenhouse_fan
+  - service: notify.tina
+    data:
+      message: Greenhouse Temperature ({{ states('sensor.greenhouse_temperature')
+        }}) below setpoint ({{states('input_number.greenhouse_fan_setpoint')}}) -
+        Turning off Fans
+  mode: single
