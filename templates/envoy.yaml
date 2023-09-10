@@ -2,24 +2,24 @@
   - name: Encharge Total Current
     unit_of_measurement: W
     device_class: power
-    state: "{{ states('sensor.encharge_122035013273_current')|int + states('sensor.encharge_122035013278_current')|int + states('sensor.encharge_122035013286_current')|int }}"
+    state: "{{ states('sensor.encharge_122035013273_current')|int(0) + states('sensor.encharge_122035013278_current')|int(0) + states('sensor.encharge_122035013286_current')|int(0) }}"
 
   - name: Encharge Battery Level
     unit_of_measurement: "%"
     device_class: battery
     state: >
-      {% set bat_total = states('sensor.encharge_122035013273_battery_level')|int + states('sensor.encharge_122035013278_battery_level')|int + states('sensor.encharge_122035013286_battery_level')|int %}
+      {% set bat_total = states('sensor.encharge_122035013273_battery_level')|int(0) + states('sensor.encharge_122035013278_battery_level')|int(0) + states('sensor.encharge_122035013286_battery_level')|int(0) %}
       {{ (bat_total / 3) | round() }}
 
   - name: IotaWatt Grid Consumption
     unit_of_measurement: W
     device_class: power
-    state: "{{ states('sensor.iotawatt_input_grida')|int + states('sensor.iotawatt_input_gridb')|int }}"
+    state: "{{ states('sensor.iotawatt_input_grida')|int(0) + states('sensor.iotawatt_input_gridb')|int(0) + states('sensor.iotawatt_input_evcharger')|int(0) }}"
 
   - name: IotaWatt House Consumption
     unit_of_measurement: W
     device_class: power
-    state: "{{ states('sensor.iotawatt_input_housea')|int + states('sensor.iotawatt_input_houseb')|int }}"
+    state: "{{ states('sensor.iotawatt_input_housea')|int(0) + states('sensor.iotawatt_input_houseb')|int(0) + states('sensor.iotawatt_input_evcharger')|int(0) }}"
 
   - name: Solar UI Solar to Battery
     unit_of_measurement: W
