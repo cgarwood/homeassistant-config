@@ -19,7 +19,10 @@
       from: "on"
       to: "off"
   action:
-    service: notify.ios
-    data:
-      title: Power Grid Outage
-      message: Grid outage detected. Running off solar & batteries.
+    - service: notify.ios
+      data:
+        title: Power Grid Outage
+        message: Grid outage detected. Running off solar & batteries.
+    - event: snapcast_notify
+      event_data:
+        sound: "local:notify.wav"

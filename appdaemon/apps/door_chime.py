@@ -17,7 +17,7 @@ class DoorChime(hass.Hass):
         friendly_name = self.get_state(entity, attribute="friendly_name")
         
         if (new == "on"):
-            self.fire_event("tileboard", command="tts", sound="/sounds/strings.mp3", message=friendly_name + "opened")
+            self.fire_event('snapcast_notify', sound='local:strings.mp3', tts=friendly_name + " opened")
         
         if (new == "off"):
-            self.fire_event("tileboard", command="tts", sound="/sounds/strings2.mp3", message=friendly_name + "closed")
+            self.fire_event('snapcast_notify', sound='local:strings2.mp3', tts=friendly_name + " closed")

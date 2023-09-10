@@ -5,7 +5,7 @@
       event_data:
         node_id: 14
   action:
-    service: notify.ios
+    service: notify.charles
     data:
       title: Door Lock Notification
       message: >

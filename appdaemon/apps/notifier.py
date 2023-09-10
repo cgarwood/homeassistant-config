@@ -57,7 +57,7 @@ class Notifier(hass.Hass):
 
     def tts(self):
         # Play the TTS
-        print("playing tts", self.message)
+        self.log("playing tts: ", self.message)
         self.call_service('tts/cloud_say', 
             entity_id="media_player.mpd_notifications",
             message=self.message
