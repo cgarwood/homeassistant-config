@@ -113,8 +113,6 @@ class GoodNight(hass.Hass):
                 self.call_service('homeassistant/turn_off',
                                   entity_id='light.nursery')
                 self.call_service('homeassistant/turn_off',
-                                  entity_id='light.nursery_lamp')
-                self.call_service('homeassistant/turn_off',
                                   entity_id='light.living_room')
                 self.call_service('homeassistant/turn_off',
                                   entity_id='light.living_room_accent_lights')

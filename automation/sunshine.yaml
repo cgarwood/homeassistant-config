@@ -1,0 +1,17 @@
+- alias: Sunshine - On in Morning
+  trigger:
+    - platform: time
+      at: "08:00:00"
+  action:
+    service: homeassistant.turn_on
+    entity_id:
+      - switch.sunshine
+
+- alias: Sunshine - Off at Night
+  trigger:
+    - platform: time
+      at: "20:00:00"
+  action:
+    service: homeassistant.turn_off
+    entity_id:
+      - switch.sunshine

@@ -1,9 +1,7 @@
 christmas:
   name: Christmas
   entities:
-    - switch.living_room_smart_plug
     - switch.tplink_plug_1
     - switch.tplink_plug_2
-    - switch.wax_melt_switch
-    - switch.christmas_greenwave_port_2_switch
-    - switch.christmas_greenwave_port_4_switch
+    - switch.christmas_greenwave_port1
+    - switch.christmas_greenwave_port2

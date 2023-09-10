@@ -76,7 +76,8 @@ class FanRemotes(hass.Hass):
             # Turn light on (full)
             self.call_service('homeassistant/turn_on',
                               entity_id=remote['controlled_entity'], brightness=255)
-
+            #self.call_service('homeassistant/turn_on',
+            #                  entity_id=remote['controlled_entity'])
         if (new == '2'):
             # Favorite
             self.call_service('homeassistant/turn_on',
@@ -136,7 +137,7 @@ class FanRemotes(hass.Hass):
         if (new == '2'):
             # Favorite
             self.call_service(
-                'fan/set_speed', entity_id=controlled_entity, speed='low')
+                'fan/set_percentage', entity_id=controlled_entity, percentage=33)
 
         if (new == '4'):
             # Off
@@ -146,9 +147,9 @@ class FanRemotes(hass.Hass):
         if (new == '8'):
             # Up
             self.call_service(
-                'fan/set_speed', entity_id=controlled_entity, speed='medium')
+                'fan/increase_speed', entity_id=controlled_entity, percentage_step=33)
 
         if (new == '16'):
             # Down
             self.call_service(
-                'fan/set_speed', entity_id=controlled_entity, speed='lowest')
+                'fan/decrease_speed', entity_id=controlled_entity, percentage_step=34)
