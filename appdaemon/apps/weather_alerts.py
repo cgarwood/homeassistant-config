@@ -51,6 +51,6 @@ class WeatherAlerts(hass.Hass):
 
             # Set message for TTS announcement
             message = alert['description'].replace("*","")
-            message = message.replace('\n',"")
+            message = message.replace('\n'," ").replace(" mph", " miles per hour")
 
             self.fire_event('snapcast_notify', sound='local:eas2.mp3', tts=message)
