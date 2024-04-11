@@ -60,39 +60,6 @@ cards:
     title: System Monitor
     type: entities
   - entities:
-      - sensor.ups_status
-      - sensor.ups_input_voltage
-      - type: "custom:bar-card"
-        severity:
-          - color: var(--label-badge-green)
-            from: 0
-            to: 30
-          - color: orange
-            from: 40
-            to: 50
-          - color: var(--label-badge-red)
-            from: 50
-            to: 100
-        entity: sensor.ups_load
-        entity_row: true
-      - type: "custom:bar-card"
-        severity:
-          - color: var(--label-badge-green)
-            from: 50
-            to: 100
-          - color: orange
-            from: 30
-            to: 49
-          - color: var(--label-badge-red)
-            from: 0
-            to: 29
-        entity: sensor.ups_battery
-        entity_row: true
-      - sensor.ups_time_left
-    show_header_toggle: false
-    title: Power/UPS Status
-    type: entities
-  - entities:
       - binary_sensor.garage_water_sensor
     show_header_toggle: false
     title: Water Sensors
@@ -101,17 +68,11 @@ cards:
       - entity: automation.auto_entry_lights
       - entity: automation.back_yard_lights_off_at_10_00
       - entity: automation.back_yard_lights_on_at_sunset
-      - entity: automation.christmas_lights_auto_off
-      - entity: automation.christmas_lights_on_at_sunset
       - entity: automation.door_open_closed_notifications
       - entity: automation.guest_bathroom_auto_lights_day
       - entity: automation.guest_bathroom_auto_lights_night
       - entity: automation.lock_notifications
-      - entity: automation.outside_lights_over_power_shutoff
-      - entity: automation.outside_lights_off_at_10_00
-      - entity: automation.outside_lights_on_at_sunset
       - entity: automation.porch_light_arrival
-      - entity: automation.power_failure_notification
       - entity: automation.recently_arrived_home
       - entity: automation.sunrise_actions
       - entity: automation.watchdog_outside_lights

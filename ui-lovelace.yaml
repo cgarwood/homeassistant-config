@@ -4,8 +4,6 @@ views:
   - !include lovelace/views/maintenance.yaml
   - !include lovelace/views/rooms.yaml
   - !include lovelace/views/sensors.yaml
-  - !include lovelace/views/living_room_dashboard.yaml
-  - !include lovelace/views/living_room_climate.yaml
 
 
 button_card_templates: !include lovelace/button_card_templates.yaml

@@ -215,7 +215,6 @@ cards:
             - entity: switch.sunshine
             - entity: switch.wax_melt_switch
             - entity: switch.guest_bathroom_smartplug
-            - entity: switch.development_laptop
           title: all switches
           type: entities
         - entities:
