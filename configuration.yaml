@@ -82,6 +82,8 @@ history:
 # Enables the frontend
 frontend:
   themes: !include_dir_merge_named themes
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
   # development_repo: /share/ha-frontend
 
 # Track the sun
@@ -118,7 +120,6 @@ http:
   #login_attempts_threshold: 10
   trusted_proxies:
     - 192.168.1.220
-    - 127.0.0.1
     - 192.168.1.200
   use_x_forwarded_for: true
 
@@ -167,10 +168,6 @@ lovelace:
   - type: module
     url: /hacsfiles/button-card/button-card.js
   - type: module
-    url: /hacsfiles/lovelace-card-mod/card-mod.js
-  - type: module
-    url: /hacsfiles/lovelace-slider-entity-row/slider-entity-row.js
-  - type: module
     url: /hacsfiles/simple-thermostat/simple-thermostat.js
   - type: module
     url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
@@ -179,21 +176,9 @@ lovelace:
   - type: module
     url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
   - type: module
-    url: /hacsfiles/mini-graph-card/mini-graph-card-bundle.js
-  - type: module
     url: /hacsfiles/lovelace-layout-card/layout-card.js
   - type: module
-    url: /hacsfiles/lovelace-fold-entity-row/fold-entity-row.js
-  - type: module
-    url: /hacsfiles/vertical-stack-in-card/vertical-stack-in-card.js
-  - type: module
-    url: /hacsfiles/light-entity-card/light-entity-card.js
-  - type: module
-    url: /hacsfiles/lovelace-time-picker-card/time-picker-card.js
-  - type: module
     url: /hacsfiles/vacuum-card/vacuum-card.js
-  - type: module
-    url: /hacsfiles/bar-card/bar-card.js
   - type: module
     url: /hacsfiles/swipe-card/swipe-card.js
   - type: module
@@ -204,10 +189,18 @@ lovelace:
     url: /hacsfiles/power-distribution-card/power-distribution-card.js
   - type: module
     url: /hacsfiles/lovelace-mushroom/mushroom.js
+  - type: module
+    url: /hacsfiles/decluttering-card/decluttering-card.js
+  - type: module
+    url: /hacsfiles/lovelace-auto-entities/auto-entities.js
+  - url: /hacsfiles/kiosk-mode/kiosk-mode.js
+    type: module
+  - url: /hacsfiles/lovelace-wallpanel/wallpanel.js
+    type: module
       
-lutron_caseta_pro:
-  bridges:
-    - host: 192.168.1.221
+#lutron_caseta_pro:
+#  bridges:
+#    - host: 192.168.1.221
 
 mobile_app:
 
@@ -217,9 +210,6 @@ zha:
   database_path: /config/zigbee.db
   enable_quirks: true
   device_config:
-    # Master Bedroom Light
-    00:22:a3:00:00:20:ce:42-1:
-      type: light
     # Guest Bedroom Light
     00:22:a3:00:00:20:db:24-1:
       type: light
@@ -256,14 +246,6 @@ sensor:
     indoor_humidity_sensor: sensor.guest_bedroom_multisensor_relative_humidity
     outdoor_temp_sensor: sensor.dark_sky_temperature
     calibration_factor: 1.4
-
-  - platform: systemmonitor
-    resources:
-      - type: memory_use_percent
-      - type: processor_use
-      - type: disk_use_percent
-        arg: /home
-      - type: last_boot
 
   - platform: weatheralerts
     state: IN
