@@ -241,9 +241,6 @@ input_boolean:
     name: Master Goodnight
   ad_door_chime:
     name: Door Chime
-  ad_auto_bathroom_lights:
-    name: Auto Bathroom Lights
-    initial: off
   auto_fan_master_bedroom:
     name: Master Bedroom Auto Fan
     initial: off
