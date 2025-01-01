@@ -1,311 +1,320 @@
-path: default_view
-title: Home
-badges:
-  - entity: person.charles
-  - entity: person.tina
-  - entity: sun.sun
-panel: true
-cards:
-  - type: vertical-stack
+title: Main
+path: main
+type: sections
+sections:
+  - cards:
+      - type: heading
+        heading: 💡 Common Areas
+      - type: tile
+        entity: light.living_room
+        show_entity_picture: false
+        name: Living Room
+      - type: tile
+        entity: light.living_room_accent_lights
+        show_entity_picture: false
+        name: Living Room
+        icon: mdi:track-light
+      - type: tile
+        entity: fan.living_room_fan
+        show_entity_picture: false
+        name: Living Room
+      - type: tile
+        entity: light.entryway_light
+        show_entity_picture: false
+        name: Entryway
+      - type: tile
+        entity: light.dining_room_main_lights
+        show_entity_picture: false
+        name: Dining Room
+      - type: tile
+        entity: light.kitchen_main_lights
+        show_entity_picture: false
+        name: Kitchen
+        icon: mdi:ceiling-fan-light
+      - type: tile
+        entity: light.kitchen_light
+        show_entity_picture: false
+        name: Kitchen Sink
+      - type: tile
+        entity: light.kitchen_cabinet_lights
+        show_entity_picture: false
+        name: Kitchen Cabinets
+      - type: tile
+        entity: light.hallway_light
+        show_entity_picture: false
+        name: Hallway
+      - type: tile
+        entity: light.laundry_room_main_lights
+        show_entity_picture: false
+        name: Laundry
+      - type: tile
+        entity: light.garage_main_lights
+        show_entity_picture: false
+        name: Garage
+      - type: tile
+        entity: light.front_porch_light
+        show_entity_picture: false
+        name: Front Porch
+      - type: tile
+        entity: light.back_porch_light
+        show_entity_picture: false
+        name: Back Porch
+      - type: tile
+        entity: light.back_yard_dimmer
+        show_entity_picture: false
+        name: Fence Lights
+        icon: mdi:string-lights
+  - type: grid
     cards:
-    - type: custom:layout-card
-      layout_type: custom:vertical-layout
-      cards:
-        - type: "custom:button-card"
-          template: label_card_primary
-          name: Common Areas
-        - type: custom:layout-card
-          layout_type: custom:horizontal-layout
-          layout:
-            width: 98
-            max_cols: 4
-          cards:
-            - type: 'custom:button-card'
-              entity: light.living_room
-              name: Living Room
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.living_room_accent_lights
-              name: Accent Lights
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: fan.living_room_fan
-              name: Living Room
-              template: fan_button2
-            - type: 'custom:button-card'
-              entity: light.entryway_light
-              name: Entryway
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.dining_room_main_lights
-              name: Dining Room
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.kitchen_main_lights
-              name: Kitchen Main
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.kitchen_light
-              name: Kitchen Sink
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.kitchen_cabinet_lights
-              name: Cabinet Lights
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.laundry_room_main_lights
-              name: Laundry
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.hallway_light
-              name: Hallway
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.garage_main_lights
-              name: Garage
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.front_porch_light
-              name: Front Porch
-              icon: mdi:coach-lamp
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.back_porch_light
-              name: Back Porch
-              icon: mdi:coach-lamp
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.back_yard_dimmer
-              name: Fence
-              template: light_button2
-
-        - type: custom:layout-break
-
-        - type: "custom:button-card"
-          template: label_card_primary
-          name: Bedrooms & Bathrooms
-        - type: custom:layout-card
-          layout_type: custom:horizontal-layout
-          layout:
-            width: 98
-            max_cols: 4
-          cards:
-            - type: 'custom:button-card'
-              entity: light.master_bedroom
-              name: Master Bed
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.master_bedroom_lamp
-              name: Master Bed
-              icon: mdi:lamp
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: fan.master_bedroom_fan
-              name: Master Bed
-              template: fan_button2
-            - type: 'custom:button-card'
-              entity: light.nursery
-              name: Nursery
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.nursery_lamp
-              name: Nursery
-              icon: mdi:lamp
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: fan.nursery_fan
-              name: Nursery
-              template: fan_button2
-            - type: 'custom:button-card'
-              entity: light.guest_bedroom
-              name: Zoey's Rm
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.zoeys_lamp
-              name: Zoey's Rm
-              icon: mdi:lamp
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: fan.guest_bedroom
-              name: Zoey's Rm
-              template: fan_button2
-            - type: 'custom:button-card'
-              entity: light.master_bathroom_vanity_light_level
-              name: Master Bath
-              icon: mdi:vanity-light
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.master_bathroom_fan_light_level
-              name: Master Bath
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: switch.master_bathroom_fan_switch
-              name: Master Bath
-              icon: mdi:fan
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.guest_bathroom_vanity_light_level
-              name: Guest Bath
-              icon: mdi:vanity-light
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: light.guest_bathroom_fan_light_level
-              name: Guest Bath
-              template: light_button2
-            - type: 'custom:button-card'
-              entity: switch.guest_bathroom_fan_switch
-              name: Guest Bath
-              icon: mdi:fan
-              template: light_button2
-
-        - type: custom:layout-break
-
-        - type: "custom:button-card"
-          template: label_card_primary
-          name: "???"
-        
-        - type: custom:tesla-style-solar-power-card
-          house_consumption_entity: sensor.iotawatt_house_consumption
-          generation_to_house_entity: sensor.solar_ui_solar_to_house
-          generation_to_grid_entity: sensor.solar_ui_solar_to_grid
-          generation_to_battery_entity: sensor.solar_ui_solar_to_battery
-          battery_to_house_entity: sensor.solar_ui_battery_to_house
-          grid_to_house_entity: sensor.solar_ui_grid_to_house
-          house_entity: sensor.iotawatt_house_consumption
-          generation_entity: sensor.iotawatt_input_solar
-          battery_entity: sensor.iotawatt_input_battery
-          grid_entity: sensor.iotawatt_grid_consumption          
-
-          hide_inactive_lines: 1
-          change_house_bubble_color_with_flow: 1
-          
-
-        - type: custom:vacuum-card
-          entity: vacuum.rockrobo
-          map: camera.rockrobo_map
-          image: False
-
-    - type: custom:layout-card
-      layout: auto
-      max_columns: 3
-      cards:
-        - entities:
-            - entity: binary_sensor.front_door_sensor
-            - entity: binary_sensor.back_door_sensor
-            - entity: binary_sensor.garage_inside_door
-            - entity: binary_sensor.garage_side_door
-            - entity: binary_sensor.garage_door_sensor
-            - entity: binary_sensor.nursery_door
-          show_header_toggle: false
-          title: Doors
-          type: entities
-        - entities:
-            - binary_sensor.kitchen_window
-            - binary_sensor.nursery_window
-            - binary_sensor.office_window
-            - binary_sensor.master_bedroom_window
-            - binary_sensor.master_bathroom_window
-          show_header_toggle: false
-          title: Windows
-          type: entities
-        - type: weather-forecast
-          entity: weather.nws
-          name: Weather
-        - entities:
-            - entity: switch.sunshine
-            - entity: switch.wax_melt_switch
-            - entity: switch.guest_bathroom_smartplug
-          title: all switches
-          type: entities
-        - entities:
-            - binary_sensor.garage_multisensor_motion
-            - sensor.garage_multisensor_temperature
-            - sensor.garage_multisensor_relative_humidity
-          show_header_toggle: false
-          title: Garage Multisensor
-          type: entities
-        - entities:
-            - binary_sensor.living_room_multisensor_motion
-            - sensor.living_room_multisensor_temperature
-            - sensor.living_room_multisensor_relative_humidity
-          show_header_toggle: false
-          title: Living Room Multisensor
-          type: entities
-        - entities:
-            - binary_sensor.guest_bathroom_multisensor_motion
-            - sensor.guest_bathroom_multisensor_temperature
-            - sensor.guest_bathroom_multisensor_relative_humidity
-          show_header_toggle: false
-          title: Guest Bathroom Multisensor
-          type: entities
-        - entities:
-            - binary_sensor.nursery_multisensor_motion
-            - sensor.nursery_multisensor_temperature
-            - sensor.nursery_multisensor_relative_humidity
-          show_header_toggle: false
-          title: Nursery Multisensor
-          type: entities
-        - entities:
-            - binary_sensor.master_bedroom_multisensor_motion
-            - sensor.master_bedroom_multisensor_temperature
-            - sensor.master_bedroom_multisensor_relative_humidity
-          show_header_toggle: false
-          title: Master Bedroom Multisensor
-          type: entities
-        - entities:
-            - binary_sensor.master_bathroom_multisensor_motion
-            - sensor.master_bathroom_multisensor_temperature
-            - sensor.master_bathroom_multisensor_relative_humidity
-          show_header_toggle: false
-          title: Master Bathroom Multisensor
-          type: entities
-        - entities:
-            - binary_sensor.guest_bedroom_multisensor_motion
-            - sensor.guest_bedroom_multisensor_temperature
-            - sensor.guest_bedroom_multisensor_relative_humidity
-          show_header_toggle: false
-          title: Guest Bedroom Multisensor
-          type: entities
-        - entities:
-            - sensor.attic_temperature
-            - sensor.attic_humidity
-          show_header_toggle: false
-          title: Attic Multisensor
-          type: entities
-        - entities:
-            - sensor.hvac_supply_temperature
-            - sensor.hvac_return_temperature
-            - sensor.hvac_supply_humidity
-            - sensor.hvac_return_humidity
-          show_header_toggle: false
-          title: HVAC
-          type: entities
-        - entity: climate.hallway
-          type: thermostat
-        - entity: camera.driveway_cam
-          type: picture-entity
-        - entities:
-            - entity: input_boolean.guest_mode
-            - entity: input_boolean.goodnight
-            - entity: input_boolean.goodnight_master
-          title: Input boolean
-          type: entities
-        - entities:
-            - input_select.house_mode
-          show_header_toggle: false
-          title: Input select
-          type: entities
-        - entities:
-            - lock.front_door_lock_locked
-          title: Lock
-          type: entities
-        - entity: media_player.living_room_tv
-          type: media-control
-        - entities:
-            - script.goodbyelights
-          title: Script
-          type: entities
-        - entities:
-            - entity: group.christmas
-          title: Christmas
-          type: entities
+      - type: heading
+        heading: 💡 Bedrooms & Bathrooms
+      - type: tile
+        entity: light.master_bedroom
+        show_entity_picture: false
+        name: Master Bedroom
+      - type: tile
+        entity: light.master_bathroom_vanity_light_level
+        show_entity_picture: false
+        icon: mdi:lightbulb-group-outline
+      - type: tile
+        entity: light.master_bedroom_lamp
+        show_entity_picture: false
+        name: Master Bedroom
+        icon: mdi:lamp
+      - type: tile
+        entity: light.master_bathroom_fan_light_level
+        show_entity_picture: false
+      - type: tile
+        entity: fan.master_bedroom_fan
+        show_entity_picture: false
+      - type: tile
+        entity: switch.master_bathroom_fan_switch
+        show_entity_picture: false
+        icon: mdi:fan
+      - type: tile
+        entity: light.nursery
+        show_entity_picture: false
+      - type: tile
+        entity: light.guest_bedroom
+        show_entity_picture: false
+      - type: tile
+        entity: light.nursery_lamp
+        show_entity_picture: false
+      - type: tile
+        entity: light.zoeys_lamp
+        show_entity_picture: false
+      - type: tile
+        entity: fan.nursery_fan
+        show_entity_picture: false
+      - type: tile
+        entity: fan.guest_bedroom
+        show_entity_picture: false
+      - type: tile
+        entity: light.guest_bathroom_fan_light_level
+        show_entity_picture: false
+      - type: tile
+        entity: light.guest_bathroom_vanity_light_level
+        show_entity_picture: false
+        icon: mdi:lightbulb-group-outline
+      - type: tile
+        entity: switch.guest_bathroom_fan_switch
+        show_entity_picture: false
+        icon: mdi:fan
+  - type: grid
+    cards:
+      - type: heading
+        heading: 🌤️ Climate
+      - show_current: true
+        show_forecast: true
+        type: weather-forecast
+        entity: weather.nws
+        forecast_type: twice_daily
+        secondary_info_attribute: humidity
+      - graph: line
+        type: sensor
+        entity: sensor.average_indoor_temperature
+        detail: 1
+        icon: mdi:home-thermometer-outline
+        name: Indoor Avg Temp
+      - features:
+          - type: target-temperature
+          - type: climate-hvac-modes
+            hvac_modes:
+              - heat
+              - cool
+              - heat_cool
+              - 'off'
+          - type: climate-fan-modes
+            style: dropdown
+            fan_modes:
+              - 'on'
+              - 'off'
+        type: tile
+        entity: climate.hallway
+        vertical: false
+        name: Climate Control
+      - type: tile
+        entity: sensor.average_indoor_humidity
+        name: Indoor Avg Humidity
+  - type: grid
+    cards:
+      - type: heading
+        heading: ⚡ Power
+      - graph: line
+        type: sensor
+        entity: sensor.iotawatt_house_consumption
+        detail: 2
+        name: House Consumption
+      - graph: line
+        type: sensor
+        entity: sensor.iotawatt_input_solar
+        detail: 2
+        name: Solar Production
+        icon: mdi:solar-power-variant-outline
+      - graph: line
+        type: sensor
+        entity: sensor.iotawatt_grid_consumption
+        detail: 2
+        icon: mdi:transmission-tower
+        name: Grid Consumption
+        limits:
+          min: 0
+      - graph: line
+        type: sensor
+        entity: sensor.iotawatt_input_battery
+        detail: 1
+        name: Battery Utilization
+        icon: mdi:battery-80
+      - type: custom:power-distribution-card
+        title: Power
+        entities:
+          - decimals: 2
+            display_abs: true
+            name: Home
+            unit_of_display: W
+            consumer: true
+            icon: mdi:home-assistant
+            entity: sensor.iotawatt_house_consumption
+            preset: home
+            invert_value: true
+          - decimals: 2
+            display_abs: true
+            name: Battery
+            unit_of_display: W
+            consumer: true
+            icon: mdi:battery-outline
+            producer: true
+            entity: sensor.iotawatt_input_battery
+            preset: battery
+          - decimals: 2
+            display_abs: true
+            name: Solar
+            unit_of_display: W
+            icon: mdi:solar-power
+            producer: true
+            entity: sensor.iotawatt_input_solar
+            preset: solar
+          - decimals: 2
+            display_abs: true
+            name: Grid
+            unit_of_display: W
+            icon: mdi:transmission-tower
+            entity: sensor.iotawatt_grid_consumption
+            preset: grid
+        center:
+          type: card
+          content:
+            type: glance
+            entities:
+              - binary_sensor.grid_status_atom_grid_status
+        animation: flash
+  - type: grid
+    cards:
+      - type: heading
+        heading: 🌡️ Temperatures
+      - graph: line
+        type: sensor
+        entity: sensor.living_room_multisensor_temperature
+        detail: 1
+        name: Living Room
+      - graph: line
+        type: sensor
+        entity: sensor.hallway_temperature
+        detail: 1
+        name: Hallway
+      - graph: line
+        type: sensor
+        entity: sensor.zoeys_room_msr1_temperature
+        detail: 1
+        name: Zoey's Room
+      - graph: line
+        type: sensor
+        entity: sensor.sydneys_room_msr1_temperature
+        detail: 1
+        name: Sydney's Room
+      - graph: line
+        type: sensor
+        entity: sensor.master_bedroom_msr1_temperature
+        detail: 1
+        name: Master Bedroom
+      - graph: line
+        type: sensor
+        entity: sensor.master_bathroom_msr1_temperature
+        detail: 1
+        name: Master Bathroom
+      - graph: line
+        type: sensor
+        entity: sensor.guest_bathroom_multisensor_temperature
+        detail: 1
+        name: Guest Bathroom
+      - graph: line
+        type: sensor
+        entity: sensor.garage_multisensor_temperature
+        detail: 1
+        name: Garage
+  - type: grid
+    cards:
+      - type: heading
+        heading: 💧 Humidity
+      - graph: line
+        type: sensor
+        entity: sensor.living_room_multisensor_relative_humidity
+        detail: 1
+        name: Living Room
+      - graph: line
+        type: sensor
+        entity: sensor.hallway_humidity
+        detail: 1
+        name: Hallway
+      - graph: line
+        type: sensor
+        entity: sensor.zoeys_room_msr1_humidity
+        detail: 1
+        name: Zoey's Room
+      - graph: line
+        type: sensor
+        entity: sensor.sydneys_room_msr1_humidity
+        detail: 1
+        name: Sydney's Room
+      - graph: line
+        type: sensor
+        entity: sensor.master_bedroom_msr1_humidity
+        detail: 1
+        name: Master Bedroom
+      - graph: line
+        type: sensor
+        entity: sensor.master_bathroom_msr1_humidity
+        detail: 1
+        name: Master Bathroom
+      - graph: line
+        type: sensor
+        entity: sensor.guest_bathroom_multisensor_relative_humidity
+        detail: 1
+        name: Guest Bathroom
+      - graph: line
+        type: sensor
+        entity: sensor.garage_multisensor_relative_humidity
+        detail: 1
+        name: Garage
+max_columns: 3
+cards: []

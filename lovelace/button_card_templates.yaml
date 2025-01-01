@@ -96,7 +96,7 @@ light_button:
                   stroke-dasharray: ${circumference};
                   stroke-dashoffset: ${circumference - brightness / 100 * circumference};
                 "
-                id="c_brightness" cx="25" cy="25" r="${radius}" stroke="var(--paper-item-icon-active-color)" stroke-width="${width}" fill="none" stroke-linecap="round" />
+                id="c_brightness" cx="25" cy="25" r="${radius}" stroke="var(--button-card-light-color)" stroke-width="${width}" fill="none" stroke-linecap="round" />
               <text x="50%" y="54%" fill="var(--primary-text-color)" font-size="14" text-anchor="middle" alignment-baseline="middle">${brightness}<tspan font-size="10">%</tspan>
               </text>
             </svg>
