@@ -62,8 +62,6 @@
     target:
       entity_id: media_player.living_room_tv
   mode: single
-
-  mode: single
 - id: '1720708190917'
   alias: Doorbell Notifications
   description: ''
@@ -288,4 +286,33 @@
         target:
           entity_id:
           - number.master_bathroom_fan_led_indicator_color
+  mode: single
+- id: '1735771477502'
+  alias: Mailbox Notifications
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.mailbox_sensor
+    to: 'on'
+  conditions: []
+  actions:
+  - action: camera.snapshot
+    metadata: {}
+    data:
+      filename: /media/snapshots/mailbox_alert.jpg
+    target:
+      entity_id: camera.home_driveway_camera
+  - action: notify.charles
+    metadata: {}
+    data:
+      title: "\U0001F4EC You've Got Mail"
+      data:
+        attachment:
+          url: /media/local/snapshots/mailbox_alert.jpg
+          content_type: JPEG
+      message: ' '
+  - event: snapcast_notify
+    event_data:
+      sound: local:yougotmail.mp3
   mode: single
