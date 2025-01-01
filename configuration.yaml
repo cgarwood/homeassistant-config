@@ -154,21 +154,15 @@ lovelace:
   - type: module
     url: /hacsfiles/button-card/button-card.js
   - type: module
-    url: /hacsfiles/simple-thermostat/simple-thermostat.js
-  - type: module
     url: /hacsfiles/simple-weather-card/simple-weather-card-bundle.js
   - type: module
     url: /hacsfiles/restriction-card/restriction-card.js
   - type: module
     url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
   - type: module
-    url: /hacsfiles/lovelace-layout-card/layout-card.js
-  - type: module
     url: /hacsfiles/vacuum-card/vacuum-card.js
   - type: module
     url: /hacsfiles/swipe-card/swipe-card.js
-  - type: module
-    url: /hacsfiles/tesla-style-solar-power-card/tesla-style-solar-power-card.js
   - type: module
     url: /hacsfiles/kiosk-mode/kiosk-mode.js
   - type: module
