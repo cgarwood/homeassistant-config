@@ -44,3 +44,248 @@
         }}) below setpoint ({{states('input_number.greenhouse_fan_setpoint')}}) -
         Turning off Fans
   mode: single
+- id: '1701524592048'
+  alias: No TV Before 6:30am
+  description: ''
+  trigger:
+  - platform: state
+    entity_id:
+    - media_player.living_room_tv
+    from: 'off'
+    to: 'on'
+  condition:
+  - condition: time
+    before: 06:30:00
+  action:
+  - service: media_player.turn_off
+    data: {}
+    target:
+      entity_id: media_player.living_room_tv
+  mode: single
+
+  mode: single
+- id: '1720708190917'
+  alias: Doorbell Notifications
+  description: ''
+  use_blueprint:
+    path: TheRealFalseReality/send_snapshot_conditional.yaml
+    input:
+      sensor: binary_sensor.reolink_video_doorbell_visitor
+      camera: camera.home_doorbell
+      delay:
+        hours: 0
+        minutes: 0
+        seconds: 0
+      notify_device: 41e050c1e72411ea92ee7d89e8c13642
+      notification_title: Doorbell Pressed
+      notification_message: Someone's at the door
+      data_clickaction_url: blueiris://?camera=Doorbell
+      save_archive_file: false
+- id: '1722814682291'
+  alias: TV Power Off at Midnight
+  description: ''
+  trigger:
+  - platform: time
+    at: 00:00:00
+  condition: []
+  action:
+  - action: switch.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: switch.living_room_tv_smart_plug
+  mode: single
+- id: '1735060375135'
+  alias: Guest Bathroom Fan Override
+  description: ''
+  triggers:
+  - device_id: ca43408c8b517a417c727fe21fdbfae3
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '001'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 001
+    trigger: device
+    value: 3
+    id: double-tap-down
+  - device_id: ca43408c8b517a417c727fe21fdbfae3
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '002'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 002
+    trigger: device
+    value: 3
+    id: double-tap-up
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - double-tap-down
+      sequence:
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.guest_bathroom_fan_switch
+    - conditions:
+      - condition: trigger
+        id:
+        - double-tap-up
+      sequence:
+      - action: switch.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.guest_bathroom_fan_switch
+  - action: input_boolean.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.guest_bathroom_fan_override
+  mode: single
+- id: '1735061144734'
+  alias: Guest Bathroom Fan Switch Indicator
+  description: Handles the color of the indicator light on the switch based on automatic/override
+    conditions
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.guest_bathroom_fan_override
+    id: fan-override
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.guest_bathroom_fan_override
+        state: 'on'
+      sequence:
+      - action: number.set_value
+        metadata: {}
+        data:
+          value: '1'
+        target:
+          entity_id: number.guest_bathroom_fan_led_indicator_color
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.guest_bathroom_fan_override
+        state: 'off'
+      sequence:
+      - action: number.set_value
+        metadata: {}
+        data:
+          value: '170'
+        target:
+          entity_id: number.guest_bathroom_fan_led_indicator_color
+  mode: single
+- id: '1735761385867'
+  alias: Master Bathroom Humidity Control
+  description: ''
+  use_blueprint:
+    path: Blackshome/bathroom-humidity-exhaust-fan.yaml
+    input:
+      by_pass: input_boolean.master_bathroom_fan_override
+      trigger: sensor.master_bathroom_humidity_derivative
+      bathroom_humidity_sensor: sensor.master_bathroom_thermo_hygrometer_humidity
+      fan_switch:
+        entity_id: switch.master_bathroom_fan_switch
+      include_max_humidity: maximum_humidity_enabled
+      max_humidity: 90
+      include_bypass: bypass_enabled_stop
+- id: '1735761579643'
+  alias: Master Bathroom Fan Override
+  description: ''
+  triggers:
+  - device_id: 9f53ea78770850727317132786ff2737
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '001'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 001
+    trigger: device
+    id: double-tap-down
+  - device_id: 9f53ea78770850727317132786ff2737
+    domain: zwave_js
+    type: event.value_notification.central_scene
+    property: scene
+    property_key: '001'
+    endpoint: 0
+    command_class: 91
+    subtype: Endpoint 0 Scene 001
+    trigger: device
+    id: double-tap-up
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: trigger
+        id:
+        - double-tap-down
+      sequence:
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.master_bathroom_fan_switch
+    - conditions:
+      - condition: trigger
+        id:
+        - double-tap-up
+      sequence:
+      - action: switch.turn_on
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.master_bathroom_fan_switch
+  - action: input_boolean.toggle
+    metadata: {}
+    data: {}
+    target:
+      entity_id: input_boolean.master_bathroom_fan_override
+  mode: single
+- id: '1735761659747'
+  alias: Master Bathroom Fan Switch Indicator
+  description: Handles the color of the indicator light on the switch based on automatic/override
+    conditions
+  triggers:
+  - trigger: state
+    entity_id:
+    - input_boolean.master_bathroom_fan_override
+    id: fan-override
+  conditions: []
+  actions:
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.master_bathroom_fan_override
+        state: 'on'
+      sequence:
+      - action: number.set_value
+        metadata: {}
+        data:
+          value: '1'
+        target:
+          entity_id:
+          - number.master_bathroom_fan_led_indicator_color
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.master_bathroom_fan_override
+        state: 'off'
+      sequence:
+      - action: number.set_value
+        metadata: {}
+        data:
+          value: '170'
+        target:
+          entity_id:
+          - number.master_bathroom_fan_led_indicator_color
+  mode: single
