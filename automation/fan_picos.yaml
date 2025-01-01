@@ -1,0 +1,149 @@
+- alias: Fan Pico On
+  id: fan_pico_on
+  description: ""
+  trigger:
+    - platform: device
+      id: fan.master_bedroom_fan
+      device_id: f45c5b24978af196ec646e169633a2a1
+      domain: lutron_caseta
+      type: press
+      subtype: "on"
+    - platform: device
+      id: fan.guest_bedroom
+      device_id: 3deb436b459e9ef05bfd3d71e8b9efa2
+      domain: lutron_caseta
+      type: press
+      subtype: "on"
+    - platform: device
+      id: fan.nursery_fan
+      device_id: 59326d90d983a8211d8fdd66e66c59a2
+      domain: lutron_caseta
+      type: press
+      subtype: "on"
+    - platform: device
+      id: fan.living_room_fan
+      device_id: 3ff1b04b328fc968f5cc9ef490378a46
+      domain: lutron_caseta
+      type: press
+      subtype: "on"
+  condition: []
+  action:
+    - service: fan.turn_on
+      metadata: {}
+      data:
+        percentage: 50
+      target:
+        entity_id: '{{ trigger.id }}'
+  mode: single
+
+- alias: Fan Pico Off
+  id: fan_pico_off
+  description: ""
+  trigger:
+    - platform: device
+      id: fan.master_bedroom_fan
+      device_id: f45c5b24978af196ec646e169633a2a1
+      domain: lutron_caseta
+      type: press
+      subtype: "off"
+    - platform: device
+      id: fan.guest_bedroom
+      device_id: 3deb436b459e9ef05bfd3d71e8b9efa2
+      domain: lutron_caseta
+      type: press
+      subtype: "off"
+    - platform: device
+      id: fan.nursery_fan
+      device_id: 59326d90d983a8211d8fdd66e66c59a2
+      domain: lutron_caseta
+      type: press
+      subtype: "off"
+    - platform: device
+      id: fan.living_room_fan
+      device_id: 3ff1b04b328fc968f5cc9ef490378a46
+      domain: lutron_caseta
+      type: press
+      subtype: "off"
+  condition: []
+  action:
+    - service: fan.turn_off
+      metadata: {}
+      target:
+        entity_id: '{{ trigger.id }}'
+  mode: single
+
+- alias: Fan Pico Faster
+  id: fan_pico_faster
+  description: ""
+  trigger:
+    - platform: device
+      id: fan.master_bedroom_fan
+      device_id: f45c5b24978af196ec646e169633a2a1
+      domain: lutron_caseta
+      type: press
+      subtype: "raise"
+    - platform: device
+      id: fan.guest_bedroom
+      device_id: 3deb436b459e9ef05bfd3d71e8b9efa2
+      domain: lutron_caseta
+      type: press
+      subtype: "raise"
+    - platform: device
+      id: fan.nursery_fan
+      device_id: 59326d90d983a8211d8fdd66e66c59a2
+      domain: lutron_caseta
+      type: press
+      subtype: "raise"
+    - platform: device
+      id: fan.living_room_fan
+      device_id: 3ff1b04b328fc968f5cc9ef490378a46
+      domain: lutron_caseta
+      type: press
+      subtype: "raise"
+  condition: []
+  action:
+    - service: fan.increase_speed
+      metadata: {}
+      data:
+        percentage_step: 25
+      target:
+        entity_id: '{{ trigger.id }}'
+  mode: single
+
+- alias: Fan Pico Slower
+  id: fan_pico_slower
+  description: ""
+  trigger:
+    - platform: device
+      id: fan.master_bedroom_fan
+      device_id: f45c5b24978af196ec646e169633a2a1
+      domain: lutron_caseta
+      type: press
+      subtype: "lower"
+    - platform: device
+      id: fan.guest_bedroom
+      device_id: 3deb436b459e9ef05bfd3d71e8b9efa2
+      domain: lutron_caseta
+      type: press
+      subtype: "lower"
+    - platform: device
+      id: fan.nursery_fan
+      device_id: 59326d90d983a8211d8fdd66e66c59a2
+      domain: lutron_caseta
+      type: press
+      subtype: "lower"
+    - platform: device
+      id: fan.living_room_fan
+      device_id: 3ff1b04b328fc968f5cc9ef490378a46
+      domain: lutron_caseta
+      type: press
+      subtype: "lower"
+  condition: []
+  action:
+    - service: fan.decrease_speed
+      metadata: {}
+      data:
+        percentage_step: 25
+      target:
+        entity_id: '{{ trigger.id }}'
+  mode: single
