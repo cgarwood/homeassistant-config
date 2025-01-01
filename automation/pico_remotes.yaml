@@ -1,0 +1,283 @@
+- id: '1711215011480'
+  alias: Living Room Pico Light On
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 8a889fc972cc2bcfc939c8a548f1bfd8
+    domain: lutron_caseta
+    type: press
+    subtype: 'on'
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.living_room
+  mode: single
+- id: '1711215072109'
+  alias: New Living Room Pico Light Off
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 8a889fc972cc2bcfc939c8a548f1bfd8
+    domain: lutron_caseta
+    type: press
+    subtype: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.living_room
+  mode: single
+- id: '1711215140171'
+  alias: Living Room Pico Light Brighter
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 8a889fc972cc2bcfc939c8a548f1bfd8
+    domain: lutron_caseta
+    type: press
+    subtype: raise
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: 10
+    target:
+      entity_id: light.living_room
+  mode: single
+- id: '1711215171608'
+  alias: Living Room Pico Fan Dimmer
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 8a889fc972cc2bcfc939c8a548f1bfd8
+    domain: lutron_caseta
+    type: press
+    subtype: lower
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: -10
+    target:
+      entity_id: light.living_room
+  mode: single
+- id: '1711215646445'
+  alias: Master Bedroom Pico Light On
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 882ff80db4fea3e9dedff9f18174c1bc
+    domain: lutron_caseta
+    type: press
+    subtype: 'on'
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom
+  mode: single
+- id: '1711215679007'
+  alias: Master Bedroom Pico Light Off
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 882ff80db4fea3e9dedff9f18174c1bc
+    domain: lutron_caseta
+    type: press
+    subtype: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.master_bedroom
+  mode: single
+- id: '1711215705130'
+  alias: Master Bedroom Pico Light Brighter
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 882ff80db4fea3e9dedff9f18174c1bc
+    domain: lutron_caseta
+    type: press
+    subtype: raise
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: 10
+    target:
+      entity_id: light.master_bedroom
+  mode: single
+- id: '1711215729876'
+  alias: Master Bedroom Pico Light Dimmer
+  description: ''
+  trigger:
+  - platform: device
+    device_id: 882ff80db4fea3e9dedff9f18174c1bc
+    domain: lutron_caseta
+    type: press
+    subtype: lower
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: -10
+    target:
+      entity_id: light.master_bedroom
+  mode: single
+- id: '1711215923204'
+  alias: Nursery Pico Light On
+  description: ''
+  trigger:
+  - platform: device
+    device_id: aa9d13d785396f389a7be6e6ff83d948
+    domain: lutron_caseta
+    type: press
+    subtype: 'on'
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.nursery
+  mode: single
+- id: '1711215949110'
+  alias: Nursery Pico Light Off
+  description: ''
+  trigger:
+  - platform: device
+    device_id: aa9d13d785396f389a7be6e6ff83d948
+    domain: lutron_caseta
+    type: press
+    subtype: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.nursery
+  mode: single
+- id: '1711215976503'
+  alias: Nursery Pico Light Brighter
+  description: ''
+  trigger:
+  - platform: device
+    device_id: aa9d13d785396f389a7be6e6ff83d948
+    domain: lutron_caseta
+    type: press
+    subtype: raise
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: 10
+    target:
+      entity_id: light.nursery
+  mode: single
+- id: '1711216000900'
+  alias: Nursery Pico Light Dimmer
+  description: ''
+  trigger:
+  - platform: device
+    device_id: aa9d13d785396f389a7be6e6ff83d948
+    domain: lutron_caseta
+    type: press
+    subtype: lower
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: -10
+    target:
+      entity_id: light.nursery
+  mode: single
+- id: '1711216063310'
+  alias: Zoeys Room Pico Light On
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e6fa2aae1ef06f7b62567076b16b7305
+    domain: lutron_caseta
+    type: press
+    subtype: 'on'
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.guest_bedroom
+  mode: single
+- id: '1711216090406'
+  alias: Zoeys Room Pico Light Off
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e6fa2aae1ef06f7b62567076b16b7305
+    domain: lutron_caseta
+    type: press
+    subtype: 'off'
+  condition: []
+  action:
+  - service: light.turn_off
+    metadata: {}
+    data: {}
+    target:
+      entity_id: light.guest_bedroom
+  mode: single
+- id: '1711216117815'
+  alias: Zoeys Room Pico Light Brighter
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e6fa2aae1ef06f7b62567076b16b7305
+    domain: lutron_caseta
+    type: press
+    subtype: raise
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: 10
+    target:
+      entity_id: light.guest_bedroom
+  mode: single
+- id: '1711216140256'
+  alias: Zoeys Room Pico Light Dimmer
+  description: ''
+  trigger:
+  - platform: device
+    device_id: e6fa2aae1ef06f7b62567076b16b7305
+    domain: lutron_caseta
+    type: press
+    subtype: lower
+  condition: []
+  action:
+  - service: light.turn_on
+    metadata: {}
+    data:
+      brightness_step_pct: -10
+    target:
+      entity_id: light.guest_bedroom
