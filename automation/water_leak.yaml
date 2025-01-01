@@ -1,0 +1,37 @@
+- id: '1735766884685'
+  alias: Water Leaks
+  description: ''
+  triggers:
+  - trigger: state
+    entity_id:
+    - binary_sensor.garage_water_sensor
+    to: 'on'
+  conditions: []
+  actions:
+  - action: notify.charles
+    metadata: {}
+    data:
+      title: "\U0001F4A7 {{'(TEST MODE)' if is_state('input_boolean.water_valve_maintenance_mode',
+        'on') else ''}} Water Leak Detected"
+      message: '{{state_attr(trigger.entity_id, ''friendly_name'')}} detected water.'
+  - event: snapcast_notify
+    event_data:
+      sound: local:warning.wav
+      tts: '"{{''This is a test.'' if is_state(''input_boolean.water_valve_maintenance_mode'',''on'')
+        else ''''}} Water leak detected by {{state_attr(trigger.entity_id, ''friendly_name'')}}.
+        {{''This is a test'' if is_state(''input_boolean.water_valve_maintenance_mode'',''on'')
+        else ''Closing main valve.''}}"
+
+        '
+  - choose:
+    - conditions:
+      - condition: state
+        entity_id: input_boolean.water_valve_maintenance_mode
+        state: 'off'
+      sequence:
+      - action: switch.turn_off
+        metadata: {}
+        data: {}
+        target:
+          entity_id: switch.water_main_valve
+  mode: single
