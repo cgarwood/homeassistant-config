@@ -1,5 +1,4 @@
 homeassistant:
-  customize: !include customize.yaml
   packages: !include_dir_named packages
 
 recorder:
@@ -7,8 +6,6 @@ recorder:
   exclude:
     domains:
       - camera
-      - group
-      - media_player
       - scene
       - zha
       - zone
@@ -24,10 +21,6 @@ recorder:
       - sensor.attic_pressure
       - sensor.hvac_return_pressure
       - sensor.hvac_supply_pressure
-      - sensor.dark_sky_minutely_summary
-      - sensor.dark_sky_hourly_summary
-      - sensor.dark_sky_daily_summary
-      - sensor.dark_sky_icon_0
       - persistent_notification.config_entry_discovery
     event_types:
       - service_removed
@@ -72,6 +65,8 @@ influxdb:
       - sensor.encharge_*_current
       - sensor.*_multisensor_temperature
       - sensor.*_multisensor_relative_humidity
+      - sensor.*_msr1_temperature
+      - sensor.*_msr1_humidity
       - sensor.*_condensation
       - sensor.*_hvac_*_temperature
       - sensor.*_hvac_*_humidity
@@ -88,18 +83,6 @@ frontend:
 
 # Track the sun
 sun:
-
-# View all events in a logbook
-logbook:
-  exclude:
-    domains:
-      - automation
-      - sensor
-  include:
-    entities:
-      - sensor.ups_status
-      - sensor.hallway_thermostat_hvac_state
-      - sensor.hallway_thermostat_operation_mode
 
 # Config Panel
 config:
@@ -139,31 +122,34 @@ browser_mod:
     - all
 
 homekit:
-  filter:
-    include_domains:
-      - climate
-      - light
-      - fan
-      - switch
-    include_entities:
-      - sensor.living_room_multisensor_temperature
-      - sensor.guest_bathroom_multisensor_temperature
-      - sensor.guest_bedroom_multisensor_temperature
-      - sensor.master_bathroom_multisensor_temperature
-      - sensor.master_bedroom_multisensor_temperature
-      - sensor.nursery_multisensor_temperature
-      - sensor.living_room_multisensor_relative_humidity
-      - sensor.guest_bathroom_multisensor_relative_humidity
-      - sensor.guest_bedroom_multisensor_relative_humidity
-      - sensor.master_bathroom_multisensor_relative_humidity
-      - sensor.master_bedroom_multisensor_relative_humidity
-      - sensor.nursery_multisensor_relative_humidity
+  - name: Primary
+    filter:
+      include_domains:
+        - climate
+        - light
+        - fan
+        - switch
+      include_entities:
+        - sensor.living_room_thermo_hygrometer_temperature
+        - sensor.master_bedroom_thermo_hygrometer_temperature
+        - sensor.master_bathroom_thermo_hygrometer_temperature
+        - sensor.guest_bathroom_thermo_hygrometer_temperature
+        - sensor.zoey_s_room_thermo_hygrometer_temperature
+        - sensor.sydney_s_room_thermo_hygrometer_temperature
+  - name: Doorbell Accessory
+    port: 21065
+    mode: accessory
+    filter:
+      include_entities:
+        - camera.home_doorbell
+    entity_config:
+      camera.home_doorbell:
+        linked_doorbell_sensor: binary_sensor.reolink_video_doorbell_visitor
 
 logger:
   default: warning
 
 lovelace:
-  mode: yaml
   resources:
   - type: module
     url: /hacsfiles/button-card/button-card.js
@@ -197,10 +183,8 @@ lovelace:
     type: module
   - url: /hacsfiles/lovelace-wallpanel/wallpanel.js
     type: module
-      
-#lutron_caseta_pro:
-#  bridges:
-#    - host: 192.168.1.221
+  - url: /hacsfiles/Bubble-Card/bubble-card.js
+    type: module
 
 mobile_app:
 
@@ -222,31 +206,6 @@ zha:
 
 # Additional Sensors
 sensor:
-  - platform: mold_indicator
-    name: Living Room Condensation
-    indoor_temp_sensor: sensor.living_room_multisensor_temperature
-    indoor_humidity_sensor: sensor.living_room_multisensor_relative_humidity
-    outdoor_temp_sensor: sensor.dark_sky_temperature
-    calibration_factor: 1.5
-  - platform: mold_indicator
-    name: Nursery Condensation
-    indoor_temp_sensor: sensor.nursery_multisensor_temperature
-    indoor_humidity_sensor: sensor.nursery_multisensor_relative_humidity
-    outdoor_temp_sensor: sensor.dark_sky_temperature
-    calibration_factor: 1.2
-  - platform: mold_indicator
-    name: Master Bedroom Condensation
-    indoor_temp_sensor: sensor.master_bedroom_multisensor_temperature
-    indoor_humidity_sensor: sensor.master_bedroom_multisensor_relative_humidity
-    outdoor_temp_sensor: sensor.dark_sky_temperature
-    calibration_factor: 1.2
-  - platform: mold_indicator
-    name: Zoey's Bedroom Condensation
-    indoor_temp_sensor: sensor.guest_bedroom_multisensor_temperature
-    indoor_humidity_sensor: sensor.guest_bedroom_multisensor_relative_humidity
-    outdoor_temp_sensor: sensor.dark_sky_temperature
-    calibration_factor: 1.4
-
   - platform: weatheralerts
     state: IN
     zone: !secret nws_alert_zone
@@ -263,7 +222,7 @@ notify:
     platform: group
     services:
       - service: mobile_app_charles_iphone
-  
+
   - name: tina
     platform: group
     services:
@@ -357,17 +316,6 @@ input_select:
       - Away
       - Extended Away
       - Asleep
-
-media_player:
-  - platform: mpd
-    name: MPD Music
-    host: 192.168.1.223
-    port: 6601
-  - platform: mpd
-    name: MPD Notifications
-    host: 192.168.1.223
-    port: 6602
-    scan_interval: 2
 
 switch:
   - platform: wake_on_lan
