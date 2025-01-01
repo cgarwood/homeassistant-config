@@ -5,11 +5,23 @@
       event_data:
         node_id: 14
   action:
-    service: notify.charles
-    data:
-      title: Door Lock Notification
-      message: >
-        {{ trigger.event.data.event_label }}
-        {% if trigger.event.data.parameters.userId %}
-        User Code {{ trigger.event.data.parameters.userId }}
-        {% endif %}
+    - service: camera.snapshot
+      entity_id: camera.home_doorbell
+      data:
+        filename: "{{ snapshot_create_file_path }}"
+    - service: notify.charles
+      data:
+        title: Door Lock Notification
+        message: >
+          {{ trigger.event.data.event_label }}
+          {% if trigger.event.data.parameters.userId %}
+          User Code {{ trigger.event.data.parameters.userId }}
+          {% endif %}
+        data:
+          attachment:
+            content-type: jpeg
+            url: /local/tmp/snapshot_doorbellcam.jpg
+
+  variables:
+    camera: camera.home_doorbell
+    snapshot_create_file_path: /config/www/tmp/snapshot_doorbellcam.jpg
