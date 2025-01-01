@@ -1,9 +1,0 @@
-title: Home
-views:
-  - !include lovelace/views/default_view.yaml
-  - !include lovelace/views/maintenance.yaml
-  - !include lovelace/views/rooms.yaml
-  - !include lovelace/views/sensors.yaml
-
-
-button_card_templates: !include lovelace/button_card_templates.yaml
