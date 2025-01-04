@@ -239,8 +239,6 @@ input_boolean:
     name: Goodnight
   goodnight_master:
     name: Master Goodnight
-  ad_door_chime:
-    name: Door Chime
   auto_fan_master_bedroom:
     name: Master Bedroom Auto Fan
     initial: off
